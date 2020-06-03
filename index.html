@@ -199,7 +199,7 @@
           <ul class="timeline">
             <li>
               <div class="timeline-image">
-                <img class="rounded-circle img-fluid" src="img/about/1.jpg" alt="Alon_Movie">
+                <img class="rounded-circle img-fluid button" data-toggle="modal" href="#portfolioModal1" src="img/about/1.jpg" alt="Alon_Movie">
               </div>
               <div class="timeline-panel">
                 <div class="timeline-heading">
@@ -213,7 +213,7 @@
             <li class="timeline-inverted">
               <a class="portfolio-link" ></a>
               <div class="timeline-image">
-                <img class="rounded-circle img-fluid" data-toggle="modal" href="#portfolioModal1" src="img/about/3.png" alt="Alon_Graphic">
+                <img class="rounded-circle img-fluid button" data-toggle="modal" href="#portfolioModal2" src="img/about/2.png" alt="Alon_Graphic">
               </div>
               <div class="timeline-panel">
                 <div class="timeline-heading">
@@ -342,7 +342,35 @@
     </div>
 
     <!-- Modal 1 -->
-  <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+                <div class="modal-body">
+                 
+                  <img class="img-fluid d-block mx-auto" src="img/about/1-modal.jpg" alt="">
+                  
+                  <button class="btn btn-primary" data-dismiss="modal" type="button">
+                    <i class="fas fa-times"></i>
+                    Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </footer>
+
+    <!-- Modal 2 -->
+  <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="close-modal" data-dismiss="modal">
@@ -355,7 +383,7 @@
             <div class="col-lg-8 mx-auto">
               <div class="modal-body">
                
-                <img class="img-fluid d-block mx-auto" src="img/about/3.png" alt="">
+                <img class="img-fluid d-block mx-auto" src="img/about/2.png" alt="">
                 
                 <button class="btn btn-primary" data-dismiss="modal" type="button">
                   <i class="fas fa-times"></i>

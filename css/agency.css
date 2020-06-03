@@ -336,6 +336,10 @@ header.masthead .intro-text .intro-heading {
   }
 }
 
+.modal {
+  top: 20vh !important;
+}
+
 .portfolio-modal .modal-dialog {
   margin: 1rem;
   min-width: 50vw;
@@ -465,6 +469,10 @@ header.masthead .intro-text .intro-heading {
   left: -14px;
   border-right-width: 14px;
   border-left-width: 0;
+}
+
+.timeline > li .button {
+  cursor: pointer;
 }
 
 .timeline > li .timeline-image {
