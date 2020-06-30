@@ -266,7 +266,10 @@
       </div>
       <div class="row">
         <div class="col-lg-12">
-          <form action="POST" id="contactForm" name="sentMessage" novalidate="novalidate" data-netlify="true">
+          <form action="pages/success/index.html" id="contactForm" name="sentMessage" novalidate="novalidate" data-netlify="true" netlify-honeypot="bot-field">
+            <p style="visibility: hidden;" ><label>Don't fill this up.</label>
+              <input name="bot-field" type="text">
+            </p>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
