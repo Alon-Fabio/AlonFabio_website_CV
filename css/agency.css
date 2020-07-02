@@ -843,13 +843,19 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
 
 @media (max-width: 992px) {
   #progressBarsDiv {
+    text-align: center;
     display: block;
   }
   #progressContainerLang {
+    margin: 0 auto;
     padding: 10px;
     width: 95%;
   }
+  .framework {
+    justify-content: center !important;
+  }
   #progressContainerFrame {
+    margin: 0 auto;
     padding: 10px;
     width: 95%;
   }
