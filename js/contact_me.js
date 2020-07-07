@@ -2,7 +2,7 @@ $(function() {
 
   $("#contactForm input,#contactForm textarea").jqBootstrapValidation({
     preventSubmit: true,
-    submitError: function($form, event) {
+    submitError: function($form, event, errors) {
       // additional error messages or events
     },
     submitSuccess: function($form, event) {
@@ -26,9 +26,9 @@ $(function() {
       $this = $("#sendMessageButton");
       $this.prop("disabled", true); // Disable submit button until AJAX call is complete to prevent duplicate messages
       $.ajax({
-        url: "https://www.alonfabio.com/",
+        url: "https://www.alonfabio.com/pages/success",
         type: "POST",
-        data: formdata,
+        data: $form.serialize(),
         cache: false,
         success: function() {
           // Success message
