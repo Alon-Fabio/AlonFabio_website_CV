@@ -41,7 +41,7 @@ $(function() {
             .append('</div>');
           //clear all fields
           $('#contactForm').trigger("reset");
-          window.location.replace("https://www.alonfabio.com/pages/success")
+          
         },
         error: function() {
           // Fail message
@@ -56,6 +56,7 @@ $(function() {
         complete: function() {
           setTimeout(function() {
             $this.prop("disabled", false); // Re-enable submit button when AJAX call is complete
+            window.location.replace("https://www.alonfabio.com/pages/success")
           }, 1000);
         }
       });
