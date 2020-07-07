@@ -647,9 +647,10 @@ header.masthead .intro-text .intro-heading {
 
 section#contact {
   background-color: #285278;
-  background-image: url("../img/map-image.png");
+  background-image: url("../img/logos/DesignSignatureblackTran40.svg");
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 100%;
 }
 
 section#contact .section-heading {
