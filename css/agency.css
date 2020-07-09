@@ -136,15 +136,13 @@ img::-moz-selection {
   background-color: #285278;
 }
 
-#mainNav .navbar-toggler {
-  font-size: 12px;
-  right: 0;
-  padding: 13px;
-  text-transform: uppercase;
-  color: white;
-  border: 0;
-  background-color: #F26944;
-  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+#mainNav .navbar-toggler span {
+  display: block;
+  width: 30px;
+  height: 2px;
+  margin: 6px auto;
+  background: #F26944;
+  transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 #mainNav .navbar-brand {
@@ -188,6 +186,10 @@ img::-moz-selection {
   #mainNav #navbar-brand-img {
     height: 50px;
   }
+  #mainNav .navbar-brand-img-pri {
+    -webkit-filter: invert(80%) sepia(64%) saturate(5830%) hue-rotate(329deg) brightness(94%) contrast(101%);
+    filter: invert(80%) sepia(64%) saturate(5830%) hue-rotate(329deg) brightness(94%) contrast(101%);
+  }
   #mainNav .navbar-nav .nav-item .nav-link {
     padding: 1.1em 1em !important;
   }
@@ -202,8 +204,32 @@ img::-moz-selection {
   }
 }
 
+/* rotate first span */
+.navbar-toggler[aria-expanded="true"] span:first-of-type {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+/* hide second span */
+.navbar-toggler[aria-expanded="true"] span:nth-of-type(2) {
+  opacity: 0;
+}
+
+/* rotate third span */
+.navbar-toggler[aria-expanded="true"] span:last-of-type {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.navbar-toggler[aria-expanded="false"] span {
+  transform: none;
+  opacity: 1;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
 header.masthead {
-  height: 100vh;
+  min-height: 100vh;
   text-align: center;
   color: white;
   background-image: url("../img/header-bg.jpg");
@@ -672,6 +698,10 @@ section#contact .form-group input.form-control {
 
 section#contact .form-group textarea.form-control {
   height: 248px;
+}
+
+section#contact .form-group .text-primary {
+  color: #F26944;
 }
 
 section#contact .form-control:focus {
