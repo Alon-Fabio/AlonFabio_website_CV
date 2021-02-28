@@ -1,7 +1,18 @@
 import React from "react";
+import PropTypes from "prop-types";
 import ProfileIcon from "../Profile/ProfileIcon";
 
-const Navigation = ({ onRouteChange, isSignedIn, toggleModal }) => {
+interface NavProps {
+  onRouteChange(route: string): void;
+  isSignedIn: boolean;
+  toggleModal(): void;
+}
+
+const Navigation: React.FC<NavProps> = ({
+  onRouteChange,
+  isSignedIn,
+  toggleModal,
+}) => {
   if (isSignedIn) {
     return (
       <nav style={{ display: "flex", justifyContent: "flex-end" }}>
@@ -28,4 +39,13 @@ const Navigation = ({ onRouteChange, isSignedIn, toggleModal }) => {
   }
 };
 
-export default Navigation;
+Navigation.propTypes = {
+  onRouteChange: PropTypes.func.isRequired,
+  isSignedIn: PropTypes.bool.isRequired,
+  toggleModal: PropTypes.func.isRequired,
+};
+
+Navigation.defaultProps = {
+  isSignedIn: false,
+};
+export default React.memo(Navigation);
