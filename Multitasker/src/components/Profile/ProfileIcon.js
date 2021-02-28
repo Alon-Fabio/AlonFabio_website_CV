@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import {
   Dropdown,
   DropdownMenu,
@@ -7,15 +6,7 @@ import {
   DropdownItem,
 } from "reactstrap";
 
-interface IProIcoProps {
-  onRouteChange(route: string): void;
-  toggleModal(): void;
-}
-
-const ProfileIcon: React.FC<IProIcoProps> = ({
-  onRouteChange,
-  toggleModal,
-}) => {
+const ProfileIcon = ({ onRouteChange, toggleModal }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggle = () => setDropdownOpen((prevState) => !prevState);
@@ -50,11 +41,6 @@ const ProfileIcon: React.FC<IProIcoProps> = ({
       </Dropdown>
     </div>
   );
-};
-
-ProfileIcon.propTypes = {
-  onRouteChange: PropTypes.func.isRequired,
-  toggleModal: PropTypes.func.isRequired,
 };
 
 export default ProfileIcon;
