@@ -1,0 +1,94 @@
+@import "../../styles/scss/variables.scss";
+
+nav {
+  z-index: 999;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  background-color: $base-color;
+  padding: 10px;
+  transition: padding 0.5s ease, background-color 0.5s ease;
+
+  img {
+    z-index: 999;
+    height: 40px;
+  }
+  .navLinks {
+    z-index: 990;
+    color: $secund-base-color;
+    padding-right: 4rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 1.5rem;
+    letter-spacing: 0.05rem;
+    margin: 0;
+    li {
+      list-style-type: none;
+    }
+    :hover {
+      cursor: pointer;
+      color: rgb(231, 202, 175) !important;
+    }
+  }
+  .navLinksShow {
+    top: 64px;
+  }
+  .burger {
+    z-index: 999;
+  }
+}
+
+// On tablet and smaller screens:
+// Hide the menu
+@media screen and (max-width: 768px) {
+  .navLinks {
+    // For bigger menus subtract from the top
+    top: -200px;
+    width: 100%;
+    padding: 10px;
+    background-color: $base-color;
+    position: absolute;
+    left: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    transition: top 0.5s ease-out;
+  }
+  .navLinks::before {
+    content: "";
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 64px;
+    background-color: $base-color;
+  }
+}
+
+// For larger than tablet screen size
+@media screen and (min-width: 768px) {
+  .navLinks {
+    color: $secund-base-color;
+    display: flex;
+    padding-right: 4rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 1.5rem;
+    letter-spacing: 0.05rem;
+    margin: 0;
+
+    li {
+      list-style-type: none;
+      padding-right: 1rem;
+    }
+  }
+
+  .navbarTop {
+    background-color: transparent;
+    padding: 20px;
+    li:hover {
+      color: rgb(75, 67, 59) !important;
+    }
+  }
+}

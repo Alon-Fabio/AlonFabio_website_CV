@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./styles/scss/App.scss";
 
+// Containers
+import NavBar from "./components/NavBar/Navbar";
+import About from "./components/about/About";
+import Contact from "./components/contact/Contact";
+import Dox from "./components/dox/Dox";
+import Project from "./components/project/Project";
+
+// For some reason the app has a position-top attribute. FIX IT! love yha :)
 function App() {
+  const [route, setRoute] = useState("");
+
+  const onRouteChange = (route: string) => {
+    setRoute(route);
+    console.log(route);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar onRouteChange={onRouteChange} />
+      <div className="mainContainer">
+        {route === "About" ? <About /> : null}
+        {route === "Dox" ? <Dox /> : null}
+        {route === "Contact" ? <Contact /> : null}
+        {route === "Projects" ? <Project /> : null}
+      </div>
     </div>
   );
 }
