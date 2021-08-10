@@ -23,7 +23,6 @@ nav {
     font-weight: 400;
     font-size: 1.5rem;
     letter-spacing: 0.05rem;
-    margin: 0;
     li {
       list-style-type: none;
     }
@@ -36,7 +35,11 @@ nav {
     top: 64px;
   }
   .burger {
+    cursor: pointer;
     z-index: 999;
+  }
+  img {
+    cursor: pointer;
   }
 }
 
@@ -69,6 +72,8 @@ nav {
 // For larger than tablet screen size
 @media screen and (min-width: 768px) {
   .navLinks {
+    height: 100%;
+    align-items: center;
     color: $secund-base-color;
     display: flex;
     padding-right: 4rem;
@@ -76,7 +81,6 @@ nav {
     font-weight: 400;
     font-size: 1.5rem;
     letter-spacing: 0.05rem;
-    margin: 0;
 
     li {
       list-style-type: none;
@@ -88,7 +92,10 @@ nav {
     background-color: transparent;
     padding: 20px;
     li:hover {
-      color: rgb(75, 67, 59) !important;
+      padding-bottom: 7px;
+      color: darken($secund-base-color, 30%) !important;
+      text-shadow: 2px 2px 5px $secund-base-color;
+      transition: all 200ms ease;
     }
   }
 }

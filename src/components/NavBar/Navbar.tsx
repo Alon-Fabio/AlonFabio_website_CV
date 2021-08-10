@@ -19,7 +19,7 @@ const Navbar: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
   }, []);
 
   const scrollDetect = () => {
-    if (window.scrollY >= 200) {
+    if (window.scrollY >= 20) {
       setScrollTop(false);
     } else {
       setScrollTop(true);
@@ -38,7 +38,11 @@ const Navbar: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
 
   return (
     <nav className={scrollTop ? "navbarTop" : ""}>
-      <img src={NavLogo} alt="AlonFabio" />
+      <img
+        onClick={() => onRouteChange("About")}
+        src={NavLogo}
+        alt="AlonFabio"
+      />
       <div className="navLinksMain">
         <ul className={`navLinks ${burgerStyle.navLinks}`}>
           <li
@@ -64,14 +68,6 @@ const Navbar: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
             }}
           >
             Projects
-          </li>
-          <li
-            onClick={() => {
-              onBurgerClick();
-              onRouteChange("About");
-            }}
-          >
-            About
           </li>
           <li
             onClick={() => {

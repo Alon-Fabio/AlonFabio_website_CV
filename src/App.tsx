@@ -8,9 +8,8 @@ import Contact from "./components/contact/Contact";
 import Dox from "./components/dox/Dox";
 import Project from "./components/project/Project";
 
-// For some reason the app has a position-top attribute. FIX IT! love yha :)
 function App() {
-  const [route, setRoute] = useState("");
+  const [route, setRoute] = useState("About");
 
   const onRouteChange = (route: string) => {
     setRoute(route);
