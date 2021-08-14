@@ -1,12 +1,88 @@
+@import "../../styles/scss/variables";
+
 .about {
+  padding-top: 64px;
+  font-family: Arima Madurai, sans-serif;
+  background-image: url("../../styles/img/header-bg.jpg");
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: calc(100vh - 64px);
   width: 100%;
   color: white;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center;
   background-size: cover;
+  .aboutTextContainer {
+    text-align: center;
+    h1 {
+      font-size: 3rem;
+      padding: 6px 0;
+    }
+  }
+  .AboutDescription {
+    padding-bottom: 10px;
+    p {
+      padding: 0 10px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.5rem;
+      span {
+        font-weight: 700;
+        color: $secund-base-color;
+      }
+    }
+  }
+  .photoContainer {
+    opacity: 0;
+    background-color: black;
+    overflow: hidden;
+    border-radius: 50%;
+    height: 300px;
+    min-height: 300px;
+    width: 300px;
+    min-width: 300px;
+    border: 5px solid $base-color;
+    img {
+      height: 100%;
+    }
+    transition: opacity 1s ease-in;
+  }
+  .onLoad {
+    opacity: 1 !important;
+  }
+  .text-shadow {
+    text-shadow: 1px 1px rgb(35, 35, 35);
+  }
+}
+
+// Tablet
+@media (min-width: 768px) and (max-width: 1024px) {
+  .about {
+    flex-direction: row-reverse;
+    justify-content: center;
+    h1 {
+      position: initial;
+    }
+    .photoContainer {
+      margin-left: 10px;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .about {
+    .aboutTextContainer {
+      h1 {
+        font-size: 4rem;
+      }
+    }
+    .AboutDescription {
+      p {
+        font-size: 2rem;
+      }
+    }
+  }
 }

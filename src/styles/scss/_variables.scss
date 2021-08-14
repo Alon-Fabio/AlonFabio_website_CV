@@ -3,7 +3,9 @@ $base-color: hsl(208, 50%, 31%) !default; // #275176 rgb(39, 81, 118)
 $secund-base-color: hsl(12, 86%, 60%) !default; // #F26944 rgb(242, 105, 68)
 
 // Fonts
-// @font-face {
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//   font-family: "Arima Madurai", cursive;
+@import url("https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@100&display=swap");
+
 //   font-family: Oxygen;
-//   src: url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300&display=swap");
-// }
+@import url("https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@100&family=Oxygen:wght@300&display=swap");
