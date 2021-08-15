@@ -3,7 +3,9 @@ import React from "react";
 function Dox() {
   return (
     <div>
-      <h1>dox</h1>
+      <div className="pageHero">
+        <h1>dox</h1>
+      </div>
     </div>
   );
 }

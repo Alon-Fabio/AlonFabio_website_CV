@@ -3,7 +3,9 @@ import React from "react";
 function Project() {
   return (
     <div>
-      <h1>project</h1>
+      <div className="pageHero">
+        <h1>project</h1>
+      </div>
     </div>
   );
 }

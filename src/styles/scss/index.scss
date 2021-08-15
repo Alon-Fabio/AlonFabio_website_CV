@@ -1,3 +1,5 @@
+@import "../../styles/scss/variables";
+
 * {
   margin: 0;
 }
@@ -9,6 +11,29 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  .App {
+    .mainContainer {
+      .pageHero {
+        // A setup to start every page with a background and top.
+        padding-top: 64px;
+        height: calc(100vh - 64px);
+        background-attachment: scroll;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .section {
+        display: flex;
+        justify-content: center;
+      }
+      .section:nth-child(even) {
+        background-color: lighten($base-color, 35%);
+      }
+      .section:nth-child(odd) {
+        background-color: lighten($base-color, 50%);
+      }
+    }
+  }
 }
 
 code {
