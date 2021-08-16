@@ -29,8 +29,15 @@ function About() {
           <img src={`${AlonHeroPhoto}`} alt={"to Alon Fabio About page"} />
         </div>
       </div>
-      <div className="section" id="skills">
+      <div className="section skills">
         <h1>skills</h1>
+        <div className="progressSection">
+          <div className="progressContainerLang">
+            <div className="progressBar">
+              <div className="animation-element progress-bar-inner javascript-present in-view"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

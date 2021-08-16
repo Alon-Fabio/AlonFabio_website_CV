@@ -1,6 +1,45 @@
 @import "../../styles/scss/variables";
 
 .about {
+  .skills {
+    .progressSection {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      width: 100%;
+      .progressContainerLang {
+        padding: 10px;
+        width: 40%;
+        .javascript-present {
+          width: 90%;
+        }
+        .in-view {
+          background-image: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.3),
+            rgba(255, 255, 255, 0.05)
+          );
+          transition: 0.2s linear;
+          transition-property: width, background-color;
+          background-color: $secund-base-color;
+
+          animation: progressAni 2s;
+        }
+      }
+    }
+    .progressBar {
+      margin-bottom: 6px;
+      padding: 6px;
+      border-radius: 30px;
+      background: gray;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25),
+        0 1px rgba(255, 255, 255, 0.08);
+      .progress-bar-inner {
+        height: 10px;
+        border-radius: 30px;
+      }
+    }
+  }
   .aboutHero {
     background-image: url("../../styles/img/header-bg.jpg");
     font-family: Arima Madurai, sans-serif;
@@ -89,5 +128,17 @@
         font-size: 3rem;
       }
     }
+  }
+}
+
+// Animations
+@keyframes progressAni {
+  0% {
+    width: 5%;
+    background-color: gray;
+  }
+  /* change level */
+  100% {
+    background-color: $secund-base-color;
   }
 }
