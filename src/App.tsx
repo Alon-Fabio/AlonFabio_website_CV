@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./styles/scss/App.scss";
 
-// Containers
+// Components
 import NavBar from "./components/NavBar/Navbar";
 import About from "./components/about/About";
 import Contact from "./components/contact/Contact";

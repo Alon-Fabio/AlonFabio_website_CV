@@ -1,13 +1,29 @@
 import React, { useEffect, useState } from "react";
 import "./About.scss";
+// Hooks
+import { useEventListener } from "../../hooks/useEventListener";
 
 import AlonHeroPhoto from "../../styles/img/about/mini Alon square.jpg";
+
+// The trigger for the progressBar animation is triggered by a hard codded number, it needs to get its position and measure it next to the scrollY in the scrollDetect function
+
 function About() {
   const [onLoad, setOnLoad] = useState("");
+  const [inView, setInView] = useState("");
   useEffect(() => {
     setOnLoad("onLoad");
-    console.log("changed");
   }, []);
+  const scrollDetect = () => {
+    if (window.scrollY > 48) {
+      setInView("in-view");
+    }
+
+    if (window.scrollY < 40) {
+      setInView("");
+    }
+  };
+
+  useEventListener({ type: "scroll", listener: scrollDetect });
 
   return (
     <div className={"about"}>
@@ -29,12 +45,15 @@ function About() {
           <img src={`${AlonHeroPhoto}`} alt={"to Alon Fabio About page"} />
         </div>
       </div>
-      <div className="section skills">
+      <div style={{ height: "100vh" }}></div>
+      <div className="section skills" id={"skills"}>
         <h1>skills</h1>
         <div className="progressSection">
           <div className="progressContainerLang">
             <div className="progressBar">
-              <div className="animation-element progress-bar-inner javascript-present in-view"></div>
+              <div
+                className={`animation-element progress-bar-inner javascript-present ${inView}`}
+              ></div>
             </div>
           </div>
         </div>

@@ -1,36 +1,29 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useState } from "react";
+import { useEventListener } from "../../hooks/useEventListener";
 // Style
 import "./NavBar.scss";
 import NavLogo from "../../styles/img/logos/NavLogo/NavLogo";
-
+// Components
 import Burger from "../Burger/Burger";
 
 const Navbar: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
   const [scrollTop, setScrollTop] = useState(true);
+  const [logoColor, setLogoColor] = useState("black");
   const [navStyle, setNavStyle] = useState({
     burger: "",
     navLinks: "",
   });
-  const [logoColor, setLogoColor] = useState("black");
-  useEffect(() => {
-    const scrollDetect = () => {
-      if (window.innerWidth >= 786) {
-        if (window.scrollY >= 20) {
-          setScrollTop(false);
-          setLogoColor("#F26944");
-        } else if (window.scrollY <= 20) {
-          setScrollTop(true);
-          setLogoColor("#000");
-        }
-      }
-    };
-    window.addEventListener("scroll", scrollDetect);
-    return () => {
-      window.removeEventListener("scroll", scrollDetect);
-      console.log("removed");
-    };
-  }, []);
+  const scrollDetect = () => {
+    if (window.scrollY <= 20) {
+      setScrollTop(true);
+      setLogoColor("#000");
+    }
+    if (window.scrollY >= 20) {
+      setScrollTop(false);
+      setLogoColor("#F26944");
+    }
+  };
+  useEventListener({ type: "scroll", listener: scrollDetect });
 
   const onBurgerClick = (): void => {
     setNavStyle((prvState) => {
@@ -44,7 +37,6 @@ const Navbar: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
       }
     });
   };
-
   return (
     <nav className={scrollTop ? "navbarTop" : ""}>
       <div
