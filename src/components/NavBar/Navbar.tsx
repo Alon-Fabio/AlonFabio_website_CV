@@ -1,29 +1,18 @@
 import React, { useState } from "react";
-import { useEventListener } from "../../hooks/useEventListener";
 // Style
 import "./NavBar.scss";
 import NavLogo from "../../styles/img/logos/NavLogo/NavLogo";
 // Components
 import Burger from "../Burger/Burger";
 
-const Navbar: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
-  const [scrollTop, setScrollTop] = useState(true);
-  const [logoColor, setLogoColor] = useState("black");
+const Navbar: React.FC<{ onRouteChange: Function; navBarScroll: boolean }> = ({
+  onRouteChange,
+  navBarScroll,
+}) => {
   const [navStyle, setNavStyle] = useState({
     burger: "",
     navLinks: "",
   });
-  const scrollDetect = () => {
-    if (window.scrollY <= 20) {
-      setScrollTop(true);
-      setLogoColor("#000");
-    }
-    if (window.scrollY >= 20) {
-      setScrollTop(false);
-      setLogoColor("#F26944");
-    }
-  };
-  useEventListener({ type: "scroll", listener: scrollDetect });
 
   const onBurgerClick = (): void => {
     setNavStyle((prvState) => {
@@ -38,14 +27,17 @@ const Navbar: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
     });
   };
   return (
-    <nav className={scrollTop ? "navbarTop" : ""}>
+    <nav className={navBarScroll ? "navbarTop" : ""}>
       <div
         className={"LogoContainer"}
         onClick={() => {
           onRouteChange("About");
         }}
       >
-        <NavLogo color={logoColor} className={"NavLogo"} />
+        <NavLogo
+          color={navBarScroll ? "#000" : "#F26944"}
+          className={"NavLogo"}
+        />
       </div>
       <div className="navLinksMain">
         <ul className={`navLinks ${navStyle.navLinks}`}>
