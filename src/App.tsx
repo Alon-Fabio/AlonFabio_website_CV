@@ -28,21 +28,15 @@ function App() {
         "scrollTrigger needs a elId (string of the elements ID) or element (an HTML element)"
       );
     let el;
-    let bodyEl = document.getElementById("body")?.scrollHeight;
-    if (!bodyEl)
-      return console.error("scrollTrigger add Id 'body' to the body element");
     if (elId) el = document.getElementById(elId);
     el = element || el;
     if (el === undefined || el === null)
       return console.error("scrollTrigger messed up");
-    let trigger =
-      (el.getBoundingClientRect().top +
-        el.getBoundingClientRect().height +
-        window.pageYOffset) /
-      2;
-    trigger = Math.round(trigger);
-    if ((trigger - bodyEl + window.scrollY) * -1 <= trigger && !aboutProgBar) {
-      console.log("animate!");
+    let trigger = el.offsetTop;
+    if (
+      window.pageYOffset + window.innerHeight + offset >= trigger &&
+      !aboutProgBar
+    ) {
       event((prv) => !prv);
     }
   };

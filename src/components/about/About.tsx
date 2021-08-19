@@ -29,6 +29,7 @@ function About({ aboutProgBar }: { aboutProgBar: boolean }) {
           <img src={`${AlonHeroPhoto}`} alt={"to Alon Fabio About page"} />
         </div>
       </div>
+
       <div className="section skills" id={"skills"}>
         <h1>skills</h1>
         <div className="progressSection">
