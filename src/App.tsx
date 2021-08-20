@@ -18,26 +18,36 @@ function App() {
   const [aboutProgBar, setAboutProgBar] = useState(false);
 
   const scrollTrigger = (
-    offset: number,
-    event: React.Dispatch<React.SetStateAction<boolean>>,
-    elId?: string,
-    element?: HTMLElement
+    offset = 0,
+    className: string,
+    element: HTMLElement | string,
+    callback?: (
+      data?: any
+    ) => void | React.Dispatch<React.SetStateAction<boolean>>
   ) => {
-    if (typeof elId !== "string" && element === undefined)
-      console.error(
-        "scrollTrigger needs a elId (string of the elements ID) or element (an HTML element)"
+    if (typeof element !== "string" && element === undefined)
+      return console.error(
+        "scrollTrigger: needs the elements Id (string of the elements ID) or an element (an HTML element)."
       );
     let el;
-    if (elId) el = document.getElementById(elId);
-    el = element || el;
-    if (el === undefined || el === null)
-      return console.error("scrollTrigger messed up");
+    console.log(typeof element);
+    if (typeof element === "string") el = document.getElementById(element);
+    el = el || element;
+    if (typeof el !== "object")
+      return console.error(
+        "scrollTrigger: Element is null/undefined. Insert the Id of the element."
+      );
+    console.log(element, typeof el);
     let trigger = el.offsetTop;
+    console.log(trigger, window.pageYOffset + window.innerHeight);
+
     if (
       window.pageYOffset + window.innerHeight + offset >= trigger &&
       !aboutProgBar
     ) {
-      event((prv) => !prv);
+      if (el.className.includes(` ${className} `)) return;
+      el.className += ` ${className} `;
+      if (callback) callback();
     }
   };
 
@@ -50,7 +60,9 @@ function App() {
     }
     // Trigger the progress bar in the About page
     if (route === "About" && !navBarScroll && !aboutProgBar) {
-      scrollTrigger(100, setAboutProgBar, "skills");
+      console.log("scrollEvent");
+
+      scrollTrigger(0, "in-view", "JS-Progress", () => setAboutProgBar(true));
     }
   };
 
@@ -64,7 +76,7 @@ function App() {
     <div className="App">
       <NavBar onRouteChange={onRouteChange} navBarScroll={navBarScroll} />
       <div className="mainContainer">
-        {route === "About" ? <About aboutProgBar={aboutProgBar} /> : null}
+        {route === "About" ? <About /> : null}
         {route === "Dox" ? <Dox /> : null}
         {route === "Contact" ? <Contact /> : null}
         {route === "Projects" ? <Project /> : null}

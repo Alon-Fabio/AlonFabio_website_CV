@@ -3,7 +3,7 @@ import "./About.scss";
 // Style
 import AlonHeroPhoto from "../../styles/img/about/mini Alon square.jpg";
 
-function About({ aboutProgBar }: { aboutProgBar: boolean }) {
+function About() {
   const [onLoad, setOnLoad] = useState("");
   useEffect(() => {
     setOnLoad("onLoad");
@@ -36,9 +36,10 @@ function About({ aboutProgBar }: { aboutProgBar: boolean }) {
           <div className="progressContainerLang">
             <div className="progressBar">
               <div
-                className={`animation-element progress-bar-inner javascript-present ${
-                  aboutProgBar ? "in-view" : ""
-                }`}
+                id="JS-Progress"
+                className={
+                  "animation-element progress-bar-inner javascript-present"
+                }
               ></div>
             </div>
           </div>
