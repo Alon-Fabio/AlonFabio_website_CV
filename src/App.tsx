@@ -12,8 +12,6 @@ import { useEventListener } from "./hooks/useEventListener";
 
 function App() {
   const [route, setRoute] = useState("About");
-  // Triggers the color change of the navBar and logo.
-  const [navBarScroll, setNavBarScroll] = useState(false);
   // Triggers the progressBar in the about page.
   const [aboutProgBar, setAboutProgBar] = useState(false);
 
@@ -30,16 +28,13 @@ function App() {
         "scrollTrigger: needs the elements Id (string of the elements ID) or an element (an HTML element)."
       );
     let el;
-    console.log(typeof element);
     if (typeof element === "string") el = document.getElementById(element);
     el = el || element;
     if (typeof el !== "object")
       return console.error(
         "scrollTrigger: Element is null/undefined. Insert the Id of the element."
       );
-    console.log(element, typeof el);
     let trigger = el.offsetTop;
-    console.log(trigger, window.pageYOffset + window.innerHeight);
 
     if (
       window.pageYOffset + window.innerHeight + offset >= trigger &&
@@ -52,16 +47,8 @@ function App() {
   };
 
   const scrollDetect = () => {
-    if (window.scrollY <= 20 && !navBarScroll) {
-      setNavBarScroll(true);
-    }
-    if (window.scrollY >= 20 && navBarScroll) {
-      setNavBarScroll(false);
-    }
     // Trigger the progress bar in the About page
-    if (route === "About" && !navBarScroll && !aboutProgBar) {
-      console.log("scrollEvent");
-
+    if (route === "About" && !aboutProgBar) {
       scrollTrigger(0, "in-view", "JS-Progress", () => setAboutProgBar(true));
     }
   };
@@ -70,11 +57,10 @@ function App() {
 
   const onRouteChange = (route: string) => {
     setRoute(route);
-    console.log(route);
   };
   return (
     <div className="App">
-      <NavBar onRouteChange={onRouteChange} navBarScroll={navBarScroll} />
+      <NavBar onRouteChange={onRouteChange} />
       <div className="mainContainer">
         {route === "About" ? <About /> : null}
         {route === "Dox" ? <Dox /> : null}

@@ -23,15 +23,25 @@ body {
         background-size: cover;
         background-repeat: no-repeat;
       }
-      .section {
-        display: flex;
-        justify-content: center;
-      }
-      .section:nth-child(even) {
+
+      .subSection:nth-child(even) {
         background-color: lighten($base-color, 35%);
       }
-      .section:nth-child(odd) {
+      .subSection:nth-child(odd) {
         background-color: lighten($base-color, 50%);
+      }
+      .flexCenter {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+      }
+      .container {
+        margin: 30px;
+        padding: 10px;
+        background-color: hsla(0, 0%, 100%, 0.5);
+        border-radius: 10px;
+        max-width: 100%;
+        min-width: 80%;
       }
     }
   }

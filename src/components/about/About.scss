@@ -2,6 +2,18 @@
 
 .about {
   .skills {
+    .AboutProg {
+      padding: 10px;
+      .progLogos {
+        display: flex;
+        justify-content: space-evenly;
+        flex-flow: wrap;
+        img {
+          max-height: 2rem;
+          filter: grayscale(1);
+        }
+      }
+    }
     .progressSection {
       display: flex;
       flex-flow: row;
@@ -48,6 +60,7 @@
     justify-content: space-evenly;
     align-items: center;
     color: white;
+    animation: fade-in 2s;
   }
   .aboutTextContainer {
     text-align: center;
@@ -140,5 +153,13 @@
   /* change level */
   100% {
     background-color: $secund-base-color;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
