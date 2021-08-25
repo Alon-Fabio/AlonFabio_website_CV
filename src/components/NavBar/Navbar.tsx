@@ -38,51 +38,56 @@ const Navbar: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
   };
   return (
     <nav className={navScroll ? "navbarTop" : ""}>
-      <div
-        className={"LogoContainer"}
-        onClick={() => {
-          onRouteChange("About");
-        }}
-      >
-        <NavLogo color={navScroll ? "#000" : "#F26944"} className={"NavLogo"} />
+      <div className="container navMain">
+        <div
+          className={"LogoContainer"}
+          onClick={() => {
+            onRouteChange("About");
+          }}
+        >
+          <NavLogo
+            color={navScroll ? "#000" : "#F26944"}
+            className={"NavLogo"}
+          />
+        </div>
+        <div className="navLinksMain">
+          <ul className={`navLinks ${navStyle.navLinks}`}>
+            <li
+              onClick={() => {
+                onBurgerClick();
+                onRouteChange("Contact");
+              }}
+            >
+              Contact
+            </li>
+            <li
+              onClick={() => {
+                onBurgerClick();
+                onRouteChange("Dox");
+              }}
+            >
+              Dox
+            </li>
+            <li
+              onClick={() => {
+                onBurgerClick();
+                onRouteChange("Projects");
+              }}
+            >
+              Projects
+            </li>
+            <li
+              onClick={() => {
+                onBurgerClick();
+                onRouteChange("About");
+              }}
+            >
+              About
+            </li>
+          </ul>
+        </div>
+        <Burger navStyle={navStyle} burgerClick={onBurgerClick} />
       </div>
-      <div className="navLinksMain">
-        <ul className={`navLinks ${navStyle.navLinks}`}>
-          <li
-            onClick={() => {
-              onBurgerClick();
-              onRouteChange("Contact");
-            }}
-          >
-            Contact
-          </li>
-          <li
-            onClick={() => {
-              onBurgerClick();
-              onRouteChange("Dox");
-            }}
-          >
-            Dox
-          </li>
-          <li
-            onClick={() => {
-              onBurgerClick();
-              onRouteChange("Projects");
-            }}
-          >
-            Projects
-          </li>
-          <li
-            onClick={() => {
-              onBurgerClick();
-              onRouteChange("About");
-            }}
-          >
-            About
-          </li>
-        </ul>
-      </div>
-      <Burger navStyle={navStyle} burgerClick={onBurgerClick} />
     </nav>
   );
 };

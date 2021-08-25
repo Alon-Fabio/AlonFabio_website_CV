@@ -49,7 +49,7 @@ function App() {
   const scrollDetect = () => {
     // Trigger the progress bar in the About page
     if (route === "About" && !aboutProgBar) {
-      scrollTrigger(0, "in-view", "JS-Progress", () => setAboutProgBar(true));
+      scrollTrigger(0, "in-view", "aboutAnimate", () => setAboutProgBar(true));
     }
   };
 
