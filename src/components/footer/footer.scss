@@ -1,0 +1,41 @@
+@import "../../styles/scss/variables";
+
+#Footer {
+  background-color: $base-color;
+  padding: 10px;
+  hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(
+      to right,
+      rgba(242, 105, 68, 0.1),
+      rgba(242, 105, 68, 1),
+      rgba(242, 105, 68, 0.1)
+    );
+  }
+  #FooterBottom {
+    justify-content: space-between;
+    padding: 10px;
+    #footerIconDiv {
+      text-shadow: 0px 0px 10px $secund-base-color;
+      padding: 10px 0;
+      i {
+        color: $base-color-gray-0;
+        padding: 10px;
+
+        &:before {
+          padding: 8px 9.4px;
+          border-radius: 50%;
+          background-color: rgba($color: #fff, $alpha: 0.2);
+        }
+      }
+    }
+    p {
+      color: $gray-24;
+      align-self: center;
+      padding: 10px;
+      border-radius: 1.5rem;
+      background-color: rgba($color: #fff, $alpha: 0.2);
+    }
+  }
+}

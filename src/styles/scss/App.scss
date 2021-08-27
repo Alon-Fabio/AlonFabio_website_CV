@@ -3,4 +3,9 @@
   .mainContainer {
     position: relative;
   }
+  .flexCenter {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
 }

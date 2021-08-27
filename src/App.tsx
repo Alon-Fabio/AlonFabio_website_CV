@@ -7,6 +7,7 @@ import About from "./components/about/About";
 import Contact from "./components/contact/Contact";
 import Dox from "./components/dox/Dox";
 import Project from "./components/project/Project";
+import Footer from "./components/footer/Footer";
 // Hooks
 import { useEventListener } from "./hooks/useEventListener";
 
@@ -67,6 +68,7 @@ function App() {
         {route === "Contact" ? <Contact /> : null}
         {route === "Projects" ? <Project /> : null}
       </div>
+      <Footer />
     </div>
   );
 }
