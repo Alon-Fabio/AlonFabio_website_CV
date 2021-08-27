@@ -59,11 +59,12 @@ function About() {
       <div className="subSection flexCenter skills" id={"skills"}>
         <div className="container">
           <div className={"AboutProg"}>
-            <h1>Programming</h1>
-            <h4>Full-stack programmer, at your service.</h4>
+            <h1>What do I do?</h1>
+            <h4>I"m a full-stack programmer and designer, at your service!</h4>
             <p>
-              Build up your <span>server</span> or <span>REST API</span> or
-              maybe you have a <span>SaaS</span> to develop.
+              I can help you build up your <span>server</span> or{" "}
+              <span>REST API</span> or maybe you have a <span>SaaS</span> to
+              develop.
             </p>
             <div className="aboutLogos">
               {Object.keys(progLogos).map((key) => {
