@@ -1,9 +1,10 @@
 import React from "react";
+import "./contact.scss";
 
 function Contact() {
   return (
     <div>
-      <div className="pageHero">
+      <div id="Contact">
         <h1>Contact</h1>
       </div>
     </div>

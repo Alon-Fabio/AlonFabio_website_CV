@@ -1,11 +1,21 @@
+@import "elements.scss";
 .App {
-  width: 100%;
   .mainContainer {
+    padding-top: 64px;
     position: relative;
   }
   .flexCenter {
     display: flex;
     justify-content: center;
     align-content: center;
+  }
+}
+
+// Bigger then mobile
+@media screen and (min-width: 768px) {
+  .App {
+    .mainContainer {
+      padding-top: 0px;
+    }
   }
 }

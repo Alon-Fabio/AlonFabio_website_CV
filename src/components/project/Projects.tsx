@@ -1,13 +1,14 @@
 import React from "react";
+import "./projects.scss";
 
-function Project() {
+function Projects() {
   return (
     <div>
       <div className="pageHero">
-        <h1>project</h1>
+        <h1>projects</h1>
       </div>
     </div>
   );
 }
 
-export default Project;
+export default Projects;
