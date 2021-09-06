@@ -17,7 +17,7 @@ body {
       .pageHero {
         // A setup to start every page with a background and top.
         padding-top: 64px;
-        height: calc(100vh - 64px);
+        min-height: calc(60vh - 64px);
         background-attachment: scroll;
         background-position: center;
         background-size: cover;
@@ -30,15 +30,6 @@ body {
       .subSection:nth-child(odd) {
         background-color: lighten($base-color, 50%);
       }
-
-      .container {
-        margin: 30px;
-        padding: 10px;
-        min-width: 300px;
-        width: 1110px;
-        border-radius: 10px;
-        background-color: hsla(0, 0%, 100%, 0.5);
-      }
     }
   }
 }
@@ -49,8 +40,25 @@ code {
 }
 
 // Tablet
-@media (min-width: 768px) and (max-width: 1024px) {
+// @media (min-width: 768px) and (max-width: 1024px) {
+// }
+
+// Tablet and larger
+@media screen and (min-width: 768px) {
+  body {
+    .App {
+      .mainContainer {
+        .container {
+          margin: 1.875rem;
+          padding: 0.625rem;
+          border-radius: 10px;
+          background-color: hsla(0, 0%, 100%, 0.5);
+        }
+      }
+    }
+  }
 }
+
 // Big screen
 @media screen and (min-width: 1024px) {
 }

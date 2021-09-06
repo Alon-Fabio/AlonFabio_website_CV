@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./About.scss";
-// Style
-import AlonHeroPhoto from "../../styles/img/about/mini Alon square.jpg";
+// Style:
 // logos:
 // Back
 import mongoLogo from "../../styles/img/logos/about_prog_logos/MongoDB_Logo_Black_RGB.png";
@@ -14,26 +13,21 @@ import sassLogo from "../../styles/img/logos/about_front_logos/sass.png";
 import bootstrapLogo from "../../styles/img/logos/about_front_logos/bootstrap.png";
 
 function About() {
-  const [onLoad, setOnLoad] = useState("");
-  useEffect(() => {
-    setOnLoad("onLoad");
-  }, []);
+  // interface ILogoObj {
+  //   [index: string]: string;
+  // }
 
-  interface ILogoObj {
-    [index: string]: string;
-  }
-
-  const progLogos: ILogoObj = {
-    mongoLogo,
-    nodeLogo,
-    dockerLogo,
-    redisLogo,
-  };
-  const frontLogos: ILogoObj = {
-    reactLogo,
-    sassLogo,
-    bootstrapLogo,
-  };
+  // const progLogos: ILogoObj = {
+  //   mongoLogo,
+  //   nodeLogo,
+  //   dockerLogo,
+  //   redisLogo,
+  // };
+  // const frontLogos: ILogoObj = {
+  //   reactLogo,
+  //   sassLogo,
+  //   bootstrapLogo,
+  // };
 
   return (
     <section className={"about"}>
@@ -51,15 +45,76 @@ function About() {
             <p>Have a look around</p>
           </div>
         </div>
-        <div className={`${onLoad} photoContainer`}>
-          <img src={`${AlonHeroPhoto}`} alt={"to Alon Fabio About page"} />
-        </div>
       </div>
 
       <div className="subSection flexCenter skills" id={"skills"}>
         <div className="container">
           <div className={"AboutProg"}>
-            <h1>What do I do?</h1>
+            <div className="card">
+              <h1>Data handling</h1>
+              <span className="fas fa-database"></span>
+              <div>
+                <p>SQL or NoSQL, that is the question.</p>
+                <img src={mongoLogo} alt="MongoDB" />
+                <img src={redisLogo} alt="Redis" />
+              </div>
+            </div>
+            <div className="card">
+              <h1>Data handling</h1>
+              <span className="fas fa-database"></span>
+              <div>
+                <p>SQL or NoSQL, that is the question.</p>
+                <img src={mongoLogo} alt="MongoDB" />
+                <img src={redisLogo} alt="Redis" />
+              </div>
+            </div>
+            <div className="card">
+              <h1>Data handling</h1>
+              <span className="fas fa-database"></span>
+              <div>
+                <p>SQL or NoSQL, that is the question.</p>
+                <img src={mongoLogo} alt="MongoDB" />
+                <img src={redisLogo} alt="Redis" />
+              </div>
+            </div>
+            <div className="card">
+              <h1>Data handling</h1>
+              <span className="fas fa-database"></span>
+              <div>
+                <p>SQL or NoSQL, that is the question.</p>
+                <img src={mongoLogo} alt="MongoDB" />
+                <img src={redisLogo} alt="Redis" />
+              </div>
+            </div>
+            <div className="card">
+              <h1>Data handling</h1>
+              <span className="fas fa-database"></span>
+              <div>
+                <p>SQL or NoSQL, that is the question.</p>
+                <img src={mongoLogo} alt="MongoDB" />
+                <img src={redisLogo} alt="Redis" />
+              </div>
+            </div>
+            <div className="card">
+              <h1>Data handling</h1>
+              <span className="fas fa-database"></span>
+              <div>
+                <p>SQL or NoSQL, that is the question.</p>
+                <img src={mongoLogo} alt="MongoDB" />
+                <img src={redisLogo} alt="Redis" />
+              </div>
+            </div>
+            <div className="card">
+              <h1>Data handling</h1>
+              <span className="fas fa-database"></span>
+              <div>
+                <p>SQL or NoSQL, that is the question.</p>
+                <img src={mongoLogo} alt="MongoDB" />
+                <img src={redisLogo} alt="Redis" />
+              </div>
+            </div>
+
+            {/* <h1>What do I do?</h1>
             <h4>I"m a full-stack programmer and designer, at your service!</h4>
             <p>
               I can help you build up your <span>server</span> or{" "}
@@ -79,20 +134,8 @@ function About() {
               {Object.keys(frontLogos).map((logo) => (
                 <img src={frontLogos[logo]} alt={logo} key={logo} />
               ))}
-            </div>
+            </div> */}
           </div>
-          {/* <div className="progressSection">
-            <div className="progressContainerLang">
-              <div className="progressBar">
-                <div
-                  id="JS-Progress"
-                  className={
-                    "animation-element progress-bar-inner javascript-present"
-                  }
-                ></div>
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
     </section>
