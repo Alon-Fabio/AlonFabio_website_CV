@@ -1,12 +1,165 @@
+@import "../../styles/scss/variables";
+
 .about {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-  color: white;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-position: center;
-  background-size: cover;
+  span {
+    color: $secund-base-color;
+  }
+  .onLoad {
+    opacity: 1 !important;
+  }
+  .text-shadow {
+    text-shadow: 1px 1px rgb(35, 35, 35);
+  }
+  // Hero section
+  .aboutHero {
+    background-image: url("../../styles/img/header-bg.jpg");
+    font-family: Arima Madurai, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+  }
+  .aboutTextContainer {
+    text-align: center;
+    h1 {
+      font-size: 3rem;
+      padding: 6px 0;
+    }
+  }
+  .AboutDescription {
+    padding-bottom: 10px;
+    p {
+      padding: 0 10px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 2rem;
+      span {
+        font-weight: 700;
+      }
+    }
+  }
+
+  // Skills section
+  .skills {
+    span {
+      text-shadow: 1px 1px rgba(35, 35, 35, 0.5);
+    }
+    .AboutProg {
+      max-width: 1100px;
+      min-height: 40vh;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 1rem;
+      .card {
+        // max-width: 300px;
+        margin: 0.5rem;
+      }
+      img {
+        padding: 0.625rem;
+        max-height: 2rem;
+        filter: grayscale(1);
+      }
+      .aboutLogos {
+        display: flex;
+        justify-content: space-evenly;
+        flex-flow: wrap;
+      }
+    }
+  }
+}
+
+// Tablet
+@media (min-width: 769px) and (max-width: 1023px) {
+  .about {
+    .AboutDescription {
+      p {
+        font-size: 2rem;
+      }
+    }
+    .aboutHero {
+      padding: 0 10px;
+      flex-direction: row;
+      justify-content: center;
+      h1 {
+        position: initial;
+      }
+      .photoContainer {
+        max-height: 2.5rem;
+        max-width: 2.5rem;
+        width: auto;
+      }
+    }
+    .skills {
+      .AboutProg {
+        font-size: 1.25rem;
+        .card {
+          max-width: 300px;
+        }
+      }
+    }
+  }
+}
+
+// // Tablet
+// @media (max-width: 1024px) and (max-height: 1024px) {
+//   .about {
+//     color: rgb(46, 37, 30);
+//     font-size: 1.5rem;
+//     font-weight: bolder;
+//     .aboutTextContainer {
+//       h1 {
+//         font-size: 8rem;
+//       }
+//     }
+//     .photoContainer {
+//       height: 100px;
+//       width: auto;
+//       height: auto;
+//       order: 2;
+//     }
+//     .AboutDescription {
+//       p {
+//         font-size: 3rem;
+//       }
+//     }
+//   }
+// }
+
+// Big screen
+@media screen and (min-width: 1024px) {
+  .about {
+    color: rgb(46, 37, 30);
+    font-size: 1.5rem;
+    font-weight: bolder;
+    .aboutTextContainer {
+      h1 {
+        font-size: 4rem;
+      }
+    }
+    .photoContainer {
+      max-height: 20vw;
+      max-width: 20vw;
+      width: auto;
+      height: auto;
+      order: 2;
+    }
+    .AboutDescription {
+      p {
+        font-size: 3rem;
+      }
+    }
+  }
+}
+
+// Animations
+@keyframes progressAni {
+  0% {
+    width: 5%;
+    background-color: gray;
+  }
+  /* change level */
+  100% {
+    background-color: $secund-base-color;
+  }
 }

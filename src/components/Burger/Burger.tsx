@@ -3,11 +3,11 @@ import "./Burger.scss";
 
 const Burger: React.FC<{
   burgerClick: Function;
-  burgerStyle: { burger: string; navLinks: string };
-}> = ({ burgerClick, burgerStyle }): JSX.Element => {
+  navStyle: { burger: string; navLinks: string };
+}> = ({ burgerClick, navStyle }): JSX.Element => {
   return (
     <div
-      className={`burger ${burgerStyle.burger}`}
+      className={`burger ${navStyle.burger}`}
       onClick={() => {
         burgerClick();
       }}

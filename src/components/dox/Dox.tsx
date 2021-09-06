@@ -1,9 +1,12 @@
 import React from "react";
+import "./dox.scss";
 
 function Dox() {
   return (
     <div>
-      <h1>dox</h1>
+      <div id="Dox">
+        <h1>dox</h1>
+      </div>
     </div>
   );
 }

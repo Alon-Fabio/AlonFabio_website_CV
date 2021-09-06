@@ -1,0 +1,79 @@
+@import "../../styles/scss/variables";
+
+#Footer {
+  background-color: $base-color-gray-15;
+  padding: 10px;
+  color: $gray-15;
+
+  hr {
+    margin: 0.5rem 1rem;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(
+      to right,
+      rgba(242, 105, 68, 0.1),
+      rgba(242, 105, 68, 1),
+      rgba(242, 105, 68, 0.1)
+    );
+  }
+  #FooterLinks {
+    padding: 5px 10px;
+    button {
+      background-color: inherit;
+      padding: 5px 10px;
+      display: block;
+      color: inherit;
+      font-size: 1rem;
+      font-weight: bolder;
+    }
+  }
+  #FooterBottom {
+    justify-content: space-between;
+    padding: 10px;
+    #footerIconDiv {
+      display: flex;
+      .FooterLinkIcon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 0.125rem;
+        height: 2.5rem;
+        width: 2.5rem;
+        border-radius: 50%;
+        background-color: $secund-base-color;
+        a {
+          color: $gray-75;
+        }
+      }
+    }
+    p {
+      display: flex;
+      align-items: center;
+      font-weight: bolder;
+      height: 2.5rem;
+      padding: 0 0.5rem;
+    }
+  }
+}
+
+// For tablet and larger screen size
+@media screen and (min-width: 768px) {
+  #Footer {
+    hr {
+      margin: 1rem 5rem;
+    }
+    #FooterLinks {
+      justify-content: flex-start;
+    }
+  }
+}
+
+// Big screen
+@media screen and (min-width: 1024px) {
+  #Footer {
+    .container {
+      margin: 0 auto;
+      max-width: 1110px;
+    }
+  }
+}

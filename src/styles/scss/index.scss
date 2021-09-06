@@ -1,17 +1,64 @@
+@import "../../styles/scss/variables";
+
 * {
   margin: 0;
 }
 
 body {
+  scroll-behavior: smooth;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Oxygen, "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif, "Oxygen",
+    "Segoe UI", "Roboto";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  .App {
+    .mainContainer {
+      .pageHero {
+        // A setup to start every page with a background and top.
+        padding-top: 64px;
+        min-height: calc(60vh - 64px);
+        background-attachment: scroll;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      .subSection:nth-child(even) {
+        background-color: lighten($base-color, 35%);
+      }
+      .subSection:nth-child(odd) {
+        background-color: lighten($base-color, 50%);
+      }
+    }
+  }
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+// Tablet
+// @media (min-width: 768px) and (max-width: 1024px) {
+// }
+
+// Tablet and larger
+@media screen and (min-width: 768px) {
+  body {
+    .App {
+      .mainContainer {
+        .container {
+          margin: 1.875rem;
+          padding: 0.625rem;
+          border-radius: 10px;
+          background-color: hsla(0, 0%, 100%, 0.5);
+        }
+      }
+    }
+  }
+}
+
+// Big screen
+@media screen and (min-width: 1024px) {
 }
