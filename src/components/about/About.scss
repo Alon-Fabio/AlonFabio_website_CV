@@ -24,7 +24,7 @@
     text-align: center;
     h1 {
       font-size: 3rem;
-      padding: 6px 0;
+      padding-top: 1rem;
     }
   }
   .AboutDescription {
@@ -47,23 +47,50 @@
     }
     .AboutProg {
       max-width: 1100px;
-      min-height: 40vh;
-      display: flex;
-      flex-wrap: wrap;
       padding: 1rem;
-      .card {
-        // max-width: 300px;
-        margin: 0.5rem;
-      }
-      img {
-        padding: 0.625rem;
-        max-height: 2rem;
-        filter: grayscale(1);
+      #aboutCards {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        .card {
+          margin: 0.5rem;
+          .cardHeader {
+            display: flex;
+            flex-flow: row-reverse;
+            justify-content: space-between;
+            align-items: center;
+          }
+          img {
+            padding: 0.625rem;
+            max-height: 2rem;
+            filter: grayscale(1) drop-shadow(0 2px 0.125rem $gray-15);
+          }
+        }
       }
       .aboutLogos {
         display: flex;
         justify-content: space-evenly;
         flex-flow: wrap;
+      }
+    }
+  }
+}
+
+// Bigger then mobile
+@media screen and (min-width: 768px) {
+  .about {
+    .aboutHero {
+      min-height: 80vh !important;
+
+      background-attachment: fixed;
+      background-position-y: -10% !important;
+    }
+    // Skills section
+    .skills {
+      #aboutCards {
+        justify-content: space-evenly;
       }
     }
   }
@@ -93,8 +120,10 @@
     .skills {
       .AboutProg {
         font-size: 1.25rem;
-        .card {
-          max-width: 300px;
+        #aboutCards {
+          .card {
+            max-width: 33.33%;
+          }
         }
       }
     }
@@ -131,7 +160,7 @@
   .about {
     color: rgb(46, 37, 30);
     font-size: 1.5rem;
-    font-weight: bolder;
+
     .aboutTextContainer {
       h1 {
         font-size: 4rem;
@@ -149,9 +178,26 @@
         font-size: 3rem;
       }
     }
+
+    // Skills section
+    .skills {
+      .AboutProg {
+        #aboutCards {
+          .card {
+            margin: 0.625rem;
+          }
+        }
+      }
+    }
   }
 }
-
+@media screen and (min-width: 1980px) {
+  .about {
+    .aboutHero {
+      background-position: center !important;
+    }
+  }
+}
 // Animations
 @keyframes progressAni {
   0% {

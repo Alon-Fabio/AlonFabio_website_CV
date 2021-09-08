@@ -8,7 +8,7 @@ import nodeLogo from "../../styles/img/logos/about_prog_logos/nodejs-new-pantone
 import dockerLogo from "../../styles/img/logos/about_prog_logos/horizontal-logo-monochromatic-white.png";
 import redisLogo from "../../styles/img/logos/about_prog_logos/redis.png";
 // Front
-import reactLogo from "../../styles/img/logos/about_front_logos/react.png";
+import reactLogo from "../../styles/img/logos/about_front_logos/React_logo.png";
 import sassLogo from "../../styles/img/logos/about_front_logos/sass.png";
 import bootstrapLogo from "../../styles/img/logos/about_front_logos/bootstrap.png";
 
@@ -46,89 +46,129 @@ function About() {
           </div>
         </div>
       </div>
-
       <div className="subSection flexCenter skills" id={"skills"}>
         <div className="container">
           <div className={"AboutProg"}>
-            <div className="card">
-              <h1>Data handling</h1>
-              <span className="fas fa-database"></span>
-              <div>
-                <p>SQL or NoSQL, that is the question.</p>
-                <img src={mongoLogo} alt="MongoDB" />
-                <img src={redisLogo} alt="Redis" />
-              </div>
-            </div>
-            <div className="card">
-              <h1>Data handling</h1>
-              <span className="fas fa-database"></span>
-              <div>
-                <p>SQL or NoSQL, that is the question.</p>
-                <img src={mongoLogo} alt="MongoDB" />
-                <img src={redisLogo} alt="Redis" />
-              </div>
-            </div>
-            <div className="card">
-              <h1>Data handling</h1>
-              <span className="fas fa-database"></span>
-              <div>
-                <p>SQL or NoSQL, that is the question.</p>
-                <img src={mongoLogo} alt="MongoDB" />
-                <img src={redisLogo} alt="Redis" />
-              </div>
-            </div>
-            <div className="card">
-              <h1>Data handling</h1>
-              <span className="fas fa-database"></span>
-              <div>
-                <p>SQL or NoSQL, that is the question.</p>
-                <img src={mongoLogo} alt="MongoDB" />
-                <img src={redisLogo} alt="Redis" />
-              </div>
-            </div>
-            <div className="card">
-              <h1>Data handling</h1>
-              <span className="fas fa-database"></span>
-              <div>
-                <p>SQL or NoSQL, that is the question.</p>
-                <img src={mongoLogo} alt="MongoDB" />
-                <img src={redisLogo} alt="Redis" />
-              </div>
-            </div>
-            <div className="card">
-              <h1>Data handling</h1>
-              <span className="fas fa-database"></span>
-              <div>
-                <p>SQL or NoSQL, that is the question.</p>
-                <img src={mongoLogo} alt="MongoDB" />
-                <img src={redisLogo} alt="Redis" />
-              </div>
-            </div>
-            <div className="card">
-              <h1>Data handling</h1>
-              <span className="fas fa-database"></span>
-              <div>
-                <p>SQL or NoSQL, that is the question.</p>
-                <img src={mongoLogo} alt="MongoDB" />
-                <img src={redisLogo} alt="Redis" />
-              </div>
-            </div>
+            <ul id="aboutCards">
+              <li className="card">
+                <div className="cardHeader">
+                  <span className="fas fa-coins fa-2x"></span>
+                  <h3>Data handling</h3>
+                </div>
+                <div className="cardContent">
+                  <h5>SQL or NoSQL, that is the question.</h5>
+                  <p>
+                    Manage your data with the latest technology and improve your
+                    performance and security.
+                  </p>
+                  <div className="cardLogos flexCenter">
+                    <img src={mongoLogo} alt="MongoDB" />
+                    <img src={redisLogo} alt="Redis" />
+                  </div>
+                </div>
+              </li>
+              <li className="card">
+                <div className="cardHeader">
+                  <span className="fas fa-server fa-2x"></span>
+                  <h3>Back-end</h3>
+                </div>
+                <div className="cardContent">
+                  <h5>Fester, stronger, better!</h5>
+                  <p>
+                    We have the technology!
+                    <br /> Improve, add, or build a brand new server for your
+                    every need.
+                  </p>
+                  <div className="cardLogos flexCenter">
+                    <img src={nodeLogo} alt="node.JS" />
+                    <img src={dockerLogo} alt="Docker" />
+                  </div>
+                </div>
+              </li>
+              <li className="card">
+                <div className="cardHeader">
+                  <span className="fas fa-money-check fa-2x"></span>
+                  <h3>Front-end</h3>
+                </div>
+                <div className="cardContent">
+                  <h5>There's no UI without you and I</h5>
+                  <p>
+                    Building an intuitive interface with a smart design is key
+                    to any and all successful products.
+                  </p>
+                  <div className="cardLogos flexCenter">
+                    <img src={reactLogo} alt="React.js" />
+                  </div>
+                </div>
+              </li>
+              <li className="card">
+                <div className="cardHeader">
+                  <span className="fas fa-arrows-alt fa-2x"></span>
+                  <h3>Responsive</h3>
+                </div>
+                <div className="cardContent">
+                  <h5>One design to rule them all</h5>
+                  <p>
+                    Building an intuitive interface with a smart design is key
+                    to any and all successful products.
+                  </p>
+                  <div className="cardLogos flexCenter">
+                    {/* <img src={reactLogo} alt="React.js" /> */}
+                    {/* <img src={dockerLogo} alt="Docker" /> */}
+                  </div>
+                </div>
+              </li>
+              <li className="card">
+                <div className="cardHeader">
+                  <span className="fas fa-money-check fa-2x"></span>
+                  <h3>Front</h3>
+                </div>
+                <div className="cardContent">
+                  <h5>Fester, stronger, better!</h5>
+                  <p>
+                    Improve, add, or build a brand new server for your every
+                    need.
+                  </p>
+                  <div className="cardLogos flexCenter">
+                    <img src={reactLogo} alt="React.js" />
+                    {/* <img src={dockerLogo} alt="Docker" /> */}
+                  </div>
+                </div>
+              </li>
+              <li className="card">
+                <div className="cardHeader">
+                  <span className="fas fa-money-check fa-2x"></span>
+                  <h3>Front</h3>
+                </div>
+                <div className="cardContent">
+                  <h5>Fester, stronger, better!</h5>
+                  <p>
+                    Improve, add, or build a brand new server for your every
+                    need.
+                  </p>
+                  <div className="cardLogos flexCenter">
+                    <img src={reactLogo} alt="React.js" />
+                    {/* <img src={dockerLogo} alt="Docker" /> */}
+                  </div>
+                </div>
+              </li>
+            </ul>
 
             {/* <h1>What do I do?</h1>
             <h4>I"m a full-stack programmer and designer, at your service!</h4>
             <p>
-              I can help you build up your <span>server</span> or{" "}
-              <span>REST API</span> or maybe you have a <span>SaaS</span> to
-              develop.
+            I can help you build up your <span>server</span> or{" "}
+            <span>REST API</span> or maybe you have a <span>SaaS</span> to
+            develop.
             </p>
             <div className="aboutLogos">
-              {Object.keys(progLogos).map((key) => {
-                return <img src={progLogos[key]} alt={key} key={key} />;
-              })}
+            {Object.keys(progLogos).map((key) => {
+              return <img src={progLogos[key]} alt={key} key={key} />;
+            })}
             </div>
             <p>
-              I can help you improve your <span>design</span> or create a brand
-              new one made just for you!
+            I can help you improve your <span>design</span> or create a brand
+            new one made just for you!
             </p>
             <div className="aboutLogos">
               {Object.keys(frontLogos).map((logo) => (
