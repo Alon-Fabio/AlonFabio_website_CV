@@ -3,14 +3,15 @@ import "./About.scss";
 // Style:
 // logos:
 // Back
-import mongoLogo from "../../styles/img/logos/about_prog_logos/MongoDB_Logo_Black_RGB.png";
-import nodeLogo from "../../styles/img/logos/about_prog_logos/nodejs-new-pantone-black.png";
-import dockerLogo from "../../styles/img/logos/about_prog_logos/horizontal-logo-monochromatic-white.png";
-import redisLogo from "../../styles/img/logos/about_prog_logos/redis.png";
+import mongoLogo from "../../styles/img/logos/aboutLogos/MongoDB_Logo_Black_RGB.png";
+import nodeLogo from "../../styles/img/logos/aboutLogos/nodejs-new-pantone-black.png";
+import dockerLogo from "../../styles/img/logos/aboutLogos/horizontal-logo-monochromatic-white.png";
+import redisLogo from "../../styles/img/logos/aboutLogos/redis.png";
 // Front
-import reactLogo from "../../styles/img/logos/about_front_logos/React_logo.png";
-import sassLogo from "../../styles/img/logos/about_front_logos/sass.png";
-import bootstrapLogo from "../../styles/img/logos/about_front_logos/bootstrap.png";
+import reactLogo from "../../styles/img/logos/aboutLogos/React_logo.png";
+import sassLogo from "../../styles/img/logos/aboutLogos/sass.png";
+import bootstrapLogo from "../../styles/img/logos/aboutLogos/bootstrap.png";
+import cssLogo from "../../styles/img/logos/aboutLogos/css.png";
 
 function About() {
   // interface ILogoObj {
@@ -50,107 +51,134 @@ function About() {
         <div className="container">
           <div className={"AboutProg"}>
             <ul id="aboutCards">
-              <li className="card">
-                <div className="cardHeader">
-                  <span className="fas fa-coins fa-2x"></span>
-                  <h3>Data handling</h3>
-                </div>
-                <div className="cardContent">
-                  <h5>SQL or NoSQL, that is the question.</h5>
-                  <p>
-                    Manage your data with the latest technology and improve your
-                    performance and security.
-                  </p>
-                  <div className="cardLogos flexCenter">
-                    <img src={mongoLogo} alt="MongoDB" />
-                    <img src={redisLogo} alt="Redis" />
+              <li>
+                <fieldset className="card">
+                  <legend>
+                    <span className="fas fa-coins"></span>
+                  </legend>
+                  <div className="cardHeader">
+                    <h3>Data handling</h3>
                   </div>
-                </div>
+                  <div className="cardContent">
+                    <h5>SQL or NoSQL, that is the question</h5>
+                    <p>
+                      Manage your data with the latest technology and improve
+                      your performance and security.
+                    </p>
+                    <div className="cardLogos flexCenter">
+                      <img src={mongoLogo} alt="MongoDB" />
+                      <img src={redisLogo} alt="Redis" />
+                    </div>
+                  </div>
+                </fieldset>
               </li>
-              <li className="card">
-                <div className="cardHeader">
-                  <span className="fas fa-server fa-2x"></span>
-                  <h3>Back-end</h3>
-                </div>
-                <div className="cardContent">
-                  <h5>Fester, stronger, better!</h5>
-                  <p>
-                    We have the technology!
-                    <br /> Improve, add, or build a brand new server for your
-                    every need.
-                  </p>
-                  <div className="cardLogos flexCenter">
-                    <img src={nodeLogo} alt="node.JS" />
-                    <img src={dockerLogo} alt="Docker" />
+              <li>
+                <fieldset className="card">
+                  <legend>
+                    <span className="fas fa-server"></span>
+                  </legend>
+                  <div className="cardHeader">
+                    <h3>Back-end</h3>
                   </div>
-                </div>
+                  <div className="cardContent">
+                    <h5>Fester, stronger, better!</h5>
+                    <p>
+                      We have the technology!
+                      <br /> Improve, add, or build a brand new server for your
+                      every need.
+                    </p>
+                    <div className="cardLogos flexCenter">
+                      <img src={nodeLogo} alt="node.JS" />
+                      <img src={dockerLogo} alt="Docker" />
+                    </div>
+                  </div>
+                </fieldset>
               </li>
-              <li className="card">
-                <div className="cardHeader">
-                  <span className="fas fa-money-check fa-2x"></span>
-                  <h3>Front-end</h3>
-                </div>
-                <div className="cardContent">
-                  <h5>There's no UI without you and I</h5>
-                  <p>
-                    Building an intuitive interface with a smart design is key
-                    to any and all successful products.
-                  </p>
-                  <div className="cardLogos flexCenter">
-                    <img src={reactLogo} alt="React.js" />
+              <li>
+                <fieldset className="card">
+                  <legend>
+                    <span className="fas fa-money-check"></span>
+                  </legend>
+                  <div className="cardHeader">
+                    <h3>Front-end</h3>
                   </div>
-                </div>
+                  <div className="cardContent">
+                    <h5>There's no UI without you and I</h5>
+                    <p>
+                      Building an intuitive interface with a smart design is key
+                      to any and all successful products.
+                    </p>
+                    <div className="cardLogos flexCenter">
+                      <img src={reactLogo} alt="React.js" />
+                    </div>
+                  </div>
+                </fieldset>
               </li>
-              <li className="card">
-                <div className="cardHeader">
-                  <span className="fas fa-arrows-alt fa-2x"></span>
-                  <h3>Responsive</h3>
-                </div>
-                <div className="cardContent">
-                  <h5>One design to rule them all</h5>
-                  <p>
-                    Building an intuitive interface with a smart design is key
-                    to any and all successful products.
-                  </p>
-                  <div className="cardLogos flexCenter">
-                    {/* <img src={reactLogo} alt="React.js" /> */}
-                    {/* <img src={dockerLogo} alt="Docker" /> */}
+              <li>
+                <fieldset className="card">
+                  <legend>
+                    <span className="fas fa-arrows-alt"></span>
+                  </legend>
+                  <div className="cardHeader">
+                    <h3>Responsive</h3>
                   </div>
-                </div>
+                  <div className="cardContent">
+                    <h5>One design to fit them all</h5>
+                    <p>
+                      Seamless transition between all screen sizes
+                      <br />
+                      Your product needs to look perfect on all devices!
+                    </p>
+                    <div className="cardLogos flexCenter">
+                      <img src={bootstrapLogo} alt="bootstrap" />
+                      <img src={cssLogo} alt="css" />
+                    </div>
+                  </div>
+                </fieldset>
               </li>
-              <li className="card">
-                <div className="cardHeader">
-                  <span className="fas fa-money-check fa-2x"></span>
-                  <h3>Front</h3>
-                </div>
-                <div className="cardContent">
-                  <h5>Fester, stronger, better!</h5>
-                  <p>
-                    Improve, add, or build a brand new server for your every
-                    need.
-                  </p>
-                  <div className="cardLogos flexCenter">
-                    <img src={reactLogo} alt="React.js" />
-                    {/* <img src={dockerLogo} alt="Docker" /> */}
+              <li>
+                <fieldset className="card">
+                  <legend>
+                    <span className="fas fa-paint-brush"></span>
+                  </legend>
+                  <div className="cardHeader">
+                    <h3>{"Style & Design"}</h3>
                   </div>
-                </div>
+                  <div className="cardContent">
+                    <h5>UX/UI are in the eye of the customer</h5>
+                    <p>
+                      Great style and design don't just happen by themselves.
+                      <br />
+                      Get your very own style and design line to make every one
+                      recognize you!
+                    </p>
+                    <div className="cardLogos flexCenter">
+                      <img src={sassLogo} alt="sass" />
+                      <img src={cssLogo} alt="css" />
+                    </div>
+                  </div>
+                </fieldset>
               </li>
-              <li className="card">
-                <div className="cardHeader">
-                  <span className="fas fa-money-check fa-2x"></span>
-                  <h3>Front</h3>
-                </div>
-                <div className="cardContent">
-                  <h5>Fester, stronger, better!</h5>
-                  <p>
-                    Improve, add, or build a brand new server for your every
-                    need.
-                  </p>
-                  <div className="cardLogos flexCenter">
-                    <img src={reactLogo} alt="React.js" />
-                    {/* <img src={dockerLogo} alt="Docker" /> */}
+              <li>
+                <fieldset className="card">
+                  <legend>
+                    <span className="fas fa-cloud"></span>
+                  </legend>
+                  <div className="cardHeader">
+                    <h3>Front</h3>
                   </div>
-                </div>
+                  <div className="cardContent">
+                    <h5>Let someone else cary the load</h5>
+                    <p>
+                      Move your server to a cloud service, and make it fester
+                      around the world.
+                      <br />
+                    </p>
+                    <div className="cardLogos flexCenter">
+                      <img src={reactLogo} alt="React.js" />
+                    </div>
+                  </div>
+                </fieldset>
               </li>
             </ul>
 

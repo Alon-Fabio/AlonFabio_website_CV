@@ -22,9 +22,7 @@ body {
         background-size: cover;
         background-repeat: no-repeat;
       }
-      .subSection {
-        padding: 10rem 0;
-      }
+
       .subSection:nth-child(even) {
         background-color: lighten($base-color, 35%);
       }
@@ -62,4 +60,11 @@ code {
 
 // Big screen
 @media screen and (min-width: 1024px) {
+  body {
+    .App {
+      .subSection {
+        padding: 10rem 0;
+      }
+    }
+  }
 }

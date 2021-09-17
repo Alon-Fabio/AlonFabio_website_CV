@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 // Style
 import "./NavBar.scss";
 import NavLogo from "../../styles/img/logos/NavLogo/NavLogo";
@@ -8,18 +8,22 @@ import Burger from "../Burger/Burger";
 import { useEventListener } from "../../hooks/useEventListener";
 
 const Navbar: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
-  const [navScroll, setNavScroll] = useState(true);
+  const NavBar = useRef<HTMLAnchorElement | null>(null);
   const [navStyle, setNavStyle] = useState({
     burger: "",
     navLinks: "",
   });
 
+  // Fun for the eventListener
   const scrollDetect = () => {
-    if (window.scrollY <= 20 && !navScroll) {
-      setNavScroll(true);
+    // Changes the NavBars background and the fill color of the SVG logo.
+    if (window.scrollY <= 20 && NavBar.current !== null) {
+      NavBar.current.classList.add("navbarTop");
+      NavBar.current.style.fill = "#000";
     }
-    if (window.scrollY >= 20 && navScroll) {
-      setNavScroll(false);
+    if (window.scrollY >= 20 && NavBar.current !== null) {
+      NavBar.current.classList.remove("navbarTop");
+      NavBar.current.style.fill = "#F26944";
     }
   };
   useEventListener({ type: "scroll", listener: scrollDetect });
@@ -36,8 +40,9 @@ const Navbar: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
       }
     });
   };
+
   return (
-    <nav className={navScroll ? "navbarTop" : ""}>
+    <nav ref={NavBar} className={"navbarTop"}>
       <div className="container navMain">
         <div
           className={"LogoContainer"}
@@ -45,10 +50,8 @@ const Navbar: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
             onRouteChange("About");
           }}
         >
-          <NavLogo
-            color={navScroll ? "#000" : "#F26944"}
-            className={"NavLogo"}
-          />
+          {/*Left side home-logo, SVG format */}
+          <NavLogo />
         </div>
         <div className="navLinksMain">
           <ul className={`navLinks ${navStyle.navLinks}`}>

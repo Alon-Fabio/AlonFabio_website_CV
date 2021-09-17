@@ -10,7 +10,6 @@
     align-content: center;
   }
   .card {
-    width: 100%;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -22,9 +21,11 @@
 
     .cardHeader {
       min-height: 5rem;
-      padding: 0.625rem;
-      width: calc(100% - 1.25rem);
+      width: 100%;
       background-color: $opct-05;
+      & > * {
+        padding: 1.125rem;
+      }
     }
     .cardContent {
       text-shadow: 1px 1px $gray-24;
@@ -35,13 +36,15 @@
       justify-content: space-between;
       width: 100%;
       color: white;
-      min-height: 10em;
-      padding: 0.625rem;
+      min-height: calc(100% - 5rem);
       background: linear-gradient(
         50deg,
         lighten($secund-base-color, 10%) 30%,
         #38c4f2 100%
       );
+      & > * {
+        padding: 0.625rem;
+      }
       &:before {
         content: "";
         position: absolute;

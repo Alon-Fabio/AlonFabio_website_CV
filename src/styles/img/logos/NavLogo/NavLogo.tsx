@@ -1,17 +1,12 @@
 import React from "react";
 import "./AlonNavLogo.scss";
 
-// The color of this vector is determined by the NavBar if the screen size is bigger than 786 and by the scss file if it's smaller.
-
-const AlonNavLogo: React.FC<{ color: string; className: string }> = ({
-  color,
-  className,
-}) => {
+const AlonNavLogo = () => {
   return (
     <svg
-      className={className}
+      className={"NavLogo"}
+      id="NavLogo"
       version="1.1"
-      fill={color}
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       x="0px"

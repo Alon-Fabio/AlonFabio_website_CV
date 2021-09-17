@@ -47,33 +47,57 @@
     }
     .AboutProg {
       max-width: 1100px;
-      padding: 1rem;
       #aboutCards {
         display: flex;
         flex-wrap: wrap;
         margin: 0;
         padding: 0;
         list-style: none;
-        .card {
-          margin: 0.5rem;
-          .cardHeader {
-            display: flex;
-            flex-flow: row-reverse;
-            justify-content: space-between;
-            align-items: center;
-          }
-          img {
-            padding: 0.625rem;
-            max-height: 2rem;
-            filter: grayscale(1) drop-shadow(0 2px 0.125rem $gray-15);
+        li {
+          width: 100%;
+          margin: 2rem;
+          fieldset {
+            position: relative;
+            width: 100%;
+            margin: 0 !important;
+            padding: 0;
+            border: none;
+            background-color: $opct-05;
+            legend {
+              text-align: right;
+              padding-right: 1rem;
+              span {
+                font-size: 4em;
+              }
+            }
+            .cardHeader {
+              min-height: 0;
+              background-color: transparent;
+              & * {
+                margin: 0 1.125rem;
+              }
+            }
+            p {
+              padding: 0 1rem;
+            }
+            img {
+              padding: 0.625rem;
+              max-height: 2rem;
+              filter: grayscale(1) drop-shadow(0 2px 0.125rem $gray-15);
+            }
+            .cardContent {
+              font-size: 1.25rem;
+              min-height: 17rem;
+            }
           }
         }
       }
-      .aboutLogos {
-        display: flex;
-        justify-content: space-evenly;
-        flex-flow: wrap;
-      }
+
+      // .aboutLogos {
+      //   display: flex;
+      //   justify-content: space-evenly;
+      //   flex-flow: wrap;
+      // }
     }
   }
 }
@@ -85,14 +109,8 @@
       min-height: 80vh !important;
 
       background-attachment: fixed;
-      background-position-y: -10% !important;
     }
     // Skills section
-    .skills {
-      #aboutCards {
-        justify-content: space-evenly;
-      }
-    }
   }
 }
 
@@ -121,8 +139,11 @@
       .AboutProg {
         font-size: 1.25rem;
         #aboutCards {
-          .card {
-            max-width: 33.33%;
+          li {
+            width: 100%;
+            .card {
+              max-width: 100%;
+            }
           }
         }
       }
@@ -183,8 +204,23 @@
     .skills {
       .AboutProg {
         #aboutCards {
-          .card {
-            margin: 0.625rem;
+          justify-content: space-evenly;
+          li {
+            width: unset;
+            max-width: calc(1100px / 3 - 80px);
+            .card {
+              margin: 3rem;
+              .cardContent {
+                height: 100%;
+              }
+            }
+            fieldset {
+              legend {
+                span {
+                  font-size: 2em;
+                }
+              }
+            }
           }
         }
       }
@@ -192,11 +228,6 @@
   }
 }
 @media screen and (min-width: 1980px) {
-  .about {
-    .aboutHero {
-      background-position: center !important;
-    }
-  }
 }
 // Animations
 @keyframes progressAni {
