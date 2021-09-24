@@ -11,6 +11,10 @@ const [onLoad, setOnLoad] = useState("");
 </div>;
 
 // CSS
+
+.onLoad {
+  opacity: 1 !important;
+}
 .photoContainer {
     opacity: 0;
     background-color: black;
@@ -55,18 +59,18 @@ const [onLoad, setOnLoad] = useState("");
 //   CSS
 
 .progressSection {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
-    width: 100%;
-    .progressContainerLang {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  width: 100%;
+  .progressContainerLang {
     padding: 10px;
     width: 40%;
     .javascript-present {
-        width: 90%;
+      width: 90%;
     }
     .in-view {
-        background-image: linear-gradient(
+      background-image: linear-gradient(
         to bottom,
         rgba(255, 255, 255, 0.3),
         rgba(255, 255, 255, 0.05)
@@ -74,20 +78,64 @@ const [onLoad, setOnLoad] = useState("");
         transition: 0.2s linear;
         transition-property: width, background-color;
         background-color: $secund-base-color;
-
+        
         animation: progressAni 2s;
+      }
     }
-}
-}
-.progressBar {
+  }
+  .progressBar {
     margin-bottom: 6px;
     padding: 6px;
     border-radius: 30px;
     background: gray;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25),
-        0 1px rgba(255, 255, 255, 0.08);
+    0 1px rgba(255, 255, 255, 0.08);
     .progress-bar-inner {
-        height: 10px;
-        border-radius: 30px;
+      height: 10px;
+      border-radius: 30px;
     }
-}
+  }
+
+
+  // ShowLogo  function
+
+    interface ILogoObj {
+    [index: string]: string;
+  }
+
+  const progLogos: ILogoObj = {
+    mongoLogo,
+    nodeLogo,
+    dockerLogo,
+    redisLogo,
+  };
+  const frontLogos: ILogoObj = {
+    reactLogo,
+    sassLogo,
+    bootstrapLogo,
+  };
+
+<div>
+
+  <h1>What do I do?</h1>
+            <h4>I"m a full-stack programmer and designer, at your service!</h4>
+            <p>
+            I can help you build up your <span>server</span> or{" "}
+            <span>REST API</span> or maybe you have a <span>SaaS</span> to
+            develop.
+            </p>
+            <div className="aboutLogos">
+            {Object.keys(progLogos).map((key) => {
+              return <img src={progLogos[key]} alt={key} key={key} />;
+            })}
+            </div>
+            <p>
+            I can help you improve your <span>design</span> or create a brand
+            new one made just for you!
+            </p>
+            <div className="aboutLogos">
+              {Object.keys(frontLogos).map((logo) => (
+                <img src={frontLogos[logo]} alt={logo} key={logo} />
+                ))}
+            </div>
+</div>

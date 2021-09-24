@@ -14,22 +14,6 @@ import bootstrapLogo from "../../styles/img/logos/aboutLogos/bootstrap.png";
 import cssLogo from "../../styles/img/logos/aboutLogos/css.png";
 
 function About() {
-  // interface ILogoObj {
-  //   [index: string]: string;
-  // }
-
-  // const progLogos: ILogoObj = {
-  //   mongoLogo,
-  //   nodeLogo,
-  //   dockerLogo,
-  //   redisLogo,
-  // };
-  // const frontLogos: ILogoObj = {
-  //   reactLogo,
-  //   sassLogo,
-  //   bootstrapLogo,
-  // };
-
   return (
     <section className={"about"}>
       <div className="pageHero aboutHero">
@@ -37,21 +21,27 @@ function About() {
           <h1>Hello</h1>
           <div className={"AboutDescription text-shadow"}>
             <p>
-              My name is <span>Alon</span>, and this is my website.
+              My name is <span>Alon Fabishevich</span>, welcome to my website.
             </p>
             <p>
-              I"m a <span>Developer</span>, a <span>Designer</span>, a{" "}
-              <span>Photographer</span>, welcome to my site.
+              I"m a <span>Developer</span>, a <span>Graphic Designer</span>, a{" "}
+              <span>Photographer</span>, <br />
+              and much more then that{" "}
+              <span className="fas fa-smile-wink"></span>.
             </p>
-            <p>Have a look around</p>
+            <p>Have a look around...</p>
           </div>
         </div>
       </div>
       <div className="subSection flexCenter skills" id={"skills"}>
         <div className="container">
+          <div>
+            <h1>Code</h1>
+            <p>As a programmer I can offer a lot of services</p>
+          </div>
           <div className={"AboutProg"}>
             <ul id="aboutCards">
-              <li>
+              <li className="flexCenter">
                 <fieldset className="card">
                   <legend>
                     <span className="fas fa-coins"></span>
@@ -72,7 +62,7 @@ function About() {
                   </div>
                 </fieldset>
               </li>
-              <li>
+              <li className="flexCenter">
                 <fieldset className="card">
                   <legend>
                     <span className="fas fa-server"></span>
@@ -94,7 +84,7 @@ function About() {
                   </div>
                 </fieldset>
               </li>
-              <li>
+              <li className="flexCenter">
                 <fieldset className="card">
                   <legend>
                     <span className="fas fa-money-check"></span>
@@ -114,7 +104,7 @@ function About() {
                   </div>
                 </fieldset>
               </li>
-              <li>
+              <li className="flexCenter">
                 <fieldset className="card">
                   <legend>
                     <span className="fas fa-arrows-alt"></span>
@@ -136,7 +126,7 @@ function About() {
                   </div>
                 </fieldset>
               </li>
-              <li>
+              <li className="flexCenter">
                 <fieldset className="card">
                   <legend>
                     <span className="fas fa-paint-brush"></span>
@@ -159,19 +149,19 @@ function About() {
                   </div>
                 </fieldset>
               </li>
-              <li>
+              <li className="flexCenter">
                 <fieldset className="card">
                   <legend>
                     <span className="fas fa-cloud"></span>
                   </legend>
                   <div className="cardHeader">
-                    <h3>Front</h3>
+                    <h3>Migration</h3>
                   </div>
                   <div className="cardContent">
-                    <h5>Let someone else cary the load</h5>
+                    {/* <h5>Let someone else cary the load</h5> */}
                     <p>
-                      Move your server to a cloud service, and make it fester
-                      around the world.
+                      Updating to TypeScript form vanilla JavaScript. Updating
+                      to SASS from CSS.
                       <br />
                     </p>
                     <div className="cardLogos flexCenter">
@@ -181,28 +171,6 @@ function About() {
                 </fieldset>
               </li>
             </ul>
-
-            {/* <h1>What do I do?</h1>
-            <h4>I"m a full-stack programmer and designer, at your service!</h4>
-            <p>
-            I can help you build up your <span>server</span> or{" "}
-            <span>REST API</span> or maybe you have a <span>SaaS</span> to
-            develop.
-            </p>
-            <div className="aboutLogos">
-            {Object.keys(progLogos).map((key) => {
-              return <img src={progLogos[key]} alt={key} key={key} />;
-            })}
-            </div>
-            <p>
-            I can help you improve your <span>design</span> or create a brand
-            new one made just for you!
-            </p>
-            <div className="aboutLogos">
-              {Object.keys(frontLogos).map((logo) => (
-                <img src={frontLogos[logo]} alt={logo} key={logo} />
-              ))}
-            </div> */}
           </div>
         </div>
       </div>
