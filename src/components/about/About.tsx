@@ -1,6 +1,8 @@
 import React from "react";
-import "./About.scss";
+// components
+import ContactForm from "../ContactForm/ContactForm";
 // Style:
+import "./About.scss";
 // logos:
 import mongoLogo from "../../styles/img/logos/aboutLogos/MongoDB_Logo_Black_RGB.png";
 import awsLogo from "../../styles/img/logos/aboutLogos/aws.png";
@@ -249,6 +251,11 @@ function About() {
               </li>
             </ul>
           </div>
+        </div>
+      </div>
+      <div className="subSection flexCenter">
+        <div className="container">
+          <ContactForm />
         </div>
       </div>
     </section>
