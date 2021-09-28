@@ -39,7 +39,7 @@ function About() {
       </div>
 
       {/* Code sub section */}
-      <div className="subSection flexCenter skills" id={"skills"}>
+      <div className="subSection flexCenter skills" id={"aboutCodeSkills"}>
         <div className="container">
           <div className="subSectionHeading">
             <h1>Code</h1>
@@ -185,7 +185,7 @@ function About() {
         </div>
       </div>
       {/* Style sub section */}
-      <div className="subSection flexCenter skills">
+      <div className="subSection flexCenter skills" id={"aboutStyleSkills"}>
         <div className="container">
           <div className="subSectionHeading">
             <h1>Style & Design</h1>
