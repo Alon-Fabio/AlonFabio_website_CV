@@ -13,8 +13,8 @@ $secund-base-color: hsl(12, 86%, 60%) !default; // #F26944 rgb(242, 105, 68)
 
 // Fonts
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//   font-family: "Arima Madurai", cursive;
-@import url("https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@100&display=swap");
+//   font-family: "Arima Madurai", cursive; weight 100/400
+@import url("https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@100;400&display=swap");
 
 //   font-family: Oxygen;
 @import url("https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@100&family=Oxygen:wght@300&display=swap");

@@ -2,16 +2,18 @@ import React from "react";
 import "./About.scss";
 // Style:
 // logos:
-// Back
 import mongoLogo from "../../styles/img/logos/aboutLogos/MongoDB_Logo_Black_RGB.png";
+import awsLogo from "../../styles/img/logos/aboutLogos/aws.png";
 import nodeLogo from "../../styles/img/logos/aboutLogos/nodejs-new-pantone-black.png";
 import dockerLogo from "../../styles/img/logos/aboutLogos/horizontal-logo-monochromatic-white.png";
 import redisLogo from "../../styles/img/logos/aboutLogos/redis.png";
-// Front
+import typeScriptLogo from "../../styles/img/logos/aboutLogos/ts-logo-128.png";
 import reactLogo from "../../styles/img/logos/aboutLogos/React_logo.png";
 import sassLogo from "../../styles/img/logos/aboutLogos/sass.png";
 import bootstrapLogo from "../../styles/img/logos/aboutLogos/bootstrap.png";
 import cssLogo from "../../styles/img/logos/aboutLogos/css.png";
+import HTML5Logo from "../../styles/img/logos/aboutLogos/HTML5.png";
+// import illustratorLogo from "../../styles/img/logos/aboutLogos/Adobe_illustrator.png";
 
 function About() {
   return (
@@ -33,9 +35,11 @@ function About() {
           </div>
         </div>
       </div>
+
+      {/* Code sub section */}
       <div className="subSection flexCenter skills" id={"skills"}>
         <div className="container">
-          <div>
+          <div className="subSectionHeading">
             <h1>Code</h1>
             <p>As a programmer I can offer a lot of services</p>
           </div>
@@ -49,7 +53,7 @@ function About() {
                   <div className="cardHeader">
                     <h3>Data handling</h3>
                   </div>
-                  <div className="cardContent">
+                  <div className="cardContent cardBGGray">
                     <h5>SQL or NoSQL, that is the question</h5>
                     <p>
                       Manage your data with the latest technology and improve
@@ -70,7 +74,7 @@ function About() {
                   <div className="cardHeader">
                     <h3>Back-end</h3>
                   </div>
-                  <div className="cardContent">
+                  <div className="cardContent cardBGGray">
                     <h5>Fester, stronger, better!</h5>
                     <p>
                       We have the technology!
@@ -92,7 +96,7 @@ function About() {
                   <div className="cardHeader">
                     <h3>Front-end</h3>
                   </div>
-                  <div className="cardContent">
+                  <div className="cardContent cardBGGray">
                     <h5>There's no UI without you and I</h5>
                     <p>
                       Building an intuitive interface with a smart design is key
@@ -100,6 +104,8 @@ function About() {
                     </p>
                     <div className="cardLogos flexCenter">
                       <img src={reactLogo} alt="React.js" />
+                      <img src={HTML5Logo} alt="HTML5" />
+                      <img src={cssLogo} alt="CSS" />
                     </div>
                   </div>
                 </fieldset>
@@ -112,7 +118,7 @@ function About() {
                   <div className="cardHeader">
                     <h3>Responsive</h3>
                   </div>
-                  <div className="cardContent">
+                  <div className="cardContent cardBGGray">
                     <h5>One design to fit them all</h5>
                     <p>
                       Seamless transition between all screen sizes
@@ -129,12 +135,12 @@ function About() {
               <li className="flexCenter">
                 <fieldset className="card">
                   <legend>
-                    <span className="fas fa-paint-brush"></span>
+                    <span className="fas fa-theater-masks"></span>
                   </legend>
                   <div className="cardHeader">
-                    <h3>{"Style & Design"}</h3>
+                    <h3>{"UX & UI"}</h3>
                   </div>
-                  <div className="cardContent">
+                  <div className="cardContent cardBGGray">
                     <h5>UX/UI are in the eye of the customer</h5>
                     <p>
                       Great style and design don't just happen by themselves.
@@ -155,18 +161,89 @@ function About() {
                     <span className="fas fa-cloud"></span>
                   </legend>
                   <div className="cardHeader">
-                    <h3>Migration</h3>
+                    <h3>Migrations</h3>
                   </div>
-                  <div className="cardContent">
-                    {/* <h5>Let someone else cary the load</h5> */}
+                  <div className="cardContent cardBGGray">
+                    <h5>Updating...</h5>
                     <p>
                       Updating to TypeScript form vanilla JavaScript. Updating
                       to SASS from CSS.
-                      <br />
+                    </p>
+                    <p>Move your code to a cloud service.</p>
+                    <div className="cardLogos flexCenter">
+                      <img src={typeScriptLogo} alt="TypeScript" />
+                      <img src={sassLogo} alt="sass" />
+                      <img src={awsLogo} alt="aws" />
+                    </div>
+                  </div>
+                </fieldset>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      {/* Style sub section */}
+      <div className="subSection flexCenter skills">
+        <div className="container">
+          <div className="subSectionHeading">
+            <h1>Style & Design</h1>
+            <p>As a Graphic designer I can offer a lot of services</p>
+          </div>
+          <div className={"AboutProg"}>
+            <ul id="aboutCards">
+              <li className="flexCenter">
+                <fieldset className="card">
+                  <legend>
+                    <span className="fas fa-palette"></span>
+                  </legend>
+                  <div className="cardHeader">
+                    <h3>{"Custom art"}</h3>
+                  </div>
+                  <div className="cardContent">
+                    <h5>Unique artwork</h5>
+                    <p>
+                      Using adobe illustrator and more, I can creat graphics
+                      that are tailored to your product.
                     </p>
                     <div className="cardLogos flexCenter">
-                      <img src={reactLogo} alt="React.js" />
+                      {/* <img src={illustratorLogo} alt="illustrator" /> */}
                     </div>
+                  </div>
+                </fieldset>
+              </li>
+              <li className="flexCenter">
+                <fieldset className="card">
+                  <legend>
+                    <span className="fas fa-swatchbook"></span>
+                  </legend>
+                  <div className="cardHeader">
+                    <h3>{"Styling"}</h3>
+                  </div>
+                  <div className="cardContent">
+                    <h5>You look gorgeous darling!</h5>
+                    <p>
+                      Developing a unique style that fits your product and will
+                      be recognized immediately.
+                    </p>
+                    <div className="cardLogos flexCenter"></div>
+                  </div>
+                </fieldset>
+              </li>
+              <li className="flexCenter">
+                <fieldset className="card">
+                  <legend>
+                    <span className="fas fa-user-edit"></span>
+                  </legend>
+                  <div className="cardHeader">
+                    <h3>{"UI/UX"}</h3>
+                  </div>
+                  <div className="cardContent">
+                    <h5>I see what you did there..</h5>
+                    <p>
+                      Having an eye for design and a mind for programming <br />
+                      I design and build products that people want to use!
+                    </p>
+                    <div className="cardLogos flexCenter"></div>
                   </div>
                 </fieldset>
               </li>

@@ -1,13 +1,24 @@
 @import "../../styles/scss/variables";
 
 .about {
+  font-size: 2rem;
   span {
     color: $secund-base-color;
   }
   .text-shadow {
     text-shadow: 1px 1px rgb(35, 35, 35);
   }
+  h1,
+  h2,
+  h3 {
+    font-weight: 400;
+    font-size: 3rem;
+  }
+
   // Hero section
+  .subSectionHeading {
+    text-align: center;
+  }
   .aboutHero {
     background-image: url("../../styles/img/header-bg.jpg");
     font-family: Arima Madurai, sans-serif;
@@ -20,7 +31,7 @@
   .aboutTextContainer {
     text-align: center;
     h1 {
-      font-size: 3rem;
+      font-size: 4rem;
       padding-top: 1rem;
       text-shadow: 0 0 2rem $base-color;
     }
@@ -31,11 +42,8 @@
       max-width: 75rem;
       padding: 0 10px;
       text-align: center;
-      font-weight: 600;
-      font-size: 2rem;
-      span {
-        font-weight: 700;
-      }
+      font-weight: 400;
+      font-size: 2.5rem;
     }
   }
 
@@ -66,11 +74,13 @@
               text-align: right;
               padding-right: 1rem;
               span {
-                font-size: 4em;
+                font-size: 2em;
               }
             }
+            h3 {
+              font-size: 2.5rem;
+            }
             .cardHeader {
-              min-height: 0;
               background-color: transparent;
               & * {
                 margin: 0 1.125rem;
@@ -85,18 +95,14 @@
               filter: grayscale(1) drop-shadow(0 2px 0.125rem $gray-15);
             }
             .cardContent {
-              font-size: 1.25rem;
               min-height: 17rem;
+            }
+            .cardBGGray {
+              background: linear-gradient(50deg, #38c4f2, $gray-35 80%);
             }
           }
         }
       }
-
-      // .aboutLogos {
-      //   display: flex;
-      //   justify-content: space-evenly;
-      //   flex-flow: wrap;
-      // }
     }
   }
 }
@@ -116,11 +122,6 @@
 // Tablet
 @media (min-width: 769px) and (max-width: 1023px) {
   .about {
-    .AboutDescription {
-      p {
-        font-size: 2rem;
-      }
-    }
     .aboutHero {
       padding: 0 10px;
       flex-direction: row;
@@ -136,7 +137,7 @@
     }
     .skills {
       .AboutProg {
-        font-size: 1.25rem;
+        font-size: 2rem;
         #aboutCards {
           li {
             width: 100%;
@@ -157,9 +158,6 @@
     font-size: 1.5rem;
 
     .aboutTextContainer {
-      h1 {
-        font-size: 4rem;
-      }
     }
     .photoContainer {
       max-height: 20vw;
@@ -167,11 +165,6 @@
       width: auto;
       height: auto;
       order: 2;
-    }
-    .AboutDescription {
-      p {
-        font-size: 3rem;
-      }
     }
 
     // Skills section
@@ -187,6 +180,9 @@
               }
             }
             fieldset {
+              h3 {
+                font-size: 2rem;
+              }
               legend {
                 span {
                   font-size: 2em;
