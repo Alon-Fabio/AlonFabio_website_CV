@@ -7,8 +7,20 @@ button {
   height: 2.5rem;
   padding: 0.5rem 1rem;
   border-radius: 1.5rem;
-  background-color: $gray-65;
+  background-color: $secund-base-color;
+  color: lighten($secund-base-color-opposite, 35);
+
   font-family: sans-serif, Arial, Helvetica, sans-serif;
+}
+
+input,
+textarea {
+  border: 1px solid $gray-65;
+  border-radius: 5px;
+  background-color: $opct-05;
+}
+::placeholder {
+  color: lighten($base-color, 20);
 }
 
 // For larger than tablet screen size
@@ -18,4 +30,8 @@ button {
       box-shadow: 0px 1px 4px black;
     }
   }
+}
+
+.error {
+  color: $secund-base-FS;
 }

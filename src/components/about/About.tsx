@@ -184,6 +184,8 @@ function About() {
           </div>
         </div>
       </div>
+      <div id="aboutMidPic"></div>
+      <div></div>
       {/* Style sub section */}
       <div className="subSection flexCenter skills" id={"aboutStyleSkills"}>
         <div className="container">
@@ -253,8 +255,8 @@ function About() {
           </div>
         </div>
       </div>
-      <div className="subSection flexCenter">
-        <div className="container">
+      <div className="subSection flexCenter" id="formSection">
+        <div className="container" id="formContainer">
           <ContactForm />
         </div>
       </div>
