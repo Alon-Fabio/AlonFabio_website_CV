@@ -4,7 +4,35 @@
   background-color: $base-color-gray-15;
   padding: 10px;
   color: $gray-15;
-
+  // Contact Form
+  #footerForm {
+    padding-top: 1rem;
+    display: block;
+    #contactForm {
+      #formMessage {
+        display: block;
+        textarea {
+          box-sizing: border-box;
+          width: 100%;
+          min-height: 10em;
+        }
+      }
+    }
+  }
+  .closed {
+    overflow: hidden;
+    transform: translateY(100%);
+    opacity: 0;
+    max-height: 0;
+    transition: all 0.5s linear;
+  }
+  .opened {
+    overflow: hidden;
+    transform: translateY(0);
+    opacity: 1;
+    max-height: 500px;
+    transition: all 0.5s linear;
+  }
   hr {
     margin: 0.5rem 1rem;
     border: 0;
@@ -66,6 +94,60 @@
     #FooterLinks {
       justify-content: flex-start;
     }
+    // Connect Form
+    #footerForm {
+      width: 100%;
+      padding-bottom: 2rem;
+
+      Form {
+        position: relative;
+        border-radius: 1rem;
+        background-color: $gray-75;
+        .formInputs {
+          display: flex;
+          #IdInputs {
+            flex-grow: initial;
+          }
+          h3 {
+            font-size: 1.5rem;
+          }
+          .formSection {
+            flex-grow: 1;
+            .formInline {
+              padding: 1rem 0;
+              input {
+                padding: 0.25rem;
+                font-size: 1.25rem;
+              }
+            }
+
+            #formMessage {
+              display: flex;
+
+              padding-left: 00.5rem;
+              textarea {
+                flex-grow: 3;
+                min-height: 15vh;
+                padding: 00.25rem;
+                margin-left: 0.5rem;
+                font-size: 1.25rem;
+              }
+            }
+          }
+        }
+        #formSubmit {
+          position: absolute;
+          padding-left: 5%;
+          bottom: -18px;
+        }
+        .error {
+          padding: 0 1rem;
+        }
+      }
+    }
+    .opened {
+      max-height: 500px;
+    }
   }
 }
 
@@ -78,3 +160,19 @@
     }
   }
 }
+
+// @keyframes fadeOut {
+//   0% {
+//     height: 0%;
+//   }
+//   100% {
+//     height: 100%;
+//   }
+// }
+
+// .fading {
+//   animation-name: fadeOut;
+//   animation-duration: 0.3s;
+//   animation-direction: normal;
+//   will-change: height;
+// }

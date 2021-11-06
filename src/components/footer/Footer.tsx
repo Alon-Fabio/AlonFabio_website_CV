@@ -1,15 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import "./footer.scss";
 
+import ContactForm from "../ContactForm/ContactForm";
+
 const Footer: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
+  const [transitioning, setTransitioning] = useState(true);
+
   return (
     <div id="Footer">
       <div className="container">
         <div id="FooterLinks" className="flexCenter">
-          <button onClick={() => onRouteChange("Contact")}>Contact</button>
+          <button onClick={() => setTransitioning((preVal) => !preVal)}>
+            Contact
+          </button>
+
           <button onClick={() => onRouteChange("Dox")}>Dox</button>
           <button onClick={() => onRouteChange("Projects")}>Projects</button>
           <button onClick={() => onRouteChange("About")}>About</button>
+        </div>
+        <div
+          id={"footerForm"}
+          className={transitioning === true ? "closed" : "opened"}
+        >
+          <ContactForm />
         </div>
         <hr />
         <div id="FooterBottom" className="flexCenter">
