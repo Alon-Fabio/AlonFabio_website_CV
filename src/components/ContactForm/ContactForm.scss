@@ -1,0 +1,34 @@
+@import "../../styles/scss/variables";
+
+#contactForm {
+  padding: 2rem;
+  #formHading {
+    padding-bottom: 0.5rem;
+  }
+  .formSection {
+    button:disabled {
+      background-color: $gray-35;
+      transition: background-color 200ms ease-in-out;
+    }
+    .formInline {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.125rem;
+      input {
+        width: 75%;
+      }
+    }
+    #formMessage {
+      textarea {
+        resize: none;
+      }
+    }
+    .error {
+      font-size: 1.25rem;
+      padding-bottom: 0.25rem;
+    }
+  }
+  .clearfix {
+    position: absolute;
+  }
+}

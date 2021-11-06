@@ -24,10 +24,10 @@ body {
       }
 
       .subSection:nth-child(even) {
-        background-color: lighten($base-color, 35%);
+        background-color: lighten($base-color, 35);
       }
       .subSection:nth-child(odd) {
-        background-color: lighten($base-color, 50%);
+        background-color: lighten($base-color, 50);
       }
     }
   }
@@ -56,6 +56,7 @@ code {
     .App {
       .mainContainer {
         .container {
+          max-width: 1100px;
           margin: 1.875rem;
           padding: 0.625rem;
           border-radius: 1rem;

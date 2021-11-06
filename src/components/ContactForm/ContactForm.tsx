@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import "./ContactForm.scss";
 
-type contactForm = {
+type TContactForm = {
   name: string;
   email: string;
   phone: number;
@@ -13,10 +14,39 @@ const ContactForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<contactForm>();
+  } = useForm<TContactForm>();
+  const [disableSubmit, setDisableSubmit] = useState(false);
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const submitTimeOut = (bool: boolean) => {
+    setDisableSubmit(true);
+    setTimeout(() => setDisableSubmit(bool), 5000);
+  };
+
+  const encode = (data: any) => {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+      )
+      .join("&");
+  };
+
+  const onSubmit = (data: TContactForm) => {
+    submitTimeOut(true);
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", ...data }),
+    })
+      .then(() => {
+        console.log("Success!");
+        submitTimeOut(false);
+      })
+      .catch((error) => {
+        alert(error);
+        submitTimeOut(false);
+      });
+
+    console.log(encode({ "form-name": "contact", ...data }));
   };
 
   return (
@@ -29,64 +59,94 @@ const ContactForm = () => {
       data-netlify="true"
       netlify-honeypot="bot-field"
     >
+      <div id="formHading">
+        <h1>Connect me</h1>
+        <p>Let's make something great together</p>
+      </div>
       {/* Not sure if this does anything anymore, needs to be tested in production */}
-      <p style={{ visibility: "hidden" }}>
+      <p style={{ visibility: "hidden", position: "absolute" }}>
         <label>Don't fill this up.</label>
         <input name="bot-field" type="text"></input>
       </p>
       {/* --------------------------------------------------------------------- */}
-      <div className="row">
-        <div className="col-md-6">
-          <div className="form-group">
+      <div className="formInputs">
+        <div className="formSection" id="IdInputs">
+          <div className="formInline">
+            <h3>{"Name: "}</h3>
             <input
-              {...register("name", { required: true })}
+              {...register("name", {
+                required: "Please enter a name",
+                maxLength: 12,
+              })}
               id="name"
               type="text"
-              placeholder="Your Name *"
+              placeholder="Name"
             ></input>
           </div>
-          <div className="form-group">
+          {errors.name && <p className="error">{errors.name?.message}</p>}
+          <div className="formInline">
+            <h3>{"Email: "}</h3>
             <input
-              {...register("email", { required: true })}
+              {...register("email", {
+                required: "Please enter an Email",
+                pattern: {
+                  value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i,
+                  message: "Something is not right with your Email..",
+                },
+              })} //[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$
               name="email"
               id="email"
               type="email"
-              placeholder="Your Email *"
+              placeholder="Email"
             ></input>
           </div>
-          <div className="form-group">
+          {errors.email && <p className="error">{errors.email?.message}</p>}
+          <div className="formInline">
+            <h3>{"Phone: "}</h3>
+
             <input
-              {...register("phone", { required: true, valueAsNumber: true })}
+              {...register("phone", {
+                required: "Please enter a phone number",
+
+                valueAsNumber: true,
+              })}
               name="phone"
               id="phone"
               type="tel"
-              placeholder="Your Phone *"
+              placeholder="Phone"
             ></input>
           </div>
+          {errors.phone && <p className="error">{errors.phone.message}</p>}
         </div>
-        <div className="col-md-6">
-          <div className="form-group">
+        <div className="formSection">
+          <div className="formInline" id="formMessage">
+            <h3>{"Message: "}</h3>
+
             <textarea
-              {...register("message", { required: true })}
+              {...register("message", {
+                required:
+                  "Please, write if only the reason that your leaving your contact",
+
+                maxLength: 300,
+              })}
               name="message"
               id="message"
-              placeholder="Your Message *"
+              placeholder="Message"
+              maxLength={300}
             ></textarea>
           </div>
+          {errors.message && <p className="error">{errors.message?.message}</p>}
         </div>
         <div className="clearfix"></div>
-        <div className="col-lg-12 text-center">
-          <div id="success"></div>
-          <button
-            id="sendMessageButton"
-            className="btn btn-primary btn-xl text-uppercase"
-            type="submit"
-          >
-            Send Message
-          </button>
-        </div>
+
         {/* <div data-netlify-recaptcha="true"></div> 
                Add recaptcha after css configaretions  */}
+      </div>
+      <div className="formSection" id="formSubmit">
+        <div id="success"></div>
+        <button id="sendMessageButton" disabled={disableSubmit} type="submit">
+          Send Message
+        </button>
       </div>
     </form>
   );
