@@ -47,7 +47,7 @@ const Navbar: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
         <div
           className={"LogoContainer"}
           onClick={() => {
-            onRouteChange("About");
+            onRouteChange("Services");
           }}
         >
           {/*Left side home-logo, SVG format */}
@@ -82,10 +82,10 @@ const Navbar: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
             <li
               onClick={() => {
                 onBurgerClick();
-                onRouteChange("About");
+                onRouteChange("Services");
               }}
             >
-              About
+              Services
             </li>
           </ul>
         </div>

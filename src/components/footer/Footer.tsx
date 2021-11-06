@@ -16,7 +16,7 @@ const Footer: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
 
           <button onClick={() => onRouteChange("Dox")}>Dox</button>
           <button onClick={() => onRouteChange("Projects")}>Projects</button>
-          <button onClick={() => onRouteChange("About")}>About</button>
+          <button onClick={() => onRouteChange("Services")}>Services</button>
         </div>
         <div
           id={"footerForm"}

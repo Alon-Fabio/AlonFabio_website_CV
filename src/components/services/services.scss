@@ -1,6 +1,6 @@
 @import "../../styles/scss/variables";
 
-.about {
+.services {
   font-size: 1.25rem;
   span {
     color: $secund-base-color;
@@ -19,7 +19,7 @@
   .subSectionHeading {
     text-align: center;
   }
-  .aboutHero {
+  .servicesHero {
     background-image: url("../../styles/img/header-bg.jpg");
     font-family: Arima Madurai, sans-serif;
     display: flex;
@@ -28,14 +28,14 @@
     align-items: center;
     color: white;
   }
-  .aboutTextContainer {
+  .servicesTextContainer {
     text-align: center;
     h1 {
       padding-top: 1rem;
       text-shadow: 0 0 2rem $base-color;
     }
   }
-  .AboutDescription {
+  .servicesDescription {
     padding-bottom: 10px;
     p {
       max-width: 75rem;
@@ -51,9 +51,9 @@
     span {
       text-shadow: 1px 1px rgba(35, 35, 35, 0.5);
     }
-    .AboutProg {
+    .servicesProg {
       max-width: 1100px;
-      #aboutCards {
+      #servicesCards {
         display: flex;
         flex-wrap: wrap;
         margin: 0;
@@ -123,15 +123,15 @@
 
 // Bigger then mobile
 @media screen and (min-width: 768px) {
-  .about {
-    .aboutHero {
+  .services {
+    .servicesHero {
       min-height: 80vh !important;
 
       background-attachment: fixed;
     }
     // subImage
-    #aboutMidPic {
-      background-image: url("../../styles/img/about/Lionel Messi.png"),
+    #servicesMidPic {
+      background-image: url("../../styles/img/services/Lionel Messi.png"),
         url(../../styles/img/logos/BackgraundLogo.svg);
       background-color: $secund-base-color;
       background-repeat: no-repeat, repeat;
@@ -203,15 +203,15 @@
 
 // Tablet
 @media (min-width: 769px) and (max-width: 1023px) {
-  .about {
-    .aboutHero {
+  .services {
+    .servicesHero {
       padding: 0 10px;
       flex-direction: row;
       justify-content: center;
       h1 {
         position: initial;
       }
-      .aboutTextContainer {
+      .servicesTextContainer {
         h1 {
           font-size: 3rem;
         }
@@ -226,8 +226,8 @@
       // }
     }
     .skills {
-      .AboutProg {
-        #aboutCards {
+      .servicesProg {
+        #servicesCards {
           justify-content: space-evenly;
           li {
             max-width: 40%;
@@ -245,10 +245,10 @@
 
 // Big screen
 @media screen and (min-width: 1024px) {
-  .about {
+  .services {
     color: rgb(46, 37, 30);
     font-size: 1.5rem;
-    .aboutTextContainer {
+    .servicesTextContainer {
       h1 {
         font-size: 3.5rem;
       }
@@ -266,8 +266,8 @@
 
     // Skills section
     .skills {
-      .AboutProg {
-        #aboutCards {
+      .servicesProg {
+        #servicesCards {
           li {
             flex: 1 1 300px;
             .card {
