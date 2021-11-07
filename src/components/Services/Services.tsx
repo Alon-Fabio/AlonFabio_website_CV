@@ -1,52 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // components
 import ContactForm from "../ContactForm/ContactForm";
 // Style:
-import "./About.scss";
+import "./Services.scss";
 // logos:
-import mongoLogo from "../../styles/img/logos/aboutLogos/MongoDB_Logo_Black_RGB.png";
-import awsLogo from "../../styles/img/logos/aboutLogos/aws.png";
-import nodeLogo from "../../styles/img/logos/aboutLogos/nodejs-new-pantone-black.png";
-import dockerLogo from "../../styles/img/logos/aboutLogos/horizontal-logo-monochromatic-white.png";
-import redisLogo from "../../styles/img/logos/aboutLogos/redis.png";
-import typeScriptLogo from "../../styles/img/logos/aboutLogos/ts-logo-128.png";
-import reactLogo from "../../styles/img/logos/aboutLogos/React_logo.png";
-import sassLogo from "../../styles/img/logos/aboutLogos/sass.png";
-import bootstrapLogo from "../../styles/img/logos/aboutLogos/bootstrap.png";
-import cssLogo from "../../styles/img/logos/aboutLogos/css.png";
-import HTML5Logo from "../../styles/img/logos/aboutLogos/HTML5.png";
-// import illustratorLogo from "../../styles/img/logos/aboutLogos/Adobe_illustrator.png";
+import mongoLogo from "../../styles/img/logos/servicesLogos/MongoDB_Logo_Black_RGB.png";
+import awsLogo from "../../styles/img/logos/servicesLogos/aws.png";
+import nodeLogo from "../../styles/img/logos/servicesLogos/nodejs-new-pantone-black.png";
+import dockerLogo from "../../styles/img/logos/servicesLogos/horizontal-logo-monochromatic-white.png";
+import redisLogo from "../../styles/img/logos/servicesLogos/redis.png";
+import typeScriptLogo from "../../styles/img/logos/servicesLogos/ts-logo-128.png";
+import reactLogo from "../../styles/img/logos/servicesLogos/React_logo.png";
+import sassLogo from "../../styles/img/logos/servicesLogos/sass.png";
+import bootstrapLogo from "../../styles/img/logos/servicesLogos/bootstrap.png";
+import cssLogo from "../../styles/img/logos/servicesLogos/css.png";
+import HTML5Logo from "../../styles/img/logos/servicesLogos/HTML5.png";
+// import illustratorLogo from "../../styles/img/logos/servicesLogos/Adobe_illustrator.png";
 
-function About() {
+const Services = () => {
+  const [addAni, setAddAni] = useState(false);
+  useEffect(() => {
+    setAddAni(true);
+  }, []);
   return (
-    <section className={"about"}>
-      <div className="pageHero aboutHero">
-        <div className={"aboutTextContainer"}>
-          <h1>Hello</h1>
-          <div className={"AboutDescription text-shadow"}>
-            <p>
-              My name is <span>Alon Fabishevich</span>, welcome to my website.
-            </p>
-            <p>
-              I"m a <span>Developer</span>, a <span>Graphic Designer</span>, a{" "}
-              <span>Photographer</span>, <br />
-              and much more then that{" "}
-              <span className="fas fa-smile-wink"></span>.
-            </p>
-            <p>Have a look around...</p>
-          </div>
+    <section className="services">
+      <div className="pageHero servicesHero">
+        <div id="serviceHeaderContainer">
+          <p className={addAni ? "serviceHeaderFadeAni" : ""}>Alon Fabio</p>
+          <p className={addAni ? "serviceHeaderDownAni" : ""}>Programing</p>
+          <p className={addAni ? "serviceHeaderDownAni" : ""}>Web Design</p>
+          <p className={addAni ? "serviceHeaderDownAni" : ""}>Graphic Design</p>
         </div>
       </div>
-
-      {/* Code sub section */}
-      <div className="subSection flexCenter skills" id={"aboutCodeSkills"}>
+      {/* Skill section */}
+      <div className="subSection flexCenter skills" id="servicesCodeSkills">
         <div className="container">
           <div className="subSectionHeading">
             <h1>Code</h1>
             <p>As a programmer I can offer a lot of services</p>
           </div>
-          <div className={"AboutProg"}>
-            <ul id="aboutCards">
+          <div className="servicesProg">
+            <ul id="servicesCards">
               <li className="flexCenter">
                 <fieldset className="card">
                   <legend>
@@ -184,17 +178,17 @@ function About() {
           </div>
         </div>
       </div>
-      <div id="aboutMidPic"></div>
+      <div id="servicesMidPic"></div>
       <div></div>
       {/* Style sub section */}
-      <div className="subSection flexCenter skills" id={"aboutStyleSkills"}>
+      <div className="subSection flexCenter skills" id={"servicesStyleSkills"}>
         <div className="container">
           <div className="subSectionHeading">
             <h1>Style & Design</h1>
             <p>As a Graphic designer I can offer a lot of services</p>
           </div>
-          <div className={"AboutProg"}>
-            <ul id="aboutCards">
+          <div className={"servicesProg"}>
+            <ul id="servicesCards">
               <li className="flexCenter">
                 <fieldset className="card">
                   <legend>
@@ -262,6 +256,6 @@ function About() {
       </div>
     </section>
   );
-}
+};
 
-export default About;
+export default Services;

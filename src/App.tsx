@@ -3,7 +3,7 @@ import "./styles/scss/App.scss";
 
 // Components
 import NavBar from "./components/NavBar/Navbar";
-import About from "./components/about/About";
+import Services from "./components/Services/Services";
 import Contact from "./components/contact/Contact";
 import Dox from "./components/dox/Dox";
 import Project from "./components/project/Projects";
@@ -19,7 +19,7 @@ function App() {
     <div className="App">
       <NavBar onRouteChange={onRouteChange} />
       <div className="mainContainer">
-        {route === "About" ? <About /> : null}
+        {route === "About" ? <Services /> : null}
         {route === "Dox" ? <Dox /> : null}
         {route === "Contact" ? <Contact /> : null}
         {route === "Projects" ? <Project /> : null}
