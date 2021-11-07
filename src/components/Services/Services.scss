@@ -1,6 +1,5 @@
 @import "../../styles/scss/variables";
-
-.about {
+.services {
   font-size: 1.25rem;
   span {
     color: $secund-base-color;
@@ -19,23 +18,60 @@
   .subSectionHeading {
     text-align: center;
   }
-  .aboutHero {
+  .servicesHero {
     background-image: url("../../styles/img/header-bg.jpg");
-    font-family: Arima Madurai, sans-serif;
-    display: flex;
+    background-color: $base-color-gray-15;
+    font-family: Oxygen, sans-serif;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     color: white;
+
+    #serviceHeaderContainer {
+      text-transform: uppercase;
+      padding: 1.5rem 2rem;
+      padding-top: 4rem;
+      font-size: 1.5rem;
+
+      p {
+        &:nth-child(1) {
+          font-size: 150%;
+          font-weight: bold;
+          color: $secund-base-color;
+        }
+
+        &:nth-child(2) {
+          position: relative;
+          opacity: 0;
+          animation-delay: 0.5s;
+        }
+        &:nth-child(3) {
+          position: relative;
+          opacity: 0;
+          animation-delay: 1s;
+        }
+        &:nth-child(4) {
+          position: relative;
+          opacity: 0;
+          animation-delay: 1.5s;
+        }
+      }
+    }
+    .serviceHeaderFadeAni {
+      animation: fade 0.8s ease-in forwards;
+    }
+    .serviceHeaderDownAni {
+      animation: down 1s ease-in forwards;
+    }
   }
-  .aboutTextContainer {
+  .servicesTextContainer {
     text-align: center;
     h1 {
       padding-top: 1rem;
       text-shadow: 0 0 2rem $base-color;
     }
   }
-  .AboutDescription {
+  .servicesDescription {
     padding-bottom: 10px;
     p {
       max-width: 75rem;
@@ -51,9 +87,9 @@
     span {
       text-shadow: 1px 1px rgba(35, 35, 35, 0.5);
     }
-    .AboutProg {
+    .servicesProg {
       max-width: 1100px;
-      #aboutCards {
+      #servicesCards {
         display: flex;
         flex-wrap: wrap;
         margin: 0;
@@ -121,17 +157,27 @@
   }
 }
 
+// Bigger mobile
+@media screen and (min-width: 425px) {
+  .services {
+    .servicesHero {
+      #serviceHeaderContainer {
+        padding-top: 4rem;
+        font-size: 2.5rem;
+      }
+    }
+  }
+}
 // Bigger then mobile
 @media screen and (min-width: 768px) {
-  .about {
-    .aboutHero {
+  .services {
+    .servicesHero {
       min-height: 80vh !important;
-
       background-attachment: fixed;
     }
     // subImage
-    #aboutMidPic {
-      background-image: url("../../styles/img/about/Lionel Messi.png"),
+    #servicesMidPic {
+      background-image: url("../../styles/img/Services/Lionel Messi.png"),
         url(../../styles/img/logos/BackgraundLogo.svg);
       background-color: $secund-base-color;
       background-repeat: no-repeat, repeat;
@@ -203,31 +249,16 @@
 
 // Tablet
 @media (min-width: 769px) and (max-width: 1023px) {
-  .about {
-    .aboutHero {
-      padding: 0 10px;
-      flex-direction: row;
-      justify-content: center;
-      h1 {
-        position: initial;
+  .services {
+    .servicesHero {
+      #serviceHeaderContainer {
+        padding-top: 4rem;
+        font-size: 4rem;
       }
-      .aboutTextContainer {
-        h1 {
-          font-size: 3rem;
-        }
-        p {
-          font-size: 2rem;
-        }
-      }
-      // .photoContainer {
-      //   max-height: 2.5rem;
-      //   max-width: 2.5rem;
-      //   width: auto;
-      // }
     }
     .skills {
-      .AboutProg {
-        #aboutCards {
+      .servicesProg {
+        #servicesCards {
           justify-content: space-evenly;
           li {
             max-width: 40%;
@@ -245,29 +276,21 @@
 
 // Big screen
 @media screen and (min-width: 1024px) {
-  .about {
+  .services {
     color: rgb(46, 37, 30);
     font-size: 1.5rem;
-    .aboutTextContainer {
-      h1 {
-        font-size: 3.5rem;
-      }
-      p {
-        font-size: 2.625rem;
+    .pageHero {
+      background-position-y: bottom !important;
+      #serviceHeaderContainer {
+        padding: 10vh 10vw;
+        font-size: 6rem;
       }
     }
-    // .photoContainer {
-    //   max-height: 20vw;
-    //   max-width: 20vw;
-    //   width: auto;
-    //   height: auto;
-    //   order: 2;
-    // }
 
     // Skills section
     .skills {
-      .AboutProg {
-        #aboutCards {
+      .servicesProg {
+        #servicesCards {
           li {
             flex: 1 1 300px;
             .card {
@@ -304,5 +327,25 @@
   /* change level */
   100% {
     background-color: $secund-base-color;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes down {
+  0% {
+    opacity: 0;
+    left: -300px;
+  }
+  100% {
+    opacity: 1;
+    left: 0px;
   }
 }
