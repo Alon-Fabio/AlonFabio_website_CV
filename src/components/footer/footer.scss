@@ -21,17 +21,17 @@
   }
   .closed {
     overflow: hidden;
-    transform: translateY(100%);
     opacity: 0;
     max-height: 0;
-    transition: all 0.5s linear;
+    transition: all 700ms ease-out;
+    padding: 0 !important;
+    margin: 0 !important;
   }
   .opened {
     overflow: hidden;
-    transform: translateY(0);
     opacity: 1;
-    max-height: 500px;
-    transition: all 0.5s linear;
+    max-height: 1000px;
+    transition: all 700ms ease-in;
   }
   hr {
     margin: 0.5rem 1rem;
@@ -66,12 +66,12 @@
         align-items: center;
         justify-content: center;
         margin: 0 0.125rem;
-        height: 2.5rem;
         width: 2.5rem;
         border-radius: 50%;
         background-color: $secund-base-color;
         a {
-          color: $gray-75;
+          // A white with a bit of the base color.
+          color: lighten($base-color, 58%);
         }
       }
     }
