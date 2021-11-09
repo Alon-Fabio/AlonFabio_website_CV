@@ -249,8 +249,8 @@ const Services = () => {
           </div>
         </div>
       </div>
-      <div className="subSection flexCenter" id="formSection">
-        <div className="container" id="formContainer">
+      <div className="subSection " id="formSection">
+        <div className="container " id="formContainer">
           <ContactForm />
         </div>
       </div>

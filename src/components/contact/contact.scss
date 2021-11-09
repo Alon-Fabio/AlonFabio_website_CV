@@ -1,3 +1,95 @@
+@import "../../styles/scss/variables";
+
 #Contact {
-  height: 100vh;
+  min-height: calc(100vh - 147px);
+  // background-color: $base-color-gray-15;
+  #formSection {
+    min-height: calc(100vh - 211px);
+    #formContainer {
+      flex-grow: 3;
+      text-align: center;
+      #contactForm {
+        #formMessage {
+          display: block;
+          textarea {
+            box-sizing: border-box;
+            width: 100%;
+            min-height: 10em;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 425px) {
+  #Contact {
+    min-height: calc(100vh - 147px - 1rem);
+  }
+}
+// For tablet and larger screen size
+@media screen and (min-width: 768px) {
+  #Contact {
+    min-height: calc(100vh - 147px - 1rem);
+
+    #formSection {
+      display: flex;
+      min-height: calc(100vh - 227px);
+      width: 100%;
+      background-image: url(../../styles/img/logos/NavLogo/AlonNavLogoBlue.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 200%;
+      align-items: center;
+      padding-bottom: 0;
+      #formContainer {
+        width: 100%;
+        height: fit-content;
+        Form {
+          position: relative;
+          border-radius: 1rem;
+          background-color: $gray-75;
+
+          .formInputs {
+            display: flex;
+            #IdInputs {
+              flex-grow: initial;
+            }
+            h3 {
+              font-size: 1.5rem;
+            }
+            .formSection {
+              flex-grow: 1;
+              .formInline {
+                padding: 1rem 0;
+                input {
+                  padding: 0.25rem;
+                  font-size: 1.25rem;
+                }
+              }
+
+              #formMessage {
+                display: flex;
+                padding-left: 00.5rem;
+                textarea {
+                  min-height: 15vh;
+                  padding: 00.25rem;
+                  margin-left: 0.5rem;
+                  font-size: 1.25rem;
+                }
+              }
+            }
+          }
+          #formSubmit {
+            position: absolute;
+            padding-left: 5%;
+            bottom: -30px;
+          }
+          .error {
+            padding: 0 1rem;
+          }
+        }
+      }
+    }
+  }
 }

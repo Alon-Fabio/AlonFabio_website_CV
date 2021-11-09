@@ -144,6 +144,7 @@
 
   #formSection {
     display: block;
+    text-align: center;
     #contactForm {
       #formMessage {
         display: block;
@@ -194,7 +195,7 @@
       background-repeat: no-repeat;
       background-position: center;
       background-size: 200%;
-
+      justify-content: center;
       #formContainer {
         width: 100%;
 
@@ -266,6 +267,8 @@
         }
       }
     }
+
+    //Contact Form
     #formSection {
       #formMessage {
         display: block !important;

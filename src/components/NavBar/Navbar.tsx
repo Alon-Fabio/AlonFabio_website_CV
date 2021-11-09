@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 // Style
 import "./NavBar.scss";
-import NavLogo from "../../styles/img/logos/NavLogo/NavLogo";
+import NavLogo from "../../styles/img/logos/NavLogo/NavLogo40";
 // Components
 import Burger from "../Burger/Burger";
 // hooks
@@ -63,7 +63,7 @@ const Navbar: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
             >
               Contact
             </li>
-            <li
+            {/* <li
               onClick={() => {
                 onBurgerClick();
                 onRouteChange("Dox");
@@ -78,7 +78,7 @@ const Navbar: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
               }}
             >
               Projects
-            </li>
+            </li> */}
             <li
               onClick={() => {
                 onBurgerClick();

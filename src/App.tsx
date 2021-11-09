@@ -10,6 +10,7 @@ import Project from "./components/project/Projects";
 import Footer from "./components/footer/Footer";
 
 function App() {
+  // On load go to page:
   const [route, setRoute] = useState("Services");
 
   const onRouteChange = (route: string) => {
