@@ -1,11 +1,15 @@
 import React from "react";
 import "./contact.scss";
 
+import ContactForm from "../ContactForm/ContactForm";
+
 function Contact() {
   return (
-    <div>
-      <div id="Contact">
-        <h1>Contact</h1>
+    <div id="Contact">
+      <div className="subSection pageHero flexCenter" id="formSection">
+        <div className="container" id="formContainer">
+          <ContactForm />
+        </div>
       </div>
     </div>
   );
