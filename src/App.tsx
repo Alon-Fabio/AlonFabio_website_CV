@@ -10,7 +10,7 @@ import Project from "./components/project/Projects";
 import Footer from "./components/footer/Footer";
 
 function App() {
-  const [route, setRoute] = useState("About");
+  const [route, setRoute] = useState("Services");
 
   const onRouteChange = (route: string) => {
     setRoute(route);
@@ -19,7 +19,7 @@ function App() {
     <div className="App">
       <NavBar onRouteChange={onRouteChange} />
       <div className="mainContainer">
-        {route === "About" ? <Services /> : null}
+        {route === "Services" ? <Services /> : null}
         {route === "Dox" ? <Dox /> : null}
         {route === "Contact" ? <Contact /> : null}
         {route === "Projects" ? <Project /> : null}
