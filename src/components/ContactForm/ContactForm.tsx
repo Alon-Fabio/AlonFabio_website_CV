@@ -67,8 +67,9 @@ const ContactForm = () => {
       {/* Not sure if this does anything anymore, needs to be tested in production */}
       <p style={{ visibility: "hidden", position: "absolute" }}>
         <label>Don't fill this up.</label>
-        <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" name="form-name" value="contactForm" />
       </p>
+
       {/* --------------------------------------------------------------------- */}
       <div className="formInputs">
         <div className="formSection" id="IdInputs">
