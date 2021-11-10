@@ -32,7 +32,7 @@ const ContactForm = () => {
 
   const onSubmit = (data: TContactForm) => {
     submitTimeOut(true);
-    fetch("/", {
+    fetch("https://www.alonfabio.com/pages/success", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "contact", ...data }),
@@ -40,9 +40,10 @@ const ContactForm = () => {
       .then(() => {
         console.log("Success!");
         submitTimeOut(false);
+        window.location.replace("https://www.alonfabio.com/pages/success");
       })
       .catch((error) => {
-        alert(error);
+        alert("Sorry, something most have gone wrong.. please try again.");
         submitTimeOut(false);
       });
 
