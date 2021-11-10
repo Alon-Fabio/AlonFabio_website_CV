@@ -1,4 +1,5 @@
 @import "../../styles/scss/variables";
+
 .services {
   font-size: 1.25rem;
   span {
@@ -155,6 +156,9 @@
         }
       }
     }
+    button {
+      background-color: $base-color;
+    }
   }
 }
 
@@ -213,7 +217,11 @@
               font-size: 1.5rem;
             }
             .formSection {
+              align-self: flex-start;
               flex-grow: 1;
+              #alignInputs {
+                height: 39px;
+              }
               .formInline {
                 padding: 1rem 0;
                 input {
@@ -226,7 +234,7 @@
                 display: flex;
                 padding-left: 00.5rem;
                 textarea {
-                  min-height: 15vh;
+                  min-height: 10em;
                   padding: 00.25rem;
                   margin-left: 0.5rem;
                   font-size: 1.25rem;
@@ -236,7 +244,7 @@
           }
           #formSubmit {
             position: absolute;
-            padding-left: 5%;
+            padding-left: 75%;
             bottom: -30px;
           }
           .error {
@@ -270,8 +278,17 @@
 
     //Contact Form
     #formSection {
-      #formMessage {
-        display: block !important;
+      align-self: flex-end;
+      #formContainer {
+        #contactForm {
+          .formInputs {
+            .formSection {
+              #formMessage {
+                display: block;
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -316,6 +333,10 @@
           }
         }
       }
+    }
+    //Contact Form
+    #alignInputs {
+      height: 0 !important;
     }
   }
 }

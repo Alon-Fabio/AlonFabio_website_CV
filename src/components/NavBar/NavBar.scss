@@ -9,6 +9,8 @@ nav {
   background-color: $base-color;
   padding: 10px;
   transition: padding 0.5s ease, background-color 0.5s ease;
+  border-radius: 0 0 0 99px;
+  background-color: $base-color;
   .navMain {
     display: flex;
     justify-content: space-between;
@@ -23,14 +25,17 @@ nav {
     }
     .navLinks {
       z-index: 990;
-      color: $secund-base-color;
+      color: $gray-15;
       text-transform: uppercase;
       font-weight: 400;
-      font-size: 1.5rem;
+      font-size: 1.725rem;
       letter-spacing: 0.05rem;
+
       li {
+        position: relative;
         list-style-type: none;
       }
+
       :hover {
         cursor: pointer;
         color: rgb(231, 202, 175) !important;

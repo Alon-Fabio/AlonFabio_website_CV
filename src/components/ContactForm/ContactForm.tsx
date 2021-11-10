@@ -71,6 +71,7 @@ const ContactForm = () => {
       {/* --------------------------------------------------------------------- */}
       <div className="formInputs">
         <div className="formSection" id="IdInputs">
+          <div id="alignInputs"></div>
           <div className="formInline">
             <h3>{"Name: "}</h3>
             <input

@@ -8,16 +8,17 @@
     #formContainer {
       flex-grow: 3;
       text-align: center;
-      #contactForm {
-        #formMessage {
-          display: block;
-          textarea {
-            box-sizing: border-box;
-            width: 100%;
-            min-height: 10em;
-          }
+      #formMessage {
+        display: block;
+        textarea {
+          box-sizing: border-box;
+          width: 100%;
+          min-height: 10em;
         }
       }
+    }
+    button {
+      background-color: $base-color;
     }
   }
 }
@@ -34,17 +35,17 @@
 
     #formSection {
       display: flex;
-      min-height: calc(100vh - 227px);
       width: 100%;
+      min-height: calc(100vh - 227px);
       background-image: url(../../styles/img/logos/NavLogo/AlonNavLogoBlue.svg);
       background-repeat: no-repeat;
       background-position: center;
-      background-size: 200%;
+      background-size: 400vh;
       align-items: center;
       padding-bottom: 0;
       #formContainer {
         width: 100%;
-        height: fit-content;
+        // height: fit-content;
         Form {
           position: relative;
           border-radius: 1rem;
@@ -59,9 +60,14 @@
               font-size: 1.5rem;
             }
             .formSection {
+              align-self: flex-start;
               flex-grow: 1;
+              #alignInputs {
+                height: 39px;
+              }
               .formInline {
                 padding: 1rem 0;
+
                 input {
                   padding: 0.25rem;
                   font-size: 1.25rem;
@@ -72,7 +78,7 @@
                 display: flex;
                 padding-left: 00.5rem;
                 textarea {
-                  min-height: 15vh;
+                  min-height: 10em;
                   padding: 00.25rem;
                   margin-left: 0.5rem;
                   font-size: 1.25rem;
@@ -82,11 +88,59 @@
           }
           #formSubmit {
             position: absolute;
-            padding-left: 5%;
+            padding-left: 75%;
             bottom: -30px;
           }
           .error {
             padding: 0 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+// Tablet
+@media (min-width: 769px) {
+  #Contact {
+    .services {
+      //Contact Form
+      #formSection {
+        align-self: flex-start;
+        #formContainer {
+          form {
+            .formInputs {
+              #formMessage {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// Big screen
+@media screen and (min-width: 1024px) {
+  #Contact {
+    //Contact Form
+    #alignInputs {
+      height: 0 !important;
+    }
+  }
+}
+@media (min-width: 769px) and (max-width: 1023px) {
+  #Contact
+
+    //Contact Form
+    #formSection {
+    align-self: flex-end;
+    #formContainer {
+      #contactForm {
+        .formInputs {
+          .formSection {
+            #formMessage {
+              display: block;
+            }
           }
         }
       }

@@ -9,6 +9,7 @@ import { useEventListener } from "../../hooks/useEventListener";
 
 const Navbar: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
   const NavBar = useRef<HTMLAnchorElement | null>(null);
+  const NavLi = useRef<HTMLUListElement | null>(null);
   const [navStyle, setNavStyle] = useState({
     burger: "",
     navLinks: "",
@@ -17,12 +18,22 @@ const Navbar: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
   // Fun for the eventListener
   const scrollDetect = () => {
     // Changes the NavBars background and the fill color of the SVG logo.
-    if (window.scrollY <= 20 && NavBar.current !== null) {
+    if (
+      window.scrollY <= 20 &&
+      NavBar.current !== null &&
+      NavLi.current !== null
+    ) {
       NavBar.current.classList.add("navbarTop");
+      NavLi.current.style.color = "#000";
       NavBar.current.style.fill = "#000";
     }
-    if (window.scrollY >= 20 && NavBar.current !== null) {
+    if (
+      window.scrollY >= 20 &&
+      NavBar.current !== null &&
+      NavLi.current !== null
+    ) {
       NavBar.current.classList.remove("navbarTop");
+      NavLi.current.style.color = "#F26944";
       NavBar.current.style.fill = "#F26944";
     }
   };
@@ -54,7 +65,7 @@ const Navbar: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
           <NavLogo />
         </div>
         <div className="navLinksMain">
-          <ul className={`navLinks ${navStyle.navLinks}`}>
+          <ul ref={NavLi} className={`navLinks ${navStyle.navLinks}`}>
             <li
               onClick={() => {
                 onBurgerClick();
