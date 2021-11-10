@@ -32,8 +32,8 @@ const ContactForm = () => {
 
   const onSubmit = (data: TContactForm) => {
     submitTimeOut(true);
-    fetch("/", {
-      method: "POST",
+    fetch("/pages/success", {
+      method: "GET",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "contact", ...data }),
     })
