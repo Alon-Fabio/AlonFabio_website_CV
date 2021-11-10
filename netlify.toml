@@ -2,6 +2,9 @@
   from = "/*"
   to = "/pages/success"
   status = 200
+
+  [[redirects]]
   from = "/Multitasker"
   to = "http://multitasker.alonfabio.com/"
   status = 200
+  force = true
