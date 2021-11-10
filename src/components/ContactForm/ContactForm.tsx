@@ -32,8 +32,8 @@ const ContactForm = () => {
 
   const onSubmit = (data: TContactForm) => {
     submitTimeOut(true);
-    fetch("/pages/success", {
-      method: "GET",
+    fetch("/", {
+      method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "contact", ...data }),
     })
@@ -53,7 +53,7 @@ const ContactForm = () => {
   return (
     <form
       onSubmit={handleSubmit((data) => onSubmit(data))}
-      method="post"
+      method="POST"
       id="contactForm"
       name="ContactFrom"
       noValidate={true}
@@ -67,7 +67,7 @@ const ContactForm = () => {
       {/* Not sure if this does anything anymore, needs to be tested in production */}
       <p style={{ visibility: "hidden", position: "absolute" }}>
         <label>Don't fill this up.</label>
-        <input name="bot-field" type="text"></input>
+        <input type="hidden" name="form-name" value="contact" />
       </p>
       {/* --------------------------------------------------------------------- */}
       <div className="formInputs">
