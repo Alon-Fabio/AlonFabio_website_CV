@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./styles/scss/index.scss";
 import App from "./App";
+import ModalBase from "./components/Modals/ModalBase/ModalBase";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
@@ -9,6 +10,14 @@ ReactDOM.render(
     <App />
   </React.StrictMode>,
   document.getElementById("root")
+);
+ReactDOM.render(
+  <React.StrictMode>
+    {/* TS wants to add future dependencies */}
+    {/* @ts-ignore */}
+    <ModalBase />
+  </React.StrictMode>,
+  document.getElementById("modal-root")
 );
 
 // If you want to start measuring performance in your app, pass a function

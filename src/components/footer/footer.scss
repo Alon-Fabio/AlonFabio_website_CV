@@ -8,6 +8,7 @@
   #footerForm {
     padding-top: 1rem;
     display: block;
+    text-align: center;
     #contactForm {
       #formMessage {
         display: block;
@@ -16,6 +17,9 @@
           width: 100%;
           min-height: 10em;
         }
+      }
+      button {
+        background-color: $base-color;
       }
     }
   }
@@ -52,7 +56,7 @@
       padding: 5px 10px;
       display: block;
       color: inherit;
-      font-size: 1rem;
+      font-size: 1.25rem;
       font-weight: bolder;
       transition: all 200ms ease;
     }
@@ -66,8 +70,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        // font-size: 1.25rem;
+        aspect-ratio: 1/1;
         margin: 0 0.125rem;
-        width: 2.5rem;
+        width: 3rem;
         border-radius: 50%;
         background-color: $secund-base-color;
         a {
@@ -104,6 +110,7 @@
         position: relative;
         border-radius: 1rem;
         background-color: $gray-75;
+
         .formInputs {
           display: flex;
           #IdInputs {
@@ -113,9 +120,14 @@
             font-size: 1.5rem;
           }
           .formSection {
+            align-self: flex-start;
             flex-grow: 1;
+            #alignInputs {
+              height: 39px;
+            }
             .formInline {
               padding: 1rem 0;
+
               input {
                 padding: 0.25rem;
                 font-size: 1.25rem;
@@ -124,11 +136,9 @@
 
             #formMessage {
               display: flex;
-
               padding-left: 00.5rem;
               textarea {
-                flex-grow: 3;
-                min-height: 15vh;
+                min-height: 10em;
                 padding: 00.25rem;
                 margin-left: 0.5rem;
                 font-size: 1.25rem;
@@ -138,8 +148,8 @@
         }
         #formSubmit {
           position: absolute;
-          padding-left: 5%;
-          bottom: -18px;
+          padding-left: 75%;
+          bottom: -30px;
         }
         .error {
           padding: 0 1rem;
