@@ -19,6 +19,7 @@ function App() {
   return (
     <div className="App">
       <NavBar onRouteChange={onRouteChange} />
+
       <div className="mainContainer">
         {route === "Services" ? <Services /> : null}
         {route === "Dox" ? <Dox /> : null}

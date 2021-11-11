@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./ContactForm.scss";
 
+import ModalBase from "../Modals/ModalBase/ModalBase";
+import SuccessModal from "../Modals/SuccessModal/SuccessModal";
+
 type TContactForm = {
   name: string;
   email: string;
@@ -16,6 +19,8 @@ const ContactForm = () => {
     formState: { errors },
   } = useForm<TContactForm>();
   const [disableSubmit, setDisableSubmit] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [name, setName] = useState("");
 
   const submitTimeOut = (bool: boolean) => {
     setDisableSubmit(true);
@@ -40,7 +45,8 @@ const ContactForm = () => {
       .then(() => {
         console.log("Success!");
         submitTimeOut(false);
-        window.location.replace("https://www.alonfabio.com/pages/success");
+        setName(data.name);
+        setShowModal(true);
       })
       .catch((error) => {
         alert("Sorry, something most have gone wrong.. please try again.");
@@ -55,7 +61,7 @@ const ContactForm = () => {
       onSubmit={handleSubmit((data) => onSubmit(data))}
       method="POST"
       id="contactForm"
-      name="ContactFrom"
+      name="contactFrom"
       noValidate={true}
       data-netlify="true"
       netlify-honeypot="bot-field"
@@ -151,6 +157,11 @@ const ContactForm = () => {
           Send Message
         </button>
       </div>
+      {showModal && (
+        <ModalBase setShowModal={setShowModal}>
+          <SuccessModal setShowModal={setShowModal} name={name} />
+        </ModalBase>
+      )}
     </form>
   );
 };
