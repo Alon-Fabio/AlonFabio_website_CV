@@ -61,13 +61,9 @@ const ContactForm = () => {
   return (
     <form
       onSubmit={handleSubmit((data) => onSubmit(data))}
-      method="POST"
       id="contactForm"
       name="contactForm"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
     >
-      <input type="hidden" name="form-name" value="contactForm" />
       <div id="formHading">
         <h1>Connect me</h1>
         <p>Let's make something great together</p>
@@ -147,9 +143,6 @@ const ContactForm = () => {
           {errors.message && <p className="error">{errors.message?.message}</p>}
         </div>
         <div className="clearfix"></div>
-
-        {/* <div data-netlify-recaptcha="true"></div> */}
-        {/* Add recaptcha after css configaretions  */}
       </div>
       <div className="formSection" id="formSubmit">
         <button id="sendMessageButton" disabled={disableSubmit} type="submit">
