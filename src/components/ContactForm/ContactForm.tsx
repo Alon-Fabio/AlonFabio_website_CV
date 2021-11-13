@@ -65,6 +65,7 @@ const ContactForm = () => {
       onSubmit={handleSubmit((data) => onSubmit(data))}
       id="contactForm"
       name="contactForm"
+      data-netlify="true"
     >
       <input name="form-name" value="contactForm" type="hidden" />
       <div id="formHading">
