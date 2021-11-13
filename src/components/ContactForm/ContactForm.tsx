@@ -64,15 +64,14 @@ const ContactForm = () => {
       method="POST"
       id="contactForm"
       name="contactForm"
-      noValidate={true}
       data-netlify="true"
       netlify-honeypot="bot-field"
     >
+      <input type="hidden" name="form-name" value="contactForm" />
       <div id="formHading">
         <h1>Connect me</h1>
         <p>Let's make something great together</p>
       </div>
-      <input type="hidden" name="form-name" value="contactForm" />
       <div className="formInputs">
         <div className="formSection" id="IdInputs">
           <div id="alignInputs"></div>
