@@ -26,9 +26,7 @@ const SuccessModal: React.FC<{
         <div className="modalHeader">
           <h1 className="modalTitle">Thank you {name}</h1>
         </div>
-        <div className="modalBody">
-          <p>I will answer you soon</p>
-        </div>
+        <div className="modalBody"></div>
         <div className="modalFooter">
           <button
             className="modalCloseBtn"
