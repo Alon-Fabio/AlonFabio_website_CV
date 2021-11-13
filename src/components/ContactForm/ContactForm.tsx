@@ -28,13 +28,13 @@ const ContactForm = () => {
     setTimeout(() => setDisableSubmit(bool), 5000);
   };
 
-  const encode = (data: any) => {
-    return Object.keys(data)
-      .map(
-        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
-      )
-      .join("&");
-  };
+  // const encode = (data: any) => {
+  //   return Object.keys(data)
+  //     .map(
+  //       (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+  //     )
+  //     .join("&");
+  // };
 
   const onSubmit = (data: TContactForm) => {
     submitTimeOut(true);
