@@ -28,22 +28,25 @@ const ContactForm = () => {
     setTimeout(() => setDisableSubmit(bool), 5000);
   };
 
-  // const encode = (data: any) => {
-  //   return Object.keys(data)
-  //     .map(
-  //       (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
-  //     )
-  //     .join("&");
-  // };
+  const encode = (data: any) => {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+      )
+      .join("&");
+  };
 
   const onSubmit = (data: TContactForm) => {
     submitTimeOut(true);
-    fetch("/email", {
+    fetch("/", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
-      body: new URLSearchParams(data.toString()).toString(),
+      body: encode({
+        "form-name": "contactForm",
+        data,
+      }),
     })
       .then((netData) => {
         reset();
@@ -66,6 +69,7 @@ const ContactForm = () => {
       id="contactForm"
       name="contactForm"
       data-netlify="true"
+      method="post"
     >
       <input name="form-name" value="contactForm" type="hidden" />
       <div id="formHading">
