@@ -2,16 +2,21 @@
 
 .modal {
   position: fixed;
-  background-color: rgba($gray-15, 0.8);
   inset: 0;
+  z-index: 101;
+  opacity: 0;
+
   .modalContent {
     position: relative;
     background-color: $base-color;
+    font-size: 3rem;
     border-radius: 1rem;
-    padding: 1rem;
+    padding: 2rem;
     padding-top: 3rem;
+    bottom: -100vh;
+    animation: down1 2s ease-in-out;
   }
-  .modalClose {
+  .modalCloseBtn {
     all: initial;
     font-family: sans-serif, Arial, Helvetica, sans-serif;
     cursor: pointer;
@@ -21,5 +26,27 @@
     background-color: transparent;
     top: 1rem;
     right: 1rem;
+  }
+}
+
+.modalActive {
+  opacity: 1;
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+@keyframes down1 {
+  0% {
+    bottom: 100vh;
+  }
+
+  40% {
+    bottom: 0vh;
+  }
+
+  80% {
+    bottom: 0vh;
+  }
+  100% {
+    bottom: -100vh;
   }
 }

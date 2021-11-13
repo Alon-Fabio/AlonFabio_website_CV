@@ -5,16 +5,12 @@
   span {
     color: $secund-base-color;
   }
-  .text-shadow {
-    text-shadow: 1px 1px rgb(35, 35, 35);
-  }
+
   h1 {
-    font-weight: 400;
+    font-weight: bold;
     font-size: 2rem;
   }
-  .in-view {
-    color: blueviolet;
-  }
+
   // Hero section
   .subSectionHeading {
     text-align: center;
@@ -26,7 +22,6 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    color: white;
 
     #serviceHeaderContainer {
       text-transform: uppercase;
@@ -69,7 +64,7 @@
     text-align: center;
     h1 {
       padding-top: 1rem;
-      text-shadow: 0 0 2rem $base-color;
+      font-weight: bold;
     }
   }
   .servicesDescription {
@@ -93,9 +88,11 @@
       #servicesCards {
         display: flex;
         flex-wrap: wrap;
+        align-items: flex-start;
         margin: 0;
         padding: 0;
         list-style: none;
+
         li {
           width: 100%;
           margin: 2rem;
@@ -106,6 +103,7 @@
             padding: 0;
             border: none;
             background-color: $opct-05;
+
             legend {
               text-align: right;
               padding-right: 1rem;
@@ -114,7 +112,7 @@
               }
             }
             h3 {
-              text-shadow: 1px 1px rgba(35, 35, 35, 0.5);
+              font-weight: bold;
             }
             .cardHeader {
               background-color: transparent;
@@ -134,7 +132,7 @@
               min-height: 17rem;
             }
             .cardBGGray {
-              background: linear-gradient(50deg, #38c4f2, $gray-35 80%);
+              // background: linear-gradient(50deg, #38c4f2, $gray-35 80%);
             }
           }
         }
