@@ -45,17 +45,17 @@ const ContactForm = () => {
     })
       .then(() => {
         reset();
-        console.log("Success!");
+        console.log("You're message has been sent.");
         submitTimeOut(false);
         setName(data.name);
         setShowSuccessModal(true);
       })
       .catch((error) => {
-        alert("Sorry, something most have gone wrong.. please try again.");
+        console.error(
+          "Sorry, something most have gone wrong.. please try again."
+        );
         submitTimeOut(false);
       });
-
-    console.log(encode({ "form-name": "contact", ...data }));
   };
 
   return (
@@ -72,11 +72,7 @@ const ContactForm = () => {
         <h1>Connect me</h1>
         <p>Let's make something great together</p>
       </div>
-      {/* Not sure if this does anything anymore, needs to be tested in production */}
-
       <input type="hidden" name="form-name" value="contactForm" />
-
-      {/* --------------------------------------------------------------------- */}
       <div className="formInputs">
         <div className="formSection" id="IdInputs">
           <div id="alignInputs"></div>
@@ -88,6 +84,7 @@ const ContactForm = () => {
                 maxLength: 12,
               })}
               id="name"
+              name="name"
               type="text"
               placeholder="Name"
               // value=""
@@ -152,7 +149,7 @@ const ContactForm = () => {
         </div>
         <div className="clearfix"></div>
 
-        <div data-netlify-recaptcha="true"></div>
+        {/* <div data-netlify-recaptcha="true"></div> */}
         {/* Add recaptcha after css configaretions  */}
       </div>
       <div className="formSection" id="formSubmit">

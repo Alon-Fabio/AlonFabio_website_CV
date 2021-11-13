@@ -49,11 +49,54 @@
   </head>
   <body id="body">
     <!-- A little help for the Netlify bots if you're not using a SSG -->
-    <form name="contactForm" netlify netlify-honeypot="bot-field" hidden>
-      <input type="text" name="name" />
-      <input type="phone" name="phone" />
-      <input type="email" name="email" />
-      <textarea name="message"></textarea>
+    <form
+      name="contactForm" 
+      netlify
+      netlify-honeypot="bot-field"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="contactForm" />
+      <div >
+        <div >
+          <div ></div>
+          <div c>
+            <h3></h3>
+            <input
+              name="name"
+              type="text"
+            ></input>
+          </div>
+          <div >
+            <h3></h3>
+            <input
+              name="email"
+              type="email"
+            ></input>
+          </div>
+          <div >
+            <h3></h3>
+            <input
+              name="phone"
+              type="tel"
+            ></input>
+          </div>
+        </div>
+        <div>
+          <div>
+            <h3></h3>
+            <textarea
+              name="message"
+            ></textarea>
+          </div>
+        </div>
+        <div ></div>
+        <div ></div>
+      </div>
+      <div>
+
+        </button>
+      </div>
+
     </form>
     <!--  -->
 
