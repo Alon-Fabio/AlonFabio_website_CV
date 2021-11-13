@@ -40,12 +40,14 @@ const ContactForm = () => {
     submitTimeOut(true);
     fetch("https://www.alonfabio.com/pages/success", {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contactForm", ...data }),
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+      },
+      body: encode({ ...data, "form-name": "contactForm" }),
     })
-      .then(() => {
+      .then((netData) => {
         reset();
-        console.log("You're message has been sent.");
+        console.log("You're message has been sent.", netData);
         submitTimeOut(false);
         setName(data.name);
         setShowSuccessModal(true);
@@ -64,6 +66,7 @@ const ContactForm = () => {
       id="contactForm"
       name="contactForm"
     >
+      <input name="form-name" value="contactForm" type="hidden" />
       <div id="formHading">
         <h1>Connect me</h1>
         <p>Let's make something great together</p>
