@@ -38,7 +38,7 @@ const ContactForm = () => {
 
   const onSubmit = (data: TContactForm) => {
     submitTimeOut(true);
-    fetch("https://www.alonfabio.com/pages/success", {
+    fetch("/pages/success", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
