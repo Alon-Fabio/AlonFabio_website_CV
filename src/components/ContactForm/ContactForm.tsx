@@ -38,12 +38,12 @@ const ContactForm = () => {
 
   const onSubmit = (data: TContactForm) => {
     submitTimeOut(true);
-    fetch("/pages/success", {
+    fetch("/email", {
       method: "POST",
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        "Content-Type": "application/x-www-form-urlencoded",
       },
-      body: JSON.stringify(data),
+      body: new URLSearchParams(data.toString()).toString(),
     })
       .then((netData) => {
         reset();
