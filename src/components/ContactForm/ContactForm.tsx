@@ -16,10 +16,11 @@ const ContactForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<TContactForm>();
   const [disableSubmit, setDisableSubmit] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [name, setName] = useState("");
 
   const submitTimeOut = (bool: boolean) => {
@@ -43,10 +44,11 @@ const ContactForm = () => {
       body: encode({ "form-name": "contact", ...data }),
     })
       .then(() => {
+        reset();
         console.log("Success!");
         submitTimeOut(false);
         setName(data.name);
-        setShowModal(true);
+        setShowSuccessModal(true);
       })
       .catch((error) => {
         alert("Sorry, something most have gone wrong.. please try again.");
@@ -61,7 +63,7 @@ const ContactForm = () => {
       onSubmit={handleSubmit((data) => onSubmit(data))}
       method="POST"
       id="contactForm"
-      name="contactFrom"
+      name="contactForm"
       noValidate={true}
       data-netlify="true"
       netlify-honeypot="bot-field"
@@ -90,6 +92,7 @@ const ContactForm = () => {
               id="name"
               type="text"
               placeholder="Name"
+              // value=""
             ></input>
           </div>
           {errors.name && <p className="error">{errors.name?.message}</p>}
@@ -107,6 +110,7 @@ const ContactForm = () => {
               id="email"
               type="email"
               placeholder="Email"
+              // value=""
             ></input>
           </div>
           {errors.email && <p className="error">{errors.email?.message}</p>}
@@ -123,6 +127,7 @@ const ContactForm = () => {
               id="phone"
               type="tel"
               placeholder="Phone"
+              // value={}
             ></input>
           </div>
           {errors.phone && <p className="error">{errors.phone.message}</p>}
@@ -142,26 +147,27 @@ const ContactForm = () => {
               id="message"
               placeholder="Message"
               maxLength={300}
+              // value=""
             ></textarea>
           </div>
           {errors.message && <p className="error">{errors.message?.message}</p>}
         </div>
         <div className="clearfix"></div>
 
-        {/* <div data-netlify-recaptcha="true"></div> 
-               Add recaptcha after css configaretions  */}
+        <div data-netlify-recaptcha="true"></div>
+        {/* Add recaptcha after css configaretions  */}
       </div>
       <div className="formSection" id="formSubmit">
-        <div id="success"></div>
         <button id="sendMessageButton" disabled={disableSubmit} type="submit">
           Send Message
         </button>
       </div>
-      {showModal && (
-        <ModalBase setShowModal={setShowModal}>
-          <SuccessModal setShowModal={setShowModal} name={name} />
-        </ModalBase>
-      )}
+      <ModalBase
+        setShowModal={setShowSuccessModal}
+        showModal={showSuccessModal}
+      >
+        <SuccessModal setShowModal={setShowSuccessModal} name={name} />
+      </ModalBase>
     </form>
   );
 };

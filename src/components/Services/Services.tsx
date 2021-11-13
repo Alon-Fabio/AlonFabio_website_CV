@@ -37,7 +37,7 @@ const Services = () => {
         <div className="container">
           <div className="subSectionHeading">
             <h1>Code</h1>
-            <p>As a programmer I can offer a lot of services</p>
+            <p>As a programmer, I can offer a lot of services</p>
           </div>
           <div className="servicesProg">
             <ul id="servicesCards">
@@ -93,10 +93,10 @@ const Services = () => {
                     <h3>Front-end</h3>
                   </div>
                   <div className="cardContent cardBGGray">
-                    <h5>There's no UI without you and I</h5>
+                    <h5>There's no UI without you & I</h5>
                     <p>
-                      Building an intuitive interface with a smart design is key
-                      to any and all successful products.
+                      Building an intuitive interface with smart design is key
+                      to all successful products.
                     </p>
                     <div className="cardLogos flexCenter">
                       <img src={reactLogo} alt="React.js" />
@@ -137,11 +137,11 @@ const Services = () => {
                     <h3>{"UX & UI"}</h3>
                   </div>
                   <div className="cardContent cardBGGray">
-                    <h5>UX/UI are in the eye of the customer</h5>
+                    <h5>UX/UI is in the eye of the customer</h5>
                     <p>
                       Great style and design don't just happen by themselves.
                       <br />
-                      Get your very own style and design line to make every one
+                      Get your very own style and design line to make everyone
                       recognize you!
                     </p>
                     <div className="cardLogos flexCenter">
@@ -162,7 +162,7 @@ const Services = () => {
                   <div className="cardContent cardBGGray">
                     <h5>Updating...</h5>
                     <p>
-                      Updating to TypeScript form vanilla JavaScript. Updating
+                      Updating to TypeScript from vanilla JavaScript. Updating
                       to SASS from CSS.
                     </p>
                     <p>Move your code to a cloud service.</p>
@@ -185,7 +185,7 @@ const Services = () => {
         <div className="container">
           <div className="subSectionHeading">
             <h1>Style & Design</h1>
-            <p>As a Graphic designer I can offer a lot of services</p>
+            <p>As a Graphic designer, I can offer a lot of services</p>
           </div>
           <div className={"servicesProg"}>
             <ul id="servicesCards">
@@ -200,8 +200,8 @@ const Services = () => {
                   <div className="cardContent">
                     <h5>Unique artwork</h5>
                     <p>
-                      Using adobe illustrator and more, I can creat graphics
-                      that are tailored to your product.
+                      Using Adobe Illustrator and more, I can create graphics
+                      that are custom to your product.
                     </p>
                     <div className="cardLogos flexCenter">
                       {/* <img src={illustratorLogo} alt="illustrator" /> */}
@@ -218,7 +218,7 @@ const Services = () => {
                     <h3>{"Styling"}</h3>
                   </div>
                   <div className="cardContent">
-                    <h5>You look gorgeous darling!</h5>
+                    <h5>You look ,gorgeous darling!</h5>
                     <p>
                       Developing a unique style that fits your product and will
                       be recognized immediately.
