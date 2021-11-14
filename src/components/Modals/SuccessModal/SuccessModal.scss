@@ -9,7 +9,7 @@
   .modalContent {
     position: relative;
     background-color: $base-color;
-    font-size: 3rem;
+    font-size: 1.25rem;
     border-radius: 1rem;
     padding: 2rem;
     padding-top: 3rem;
@@ -21,7 +21,7 @@
     font-family: sans-serif, Arial, Helvetica, sans-serif;
     cursor: pointer;
     position: absolute;
-    font-size: 2rem;
+    font-size: 1rem;
     color: $secund-base-color;
     background-color: transparent;
     top: 1rem;
@@ -32,6 +32,14 @@
 .modalActive {
   opacity: 1;
   transition: opacity 1s ease, transform 1s ease;
+}
+
+@media screen and (min-width: 426px) {
+  .modal {
+    .modalContent {
+      font-size: 3rem;
+    }
+  }
 }
 
 @keyframes down1 {

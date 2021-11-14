@@ -24,7 +24,7 @@ const SuccessModal: React.FC<{
     >
       <div className="modalContent">
         <div className="modalHeader">
-          <h1 className="modalTitle">Thank you {name}</h1>
+          <h1 className="modalTitle">Hi, {name}, I'll get back to you soon</h1>
         </div>
         <div className="modalBody"></div>
         <div className="modalFooter">

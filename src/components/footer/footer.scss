@@ -2,8 +2,9 @@
 
 #Footer {
   background-color: $base-color-gray-15;
-  padding: 10px;
+  padding: 1rem;
   color: $gray-15;
+
   // Contact Form
   #footerForm {
     padding-top: 1rem;
@@ -56,7 +57,7 @@
       padding: 5px 10px;
       display: block;
       color: inherit;
-      font-size: 1.25rem;
+      font-size: 1rem;
       font-weight: bolder;
       transition: all 200ms ease;
     }
@@ -100,6 +101,9 @@
     }
     #FooterLinks {
       justify-content: flex-start;
+      button {
+        font-size: 1.25rem;
+      }
     }
     // Connect Form
     #footerForm {

@@ -2,8 +2,8 @@
 
 #Contact {
   min-height: calc(100vh - 147px);
+  // background-color: $base-color-gray-15;
   #formSection {
-    // Contact Form
     min-height: calc(100vh - 211px);
     #formContainer {
       flex-grow: 3;
@@ -31,7 +31,7 @@
 // For tablet and larger screen size
 @media screen and (min-width: 768px) {
   #Contact {
-    min-height: calc(100vh - 147px - 1rem);
+    min-height: calc(100vh - 147px - 2rem);
 
     #formSection {
       display: flex;
