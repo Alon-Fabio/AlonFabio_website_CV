@@ -29,6 +29,14 @@ const ContactForm = () => {
   };
 
   const encode = (data: any) => {
+    console.log(
+      data,
+      Object.keys(data)
+        .map(
+          (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+        )
+        .join("&")
+    );
     return Object.keys(data)
       .map(
         (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
@@ -36,7 +44,8 @@ const ContactForm = () => {
       .join("&");
   };
 
-  const onSubmit = (data: TContactForm) => {
+  const onSubmit = (data: TContactForm, e: any) => {
+    e.preventDefault();
     submitTimeOut(true);
     fetch("/", {
       method: "POST",
@@ -50,7 +59,7 @@ const ContactForm = () => {
     })
       .then((netData) => {
         reset();
-        console.log("You're message has been sent.", netData);
+        console.log("You're message has been sent.");
         submitTimeOut(false);
         setName(data.name);
         setShowSuccessModal(true);
@@ -65,7 +74,7 @@ const ContactForm = () => {
 
   return (
     <form
-      onSubmit={handleSubmit((data) => onSubmit(data))}
+      onSubmit={handleSubmit((data, e) => onSubmit(data, e))}
       id="contactForm"
       name="contactForm"
       data-netlify="true"
