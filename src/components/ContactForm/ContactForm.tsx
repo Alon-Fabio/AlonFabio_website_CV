@@ -51,7 +51,7 @@ const ContactForm = () => {
     })
       .then((netData) => {
         reset();
-        console.log("You're message has been sent.");
+        console.log("Hi there, your message has been sent.");
         submitTimeOut(false);
         setName(data.name);
         setShowSuccessModal(true);
