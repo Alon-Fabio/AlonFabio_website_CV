@@ -14,8 +14,7 @@ const Footer: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
             Contact
           </button>
 
-          <button onClick={() => onRouteChange("Dox")}>Dox</button>
-          <button onClick={() => onRouteChange("Projects")}>Projects</button>
+         
           <button onClick={() => onRouteChange("Services")}>Services</button>
         </div>
         <div
