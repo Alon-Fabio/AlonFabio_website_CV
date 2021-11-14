@@ -45,7 +45,7 @@ const ContactForm = () => {
       },
       body: encode({
         "form-name": "contactForm",
-        data,
+        ...data,
       }),
     })
       .then((netData) => {
