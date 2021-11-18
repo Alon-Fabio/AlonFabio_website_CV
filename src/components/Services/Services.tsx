@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 // components
 import ContactForm from "../ContactForm/ContactForm";
+import ScrollDown from "../AddOnsCom/ScrollDown/ScrollDown";
 // Style:
 import "./Services.scss";
 // logos:
@@ -31,6 +32,7 @@ const Services = () => {
           <p className={addAni ? "serviceHeaderDownAni" : ""}>Web Design</p>
           <p className={addAni ? "serviceHeaderDownAni" : ""}>Graphic Design</p>
         </div>
+        <ScrollDown />
       </div>
       {/* Skill section */}
       <div className="subSection flexCenter skills" id="servicesCodeSkills">
