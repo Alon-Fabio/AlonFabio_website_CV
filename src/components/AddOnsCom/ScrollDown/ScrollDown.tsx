@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { useEventListener } from "../../../hooks/useEventListener";
 
@@ -8,6 +8,16 @@ import scrollGif from "../../../styles/img/gif/scrollDown.gif";
 
 function ScrollDown() {
   const ScrollRef = useRef<HTMLDivElement | null>(null);
+  const [onLoad, setOnLoad] = useState("");
+
+  const onLoadTimeOut = () => {
+    setTimeout(() => {
+      setOnLoad("onLoad");
+    }, 2500);
+  };
+  useEffect(() => {
+    onLoadTimeOut();
+  }, []);
   const scrollDetect = () => {
     if (window.scrollY <= 20 && ScrollRef.current !== null) {
       ScrollRef.current.classList.remove("removeScroll");
@@ -19,7 +29,11 @@ function ScrollDown() {
 
   useEventListener({ type: "scroll", listener: scrollDetect });
   return (
-    <div id="ScrollDown" ref={ScrollRef}>
+    <div
+      id="ScrollDown"
+      ref={ScrollRef}
+      className={onLoad ? "onLoad" : undefined}
+    >
       <img src={scrollGif} alt="Scroll down" />
     </div>
   );

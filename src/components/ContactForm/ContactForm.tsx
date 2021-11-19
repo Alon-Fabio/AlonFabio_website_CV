@@ -74,7 +74,7 @@ const ContactForm = () => {
     >
       <input name="form-name" value="contactForm" type="hidden" />
       <div id="formHading">
-        <h1>Connect me</h1>
+        <h1>Connect with me</h1>
         <p>Let's make something great together</p>
       </div>
       <div className="formInputs">
@@ -90,7 +90,6 @@ const ContactForm = () => {
               id="name"
               name="name"
               type="text"
-              placeholder="Name"
               // value=""
             ></input>
           </div>
@@ -108,7 +107,6 @@ const ContactForm = () => {
               name="email"
               id="email"
               type="email"
-              placeholder="Email"
               // value=""
             ></input>
           </div>
@@ -125,7 +123,6 @@ const ContactForm = () => {
               name="phone"
               id="phone"
               type="tel"
-              placeholder="Phone"
               // value={}
             ></input>
           </div>
@@ -144,7 +141,6 @@ const ContactForm = () => {
               })}
               name="message"
               id="message"
-              placeholder="Message"
               maxLength={300}
               // value=""
             ></textarea>
