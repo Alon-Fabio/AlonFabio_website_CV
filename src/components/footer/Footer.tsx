@@ -14,7 +14,6 @@ const Footer: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
             Contact
           </button>
 
-         
           <button onClick={() => onRouteChange("Services")}>Services</button>
         </div>
         <div
@@ -26,13 +25,13 @@ const Footer: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
         <hr />
         <div id="FooterBottom" className="flexCenter">
           <div id="footerIconDiv">
-            {/* Checkout the 'target="_blank"' problem that pops up if you don't add the 'rel="noreferrer"'*/}
+            {/* Checkout the 'target="_blank"' problem that pops up if you don't add the 'rel="noreferrer nofollow"'*/}
 
             <div className="FooterLinkIcon">
               <a
                 href="https://www.linkedin.com/in/alon-fabio/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer nofollow"
               >
                 <i className="fab fa-linkedin-in fa-lg"></i>
               </a>
@@ -41,7 +40,7 @@ const Footer: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
               <a
                 href="https://github.com/alon-fabio"
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer nofollow"
               >
                 <i className="fab fa-github fa-lg"></i>
               </a>
@@ -50,7 +49,7 @@ const Footer: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
               <a
                 href="https://www.instagram.com/alonfabio_photography/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer nofollow"
               >
                 <i className="fab fa-instagram fa-lg"></i>
               </a>

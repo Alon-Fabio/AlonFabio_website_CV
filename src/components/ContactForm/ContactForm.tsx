@@ -74,7 +74,7 @@ const ContactForm = () => {
     >
       <input name="form-name" value="contactForm" type="hidden" />
       <div id="formHading">
-        <h1>Connect with me</h1>
+        <h1>Contact Alon</h1>
         <p>Let's make something great together</p>
       </div>
       <div className="formInputs">
@@ -84,12 +84,13 @@ const ContactForm = () => {
             <h3>{"Name: "}</h3>
             <input
               {...register("name", {
-                required: "Please enter a name",
+                required: "Please write your name",
                 maxLength: 12,
               })}
               id="name"
               name="name"
               type="text"
+              // placeholder="What's my name again?"
               // value=""
             ></input>
           </div>
@@ -98,7 +99,7 @@ const ContactForm = () => {
             <h3>{"Email: "}</h3>
             <input
               {...register("email", {
-                required: "Please enter an Email",
+                required: "Write your Email, I promise it won't be misused.",
                 pattern: {
                   value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i,
                   message: "Something is not right with your Email..",
@@ -116,7 +117,8 @@ const ContactForm = () => {
 
             <input
               {...register("phone", {
-                required: "Please enter a phone number",
+                required:
+                  "Write your phone number, I promise it won't be misused.",
 
                 valueAsNumber: true,
               })}
@@ -134,8 +136,7 @@ const ContactForm = () => {
 
             <textarea
               {...register("message", {
-                required:
-                  "Please, write if only the reason that your leaving your contact",
+                required: "At least write the topic/s you are interested in.",
 
                 maxLength: 300,
               })}
@@ -145,7 +146,11 @@ const ContactForm = () => {
               // value=""
             ></textarea>
           </div>
-          {errors.message && <p className="error">{errors.message?.message}</p>}
+          {errors.message && (
+            <p className="error" style={{ margin: "0 auto" }}>
+              {errors.message?.message}
+            </p>
+          )}
         </div>
         <div className="clearfix"></div>
       </div>
