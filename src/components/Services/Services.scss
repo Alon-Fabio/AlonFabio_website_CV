@@ -221,7 +221,7 @@
                 height: 39px;
               }
               .formInline {
-                padding: 1rem 0;
+                // padding: 1rem 0;
                 input {
                   padding: 0.25rem;
                   font-size: 1.25rem;
@@ -246,7 +246,8 @@
             bottom: -30px;
           }
           .error {
-            padding: 0 1rem;
+            // padding: 0 1rem;
+            // position: absolute;
           }
         }
       }
@@ -276,7 +277,6 @@
 
     //Contact Form
     #formSection {
-      align-self: flex-end;
       #formContainer {
         #contactForm {
           .formInputs {

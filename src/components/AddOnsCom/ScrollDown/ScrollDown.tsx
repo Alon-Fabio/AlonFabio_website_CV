@@ -11,8 +11,11 @@ function ScrollDown() {
   const [onLoad, setOnLoad] = useState("");
 
   const onLoadTimeOut = () => {
+    console.log(window.scrollY);
     setTimeout(() => {
-      setOnLoad("onLoad");
+      if (window.scrollY <= 20) {
+        setOnLoad("onLoad");
+      }
     }, 2500);
   };
   useEffect(() => {
@@ -23,7 +26,7 @@ function ScrollDown() {
       ScrollRef.current.classList.remove("removeScroll");
     }
     if (window.scrollY >= 20 && ScrollRef.current !== null) {
-      ScrollRef.current.classList.add("removeScroll");
+      ScrollRef.current.classList.add("removeScroll", "onLoad");
     }
   };
 

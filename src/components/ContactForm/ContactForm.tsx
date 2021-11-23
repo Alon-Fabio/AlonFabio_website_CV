@@ -94,7 +94,7 @@ const ContactForm = () => {
               // value=""
             ></input>
           </div>
-          {errors.name && <p className="error">{errors.name?.message}</p>}
+          <p className="error">{errors.name && errors.name?.message}</p>
           <div className="formInline">
             <h3>{"Email: "}</h3>
             <input
@@ -111,7 +111,8 @@ const ContactForm = () => {
               // value=""
             ></input>
           </div>
-          {errors.email && <p className="error">{errors.email?.message}</p>}
+          <p className="error">{errors.email && errors.email?.message}</p>
+
           <div className="formInline">
             <h3>{"Phone: "}</h3>
 
@@ -128,7 +129,8 @@ const ContactForm = () => {
               // value={}
             ></input>
           </div>
-          {errors.phone && <p className="error">{errors.phone.message}</p>}
+
+          <p className="error">{errors.phone && errors.phone?.message}</p>
         </div>
         <div className="formSection">
           <div className="formInline" id="formMessage">
@@ -146,11 +148,8 @@ const ContactForm = () => {
               // value=""
             ></textarea>
           </div>
-          {errors.message && (
-            <p className="error" style={{ margin: "0 auto" }}>
-              {errors.message?.message}
-            </p>
-          )}
+
+          <p className="error">{errors.message && errors.message?.message}</p>
         </div>
         <div className="clearfix"></div>
       </div>
