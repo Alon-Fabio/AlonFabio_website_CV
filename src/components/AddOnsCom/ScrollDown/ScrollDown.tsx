@@ -11,7 +11,6 @@ function ScrollDown() {
   const [onLoad, setOnLoad] = useState("");
 
   const onLoadTimeOut = () => {
-    console.log(window.scrollY);
     setTimeout(() => {
       if (window.scrollY <= 20) {
         setOnLoad("onLoad");

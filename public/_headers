@@ -1,13 +1,4 @@
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
-  Content-Security-Policy: default-src 'self'; script-src
-  https://use.fontawesome.com
-  https://kit.fontawesome.com;
-style-src
-  *.fontawesome.com;
-font-src
-  data:
-  *.fontawesome.com;
-connect-src
-  *.fontawesome.com;
+  Content-Security-Policy: default-src 'self'; script-src https://use.fontawesome.com https://kit.fontawesome.com; style-src *.fontawesome.com; font-src data: *.fontawesome.com; connect-src *.fontawesome.com;
