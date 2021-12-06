@@ -1,4 +1,4 @@
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
-  Content-Security-Policy: default-src 'self';
+  Content-Security-Policy: default-src 'self'; script-src https://kit.fontawesome.com https://googletagmanager.com https://fonts.googleapis.com;
