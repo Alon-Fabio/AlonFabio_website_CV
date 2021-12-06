@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 // components
 import ContactForm from "../ContactForm/ContactForm";
 import ScrollDown from "../AddOnsCom/ScrollDown/ScrollDown";
@@ -19,18 +19,14 @@ import HTML5Logo from "../../styles/img/logos/servicesLogos/HTML5.png";
 // import illustratorLogo from "../../styles/img/logos/servicesLogos/Adobe_illustrator.png";
 
 const Services = () => {
-  const [addAni, setAddAni] = useState(false);
-  useEffect(() => {
-    setAddAni(true);
-  }, []);
   return (
     <section className="services">
       <div className="pageHero servicesHero">
         <div id="serviceHeaderContainer">
-          <p className={addAni ? "serviceHeaderFadeAni" : ""}>Alon Fabio</p>
-          <p className={addAni ? "serviceHeaderDownAni" : ""}>Programing</p>
-          <p className={addAni ? "serviceHeaderDownAni" : ""}>Web Design</p>
-          <p className={addAni ? "serviceHeaderDownAni" : ""}>Graphic Design</p>
+          <p className={"serviceHeaderDownAni"}>Alon Fabio</p>
+          <p className={"serviceHeaderDownAni"}>Programing</p>
+          <p className={"serviceHeaderDownAni"}>Web Design</p>
+          <p className={"serviceHeaderDownAni"}>Graphic Design</p>
         </div>
         <ScrollDown />
       </div>

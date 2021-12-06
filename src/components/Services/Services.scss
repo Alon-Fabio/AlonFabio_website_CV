@@ -31,6 +31,7 @@
 
       p {
         &:nth-child(1) {
+          position: relative;
           font-size: 150%;
           font-weight: bold;
           color: $secund-base-color;
@@ -53,11 +54,10 @@
         }
       }
     }
-    .serviceHeaderFadeAni {
-      animation: fade 0.8s ease-in forwards;
-    }
+
     .serviceHeaderDownAni {
-      animation: down 1s ease-in forwards;
+      animation: down 1s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        fade 0.8s ease-in forwards;
     }
   }
   .servicesTextContainer {
@@ -130,9 +130,6 @@
             }
             .cardContent {
               min-height: 17rem;
-            }
-            .cardBGGray {
-              // background: linear-gradient(50deg, #38c4f2, $gray-35 80%);
             }
           }
         }
@@ -245,10 +242,6 @@
             padding-left: 75%;
             bottom: -30px;
           }
-          .error {
-            // padding: 0 1rem;
-            // position: absolute;
-          }
         }
       }
     }
@@ -338,19 +331,8 @@
     }
   }
 }
-@media screen and (min-width: 1980px) {
-}
+
 // Animations
-@keyframes progressAni {
-  0% {
-    width: 5%;
-    background-color: gray;
-  }
-  /* change level */
-  100% {
-    background-color: $secund-base-color;
-  }
-}
 
 @keyframes fade {
   0% {
