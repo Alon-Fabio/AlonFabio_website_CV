@@ -1,4 +1,4 @@
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
-  Content-Security-Policy: default-src 'self'; script-src https://use.fontawesome.com https://kit.fontawesome.com  https://googletagmanager.com https://fonts.googleapis.com 'self' fonts.googleapis.com; style-src *.fontawesome.com; font-src  fonts.gstatic.com data: *.fontawesome.com; connect-src *.fontawesome.com;
+ 
