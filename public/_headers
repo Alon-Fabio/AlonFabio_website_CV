@@ -2,4 +2,4 @@
   X-Frame-Options: SAMEORIGIN
   X-XSS-Protection: 1; mode=block
   X-Content-Type-Options: nosniff
-  Content-Security-Policy: default-src 'self' *.fontawesome.com fontawesome.com ; style-src 'unsafe-inline' googleapis.com *.googleapis.com *.fontawesome.com; font-src 'unsafe-inline' data: *.fontawesome.com; connect-src 'unsafe-inline' *.fontawesome.com;
+  Content-Security-Policy: default-src 'self' 'unsafe-inline' *.fontawesome.com fontawesome.com ; style-src 'self' 'unsafe-inline' googleapis.com *.googleapis.com *.fontawesome.com; font-src 'unsafe-inline' data: *.fontawesome.com; connect-src 'unsafe-inline' *.fontawesome.com;
