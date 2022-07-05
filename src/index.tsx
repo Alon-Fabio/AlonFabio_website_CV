@@ -4,6 +4,15 @@ import "./styles/scss/index.scss";
 import App from "./App";
 import ModalBase from "./components/Modals/ModalBase/ModalBase";
 import reportWebVitals from "./reportWebVitals";
+// import { registerRoute } from "workbox-routing";
+// import { CacheFirst } from "workbox-strategies";
+
+// registerRoute(
+//   "/",
+//   new CacheFirst({
+//     cacheName: "AlonFabioCache",
+//   })
+// );
 
 ReactDOM.render(
   <React.StrictMode>
