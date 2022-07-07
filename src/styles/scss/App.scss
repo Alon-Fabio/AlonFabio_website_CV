@@ -1,6 +1,20 @@
 @import "elements.scss";
+
+// Enables Parallax Scrolling. This will make the App be the scrolling element instead of the body.
+// Will cause problems with 'window.scroll` and element with fixed, sticky, absolute position.
+#scrollingPXcon {
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  perspective-origin: 49.5% 36%;
+  perspective: 1000px;
+}
+
 .App {
   // height: 150vh;
+  .perspective3d {
+    transform-style: preserve-3d; /* Enables the 3D perspective no the children of this container. */
+  }
   .mainContainer {
     position: relative;
   }

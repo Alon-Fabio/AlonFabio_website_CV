@@ -20,8 +20,11 @@ import HTML5Logo from "../../styles/img/logos/servicesLogos/HTML5.png";
 
 const Services = () => {
   return (
-    <section className="services">
-      <div className="pageHero servicesHero">
+    <section className="services perspective3d">
+      <div className="pageHero servicesHero ParallaxContainer perspective3d">
+        <div id="ParallaxBG" className="ParallaxElement"></div>
+        <div id="ParallaxBohke" className="ParallaxElement"></div>
+        <div id="parallaxClover" className="ParallaxElement"></div>
         <div id="serviceHeaderContainer">
           <p className={"serviceHeaderDownAni"}>Alon Fabio</p>
           <p className={"serviceHeaderDownAni"}>Programing</p>

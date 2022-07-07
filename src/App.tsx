@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./styles/scss/App.scss";
 
 // Components
@@ -10,6 +10,7 @@ import Project from "./components/project/Projects";
 import Footer from "./components/footer/Footer";
 
 function App() {
+  const scrollPXref = useRef<HTMLDivElement>(null);
   // On load go to page:
   const [route, setRoute] = useState("Services");
 
@@ -17,10 +18,10 @@ function App() {
     setRoute(route);
   };
   return (
-    <div className="App">
-      <NavBar onRouteChange={onRouteChange} />
+    <div className="App" id="scrollingPXcon" ref={scrollPXref}>
+      <NavBar onRouteChange={onRouteChange} scrollRef={scrollPXref} />
 
-      <div className="mainContainer">
+      <div className="mainContainer perspective3d">
         {route === "Services" ? <Services /> : null}
         {route === "Dox" ? <Dox /> : null}
         {route === "Contact" ? <Contact /> : null}

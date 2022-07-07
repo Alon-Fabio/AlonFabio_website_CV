@@ -2,9 +2,10 @@
 
 nav {
   z-index: 10;
-  top: 0;
+  inset: 0 15px auto 0;
+
   display: block;
-  position: fixed;
+  position: sticky;
   width: 100%;
   background-color: $base-color;
   padding: 1rem 0;

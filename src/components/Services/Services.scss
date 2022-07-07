@@ -12,22 +12,57 @@
   }
 
   // Hero section
+  .ParallaxContainer {
+    position: relative;
+    z-index: -1;
+  }
   .subSectionHeading {
     text-align: center;
   }
   .servicesHero {
-    background-image: url("../../styles/img/header-bg.jpg");
-    background-color: $base-color-gray-15;
+    position: relative;
     font-family: Oxygen, sans-serif;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    backface-visibility: visible;
+
+    .ParallaxElement {
+      position: absolute;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+      z-index: -1;
+    }
+
+    #ParallaxBG {
+      background-image: url("../../styles/img/ServiceHero/BlueSky-min.jpg");
+      transform: translateZ(-1000px) scale(2.3);
+    }
+
+    #ParallaxBohke {
+      background-image: url("../../styles/img/ServiceHero/Bohke.png");
+      background-position-x: left;
+      background-position-y: center;
+      opacity: 0.4;
+      backface-visibility: visible;
+      transform: translateZ(200px);
+    }
+
+    #parallaxClover {
+      background-image: url("../../styles/img/ServiceHero/Clover.png");
+      transform: translateZ(-200px) scale(1.2);
+    }
 
     #serviceHeaderContainer {
       text-transform: uppercase;
       padding: 1.5rem 2rem;
       padding-top: 4rem;
       font-size: 1.5rem;
+      background-color: transparent;
 
       p {
         &:nth-child(1) {
