@@ -21,12 +21,9 @@ const Navbar: React.FC<{
   // Fun for the eventListener
   const scrollDetect = () => {
     const scrollYTop = scrollRef.current?.scrollTop;
-    console.log("trigger");
     // Changes the NavBars background and the fill color of the SVG logo.
     if (typeof scrollYTop !== "number") return;
-    console.log("trigger number");
     if (scrollYTop <= 20 && NavBar.current !== null && NavLi.current !== null) {
-      console.log("trigger end");
       NavBar.current.classList.add("navbarTop");
       NavLi.current.style.color = "#000";
       NavBar.current.style.fill = "#000";

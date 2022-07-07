@@ -1,11 +1,17 @@
 @import "../../styles/scss/variables.scss";
 
+header {
+  position: sticky;
+  inset: 0 15px auto 0;
+  z-index: 99;
+}
+
 nav {
   z-index: 10;
+  position: absolute;
+  z-index: 1030;
   inset: 0 15px auto 0;
-
   display: block;
-  position: sticky;
   width: 100%;
   background-color: $base-color;
   padding: 1rem 0;

@@ -41,6 +41,7 @@
     #ParallaxBG {
       background-image: url("../../styles/img/ServiceHero/BlueSky-min.jpg");
       transform: translateZ(-1000px) scale(2.3);
+      background-color: $base-color;
     }
 
     #ParallaxBohke {

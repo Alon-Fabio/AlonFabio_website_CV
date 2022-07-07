@@ -14,12 +14,27 @@ function App() {
   // On load go to page:
   const [route, setRoute] = useState("Services");
 
-  const onRouteChange = (route: string) => {
-    setRoute(route);
+  const onRouteChange = async (route: string) => {
+    switch (route) {
+      case "Services":
+        await setRoute("Services");
+        await document?.getElementById("servicesCodeSkills")?.scrollIntoView();
+        break;
+      case "Contact":
+        await setRoute("Contact");
+        await document?.getElementById("formSection")?.scrollIntoView();
+        break;
+
+      default:
+        setRoute("Services");
+    }
   };
+
   return (
     <div className="App" id="scrollingPXcon" ref={scrollPXref}>
-      <NavBar onRouteChange={onRouteChange} scrollRef={scrollPXref} />
+      <header>
+        <NavBar onRouteChange={onRouteChange} scrollRef={scrollPXref} />
+      </header>
 
       <div className="mainContainer perspective3d">
         {route === "Services" ? <Services /> : null}

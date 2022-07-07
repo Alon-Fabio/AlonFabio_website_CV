@@ -6,12 +6,13 @@
   height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
+  scroll-behavior: smooth;
   perspective-origin: 49.5% 36%;
   perspective: 1000px;
 }
 
 .App {
-  // height: 150vh;
+  height: 100%;
   .perspective3d {
     transform-style: preserve-3d; /* Enables the 3D perspective no the children of this container. */
   }
