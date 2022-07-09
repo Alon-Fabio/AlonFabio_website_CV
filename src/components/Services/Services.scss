@@ -33,6 +33,7 @@
       background-size: cover;
       background-position: center;
       justify-content: center;
+      background-clip: content-box; // Prevents clipping of other elements showing up on this effect.
       height: 100%;
       width: 100%;
       z-index: -1;
