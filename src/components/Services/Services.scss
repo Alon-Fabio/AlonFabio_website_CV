@@ -129,10 +129,13 @@
         margin: 0;
         padding: 0;
         list-style: none;
-
+        ul {
+          padding: 2rem;
+        }
         li {
           width: 100%;
           margin: 2rem;
+          transform-style: preserve-3d;
           fieldset {
             position: relative;
             width: 100%;
@@ -140,6 +143,7 @@
             padding: 0;
             border: none;
             background-color: $opct-05;
+            transform: translateZ(80px) scale(0.9);
 
             legend {
               text-align: right;
@@ -340,13 +344,8 @@
       .servicesProg {
         #servicesCards {
           li {
-            flex: 1 1 300px;
-            .card {
-              margin: 3rem;
-              .cardContent {
-                height: 100%;
-              }
-            }
+            flex: 1 1 25%;
+
             fieldset {
               h3 {
                 font-size: 2rem;

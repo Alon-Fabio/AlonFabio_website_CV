@@ -34,14 +34,17 @@ const Services = () => {
         <ScrollDown />
       </div>
       {/* Skill section */}
-      <div className="subSection flexCenter skills" id="servicesCodeSkills">
-        <div className="container">
+      <div
+        className="subSection flexCenter skills perspective3d"
+        id="servicesCodeSkills"
+      >
+        <div className="container perspective3d">
           <div className="subSectionHeading">
             <h1>Alon's Code services</h1>
             <p>As a programmer, I can offer a lot of services</p>
           </div>
-          <div className="servicesProg">
-            <ul id="servicesCards">
+          <div className="servicesProg perspective3d">
+            <ul id="servicesCards" className="perspective3d">
               <li className="flexCenter">
                 <fieldset className="card">
                   <legend>
@@ -182,14 +185,17 @@ const Services = () => {
       <div id="servicesMidPic"></div>
       <div></div>
       {/* Style sub section */}
-      <div className="subSection flexCenter skills" id={"servicesStyleSkills"}>
-        <div className="container">
+      <div
+        className="subSection flexCenter skills perspective3d"
+        id={"servicesStyleSkills"}
+      >
+        <div className="container perspective3d">
           <div className="subSectionHeading">
             <h1>Alon's Style & Design</h1>
             <p>As a Graphic designer, I can offer a lot of services</p>
           </div>
-          <div className={"servicesProg"}>
-            <ul id="servicesCards">
+          <div className="servicesProg perspective3d">
+            <ul id="servicesCards" className="perspective3d">
               <li className="flexCenter">
                 <fieldset className="card">
                   <legend>
