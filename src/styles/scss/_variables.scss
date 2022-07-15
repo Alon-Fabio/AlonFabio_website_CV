@@ -1,0 +1,23 @@
+// Colors
+$base-color: hsla(208, 50%, 31%, 1) !default; // #275176 rgb(39, 81, 118)
+$base-color-rgb: rgb(39, 81, 118) !default; // #275176 rgb(39, 81, 118)
+$base-color-gray-15: hsla(208, 40%, 60%, 1); // #43505b rgba(67, 80, 91, 1)
+$gray-15: hsla(208, 0%, 15%, 1); // #404040 rgba(64, 64, 64, 1)
+$gray-24: hsla(208, 0%, 25%, 1); // #404040 rgba(64, 64, 64, 1)
+$gray-35: hsla(208, 0%, 31%, 1); // #4f4f4f rgba(79, 79, 79, 1)
+$gray-65: hsla(208, 0%, 65%, 1); // #a6a6a6 rgba(166, 166, 166, 1)
+$gray-75: hsla(208, 0%, 75%, 1); // #BFBFBF rgba(191, 191, 191, 1)
+$opct-01: hsla(0, 0%, 100%, 0.1); // #ffffff,0.1 rgba(255, 255, 255, 0.1)
+$opct-025: hsla(0, 0%, 100%, 0.25); // #ffffff,0.25 rgba(255, 255, 255, 0.25)
+$opct-05: hsla(0, 0%, 100%, 0.5); // #ffffff,0.5 rgba(255, 255, 255, 0.5)
+$secund-base-color: hsl(12, 86%, 60%) !default; // #F26944 rgb(242, 105, 68)
+$secund-base-FS: hsl(12, 100%, 45%) !default; // #ee4111 rgb(238, 65, 17)
+$secund-base-color-opposite: hsl(193, 87, 61); // #2596be rgba(68, 205, 242, 1
+
+// Fonts
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//   font-family: "Arima Madurai", cursive; weight 100/400
+@import url("https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@100;400&display=swap");
+
+//   font-family: Oxygen;
+@import url("https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@100&family=Oxygen:wght@300&display=swap");

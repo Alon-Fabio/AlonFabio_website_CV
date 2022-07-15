@@ -1,0 +1,85 @@
+@import "../../styles/scss/variables";
+
+* {
+  margin: 0;
+}
+
+body {
+  scroll-behavior: smooth;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Oxygen, "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif, "Oxygen",
+    "Segoe UI", "Roboto";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  .App {
+    .mainContainer {
+      .pageHero {
+        // A setup to start every page with a background and top.
+        padding-top: 64px;
+        min-height: calc(60vh - 64px);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      .subSection:nth-child(even) {
+        background-color: $base-color-gray-15;
+      }
+      .subSection:nth-child(odd) {
+        background-color: lighten($base-color-gray-15, 15);
+      }
+    }
+  }
+  .flexCenter {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Arima Madurai", sans-serif;
+  font-weight: 400;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+// Tablet
+// @media (min-width: 768px) and (max-width: 1024px) {
+// }
+
+// Tablet and larger
+@media screen and (min-width: 768px) {
+  body {
+    .App {
+      .mainContainer {
+        .container {
+          max-width: 1100px;
+          margin: 1.875rem;
+          padding: 0.625rem;
+          border-radius: 1rem;
+          background-color: $opct-05;
+        }
+      }
+    }
+  }
+}
+
+// Big screen
+@media screen and (min-width: 1024px) {
+  body {
+    .App {
+      .subSection {
+        padding: 10rem 0;
+      }
+    }
+  }
+}

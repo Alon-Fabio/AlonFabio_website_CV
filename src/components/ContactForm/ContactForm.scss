@@ -1,0 +1,45 @@
+@import "../../styles/scss/variables";
+
+#contactForm {
+  padding: 2rem;
+  #formHading {
+    padding-bottom: 0.5rem;
+  }
+  .formSection {
+    button:disabled {
+      background-color: $gray-35;
+      transition: background-color 200ms ease-in-out;
+    }
+    .formInline {
+      display: flex;
+      // width: 400px;
+      justify-content: space-between;
+      padding: 0.125rem;
+      input {
+        width: 75%;
+      }
+    }
+
+    #formMessage {
+      width: initial;
+      textarea {
+        resize: none;
+      }
+    }
+    .error {
+      margin: 0 auto;
+      text-align: left;
+      // height: 1rem;
+      font-size: 1rem;
+      // padding-bottom: 0.25rem;
+      max-width: 400px;
+      &:empty::before {
+        content: "";
+        display: inline-block;
+      }
+    }
+  }
+  .clearfix {
+    position: absolute;
+  }
+}

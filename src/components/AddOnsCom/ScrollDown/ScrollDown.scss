@@ -1,0 +1,38 @@
+#ScrollDown {
+  display: none;
+}
+
+@media screen and (min-width: 426px) {
+  #ScrollDown {
+    display: initial;
+    position: fixed;
+    inset: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+    img {
+      position: absolute;
+      width: 10vw;
+      max-width: 100px;
+      right: 1%;
+      margin-top: 20%;
+      animation: scrollDown 1.8s ease-in-out infinite alternate;
+    }
+  }
+  .removeScroll {
+    display: none !important;
+  }
+  .onLoad {
+    opacity: 1 !important;
+  }
+}
+@keyframes scrollDown {
+  0% {
+    top: 30%;
+  }
+
+  100% {
+    top: 40%;
+  }
+}
