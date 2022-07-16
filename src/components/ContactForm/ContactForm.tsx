@@ -13,6 +13,7 @@ type TContactForm = {
 };
 
 const ContactForm = () => {
+  // For better form notations and event handling. See more details on https://react-hook-form.com/api/useform/ .
   const {
     register,
     handleSubmit,
@@ -28,6 +29,7 @@ const ContactForm = () => {
     setTimeout(() => setDisableSubmit(bool), 5000);
   };
 
+  // Form submission:
   const encode = (data: any) => {
     return Object.keys(data)
       .map(
@@ -81,7 +83,9 @@ const ContactForm = () => {
         <div className="formSection" id="IdInputs">
           <div id="alignInputs"></div>
           <div className="formInline">
-            <h3>{"Name: "}</h3>
+            <h3>
+              <label htmlFor="name">{"Name: "}</label>
+            </h3>
             <input
               {...register("name", {
                 required: "Please write your name",
@@ -96,7 +100,9 @@ const ContactForm = () => {
           </div>
           <p className="error">{errors.name && errors.name?.message}</p>
           <div className="formInline">
-            <h3>{"Email: "}</h3>
+            <h3>
+              <label htmlFor="email">{"Email: "}</label>
+            </h3>
             <input
               {...register("email", {
                 required: "Write your Email, I promise it won't be misused.",
@@ -114,7 +120,9 @@ const ContactForm = () => {
           <p className="error">{errors.email && errors.email?.message}</p>
 
           <div className="formInline">
-            <h3>{"Phone: "}</h3>
+            <h3>
+              <label htmlFor="phone">{"Phone: "}</label>
+            </h3>
 
             <input
               {...register("phone", {
@@ -134,7 +142,9 @@ const ContactForm = () => {
         </div>
         <div className="formSection">
           <div className="formInline" id="formMessage">
-            <h3>{"Message: "}</h3>
+            <h3>
+              <label htmlFor="message">{"Message: "}</label>
+            </h3>
 
             <textarea
               {...register("message", {
