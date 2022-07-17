@@ -13,6 +13,7 @@ type TContactForm = {
 };
 
 const ContactForm = () => {
+  // For better form notations and event handling. See more details on https://react-hook-form.com/api/useform/ .
   const {
     register,
     handleSubmit,
@@ -28,6 +29,7 @@ const ContactForm = () => {
     setTimeout(() => setDisableSubmit(bool), 5000);
   };
 
+  // Form submission:
   const encode = (data: any) => {
     return Object.keys(data)
       .map(

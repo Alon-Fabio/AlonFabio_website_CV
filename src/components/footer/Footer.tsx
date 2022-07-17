@@ -32,6 +32,7 @@ const Footer: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
                 href="https://www.linkedin.com/in/alon-fabio/"
                 target="_blank"
                 rel="noreferrer nofollow"
+                aria-label="See my (Alon's) Linkedin profile"
               >
                 <i className="fab fa-linkedin-in fa-lg"></i>
               </a>
@@ -41,6 +42,7 @@ const Footer: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
                 href="https://github.com/alon-fabio"
                 target="_blank"
                 rel="noreferrer nofollow"
+                aria-label="See my (Alon's) GitHub profile"
               >
                 <i className="fab fa-github fa-lg"></i>
               </a>
@@ -50,6 +52,7 @@ const Footer: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
                 href="https://www.instagram.com/alonfabio_photography/"
                 target="_blank"
                 rel="noreferrer nofollow"
+                aria-label="See my (Alon's) Instagram profile"
               >
                 <i className="fab fa-instagram fa-lg"></i>
               </a>

@@ -3,28 +3,50 @@ import React from "react";
 import ContactForm from "../ContactForm/ContactForm";
 import ScrollDown from "../AddOnsCom/ScrollDown/ScrollDown";
 // Style:
-import "./Services.scss";
+import "./style/CSS/Services.scss";
+// Hero images:
+import Clover from "./style/images/Clover.webp";
+import Bohke from "./style/images/Bohke.webp";
+import BlueSky from "./style/images/BlueSky-min.webp";
 // logos:
-import mongoLogo from "../../styles/img/logos/servicesLogos/MongoDB_Logo_Black_RGB.png";
-import awsLogo from "../../styles/img/logos/servicesLogos/aws.png";
-import nodeLogo from "../../styles/img/logos/servicesLogos/nodejs-new-pantone-black.png";
-import dockerLogo from "../../styles/img/logos/servicesLogos/horizontal-logo-monochromatic-white.png";
-import redisLogo from "../../styles/img/logos/servicesLogos/redis.png";
-import typeScriptLogo from "../../styles/img/logos/servicesLogos/ts-logo-128.png";
-import reactLogo from "../../styles/img/logos/servicesLogos/React_logo.png";
-import sassLogo from "../../styles/img/logos/servicesLogos/sass.png";
-import bootstrapLogo from "../../styles/img/logos/servicesLogos/bootstrap.png";
-import cssLogo from "../../styles/img/logos/servicesLogos/css.png";
-import HTML5Logo from "../../styles/img/logos/servicesLogos/HTML5.png";
-// import illustratorLogo from "../../styles/img/logos/servicesLogos/Adobe_illustrator.png";
+import mongoLogo from "./style/images/servicesLogos/MongoDB_Logo_Black_RGB.webp";
+import awsLogo from "./style/images/servicesLogos/aws.webp";
+import nodeLogo from "./style/images/servicesLogos/nodejs-new-pantone-black.webp";
+import dockerLogo from "./style/images/servicesLogos/horizontal-logo-monochromatic-white.webp";
+import redisLogo from "./style/images/servicesLogos/redis.webp";
+import typeScriptLogo from "./style/images/servicesLogos/ts-logo-128.webp";
+import reactLogo from "./style/images/servicesLogos/React_logo.webp";
+import sassLogo from "./style/images/servicesLogos/sass.webp";
+import bootstrapLogo from "./style/images/servicesLogos/bootstrap.webp";
+import cssLogo from "./style/images/servicesLogos/css.webp";
+import HTML5Logo from "./style/images/servicesLogos/HTML5.webp";
+// import illustratorLogo from "./style/images/servicesLogos/Adobe_illustrator.png";
+// Service middle section:
+import MessiPic from "./style/images/Lionel-Messi.webp";
+import AlonLogoSvg from "./style/images/BackgroundLogo.svg";
 
 const Services = () => {
   return (
     <section className="services perspective3d">
       <div className="pageHero servicesHero ParallaxContainer perspective3d">
-        <div id="ParallaxBG" className="ParallaxElement"></div>
-        <div id="ParallaxBohke" className="ParallaxElement"></div>
-        <div id="parallaxClover" className="ParallaxElement"></div>
+        <img
+          src={BlueSky}
+          alt="Beautiful blue sky"
+          id="ParallaxBG"
+          className="ParallaxElement"
+        />
+        <img
+          src={Bohke}
+          alt="Little bohke"
+          id="ParallaxBohke"
+          className="ParallaxElement"
+        />
+        <img
+          src={Clover}
+          alt="A big lovely three leaf clover"
+          id="parallaxClover"
+          className="ParallaxElement"
+        />
         <div id="serviceHeaderContainer">
           <p className={"serviceHeaderDownAni"}>Alon Fabio</p>
           <p className={"serviceHeaderDownAni"}>Programing</p>
@@ -182,7 +204,11 @@ const Services = () => {
           </div>
         </div>
       </div>
-      <div id="servicesMidPic"></div>
+
+      <div
+        id="servicesMidPic"
+        style={{ backgroundImage: `url(${MessiPic}), url(${AlonLogoSvg})` }}
+      ></div>
       <div></div>
       {/* Style sub section */}
       <div

@@ -1,4 +1,4 @@
-@import "../../styles/scss/variables";
+@import "../../../../styles/scss/variables";
 
 .services {
   font-size: 1.25rem;
@@ -35,27 +35,24 @@
       justify-content: center;
       background-clip: content-box; // Prevents clipping of other elements showing up on this effect.
       height: 100%;
-      width: 100%;
       z-index: -1;
     }
 
     #ParallaxBG {
-      background-image: url("../../styles/img/ServiceHero/BlueSky-min.jpg");
+      width: 100%;
       transform: translateZ(-1000px) scale(2.3);
       background-color: $base-color;
     }
 
     #ParallaxBohke {
-      background-image: url("../../styles/img/ServiceHero/Bohke.png");
-      background-position-x: left;
-      background-position-y: center;
+      left: 10%;
       opacity: 0.4;
       backface-visibility: visible;
       transform: translateZ(200px);
     }
 
     #parallaxClover {
-      background-image: url("../../styles/img/ServiceHero/Clover.png");
+      right: 10%;
       transform: translateZ(-200px) scale(1.2);
     }
 
@@ -218,8 +215,6 @@
     }
     // subImage
     #servicesMidPic {
-      background-image: url("../../styles/img/Services/Lionel Messi.png"),
-        url(../../styles/img/logos/BackgraundLogo.svg);
       background-color: $secund-base-color;
       background-repeat: no-repeat, repeat;
       background-attachment: fixed;
@@ -231,7 +226,7 @@
     #formSection {
       display: flex;
       width: 100%;
-      background-image: url(../../styles/img/logos/NavLogo/AlonNavLogoBlue.svg);
+      background-image: url(../../../../styles/img/logos/NavLogo/AlonNavLogoBlue.svg);
       background-repeat: no-repeat;
       background-position: center;
       background-size: 200%;
