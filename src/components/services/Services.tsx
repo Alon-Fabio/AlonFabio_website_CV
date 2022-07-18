@@ -3,41 +3,6 @@ import React from "react";
 import ContactForm from "../ContactForm/ContactForm";
 import ScrollDown from "../AddOnsCom/ScrollDown/ScrollDown";
 // Style:
-<<<<<<< HEAD:src/components/services/Services.tsx
-import "./services.scss";
-// logos:
-import mongoLogo from "../../styles/img/logos/servicesLogos/MongoDB_Logo_Black_RGB.png";
-import awsLogo from "../../styles/img/logos/servicesLogos/aws.png";
-import nodeLogo from "../../styles/img/logos/servicesLogos/nodejs-new-pantone-black.png";
-import dockerLogo from "../../styles/img/logos/servicesLogos/horizontal-logo-monochromatic-white.png";
-import redisLogo from "../../styles/img/logos/servicesLogos/redis.png";
-import typeScriptLogo from "../../styles/img/logos/servicesLogos/ts-logo-128.png";
-import reactLogo from "../../styles/img/logos/servicesLogos/React_logo.png";
-import sassLogo from "../../styles/img/logos/servicesLogos/sass.png";
-import bootstrapLogo from "../../styles/img/logos/servicesLogos/bootstrap.png";
-import cssLogo from "../../styles/img/logos/servicesLogos/css.png";
-import HTML5Logo from "../../styles/img/logos/servicesLogos/HTML5.png";
-// import illustratorLogo from "../../styles/img/logos/servicesLogos/Adobe_illustrator.png";
-
-function Services() {
-  return (
-    <section className={"services"}>
-      <div className="pageHero servicesHero">
-        <div className={"servicesTextContainer"}>
-          <h1>Hello</h1>
-          <div className={"servicesDescription text-shadow"}>
-            <p>
-              My name is <span>Alon Fabishevich</span>, welcome to my website.
-            </p>
-            <p>
-              I"m a <span>Developer</span>, a <span>Graphic Designer</span>, a{" "}
-              <span>Photographer</span>, <br />
-              and much more then that{" "}
-              <span className="fas fa-smile-wink"></span>.
-            </p>
-            <p>Have a look around...</p>
-          </div>
-=======
 import "./style/CSS/Services.scss";
 // Hero images:
 import Clover from "./style/images/Clover.webp";
@@ -87,34 +52,21 @@ const Services = () => {
           <p className={"serviceHeaderDownAni"}>Programing</p>
           <p className={"serviceHeaderDownAni"}>Web Design</p>
           <p className={"serviceHeaderDownAni"}>Graphic Design</p>
->>>>>>> 6343b2546e9faeae2a7aad94504a209f2077b4e3:src/components/Services/Services.tsx
         </div>
         <ScrollDown />
       </div>
-<<<<<<< HEAD:src/components/services/Services.tsx
-
-      {/* Code sub section */}
-      <div className="subSection flexCenter skills" id={"servicesCodeSkills"}>
-        <div className="container">
-=======
       {/* Skill section */}
       <div
         className="subSection flexCenter skills perspective3d"
         id="servicesCodeSkills"
       >
         <div className="container perspective3d">
->>>>>>> 6343b2546e9faeae2a7aad94504a209f2077b4e3:src/components/Services/Services.tsx
           <div className="subSectionHeading">
             <h1>Alon's Code services</h1>
             <p>As a programmer, I can offer a lot of services</p>
           </div>
-<<<<<<< HEAD:src/components/services/Services.tsx
-          <div className={"servicesProg"}>
-            <ul id="servicesCards">
-=======
           <div className="servicesProg perspective3d">
             <ul id="servicesCards" className="perspective3d">
->>>>>>> 6343b2546e9faeae2a7aad94504a209f2077b4e3:src/components/Services/Services.tsx
               <li className="flexCenter">
                 <fieldset className="card">
                   <legend>
@@ -252,13 +204,6 @@ const Services = () => {
           </div>
         </div>
       </div>
-<<<<<<< HEAD:src/components/services/Services.tsx
-      <div id="servicesMidPic"></div>
-      <div></div>
-      {/* Style sub section */}
-      <div className="subSection flexCenter skills" id={"servicesStyleSkills"}>
-        <div className="container">
-=======
 
       <div
         id="servicesMidPic"
@@ -271,18 +216,12 @@ const Services = () => {
         id={"servicesStyleSkills"}
       >
         <div className="container perspective3d">
->>>>>>> 6343b2546e9faeae2a7aad94504a209f2077b4e3:src/components/Services/Services.tsx
           <div className="subSectionHeading">
             <h1>Alon's Style & Design</h1>
             <p>As a Graphic designer, I can offer a lot of services</p>
           </div>
-<<<<<<< HEAD:src/components/services/Services.tsx
-          <div className={"servicesProg"}>
-            <ul id="servicesCards">
-=======
           <div className="servicesProg perspective3d">
             <ul id="servicesCards" className="perspective3d">
->>>>>>> 6343b2546e9faeae2a7aad94504a209f2077b4e3:src/components/Services/Services.tsx
               <li className="flexCenter">
                 <fieldset className="card">
                   <legend>

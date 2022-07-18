@@ -20,14 +20,8 @@
     text-align: center;
   }
   .servicesHero {
-<<<<<<< HEAD:src/components/services/services.scss
-    background-image: url("../../styles/img/header-bg.jpg");
-    font-family: Arima Madurai, sans-serif;
-    display: flex;
-=======
     position: relative;
     font-family: Oxygen, sans-serif;
->>>>>>> 6343b2546e9faeae2a7aad94504a209f2077b4e3:src/components/Services/style/CSS/Services.scss
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
@@ -221,11 +215,6 @@
     }
     // subImage
     #servicesMidPic {
-<<<<<<< HEAD:src/components/services/services.scss
-      background-image: url("../../styles/img/services/Lionel Messi.png"),
-        url(../../styles/img/logos/BackgraundLogo.svg);
-=======
->>>>>>> 6343b2546e9faeae2a7aad94504a209f2077b4e3:src/components/Services/style/CSS/Services.scss
       background-color: $secund-base-color;
       background-repeat: no-repeat, repeat;
       background-attachment: fixed;
@@ -299,32 +288,10 @@
 @media (min-width: 769px) and (max-width: 1023px) {
   .services {
     .servicesHero {
-<<<<<<< HEAD:src/components/services/services.scss
-      padding: 0 10px;
-      flex-direction: row;
-      justify-content: center;
-      h1 {
-        position: initial;
-      }
-      .servicesTextContainer {
-        h1 {
-          font-size: 3rem;
-        }
-        p {
-          font-size: 2rem;
-        }
-      }
-      // .photoContainer {
-      //   max-height: 2.5rem;
-      //   max-width: 2.5rem;
-      //   width: auto;
-      // }
-=======
       #serviceHeaderContainer {
         padding-top: 4rem;
         font-size: 4rem;
       }
->>>>>>> 6343b2546e9faeae2a7aad94504a209f2077b4e3:src/components/Services/style/CSS/Services.scss
     }
     .skills {
       .servicesProg {
@@ -359,20 +326,11 @@
   .services {
     color: rgb(46, 37, 30);
     font-size: 1.5rem;
-<<<<<<< HEAD:src/components/services/services.scss
-    .servicesTextContainer {
-      h1 {
-        font-size: 3.5rem;
-      }
-      p {
-        font-size: 2.625rem;
-=======
     .pageHero {
       background-position-y: bottom !important;
       #serviceHeaderContainer {
         padding: 10vh 10vw;
         font-size: 6rem;
->>>>>>> 6343b2546e9faeae2a7aad94504a209f2077b4e3:src/components/Services/style/CSS/Services.scss
       }
     }
 

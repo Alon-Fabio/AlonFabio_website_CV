@@ -83,7 +83,9 @@ const ContactForm = () => {
         <div className="formSection" id="IdInputs">
           <div id="alignInputs"></div>
           <div className="formInline">
-            <h3>{"Name: "}</h3>
+            <label htmlFor="name">
+              <h3>{"Name: "}</h3>
+            </label>
             <input
               {...register("name", {
                 required: "Please write your name",
@@ -98,7 +100,9 @@ const ContactForm = () => {
           </div>
           <p className="error">{errors.name && errors.name?.message}</p>
           <div className="formInline">
-            <h3>{"Email: "}</h3>
+            <label htmlFor="email">
+              <h3>{"Email: "}</h3>
+            </label>
             <input
               {...register("email", {
                 required: "Write your Email, I promise it won't be misused.",
@@ -116,8 +120,9 @@ const ContactForm = () => {
           <p className="error">{errors.email && errors.email?.message}</p>
 
           <div className="formInline">
-            <h3>{"Phone: "}</h3>
-
+            <label htmlFor="phone">
+              <h3>{"Phone: "}</h3>
+            </label>
             <input
               {...register("phone", {
                 required:
@@ -136,8 +141,9 @@ const ContactForm = () => {
         </div>
         <div className="formSection">
           <div className="formInline" id="formMessage">
-            <h3>{"Message: "}</h3>
-
+            <label htmlFor="message">
+              <h3>{"Message: "}</h3>
+            </label>
             <textarea
               {...register("message", {
                 required: "At least write the topic/s you are interested in.",

@@ -11,10 +11,10 @@ nav {
   inset: 0 15px auto 0;
   display: block;
   width: 100%;
-  background-color: $base-color;
   padding: 1rem 0;
   transition: padding 0.5s ease, background-color 0.5s ease;
   background-color: $base-color;
+  background-clip: padding-box; /* This will prevent a leak to the Hero because of the Absolute position and the Parallax Scrolling*/
   .navMain {
     display: flex;
     justify-content: space-between;
