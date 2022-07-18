@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./ContactForm.scss";
 
+import ModalBase from "../Modals/ModalBase/ModalBase";
+import SuccessModal from "../Modals/SuccessModal/SuccessModal";
+
 type TContactForm = {
   name: string;
   email: string;
@@ -10,18 +13,23 @@ type TContactForm = {
 };
 
 const ContactForm = () => {
+  // For better form notations and event handling. See more details on https://react-hook-form.com/api/useform/ .
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<TContactForm>();
   const [disableSubmit, setDisableSubmit] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [name, setName] = useState("");
 
   const submitTimeOut = (bool: boolean) => {
     setDisableSubmit(true);
     setTimeout(() => setDisableSubmit(bool), 5000);
   };
 
+  // Form submission:
   const encode = (data: any) => {
     return Object.keys(data)
       .map(
@@ -30,65 +38,70 @@ const ContactForm = () => {
       .join("&");
   };
 
-  const onSubmit = (data: TContactForm) => {
+  const onSubmit = (data: TContactForm, e: any) => {
+    e.preventDefault();
     submitTimeOut(true);
     fetch("/", {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact", ...data }),
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: encode({
+        "form-name": "contactForm",
+        ...data,
+      }),
     })
-      .then(() => {
-        console.log("Success!");
+      .then((netData) => {
+        reset();
+        console.log("Hi there, your message has been sent.");
         submitTimeOut(false);
+        setName(data.name);
+        setShowSuccessModal(true);
       })
       .catch((error) => {
-        alert(error);
+        console.error(
+          "Sorry, something most have gone wrong.. please try again."
+        );
         submitTimeOut(false);
       });
-
-    console.log(encode({ "form-name": "contact", ...data }));
   };
 
   return (
     <form
-      onSubmit={handleSubmit((data) => onSubmit(data))}
-      method="post"
+      onSubmit={handleSubmit((data, e) => onSubmit(data, e))}
       id="contactForm"
-      name="ContactFrom"
-      noValidate={true}
+      name="contactForm"
       data-netlify="true"
-      netlify-honeypot="bot-field"
+      method="post"
     >
+      <input name="form-name" value="contactForm" type="hidden" />
       <div id="formHading">
-        <h1>Connect me</h1>
+        <h1>Contact Alon</h1>
         <p>Let's make something great together</p>
       </div>
-      {/* Not sure if this does anything anymore, needs to be tested in production */}
-      <p style={{ visibility: "hidden", position: "absolute" }}>
-        <label>Don't fill this up.</label>
-        <input name="bot-field" type="text"></input>
-      </p>
-      {/* --------------------------------------------------------------------- */}
       <div className="formInputs">
         <div className="formSection" id="IdInputs">
+          <div id="alignInputs"></div>
           <div className="formInline">
             <h3>{"Name: "}</h3>
             <input
               {...register("name", {
-                required: "Please enter a name",
+                required: "Please write your name",
                 maxLength: 12,
               })}
               id="name"
+              name="name"
               type="text"
-              placeholder="Name"
+              // placeholder="What's my name again?"
+              // value=""
             ></input>
           </div>
-          {errors.name && <p className="error">{errors.name?.message}</p>}
+          <p className="error">{errors.name && errors.name?.message}</p>
           <div className="formInline">
             <h3>{"Email: "}</h3>
             <input
               {...register("email", {
-                required: "Please enter an Email",
+                required: "Write your Email, I promise it won't be misused.",
                 pattern: {
                   value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i,
                   message: "Something is not right with your Email..",
@@ -97,26 +110,29 @@ const ContactForm = () => {
               name="email"
               id="email"
               type="email"
-              placeholder="Email"
+              // value=""
             ></input>
           </div>
-          {errors.email && <p className="error">{errors.email?.message}</p>}
+          <p className="error">{errors.email && errors.email?.message}</p>
+
           <div className="formInline">
             <h3>{"Phone: "}</h3>
 
             <input
               {...register("phone", {
-                required: "Please enter a phone number",
+                required:
+                  "Write your phone number, I promise it won't be misused.",
 
                 valueAsNumber: true,
               })}
               name="phone"
               id="phone"
               type="tel"
-              placeholder="Phone"
+              // value={}
             ></input>
           </div>
-          {errors.phone && <p className="error">{errors.phone.message}</p>}
+
+          <p className="error">{errors.phone && errors.phone?.message}</p>
         </div>
         <div className="formSection">
           <div className="formInline" id="formMessage">
@@ -124,30 +140,32 @@ const ContactForm = () => {
 
             <textarea
               {...register("message", {
-                required:
-                  "Please, write if only the reason that your leaving your contact",
+                required: "At least write the topic/s you are interested in.",
 
                 maxLength: 300,
               })}
               name="message"
               id="message"
-              placeholder="Message"
               maxLength={300}
+              // value=""
             ></textarea>
           </div>
-          {errors.message && <p className="error">{errors.message?.message}</p>}
+
+          <p className="error">{errors.message && errors.message?.message}</p>
         </div>
         <div className="clearfix"></div>
-
-        {/* <div data-netlify-recaptcha="true"></div> 
-               Add recaptcha after css configaretions  */}
       </div>
       <div className="formSection" id="formSubmit">
-        <div id="success"></div>
         <button id="sendMessageButton" disabled={disableSubmit} type="submit">
           Send Message
         </button>
       </div>
+      <ModalBase
+        setShowModal={setShowSuccessModal}
+        showModal={showSuccessModal}
+      >
+        <SuccessModal setShowModal={setShowSuccessModal} name={name} />
+      </ModalBase>
     </form>
   );
 };

@@ -12,20 +12,31 @@
     }
     .formInline {
       display: flex;
+      // width: 400px;
       justify-content: space-between;
       padding: 0.125rem;
       input {
         width: 75%;
       }
     }
+
     #formMessage {
+      width: initial;
       textarea {
         resize: none;
       }
     }
     .error {
-      font-size: 1.25rem;
-      padding-bottom: 0.25rem;
+      margin: 0 auto;
+      text-align: left;
+      // height: 1rem;
+      font-size: 1rem;
+      // padding-bottom: 0.25rem;
+      max-width: 400px;
+      &:empty::before {
+        content: "";
+        display: inline-block;
+      }
     }
   }
   .clearfix {

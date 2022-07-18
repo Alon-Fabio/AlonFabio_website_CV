@@ -24,12 +24,18 @@ body {
       }
 
       .subSection:nth-child(even) {
-        background-color: lighten($base-color, 35);
+        background-color: $base-color-gray-15;
       }
       .subSection:nth-child(odd) {
-        background-color: lighten($base-color, 50);
+        background-color: lighten($base-color-gray-15, 15);
       }
     }
+  }
+  .flexCenter {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
   }
 }
 
