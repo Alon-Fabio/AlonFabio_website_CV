@@ -53,11 +53,8 @@ const Modal: React.FC<{
 };
 
 Modal.propTypes = {
-  children: PropTypes.shape({
-    $$typeof: PropTypes.symbol,
-    key: PropTypes.number,
-    props: PropTypes.object,
-    type: PropTypes.func,
-  }),
+  children: PropTypes.element.isRequired,
+  setShowModal: PropTypes.func.isRequired,
+  showModal: PropTypes.bool.isRequired,
 };
 export default Modal;
