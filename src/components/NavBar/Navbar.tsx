@@ -22,16 +22,21 @@ const Navbar: React.FC<{
   const scrollDetect = () => {
     const scrollYTop = scrollRef.current?.scrollTop;
     // Changes the NavBars background and the fill color of the SVG logo.
-    if (typeof scrollYTop !== "number") return;
-    if (scrollYTop <= 20 && NavBar.current !== null && NavLi.current !== null) {
+    if (
+      typeof scrollYTop !== "number" ||
+      NavBar.current === null ||
+      NavLi.current === null
+    )
+      return;
+    if (scrollYTop <= 20) {
       NavBar.current.classList.add("navbarTop");
-      NavLi.current.style.color = "#000";
-      NavBar.current.style.fill = "#000";
+      NavBar.current.classList.remove("navNotTop");
+      NavLi.current.classList.remove("navNotTop");
     }
-    if (scrollYTop >= 20 && NavBar.current !== null && NavLi.current !== null) {
+    if (scrollYTop >= 20 && NavBar.current.className !== "navbarNotTop") {
       NavBar.current.classList.remove("navbarTop");
-      NavLi.current.style.color = "#F26944";
-      NavBar.current.style.fill = "#F26944";
+      NavBar.current.classList.add("navNotTop");
+      NavLi.current.classList.add("navNotTop");
     }
   };
   useEventListener({
@@ -54,7 +59,7 @@ const Navbar: React.FC<{
   };
 
   return (
-    <nav ref={NavBar} className={"navbarTop"}>
+    <nav ref={NavBar} className={"navbarTop"} aria-label="hide">
       <div className="container navMain">
         <div
           className={"LogoContainer"}
