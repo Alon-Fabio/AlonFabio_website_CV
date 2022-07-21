@@ -1,4 +1,3 @@
-// @ts-ignore
 import React, { useState, useId } from "react";
 import { useForm } from "react-hook-form";
 import "./ContactForm.scss";

@@ -122,10 +122,15 @@ nav {
   }
   .navbarTop {
     background-color: transparent;
+
     .LogoContainer:hover {
       filter: drop-shadow(1px 2px 1px lighten($base-color-gray-15, 10%));
       transition: all 100ms linear;
     }
+  }
+  .navNotTop {
+    fill: $secund-base-color;
+    color: $secund-base-color !important;
   }
 }
 @media screen and (min-width: 1200px) {

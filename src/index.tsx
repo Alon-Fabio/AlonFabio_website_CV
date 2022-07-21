@@ -3,24 +3,16 @@ import "./styles/scss/index.scss";
 import App from "./App";
 import ModalBase from "./components/Modals/ModalBase/ModalBase";
 import reportWebVitals from "./reportWebVitals";
-// import { registerRoute } from "workbox-routing";
-// import { CacheFirst } from "workbox-strategies";
 
-// registerRoute(
-//   "/",
-//   new CacheFirst({
-//     cacheName: "AlonFabioCache",
-//   })
-// );
-/* @ts-ignore */
-const root = createRoot(document.getElementById("root"));
-root.render(<App />);
-
-/* @ts-ignore */
-const modalRoot = createRoot(document.getElementById("modal-root"));
-/* TS wants to add future dependencies */
-/* @ts-ignore */
-modalRoot.render(<ModalBase />);
+const root = document.getElementById("root");
+const modalRoot = document.getElementById("modal-root");
+if (!root || !modalRoot) throw new Error("Failed to find the root element");
+const bindRoot = createRoot(root);
+const bindModalRoot = createRoot(modalRoot);
+bindRoot.render(<App />);
+bindModalRoot.render(
+  <ModalBase setShowModal={() => {}} showModal={false} children />
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
