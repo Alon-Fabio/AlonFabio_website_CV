@@ -3,11 +3,11 @@ import "./styles/scss/App.scss";
 
 // Components
 import NavBar from "./components/NavBar/Navbar";
-import Services from "./components/Services/Services";
 import Contact from "./components/contact/Contact";
 import Dox from "./components/dox/Dox";
 import Project from "./components/project/Projects";
 import Footer from "./components/footer/Footer";
+import Services from "./components/Services/Services";
 
 function App() {
   const scrollPXref = useRef<HTMLDivElement>(null);
