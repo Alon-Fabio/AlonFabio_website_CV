@@ -9,7 +9,7 @@ import Project from "./components/project/Projects";
 import Footer from "./components/footer/Footer";
 import Services from "./components/services/Services";
 
-function App() {
+function App(): JSX.Element {
   const scrollPXref = useRef<HTMLDivElement>(null);
   // On load go to page:
   const [route, setRoute] = useState("Services");
