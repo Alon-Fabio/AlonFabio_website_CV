@@ -7,7 +7,7 @@ import Contact from "./components/contact/Contact";
 import Dox from "./components/dox/Dox";
 import Project from "./components/project/Projects";
 import Footer from "./components/footer/Footer";
-import Services from "./components/Services/Services";
+import Services from "./components/buildTools/Services";
 
 function App(): JSX.Element {
   const scrollPXref = useRef<HTMLDivElement>(null);
