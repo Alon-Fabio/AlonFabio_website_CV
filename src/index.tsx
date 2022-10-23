@@ -1,4 +1,5 @@
 import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 import "./styles/scss/index.scss";
 import App from "./App";
 import ModalBase from "./components/Modals/ModalBase/ModalBase";
@@ -9,7 +10,11 @@ const modalRoot = document.getElementById("modal-root");
 if (!root || !modalRoot) throw new Error("Failed to find the root element");
 const bindRoot = createRoot(root);
 const bindModalRoot = createRoot(modalRoot);
-bindRoot.render(<App />);
+bindRoot.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
 bindModalRoot.render(
   <ModalBase setShowModal={() => {}} showModal={false} children />
 );

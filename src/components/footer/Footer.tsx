@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./footer.scss";
 
 import ContactForm from "../ContactForm/ContactForm";
 
-const Footer: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
+const Footer: React.FC<{}> = ({}) => {
   const [transitioning, setTransitioning] = useState(true);
 
   return (
@@ -13,8 +14,9 @@ const Footer: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
           <button onClick={() => setTransitioning((preVal) => !preVal)}>
             Contact
           </button>
-
-          <button onClick={() => onRouteChange("Services")}>Services</button>
+          <button>
+            <Link to="Services">Services</Link>
+          </button>
         </div>
         <div
           id={"footerForm"}
