@@ -12,35 +12,46 @@ import Footer from "./components/footer/Footer";
 function App() {
   const scrollPXref = useRef<HTMLDivElement>(null);
   // On load go to page:
-  const [route, setRoute] = useState("Services");
+  const [routeObj, setRouteObj] = useState({
+    current: "Services",
+    routes: ["Services", "Contact"],
+  });
 
-  const onRouteChange = async (route: string) => {
-    switch (route) {
+  const onRouteChange = async (switchRoute: string) => {
+    switch (switchRoute) {
       case "Services":
-        await setRoute("Services");
+        await setRouteObj({ ...routeObj, current: "Services" });
         await document?.getElementById("servicesCodeSkills")?.scrollIntoView();
         break;
       case "Contact":
-        await setRoute("Contact");
+        await setRouteObj({ ...routeObj, current: "Contact" });
         await document?.getElementById("formSection")?.scrollIntoView();
+        break;
+      case "Dox":
+        await setRouteObj({ ...routeObj, current: "Dox" });
+        // await document?.getElementById("formSection")?.scrollIntoView();
         break;
 
       default:
-        setRoute("Services");
+        setRouteObj({ ...routeObj, current: "Services" });
     }
   };
 
   return (
     <div className="App" id="scrollingPXcon" ref={scrollPXref}>
       <header>
-        <NavBar onRouteChange={onRouteChange} scrollRef={scrollPXref} />
+        <NavBar
+          onRouteChange={onRouteChange}
+          scrollRef={scrollPXref}
+          routeList={routeObj.routes}
+        />
       </header>
 
       <div className="mainContainer perspective3d">
-        {route === "Services" ? <Services /> : null}
-        {route === "Dox" ? <Dox /> : null}
-        {route === "Contact" ? <Contact /> : null}
-        {route === "Projects" ? <Project /> : null}
+        {routeObj.current === "Services" ? <Services /> : null}
+        {routeObj.current === "Dox" ? <Dox /> : null}
+        {routeObj.current === "Contact" ? <Contact /> : null}
+        {routeObj.current === "Projects" ? <Project /> : null}
       </div>
       <Footer onRouteChange={onRouteChange} />
     </div>

@@ -7,10 +7,12 @@ import Burger from "../Burger/Burger";
 // hooks
 import { useEventListener } from "../../hooks/useEventListener";
 
-const Navbar: React.FC<{
+type NavBarT = {
   onRouteChange: Function;
   scrollRef: React.RefObject<HTMLDivElement>;
-}> = ({ onRouteChange, scrollRef }) => {
+  routeList: Array<String>;
+};
+const Navbar: React.FC<NavBarT> = ({ onRouteChange, scrollRef, routeList }) => {
   const NavBar = useRef<HTMLAnchorElement | null>(null);
   const NavLi = useRef<HTMLUListElement | null>(null);
   const [navStyle, setNavStyle] = useState({
@@ -57,7 +59,6 @@ const Navbar: React.FC<{
       }
     });
   };
-
   return (
     <nav ref={NavBar} className={"navbarTop"} aria-label="hide">
       <div className="container navMain">
@@ -72,38 +73,17 @@ const Navbar: React.FC<{
         </div>
         <div className="navLinksMain">
           <ul ref={NavLi} className={`navLinks ${navStyle.navLinks}`}>
-            <li
-              onClick={() => {
-                onBurgerClick();
-                onRouteChange("Contact");
-              }}
-            >
-              Contact
-            </li>
-            {/* <li
-              onClick={() => {
-                onBurgerClick();
-                onRouteChange("Dox");
-              }}
-            >
-              Dox
-            </li>
-            <li
-              onClick={() => {
-                onBurgerClick();
-                onRouteChange("Projects");
-              }}
-            >
-              Projects
-            </li> */}
-            <li
-              onClick={() => {
-                onBurgerClick();
-                onRouteChange("Services");
-              }}
-            >
-              Services
-            </li>
+            {routeList.map((routeName) => (
+              <li
+                key={`NavLink-${routeName}`}
+                onClick={() => {
+                  onBurgerClick();
+                  onRouteChange(routeName);
+                }}
+              >
+                {routeName}
+              </li>
+            ))}
           </ul>
         </div>
         <Burger navStyle={navStyle} burgerClick={onBurgerClick} />
