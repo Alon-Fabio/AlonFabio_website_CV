@@ -4,7 +4,7 @@ import "./footer.scss";
 
 import ContactForm from "../ContactForm/ContactForm";
 
-const Footer: React.FC<{}> = ({}) => {
+const Footer = () => {
   const [transitioning, setTransitioning] = useState(true);
 
   return (
@@ -15,7 +15,7 @@ const Footer: React.FC<{}> = ({}) => {
             Contact
           </button>
           <button>
-            <Link to="Services">Services</Link>
+            <Link to="/Services">Services</Link>
           </button>
         </div>
         <div
@@ -27,7 +27,7 @@ const Footer: React.FC<{}> = ({}) => {
         <hr />
         <div id="FooterBottom" className="flexCenter">
           <div id="footerIconDiv">
-            {/* Checkout the 'target="_blank"' problem that pops up if you don't add the 'rel="noreferrer nofollow"'*/}
+            {/* Checkout the 'target="_blank"' problem that pops up if you don't add the 'rel="noreferrer nofollow" */}
 
             <div className="FooterLinkIcon">
               <a

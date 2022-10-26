@@ -5,18 +5,18 @@ import "./styles/scss/App.scss";
 
 // Components
 import NavBar from "./components/NavBar/Navbar";
-import Services from "./components/Services/Services";
-import Contact from "./components/contact/Contact";
-import Dox from "./components/dox/Dox";
-import Project from "./components/project/Projects";
 import Footer from "./components/footer/Footer";
+// Pages
+import Services from "./pages/Services/Services";
+import Contact from "./pages/contact/Contact";
+import Main from "./pages/main/Main";
 
 function App() {
   const scrollPXref = useRef<HTMLDivElement>(null);
   // On load go to page:
-  const [routeObj, setRouteObj] = useState({
-    current: "Services",
-    routes: ["Services", "Contact"],
+  const [routeObj] = useState({
+    current: "Main",
+    routes: ["Services", "Contact", "Main"],
   });
 
   return (
@@ -27,6 +27,7 @@ function App() {
 
       <div className="mainContainer perspective3d">
         <Routes>
+          <Route path="Main" element={<Main links={routeObj.routes} />} />
           <Route path="Services" element={<Services />} />
           <Route path="Contact" element={<Contact />} />
         </Routes>

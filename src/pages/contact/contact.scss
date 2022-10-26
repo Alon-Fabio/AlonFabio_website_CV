@@ -1,10 +1,10 @@
 @import "../../styles/scss/variables";
 
 #Contact {
-  min-height: calc(100vh - 147px);
+  min-height: calc(100vh - 264px);
   // background-color: $base-color-gray-15;
   #formSection {
-    min-height: calc(100vh - 211px);
+    min-height: calc(100vh - 264px);
     #formContainer {
       flex-grow: 3;
       text-align: center;
@@ -25,18 +25,18 @@
 
 @media screen and (min-width: 425px) {
   #Contact {
-    min-height: calc(100vh - 147px - 1rem);
+    min-height: calc(100vh - 264px);
   }
 }
 // For tablet and larger screen size
 @media screen and (min-width: 768px) {
   #Contact {
-    min-height: calc(100vh - 147px - 2rem);
+    min-height: calc(100vh - 264px);
 
     #formSection {
       display: flex;
       width: 100%;
-      min-height: calc(100vh - 227px);
+      // min-height: calc(100vh - 227px);
       background-image: url(../../styles/img/logos/Alons/AlignedB2Large.svg);
       background-repeat: no-repeat;
       background-position: center;
@@ -122,6 +122,8 @@
 // Big screen
 @media screen and (min-width: 1024px) {
   #Contact {
+    min-height: calc(100vh - 264px);
+
     //Contact Form
     #alignInputs {
       height: 0 !important;
