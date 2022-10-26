@@ -77,7 +77,7 @@ const Navbar: React.FC<NavBarT> = ({ scrollRef, routeList }) => {
                   onBurgerClick();
                 }}
               >
-                <Link to={routeName.toString()}>{routeName}</Link>
+                <Link to={`/${routeName.toString()}`}>{routeName}</Link>
               </li>
             ))}
           </ul>

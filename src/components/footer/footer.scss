@@ -1,8 +1,9 @@
 @import "../../styles/scss/variables";
 
 #Footer {
+  height: 190px;
+  padding: 5px;
   background-color: $base-color-gray-15;
-  padding: 1rem;
   color: $gray-15;
 
   // Contact Form

@@ -1,7 +1,7 @@
 import React from "react";
 // components
-import ContactForm from "../ContactForm/ContactForm";
-import ScrollDown from "../AddOnsCom/ScrollDown/ScrollDown";
+import ContactForm from "../../components/ContactForm/ContactForm";
+import ScrollDown from "../../components/AddOnsCom/ScrollDown/ScrollDown";
 // Style:
 import "./style/CSS/Services.scss";
 // Hero images:
