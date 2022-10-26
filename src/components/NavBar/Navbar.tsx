@@ -6,13 +6,13 @@ import NavLogo from "../../styles/img/logos/NavLogo/NavLogo40";
 import Burger from "../Burger/Burger";
 // hooks
 import { useEventListener } from "../../hooks/useEventListener";
+import { Link } from "react-router-dom";
 
 type NavBarT = {
-  onRouteChange: Function;
   scrollRef: React.RefObject<HTMLDivElement>;
   routeList: Array<String>;
 };
-const Navbar: React.FC<NavBarT> = ({ onRouteChange, scrollRef, routeList }) => {
+const Navbar: React.FC<NavBarT> = ({ scrollRef, routeList }) => {
   const NavBar = useRef<HTMLAnchorElement | null>(null);
   const NavLi = useRef<HTMLUListElement | null>(null);
   const [navStyle, setNavStyle] = useState({
@@ -62,14 +62,11 @@ const Navbar: React.FC<NavBarT> = ({ onRouteChange, scrollRef, routeList }) => {
   return (
     <nav ref={NavBar} className={"navbarTop"} aria-label="hide">
       <div className="container navMain">
-        <div
-          className={"LogoContainer"}
-          onClick={() => {
-            onRouteChange("Services");
-          }}
-        >
+        <div className={"LogoContainer"}>
           {/*Left side home-logo, SVG format */}
-          <NavLogo />
+          <Link to={"Services"}>
+            <NavLogo />
+          </Link>
         </div>
         <div className="navLinksMain">
           <ul ref={NavLi} className={`navLinks ${navStyle.navLinks}`}>
@@ -78,10 +75,9 @@ const Navbar: React.FC<NavBarT> = ({ onRouteChange, scrollRef, routeList }) => {
                 key={`NavLink-${routeName}`}
                 onClick={() => {
                   onBurgerClick();
-                  onRouteChange(routeName);
                 }}
               >
-                {routeName}
+                <Link to={routeName.toString()}>{routeName}</Link>
               </li>
             ))}
           </ul>

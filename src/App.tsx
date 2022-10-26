@@ -1,4 +1,6 @@
 import React, { useState, useRef } from "react";
+import { Route, Routes } from "react-router-dom";
+
 import "./styles/scss/App.scss";
 
 // Components
@@ -17,43 +19,19 @@ function App() {
     routes: ["Services", "Contact"],
   });
 
-  const onRouteChange = async (switchRoute: string) => {
-    switch (switchRoute) {
-      case "Services":
-        await setRouteObj({ ...routeObj, current: "Services" });
-        await document?.getElementById("servicesCodeSkills")?.scrollIntoView();
-        break;
-      case "Contact":
-        await setRouteObj({ ...routeObj, current: "Contact" });
-        await document?.getElementById("formSection")?.scrollIntoView();
-        break;
-      case "Dox":
-        await setRouteObj({ ...routeObj, current: "Dox" });
-        // await document?.getElementById("formSection")?.scrollIntoView();
-        break;
-
-      default:
-        setRouteObj({ ...routeObj, current: "Services" });
-    }
-  };
-
   return (
     <div className="App" id="scrollingPXcon" ref={scrollPXref}>
       <header>
-        <NavBar
-          onRouteChange={onRouteChange}
-          scrollRef={scrollPXref}
-          routeList={routeObj.routes}
-        />
+        <NavBar scrollRef={scrollPXref} routeList={routeObj.routes} />
       </header>
 
       <div className="mainContainer perspective3d">
-        {routeObj.current === "Services" ? <Services /> : null}
-        {routeObj.current === "Dox" ? <Dox /> : null}
-        {routeObj.current === "Contact" ? <Contact /> : null}
-        {routeObj.current === "Projects" ? <Project /> : null}
+        <Routes>
+          <Route path="Services" element={<Services />} />
+          <Route path="Contact" element={<Contact />} />
+        </Routes>
       </div>
-      <Footer onRouteChange={onRouteChange} />
+      <Footer />
     </div>
   );
 }
