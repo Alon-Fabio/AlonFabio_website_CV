@@ -40,17 +40,7 @@
     max-height: 1000px;
     transition: all 700ms ease-in;
   }
-  hr {
-    margin: 0.5rem 1rem;
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(
-      to right,
-      rgba(242, 105, 68, 0.1),
-      rgba(242, 105, 68, 1),
-      rgba(242, 105, 68, 0.1)
-    );
-  }
+
   #FooterLinks {
     padding: 5px 10px;
     button {

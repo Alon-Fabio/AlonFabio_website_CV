@@ -1,58 +1,103 @@
 @import "../../styles//scss/variables";
+@import "../../styles//scss/elements";
 
 #MainPage {
   height: calc(100vh - 264px);
   background-color: $base-color-gray-15;
   color: $gray-15;
   font-weight: 600;
-  li {
-    display: flex;
-    align-items: center;
-    height: 10vh;
-    width: 30vw;
-    border-bottom: 2px solid $secund-base-color;
+  ul {
+    min-width: 315px;
+
+    li {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      min-height: 5rem;
+      width: 30vw;
+      &::after {
+        background-color: rgba(242, 105, 68, 0.1);
+        position: absolute;
+        bottom: 0;
+        content: "";
+        @extend .underlineWAni !optional;
+        margin: 0;
+        background-image: linear-gradient(
+          to right,
+          rgba(242, 105, 68, 1),
+          rgba(242, 105, 68, 0.1)
+        );
+        width: 100%;
+      }
+    }
+    #Photography {
+      display: flex;
+      justify-content: space-between;
+
+      #imageSqCon {
+        position: relative;
+        display: inline-flex;
+        align-items: flex-end;
+        margin-right: calc(150px + 15%);
+
+        .imageSq {
+          transform-origin: 50% 80%;
+          transform: perspective(400px) rotateY(35deg) scale(0.5);
+          position: absolute;
+
+          opacity: 0.8;
+
+          &:nth-child(1) {
+            margin-left: 0px;
+          }
+          &:nth-child(2) {
+            margin-left: 20px;
+          }
+          &:nth-child(3) {
+            margin-left: 40px;
+            opacity: 0.9;
+          }
+          &:nth-child(4) {
+            margin-left: 60px;
+            opacity: 1;
+          }
+          &:hover {
+            transform: scale(1) rotateY(0deg);
+            opacity: 1;
+            z-index: 99;
+          }
+          img {
+            box-shadow: 0 0 0 3px gray;
+          }
+          transition: all ease-in-out 0.8s;
+        }
+      }
+    }
   }
+}
 
-  #Photography {
-    display: flex;
-    justify-content: space-between;
-  }
-  #imageSqCon {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    margin-right: calc(150px + 15%);
+@media screen and (min-width: 768px) {
+  #MainPage {
+    width: 100%;
+    background-image: url(../../styles/img/logos/Alons/TabLogoCoulor.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100vw;
 
-    .imageSq {
-      transform-origin: 50% 80%;
-      transform: perspective(400px) rotateY(35deg) scale(0.5);
-      position: absolute;
+    ul {
+      position: relative;
+      padding: 1rem;
+      border-radius: 1rem;
+      background-color: $base-color-gray-15;
 
-      opacity: 0.8;
-
-      &:nth-child(1) {
-        margin-left: 0px;
+      &:before {
+        position: absolute;
+        content: "";
+        inset: -10px;
+        border-radius: 1rem;
+        background-color: $base-color-gray-15;
+        opacity: 0.5;
       }
-      &:nth-child(2) {
-        margin-left: 20px;
-      }
-      &:nth-child(3) {
-        margin-left: 40px;
-        opacity: 0.9;
-      }
-      &:nth-child(4) {
-        margin-left: 60px;
-        opacity: 1;
-      }
-      &:hover {
-        transform: scale(1) rotateY(0deg);
-        opacity: 1;
-        z-index: 99;
-      }
-      img {
-        box-shadow: 0 0 0 3px gray;
-      }
-      transition: all ease-in-out 0.8s;
     }
   }
 }

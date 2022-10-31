@@ -12,6 +12,10 @@ body {
     "Segoe UI", "Roboto";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
   .App {
     .mainContainer {
       .pageHero {

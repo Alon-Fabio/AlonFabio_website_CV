@@ -7,7 +7,6 @@ import image3 from "./images/3.webp";
 import image4 from "./images/4.webp";
 
 const Main: React.FC<{ links: Array<string> }> = ({ links }) => {
-  console.log(links);
   return (
     <section id="MainPage" className="flexCenter pageHero">
       <ul>
