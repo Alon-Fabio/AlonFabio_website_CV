@@ -6,19 +6,15 @@ import image2 from "./images/2.webp";
 import image3 from "./images/3.webp";
 import image4 from "./images/4.webp";
 
-const Main: React.FC<{ links: Array<string> }> = ({ links }) => {
+const Main = () => {
   return (
     <section id="MainPage" className="flexCenter pageHero">
       <ul>
-        {links
-          .filter((routeName) => routeName.toString() !== "Main")
-          .map((routeName) => (
-            <li key={`NavLink-${routeName}`}>
-              <Link to={`/${routeName.toString()}`}>
-                <h1>{routeName}</h1>
-              </Link>
-            </li>
-          ))}
+        <li>
+          <Link to={{ pathname: `/Services`, hash: "#servicesCodeSkills" }}>
+            <h1>{"Services"}</h1>
+          </Link>
+        </li>
         <li id="Photography">
           <h1>{"Photography"}</h1>
           <div id="imageSqCon">

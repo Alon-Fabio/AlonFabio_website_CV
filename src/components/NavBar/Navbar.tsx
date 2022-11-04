@@ -6,7 +6,7 @@ import NavLogo from "../../styles/img/logos/NavLogo/NavLogo40";
 import Burger from "../Burger/Burger";
 // hooks
 import { useEventListener } from "../../hooks/useEventListener";
-import { Link } from "react-router-dom";
+import { NavLink as Link } from "react-router-dom";
 
 type NavBarT = {
   scrollRef: React.RefObject<HTMLDivElement>;

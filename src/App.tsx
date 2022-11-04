@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 
 import "./styles/scss/App.scss";
 
@@ -16,8 +16,27 @@ function App() {
   // On load go to page:
   const [routeObj] = useState({
     current: "Main",
-    routes: ["Services", "Contact", "Main"],
+    routes: ["Main", "Contact", "Services"],
   });
+
+  const { pathname, hash, key } = useLocation();
+
+  useEffect(() => {
+    // if not a hash link, scroll to top
+    if (hash === "") {
+      window.scrollTo(0, 0);
+    }
+    // else scroll to id
+    else {
+      setTimeout(() => {
+        const id = hash.replace("#", "");
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView();
+        }
+      }, 0);
+    }
+  }, [pathname, hash, key]);
 
   return (
     <div className="App" id="scrollingPXcon" ref={scrollPXref}>
@@ -27,7 +46,7 @@ function App() {
 
       <div className="mainContainer perspective3d">
         <Routes>
-          <Route path="Main" element={<Main links={routeObj.routes} />} />
+          <Route path="*" element={<Main />} />
           <Route path="Services" element={<Services />} />
           <Route path="Contact" element={<Contact />} />
         </Routes>
