@@ -24,7 +24,7 @@ const Footer = () => {
         >
           <ContactForm />
         </div>
-        <hr />
+        <hr className="underlineWAni" />
         <div id="FooterBottom" className="flexCenter">
           <div id="footerIconDiv">
             {/* Checkout the 'target="_blank"' problem that pops up if you don't add the 'rel="noreferrer nofollow" */}

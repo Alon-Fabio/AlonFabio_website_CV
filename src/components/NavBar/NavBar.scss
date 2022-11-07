@@ -41,9 +41,10 @@ nav {
         list-style-type: none;
       }
 
-      :hover {
+      :hover,
+      .active {
         cursor: pointer;
-        color: rgb(231, 202, 175) !important;
+        font-weight: 600;
       }
     }
     .navLinksShow {

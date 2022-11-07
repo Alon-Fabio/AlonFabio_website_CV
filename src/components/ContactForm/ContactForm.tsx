@@ -56,6 +56,7 @@ const ContactForm = () => {
       .then((netData) => {
         reset();
         console.log("Hi there, your message has been sent.");
+        // console.log(netData); > Response {type: 'basic', url: 'http://localhost:3000/', redirected: false, status: 404, ok: : Check to see that the response is 200.
         submitTimeOut(false);
         setName(data.name);
         setShowSuccessModal(true);

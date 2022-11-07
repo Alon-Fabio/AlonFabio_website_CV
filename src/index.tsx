@@ -16,7 +16,7 @@ bindRoot.render(
   </BrowserRouter>
 );
 bindModalRoot.render(
-  <ModalBase setShowModal={() => {}} showModal={false} children />
+  <ModalBase setShowModal={() => {}} showModal={false} children={<></>} />
 );
 
 // If you want to start measuring performance in your app, pass a function

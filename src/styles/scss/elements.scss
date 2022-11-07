@@ -41,13 +41,41 @@ textarea {
 ::placeholder {
   color: lighten($base-color, 20);
 }
+.underlineWAni {
+  margin: 0.5rem 1rem;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(242, 105, 68, 0.1),
+    rgba(242, 105, 68, 1),
+    rgba(242, 105, 68, 0.1)
+  );
+  // animation: 0.8s in-out forwards;
+}
 
+// @keyframes in-out {
+//   0% {
+//     transform: translateX(-100%);
+//   }
+//   45%,
+//   55% {
+//     /*to stay a while full width*/
+//     transform: translateX(-50%);
+//   }
+//   100% {
+//     transform: translateX(0);
+//   }
+// }
 // For larger than tablet screen size
 @media screen and (min-width: 768px) {
   button {
     &:hover {
       box-shadow: 0px 1px 4px black;
     }
+  }
+  .underlineWAni {
+    margin: none;
   }
 }
 
