@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import "./main.scss";
 
+// Components
+import ImagesStack from "../../components/imageStack/ImageStack";
+
 import image1 from "./images/1.webp";
 import image2 from "./images/2.webp";
 import image3 from "./images/3.webp";
@@ -11,26 +14,32 @@ const Main = () => {
     <section id="MainPage" className="flexCenter pageHero">
       <ul>
         <li>
-          <Link to={{ pathname: `/Services`, hash: "#servicesCodeSkills" }}>
+          <Link to={`/Services`}>
             <h1>{"Services"}</h1>
           </Link>
-        </li>
-        <li id="Photography">
-          <h1>{"Photography"}</h1>
-          <div id="imageSqCon">
-            <div className="imageSq">
-              <img src={image1} alt=" " />
-            </div>
-            <div className="imageSq">
-              <img src={image2} alt=" " />
-            </div>
-            <div className="imageSq">
-              <img src={image3} alt=" " />
-            </div>
-            <div className="imageSq">
-              <img src={image4} alt=" " />
-            </div>
+          <div>
+            <Link to={{ pathname: `/Services`, hash: "#servicesStyleSkills" }}>
+              <h3>
+                {" "}
+                <span className="colorSecundBase">{"#"}</span>
+                {"Style"}
+              </h3>
+            </Link>
+            <h3> &nbsp;{"/"}&nbsp;</h3>
+            <Link to={{ pathname: `/Services`, hash: "#servicesCodeSkills" }}>
+              <h3>
+                {"<Code"}&nbsp; <span className="colorSecundBase">{"/"}</span>
+                {">"}
+              </h3>
+            </Link>
           </div>
+        </li>
+        <li>
+          <Link to={`/Photography`}>
+            <h1>{"Photography"}</h1>
+          </Link>
+
+          <ImagesStack images={[image1, image2, image3, image4]} />
         </li>
       </ul>
     </section>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 
 import "./styles/scss/App.scss";
@@ -14,34 +14,33 @@ import Main from "./pages/main/Main";
 function App() {
   const scrollPXref = useRef<HTMLDivElement>(null);
   // On load go to page:
-  const [routeObj] = useState({
-    current: "Main",
-    routes: ["Main", "Contact", "Services"],
-  });
+  const routeObj = ["Main", "Services", "Graphics", "Contact"];
 
   const { pathname, hash, key } = useLocation();
 
+  // React-router: For hash scrolling to anchor.
   useEffect(() => {
-    // if not a hash link, scroll to top
+    // If hash in URL, scroll to top.
     if (hash === "") {
       window.scrollTo(0, 0);
+      return;
     }
     // else scroll to id
-    else {
-      setTimeout(() => {
-        const id = hash.replace("#", "");
-        const element = document.getElementById(id);
-        if (element) {
-          element.scrollIntoView();
-        }
-      }, 0);
-    }
+    (function scrollHashIntoView() {
+      const id = hash.replace("#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView();
+        return;
+      }
+      window.scrollTo(0, 0);
+    })();
   }, [pathname, hash, key]);
 
   return (
     <div className="App" id="scrollingPXcon" ref={scrollPXref}>
       <header>
-        <NavBar scrollRef={scrollPXref} routeList={routeObj.routes} />
+        <NavBar scrollRef={scrollPXref} routeList={routeObj} />
       </header>
 
       <div className="mainContainer perspective3d">
