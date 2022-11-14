@@ -1,6 +1,5 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import "./styles/scss/index.scss";
 import App from "./App";
 import ModalBase from "./components/Modals/ModalBase/ModalBase";
 import reportWebVitals from "./reportWebVitals";

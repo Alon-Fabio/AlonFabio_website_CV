@@ -65,8 +65,8 @@ const Services = () => {
             <h1>Alon's Code services</h1>
             <p>As a programmer, I can offer a lot of services</p>
           </div>
-          <div className="servicesProg perspective3d">
-            <ul id="servicesCards" className="perspective3d">
+          <div className="servicesProg perspective3d ">
+            <ul id="servicesCards" className="perspective3d cardsContainer">
               <li className="flexCenter">
                 <fieldset className="card">
                   <legend>
@@ -221,7 +221,7 @@ const Services = () => {
             <p>As a Graphic designer, I can offer a lot of services</p>
           </div>
           <div className="servicesProg perspective3d">
-            <ul id="servicesCards" className="perspective3d">
+            <ul id="servicesCards" className="perspective3d cardsContainer">
               <li className="flexCenter">
                 <fieldset className="card">
                   <legend>

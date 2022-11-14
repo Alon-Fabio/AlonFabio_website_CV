@@ -60,7 +60,7 @@ const Navbar: React.FC<NavBarT> = ({ scrollRef, routeList }) => {
     });
   };
   return (
-    <nav ref={NavBar} className={"navbarTop"} aria-label="hide">
+    <nav ref={NavBar} className={"navbarTop"}>
       <div className="container navMain">
         <div className={"LogoContainer"}>
           {/*Left side home-logo, SVG format */}
