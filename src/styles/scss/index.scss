@@ -1,7 +1,10 @@
-@import "../../styles/scss/variables";
+@import "variables";
+
+@import "elements";
 
 * {
   margin: 0;
+  padding: 0;
 }
 
 body {
@@ -12,35 +15,35 @@ body {
     "Segoe UI", "Roboto";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  font-size: larger;
   a {
     color: inherit;
     text-decoration: none;
   }
-  .App {
-    .mainContainer {
-      .pageHero {
-        // A setup to start every page with a background and top.
-        padding-top: 64px;
-        min-height: calc(60vh - 64px);
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-      }
 
-      .subSection:nth-child(even) {
-        background-color: $base-color-gray-15;
-      }
-      .subSection:nth-child(odd) {
-        background-color: lighten($base-color-gray-15, 15);
-      }
-    }
+  .pageHero {
+    // A setup to start every page with a background and top.
+    padding-top: 64px;
+    min-height: calc(60vh - 64px);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
-  .flexCenter {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
+
+  .subSection:nth-child(even) {
+    background-color: $base-color-gray-15;
   }
+  .subSection:nth-child(odd) {
+    background-color: lighten($base-color-gray-15, 15);
+  }
+}
+
+.flexCenter {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 
 h1,

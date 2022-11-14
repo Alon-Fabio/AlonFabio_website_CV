@@ -1,4 +1,4 @@
-@import "./variables";
+@import "variables";
 
 // Basic Elements:
 #scrollingPXcon {
@@ -38,9 +38,66 @@ textarea {
   border-radius: 5px;
   background-color: $opct-05;
 }
+
 ::placeholder {
   color: lighten($base-color, 20);
 }
+
+// Cards
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+.card {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  text-align: center;
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 2px rgba($gray-35, 0.8), 0 10px 20px rgba($gray-35, 0.5);
+  background: linear-gradient(
+    50deg,
+    lighten($secund-base-color, 16%) 30%,
+    #38c4f2 100%
+  );
+
+  .cardHeader {
+    width: 100%;
+    & > * {
+      padding: 1.125rem;
+    }
+  }
+  .cardContent {
+    font-family: Oxygen, "Arima Madurai", sans-serif;
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    width: 100%;
+
+    min-height: calc(100% - 5rem);
+    background-color: $opct-025;
+    & > * {
+      padding: 0.625rem;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+
+      inset: 0;
+      background: inherit;
+    }
+    &:before {
+      filter: blur(0.75em);
+    }
+  }
+}
+
 .underlineWAni {
   margin: 0.5rem 1rem;
   border: 0;
@@ -85,6 +142,10 @@ textarea {
 
 // ScrollBar:
 @media screen and (min-width: 1280px) {
+  .card {
+    // font-size: 1.125rem;
+    max-width: 20rem;
+  }
   #scrollingPXcon {
     &::-webkit-scrollbar {
       width: 15px;

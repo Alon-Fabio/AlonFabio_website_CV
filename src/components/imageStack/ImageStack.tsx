@@ -8,7 +8,11 @@ const ImageStack: React.FC<{ images: Array<string> }> = ({ images }) => {
   const imageLength = images.length;
 
   return (
-    <div id="ImageStack" style={{ width: imageLength * 20 * 2 + "px" }}>
+    <div
+      id="ImageStack"
+      className="flexCenter"
+      style={{ width: imageLength * 15 * 2 + "px" }}
+    >
       {images
         .filter(
           (img) =>
@@ -19,7 +23,7 @@ const ImageStack: React.FC<{ images: Array<string> }> = ({ images }) => {
             <div
               key={"ImageStack" + index}
               className={"imageSq"}
-              style={{ left: index * 15 }}
+              // style={{ left: index * 15 }}
             >
               <img src={img} alt="well shit.." />
             </div>

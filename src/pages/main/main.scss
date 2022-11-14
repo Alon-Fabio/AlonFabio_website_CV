@@ -1,48 +1,25 @@
 @import "../../styles//scss/variables";
-@import "../../styles//scss/elements";
 
 #MainPage {
-  height: calc(100vh - 264px);
+  min-height: calc(100vh - 264px);
+
   background-color: $base-color-gray-15;
   color: $gray-15;
   font-weight: 600;
   ul {
-    min-width: 315px;
+    width: 100%;
     li {
       position: relative;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      min-height: 5rem;
-      & > div {
-        display: flex;
+      width: 100%;
+      margin: 1rem 0;
+      > div,
+      p {
+        padding: 1rem;
+        justify-content: center;
       }
-
-      &::after {
-        background-color: rgba(242, 105, 68, 0.1);
-        position: absolute;
-        bottom: 0;
-        content: "";
-        @extend .underlineWAni !optional;
-        margin: 0;
-        background-image: linear-gradient(
-          to right,
-          rgba(242, 105, 68, 1),
-          rgba(242, 105, 68, 0.1)
-        );
-        width: 100%;
-      }
-      a > :hover {
+      a :hover {
         font-weight: 600;
       }
-    }
-  }
-}
-
-@media screen and (min-width: 768px) {
-  #MainPage {
-    ul {
-      min-width: 20vw;
     }
   }
 }
@@ -57,6 +34,8 @@
 
     ul {
       position: relative;
+      justify-content: space-evenly;
+      max-width: 1100px;
       padding: 2rem;
       border-radius: 1rem;
       background-color: $base-color-gray-15;
@@ -68,6 +47,9 @@
         border-radius: 1rem;
         background-color: $base-color-gray-15;
         opacity: 0.5;
+      }
+      li div {
+        isolation: initial;
       }
     }
   }

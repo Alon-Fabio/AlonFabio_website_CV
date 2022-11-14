@@ -7,13 +7,19 @@ import ContactForm from "../ContactForm/ContactForm";
 const Footer = () => {
   const [transitioning, setTransitioning] = useState(true);
 
+  const onContactClick = () => {
+    setTransitioning((prv) => !prv);
+    if (transitioning) {
+      setTimeout(() => {
+        document.getElementById("footerForm")?.scrollIntoView();
+      }, 500);
+    }
+  };
   return (
     <div id="Footer">
       <div className="container">
         <div id="FooterLinks" className="flexCenter">
-          <button onClick={() => setTransitioning((preVal) => !preVal)}>
-            Contact
-          </button>
+          <button onClick={onContactClick}>Contact</button>
           <button>
             <Link to="/Services">Services</Link>
           </button>

@@ -1,26 +1,27 @@
 @import "../../styles//scss/variables";
 
 #ImageStack {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
+  height: 100px;
   .imageSq {
-    transform-origin: 50% 80%;
-    transform: perspective(400px) rotateY(35deg) scale(0.5);
-    position: absolute;
-    opacity: 0.8;
-    &:hover {
-      transform: scale(1) rotateY(0deg);
-      opacity: 1;
-      z-index: 99;
-    }
-    &:last-child {
-      opacity: 1;
-    }
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0 0.5rem;
+    width: 100%;
+    align-self: flex-start;
     img {
+      position: absolute;
+      margin: 0 auto;
+      max-height: 100px;
       box-shadow: 0 0 0 3px $secund-base-color;
-    }
+      transform: perspective(500px) rotateY(50deg) scale(0.5);
+      &:hover {
+        transform: scale(1) rotateY(0deg);
 
-    transition: all ease-in-out 0.8s;
+        z-index: 99;
+      }
+
+      transition: all ease-in-out 0.8s;
+    }
   }
 }
