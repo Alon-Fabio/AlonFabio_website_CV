@@ -3,7 +3,7 @@
 // Basic Elements:
 #scrollingPXcon {
   &::-webkit-scrollbar {
-    -webkit-appearance: none;
+    // -webkit-appearance: none; warning, deprecated.
     width: 2px;
     background-image: linear-gradient(45deg, $base-color-gray-15, $base-color);
   }
@@ -136,6 +136,29 @@ span {
 
 .error {
   color: $secund-base-FS;
+}
+
+.slideLeftAni {
+  opacity: 0;
+  animation: slidRight 1s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    fade 0.8s ease-in forwards;
+}
+@keyframes slidRight {
+  0% {
+    left: -300px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 // ScrollBar:

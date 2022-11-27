@@ -89,11 +89,6 @@
         }
       }
     }
-
-    .serviceHeaderDownAni {
-      animation: down 1s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-        fade 0.8s ease-in forwards;
-    }
   }
   // .servicesTextContainer {
   //   text-align: center;
@@ -322,16 +317,6 @@
         right: 10%;
       }
     }
-    .skills {
-      .servicesProg {
-        #servicesCards {
-          // justify-content: space-evenly;
-          li {
-            // max-width: 40%;
-          }
-        }
-      }
-    }
 
     //Contact Form
     #formSection {
@@ -406,23 +391,3 @@
 }
 
 // Animations
-
-@keyframes fade {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes down {
-  0% {
-    opacity: 0;
-    left: -300px;
-  }
-  100% {
-    opacity: 1;
-    left: 0px;
-  }
-}

@@ -22,7 +22,7 @@ import cssLogo from "./style/images/servicesLogos/css.webp";
 import HTML5Logo from "./style/images/servicesLogos/HTML5.webp";
 // import illustratorLogo from "./style/images/servicesLogos/Adobe_illustrator.png";
 // Service middle section:
-import MessiPic from "./style/images/Lionel-Messi.webp";
+import MessiPic from "../../styles/img/Lionel-Messi.webp";
 import AlonLogoSvg from "./style/images/BackgroundLogo.svg";
 
 const Services = () => {
@@ -48,11 +48,11 @@ const Services = () => {
           className="ParallaxElement"
         />
         <div id="serviceHeaderContainer">
-          <h1 className={"serviceHeaderDownAni"}>Alon Fabio</h1>
-          <h2 className={"serviceHeaderDownAni"}>Programing</h2>
-          <h2 className={"serviceHeaderDownAni"}>Web Design</h2>
-          <h2 className={"serviceHeaderDownAni"}>Graphic Design</h2>
-          <h2 className={"serviceHeaderDownAni"}>Photography</h2>
+          <h1 className={"slideLeftAni"}>Alon Fabio</h1>
+          <h2 className={"slideLeftAni"}>Programing</h2>
+          <h2 className={"slideLeftAni"}>Web Design</h2>
+          <h2 className={"slideLeftAni"}>Graphic Design</h2>
+          <h2 className={"slideLeftAni"}>Photography</h2>
         </div>
         <ScrollDown />
       </div>
