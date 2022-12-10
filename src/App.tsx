@@ -10,6 +10,7 @@ import Footer from "./components/footer/Footer";
 import Services from "./pages/Services/Services";
 import Contact from "./pages/contact/Contact";
 import Main from "./pages/main/Main";
+import Photography from "./pages/photography/Photography";
 
 function App() {
   const scrollPXref = useRef<HTMLDivElement>(null);
@@ -48,6 +49,7 @@ function App() {
           <Route path="*" element={<Main />} />
           <Route path="Services" element={<Services />} />
           <Route path="Contact" element={<Contact />} />
+          <Route path="Photography" element={<Photography />} />
         </Routes>
       </div>
       <Footer />
