@@ -3,7 +3,7 @@
 // Basic Elements:
 #scrollingPXcon {
   &::-webkit-scrollbar {
-    -webkit-appearance: none;
+    // -webkit-appearance: none; warning, deprecated.
     width: 2px;
     background-image: linear-gradient(45deg, $base-color-gray-15, $base-color);
   }
@@ -14,8 +14,6 @@
       $secund-base-color
     );
     border-radius: 10px;
-    -webkit-box-shadow: rgb(0, 0, 0.5) 0 0 20px 1px;
-    box-shadow: rgba(0, 0, 0, 0.5) 0 0 20px 3px;
   }
 }
 
@@ -39,24 +37,27 @@ textarea {
   background-color: $opct-05;
 }
 
+span {
+  color: $secund-base-color;
+}
+
 ::placeholder {
   color: lighten($base-color, 20);
 }
 
 // Cards
 .cardsContainer {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 1rem;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 0.5em;
+  list-style: none;
 }
 .card {
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column;
   text-align: center;
   border-radius: 0.5rem;
+  border: none;
   box-shadow: 1px 1px 2px rgba($gray-35, 0.8), 0 10px 20px rgba($gray-35, 0.5);
   background: linear-gradient(
     50deg,
@@ -65,25 +66,20 @@ textarea {
   );
 
   .cardHeader {
+    height: 5rem;
     width: 100%;
-    & > * {
-      padding: 1.125rem;
-    }
   }
   .cardContent {
     font-family: Oxygen, "Arima Madurai", sans-serif;
     position: relative;
+    height: 100%;
     isolation: isolate;
     display: flex;
     flex-flow: column;
     justify-content: space-between;
-    width: 100%;
-
-    min-height: calc(100% - 5rem);
     background-color: $opct-025;
-    & > * {
-      padding: 0.625rem;
-    }
+    padding: 0.5rem;
+
     &:before {
       content: "";
       position: absolute;
@@ -140,12 +136,31 @@ textarea {
   color: $secund-base-FS;
 }
 
+.slideLeftAni {
+  opacity: 0;
+  animation: slidRight 1s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    fade 0.8s ease-in forwards;
+}
+@keyframes slidRight {
+  0% {
+    left: -300px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 // ScrollBar:
 @media screen and (min-width: 1280px) {
-  .card {
-    // font-size: 1.125rem;
-    max-width: 20rem;
-  }
   #scrollingPXcon {
     &::-webkit-scrollbar {
       width: 15px;
@@ -154,6 +169,7 @@ textarea {
         $base-color-gray-15,
         $base-color
       );
+      overflow: hidden;
     }
     &::-webkit-scrollbar-thumb {
       background-image: linear-gradient(
@@ -162,8 +178,6 @@ textarea {
         $secund-base-color
       );
       border-radius: 10px;
-      -webkit-box-shadow: rgb(0, 0, 0.5) 0 0 20px 1px;
-      box-shadow: rgba(0, 0, 0, 0.5) 0 0 20px 3px;
     }
   }
 }

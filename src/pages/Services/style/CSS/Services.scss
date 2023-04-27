@@ -1,13 +1,9 @@
 @import "../../../../styles/scss/variables";
 
 .services {
-  font-size: 1.25rem;
-  span {
-    color: $secund-base-color;
-  }
+  font-size: 1.5rem;
 
   h1 {
-    font-weight: bold;
     font-size: 2rem;
   }
 
@@ -21,7 +17,7 @@
   }
   .servicesHero {
     position: relative;
-    font-family: Oxygen, sans-serif;
+
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
@@ -60,57 +56,56 @@
       text-transform: uppercase;
       padding: 1.5rem 2rem;
       padding-top: 4rem;
-      font-size: 1.5rem;
       background-color: transparent;
 
-      p {
-        &:nth-child(1) {
-          position: relative;
-          font-size: 150%;
-          font-weight: bold;
-          color: $secund-base-color;
-        }
+      h1 {
+        font-family: Oxygen, sans-serif;
+        position: relative;
+        font-size: 3.5rem;
+        font-weight: bold;
+        color: $secund-base-color;
+      }
 
+      h2 {
+        font-family: Oxygen, sans-serif;
+        position: relative;
+        opacity: 0;
+        font-size: 2.5rem;
+
+        &:nth-child(1) {
+          animation-delay: 0.2s;
+        }
         &:nth-child(2) {
-          position: relative;
-          opacity: 0;
           animation-delay: 0.5s;
         }
         &:nth-child(3) {
-          position: relative;
-          opacity: 0;
           animation-delay: 1s;
         }
         &:nth-child(4) {
-          position: relative;
-          opacity: 0;
           animation-delay: 1.5s;
+        }
+        &:nth-child(5) {
+          animation-delay: 2s;
         }
       }
     }
-
-    .serviceHeaderDownAni {
-      animation: down 1s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-        fade 0.8s ease-in forwards;
-    }
   }
-  .servicesTextContainer {
-    text-align: center;
-    h1 {
-      padding-top: 1rem;
-      font-weight: bold;
-    }
-  }
-  .servicesDescription {
-    padding-bottom: 10px;
-    p {
-      max-width: 75rem;
-      padding: 0 10px;
-      text-align: center;
-      font-weight: 400;
-      font-size: 1.5rem;
-    }
-  }
+  // .servicesTextContainer {
+  //   text-align: center;
+  //   h1 {
+  //     padding-top: 1rem;
+  //   }
+  // }
+  // .servicesDescription {
+  //   padding-bottom: 10px;
+  //   p {
+  //     max-width: 75rem;
+  //     padding: 0 10px;
+  //     text-align: center;
+  //     font-weight: 400;
+  //     font-size: 1.5rem;
+  //   }
+  // }
 
   // Skills section
   .skills {
@@ -123,19 +118,17 @@
         margin: 0;
         padding: 0;
         list-style: none;
+        gap: 0;
 
         li {
-          width: 100%;
-          margin: 2rem;
-          transform-style: preserve-3d;
+          padding: 1rem;
           fieldset {
             position: relative;
             width: 100%;
-            margin: 0 !important;
+            margin: 0;
             padding: 0;
             border: none;
-            // background-color: $opct-05;
-            transform: translateZ(80px) scale(0.9);
+            // transform: translateZ(80px) scale(0.9);
 
             legend {
               text-align: right;
@@ -196,7 +189,28 @@
     .servicesHero {
       #serviceHeaderContainer {
         padding-top: 4rem;
-        font-size: 2.5rem;
+        h1 {
+          font-size: 4rem;
+        }
+        h2 {
+          font-size: 2.5rem;
+        }
+      }
+    }
+    .skills {
+      span {
+        text-shadow: 1px 1px rgba(35, 35, 35, 0.5);
+      }
+      .servicesProg {
+        #servicesCards {
+          margin: 1.5rem;
+          li {
+            transform-style: preserve-3d;
+            fieldset {
+              transform: translateZ(80px);
+            }
+          }
+        }
       }
     }
   }
@@ -207,6 +221,18 @@
     .servicesHero {
       min-height: 80vh !important;
       background-attachment: fixed;
+      #serviceHeaderContainer {
+        padding-top: 4rem;
+        h1 {
+          font-size: 6.5rem;
+        }
+        h2 {
+          font-size: 4rem;
+        }
+      }
+      #parallaxClover {
+        right: -30%;
+      }
     }
     // subImage
     #servicesMidPic {
@@ -280,22 +306,15 @@
 }
 
 // Tablet
-@media (min-width: 769px) and (max-width: 1023px) {
+@media (max-height: 769px) and (min-width: 1023px) {
   .services {
     .servicesHero {
       #serviceHeaderContainer {
         padding-top: 4rem;
-        font-size: 4rem;
+        font-size: 5rem;
       }
-    }
-    .skills {
-      .servicesProg {
-        #servicesCards {
-          justify-content: space-evenly;
-          li {
-            max-width: 40%;
-          }
-        }
+      #parallaxClover {
+        right: 10%;
       }
     }
 
@@ -319,31 +338,44 @@
 // Big screen
 @media screen and (min-width: 1024px) {
   .services {
-    color: rgb(46, 37, 30);
     font-size: 1.5rem;
     .pageHero {
       background-position-y: bottom !important;
       #serviceHeaderContainer {
         padding: 10vh 10vw;
-        font-size: 6rem;
+        h1 {
+          font-size: 8.5rem;
+        }
+        h2 {
+          font-size: 5rem;
+        }
+      }
+      #parallaxClover {
+        right: 10%;
       }
     }
-
+    .container {
+      width: 100%;
+    }
     // Skills section
     .skills {
       .servicesProg {
         #servicesCards {
-          li {
-            flex: 1 1 25%;
+          // width: 1100px;
+          ul {
+            gap: 0;
+            li {
+              padding: 1rem;
 
-            fieldset {
-              h3 {
-                font-size: 2rem;
-              }
+              fieldset {
+                h3 {
+                  font-size: 2rem;
+                }
 
-              legend {
-                span {
-                  font-size: 2em;
+                legend {
+                  span {
+                    font-size: 2em;
+                  }
                 }
               }
             }
@@ -359,23 +391,3 @@
 }
 
 // Animations
-
-@keyframes fade {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes down {
-  0% {
-    opacity: 0;
-    left: -300px;
-  }
-  100% {
-    opacity: 1;
-    left: 0px;
-  }
-}

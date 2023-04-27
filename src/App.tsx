@@ -10,6 +10,8 @@ import Footer from "./components/footer/Footer";
 import Services from "./pages/Services/Services";
 import Contact from "./pages/contact/Contact";
 import Main from "./pages/main/Main";
+import Photography from "./pages/gallery/Gallery";
+import SignIn from "./pages/Signin/Signin";
 
 function App() {
   const scrollPXref = useRef<HTMLDivElement>(null);
@@ -47,7 +49,13 @@ function App() {
         <Routes>
           <Route path="*" element={<Main />} />
           <Route path="Services" element={<Services />} />
+          <Route
+            path="Photography"
+            element={<Photography library="photos" />}
+          />
+          <Route path="Graphics" element={<Photography library="graphics" />} />
           <Route path="Contact" element={<Contact />} />
+          <Route path="SignIn" element={<SignIn stage={"localhost"} />} />
         </Routes>
       </div>
       <Footer />

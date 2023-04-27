@@ -22,7 +22,7 @@ import cssLogo from "./style/images/servicesLogos/css.webp";
 import HTML5Logo from "./style/images/servicesLogos/HTML5.webp";
 // import illustratorLogo from "./style/images/servicesLogos/Adobe_illustrator.png";
 // Service middle section:
-import MessiPic from "./style/images/Lionel-Messi.webp";
+import MessiPic from "../../styles/img/Lionel-Messi.webp";
 import AlonLogoSvg from "./style/images/BackgroundLogo.svg";
 
 const Services = () => {
@@ -48,10 +48,11 @@ const Services = () => {
           className="ParallaxElement"
         />
         <div id="serviceHeaderContainer">
-          <p className={"serviceHeaderDownAni"}>Alon Fabio</p>
-          <p className={"serviceHeaderDownAni"}>Programing</p>
-          <p className={"serviceHeaderDownAni"}>Web Design</p>
-          <p className={"serviceHeaderDownAni"}>Graphic Design</p>
+          <h1 className={"slideLeftAni"}>Alon Fabio</h1>
+          <h2 className={"slideLeftAni"}>Programing</h2>
+          <h2 className={"slideLeftAni"}>Web Design</h2>
+          <h2 className={"slideLeftAni"}>Graphic Design</h2>
+          <h2 className={"slideLeftAni"}>Photography</h2>
         </div>
         <ScrollDown />
       </div>
@@ -67,12 +68,12 @@ const Services = () => {
           </div>
           <div className="servicesProg perspective3d ">
             <ul id="servicesCards" className="perspective3d cardsContainer">
-              <li className="flexCenter">
+              <li>
                 <fieldset className="card">
                   <legend>
                     <span className="fas fa-coins"></span>
                   </legend>
-                  <div className="cardHeader">
+                  <div className="cardHeader flexCenter">
                     <h3>Data handling</h3>
                   </div>
                   <div className="cardContent cardBGGray">
@@ -88,12 +89,12 @@ const Services = () => {
                   </div>
                 </fieldset>
               </li>
-              <li className="flexCenter">
+              <li>
                 <fieldset className="card">
                   <legend>
                     <span className="fas fa-server"></span>
                   </legend>
-                  <div className="cardHeader">
+                  <div className="cardHeader flexCenter">
                     <h3>Back-end</h3>
                   </div>
                   <div className="cardContent cardBGGray">
@@ -110,12 +111,12 @@ const Services = () => {
                   </div>
                 </fieldset>
               </li>
-              <li className="flexCenter">
+              <li>
                 <fieldset className="card">
                   <legend>
                     <span className="fas fa-money-check"></span>
                   </legend>
-                  <div className="cardHeader">
+                  <div className="cardHeader flexCenter">
                     <h3>Front-end</h3>
                   </div>
                   <div className="cardContent cardBGGray">
@@ -132,12 +133,12 @@ const Services = () => {
                   </div>
                 </fieldset>
               </li>
-              <li className="flexCenter">
+              <li>
                 <fieldset className="card">
                   <legend>
                     <span className="fas fa-arrows-alt"></span>
                   </legend>
-                  <div className="cardHeader">
+                  <div className="cardHeader flexCenter">
                     <h3>Responsive</h3>
                   </div>
                   <div className="cardContent cardBGGray">
@@ -154,12 +155,12 @@ const Services = () => {
                   </div>
                 </fieldset>
               </li>
-              <li className="flexCenter">
+              <li>
                 <fieldset className="card">
                   <legend>
                     <span className="fas fa-theater-masks"></span>
                   </legend>
-                  <div className="cardHeader">
+                  <div className="cardHeader flexCenter">
                     <h3>{"UX & UI"}</h3>
                   </div>
                   <div className="cardContent cardBGGray">
@@ -177,12 +178,12 @@ const Services = () => {
                   </div>
                 </fieldset>
               </li>
-              <li className="flexCenter">
+              <li>
                 <fieldset className="card">
                   <legend>
                     <span className="fas fa-cloud"></span>
                   </legend>
-                  <div className="cardHeader">
+                  <div className="cardHeader flexCenter">
                     <h3>Migrations</h3>
                   </div>
                   <div className="cardContent cardBGGray">
@@ -222,12 +223,12 @@ const Services = () => {
           </div>
           <div className="servicesProg perspective3d">
             <ul id="servicesCards" className="perspective3d cardsContainer">
-              <li className="flexCenter">
+              <li>
                 <fieldset className="card">
                   <legend>
                     <span className="fas fa-palette"></span>
                   </legend>
-                  <div className="cardHeader">
+                  <div className="cardHeader flexCenter">
                     <h3>{"Custom art"}</h3>
                   </div>
                   <div className="cardContent">
@@ -242,12 +243,12 @@ const Services = () => {
                   </div>
                 </fieldset>
               </li>
-              <li className="flexCenter">
+              <li>
                 <fieldset className="card">
                   <legend>
                     <span className="fas fa-swatchbook"></span>
                   </legend>
-                  <div className="cardHeader">
+                  <div className="cardHeader flexCenter">
                     <h3>{"Styling"}</h3>
                   </div>
                   <div className="cardContent">
@@ -260,12 +261,12 @@ const Services = () => {
                   </div>
                 </fieldset>
               </li>
-              <li className="flexCenter">
+              <li>
                 <fieldset className="card">
                   <legend>
                     <span className="fas fa-user-edit"></span>
                   </legend>
-                  <div className="cardHeader">
+                  <div className="cardHeader flexCenter">
                     <h3>{"UI/UX"}</h3>
                   </div>
                   <div className="cardContent">

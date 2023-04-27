@@ -39,3 +39,33 @@
   // animation: 0.8s in-out forwards;
 }
 ```
+
+### Slide right.
+
+> location: src\styles\scss\elements.scss
+> description: Slide into view from the left with opacity effect.
+
+```css
+.slideLeftAni {
+  opacity: 0;
+  animation: slidRight 1s cubic-bezier(0.175, 0.885, 0.32, 1.275), fade 0.8s
+      ease-in forwards;
+}
+@keyframes slidRight {
+  0% {
+    left: -300px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+```
