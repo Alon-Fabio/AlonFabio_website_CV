@@ -19,8 +19,10 @@ const Footer = () => {
     <div id="Footer">
       <div className="container">
         <div id="FooterLinks" className="flexCenter">
-          <button onClick={onContactClick}>Contact</button>
-          <button>
+          <button className="AF_button" onClick={onContactClick}>
+            Contact
+          </button>
+          <button className="AF_button">
             <Link to="/Services">Services</Link>
           </button>
         </div>

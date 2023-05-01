@@ -166,6 +166,7 @@ const ContactForm = () => {
       </div>
       <div className="formSection" id="formSubmit">
         <button
+          className="AF_button"
           id={id + "sendMessageButton"}
           disabled={disableSubmit}
           type="submit"

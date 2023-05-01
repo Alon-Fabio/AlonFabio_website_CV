@@ -29,7 +29,7 @@ const SuccessModal: React.FC<{
         <div className="modalBody"></div>
         <div className="modalFooter">
           <button
-            className="modalCloseBtn"
+            className="AF_button modalCloseBtn"
             onClick={() => {
               setModalActive(false);
               setTimeout(() => {

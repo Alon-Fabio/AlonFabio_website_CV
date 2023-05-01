@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { lazy, useState } from "react";
+import ImageGallery from "react-image-gallery";
 
 import Image from "../../components/image/Image";
 
@@ -791,12 +792,22 @@ const Photography: React.FC<{ library: string }> = ({ library }) => {
     setTempImageSrc(imgSrc);
     setModel(true);
   };
+
+  const galleryOriginal = ImageListExampleMapped.map((image) => {
+    return {
+      original: image.url,
+      thumbnail: image.url,
+      thumbnailHeight: 20,
+      thumbnailWidth: 20,
+      sizes: "(max-width: 710px) 120px,(max-width: 991px) 193px,278px",
+    };
+  });
   return (
     <div className="pageHero flexCenter">
       <div className="container">
         <div className="gallery_container">
           <div className={model ? "gallery_model open" : "gallery_model"}>
-            <img src={tempImageSrc} />
+            <ImageGallery items={galleryOriginal} lazyLoad />
           </div>
           {ImageListExampleMapped.map((image, index) => {
             return (
