@@ -1,5 +1,30 @@
 @import "~react-image-gallery/styles/scss/image-gallery.scss";
+@import "../../styles/scss/variables";
 
+#ImageGalleryContainer {
+  position: relative;
+  height: 100dvh;
+  background-color: rgba(#fff, 0.8);
+  padding: 1em;
+
+  .image-gallery-slide-wrapper {
+    height: 100dvh;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .exit_gallery {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    // align-self: start;
+    border: none;
+    font-size: 2rem;
+  }
+  .image-gallery-icon {
+    color: $base-color-rgb;
+  }
+}
 .gallery_container {
   column-count: 3;
   column-width: 33%;

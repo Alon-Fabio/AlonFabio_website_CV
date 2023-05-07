@@ -1,7 +1,8 @@
-import React, { lazy, useState } from "react";
+import React, { useState } from "react";
 import ImageGallery from "react-image-gallery";
 
 import Image from "../../components/image/Image";
+import ModalBase from "../../components/Modals/ModalBase/ModalBase";
 
 import "./gallery.scss";
 
@@ -787,34 +788,53 @@ type TImageList = [
 // };
 const Photography: React.FC<{ library: string }> = ({ library }) => {
   const [model, setModel] = useState(false);
-  const [tempImageSrc, setTempImageSrc] = useState("");
-  const showImg = (imgSrc: string): void => {
-    setTempImageSrc(imgSrc);
+  const [imageIndex, setImageIndex] = useState(0);
+  const showImg = (imageIndex: number): void => {
+    setImageIndex(imageIndex);
     setModel(true);
   };
-
   const galleryOriginal = ImageListExampleMapped.map((image) => {
     return {
       original: image.url,
       thumbnail: image.url,
-      thumbnailHeight: 20,
-      thumbnailWidth: 20,
-      sizes: "(max-width: 710px) 120px,(max-width: 991px) 193px,278px",
+      thumbnailHeight: 50,
     };
   });
   return (
     <div className="pageHero flexCenter">
       <div className="container">
         <div className="gallery_container">
-          <div className={model ? "gallery_model open" : "gallery_model"}>
-            <ImageGallery items={galleryOriginal} lazyLoad />
+          <div>
+            <ModalBase
+              setShowModal={setModel}
+              showModal={model}
+              clickOutSide={false}
+            >
+              <div id="ImageGalleryContainer">
+                <ImageGallery
+                  items={galleryOriginal}
+                  startIndex={imageIndex}
+                  thumbnailPosition={"right"}
+                  renderCustomControls={() => {
+                    return (
+                      <button
+                        className="image-gallery-custom-action exit_gallery"
+                        onClick={() => setModel(false)}
+                      >
+                        <span>X</span>
+                      </button>
+                    );
+                  }}
+                />
+              </div>
+            </ModalBase>
           </div>
           {ImageListExampleMapped.map((image, index) => {
             return (
               <div
                 className="gallery_image"
                 key={index}
-                onClick={() => showImg(image.url)}
+                onClick={() => showImg(index)}
               >
                 <img
                   src={image.url}

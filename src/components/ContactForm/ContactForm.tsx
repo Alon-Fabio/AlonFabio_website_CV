@@ -177,6 +177,7 @@ const ContactForm = () => {
       <ModalBase
         setShowModal={setShowSuccessModal}
         showModal={showSuccessModal}
+        closeModalTimeOut={1500}
       >
         <SuccessModal setShowModal={setShowSuccessModal} name={name} />
       </ModalBase>
