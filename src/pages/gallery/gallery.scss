@@ -14,12 +14,17 @@
     align-items: center;
   }
   .exit_gallery {
+    all: unset;
     position: absolute;
     top: 2rem;
     left: 2rem;
-    // align-self: start;
     border: none;
     font-size: 2rem;
+    z-index: 4;
+    &:hover {
+      text-shadow: #000000 1px 3px 5px;
+    }
+    transition: text-shadow 0.25s;
   }
   .image-gallery-icon {
     color: $base-color-rgb;
