@@ -887,8 +887,8 @@ const Photography: React.FC<{ library: string }> = ({ library }) => {
     };
     return {
       original: imageURLBuilder(ImageOBJForBuilder, URLStart),
-      thumbnail: imageURLBuilder(ImageOBJForBuilder, URLStart, 50, 0),
-      thumbnailHeight: 50,
+      thumbnail: imageURLBuilder(ImageOBJForBuilder, URLStart, 0, 100),
+      thumbnailWidth: 50,
     };
   });
 
@@ -913,7 +913,7 @@ const Photography: React.FC<{ library: string }> = ({ library }) => {
                         className="image-gallery-custom-action exit_gallery"
                         onClick={() => setModel(false)}
                       >
-                        <span>X</span>
+                        <span className="fa-solid fa-arrow-right-from-bracket fa-rotate-180"></span>
                       </button>
                     );
                   }}
@@ -944,6 +944,7 @@ const Photography: React.FC<{ library: string }> = ({ library }) => {
           })}
         </div>
       </div>
+      <i className="fab fa-circle-xmark fa-xs"></i>
     </div>
   );
 };

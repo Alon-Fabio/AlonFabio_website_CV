@@ -17,8 +17,13 @@ const Modal: React.FC<{
   clickOutSide = true,
 }) => {
   const modalRoot: HTMLElement | null = document.getElementById("modal-root");
-  const [el] = useState(document.createElement("div"));
+  const [el] = useState(document.createElement(`div`));
   const outClick = useRef(el);
+  const Paragraph = document.createElement("p");
+  Paragraph.innerHTML = "Press <span>esc</span> to exit.";
+  Paragraph.className = "esc_message fadeaway_delay";
+  const [escP] = useState(Paragraph);
+
   const handleEsc = useCallback(
     (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -27,7 +32,6 @@ const Modal: React.FC<{
     },
     [setShowModal]
   );
-
   useEffect(() => {
     const handleOutsideClick = (
       e: React.MouseEvent<HTMLDivElement, MouseEvent> | MouseEvent
@@ -47,6 +51,8 @@ const Modal: React.FC<{
       document.addEventListener("keydown", (event) => handleEsc(event), false);
 
       modalRoot.appendChild(el);
+      modalRoot.appendChild(escP);
+
       if (typeof closeModalTimeOut === "number") {
         setTimeout(() => {
           setShowModal(false);
@@ -64,9 +70,10 @@ const Modal: React.FC<{
       if (modalRoot && modalRoot.hasChildNodes()) {
         modalRoot.classList.remove("modalRootActive");
         // Time for animation.
-        setTimeout(() => {
-          modalRoot.removeChild(el);
-        }, 1500);
+        // setTimeout(() => {
+        modalRoot.removeChild(el);
+        modalRoot.removeChild(escP);
+        // }, 1500);
         document.removeEventListener(
           "keydown",
           (event) => handleEsc(event),
@@ -82,6 +89,7 @@ const Modal: React.FC<{
     setShowModal,
     el,
     modalRoot,
+    escP,
     clickOutSide,
     closeModalTimeOut,
     handleEsc,

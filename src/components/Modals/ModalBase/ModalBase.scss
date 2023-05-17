@@ -7,10 +7,43 @@
   width: 100vw;
   inset: 0;
   opacity: 0;
-  transition: all 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
   background-color: rgba($base-color-rgb, 0.3);
+  .esc_message {
+    display: block;
+    position: absolute;
+    top: 2em;
+    left: 50dvw;
+    z-index: 9;
+    padding: 0.5em;
+    text-align: center;
+    background-color: rgba($base-color-rgb, 0.3);
+    border-radius: 10px;
+
+    span {
+      border: 1px solid $secund-base-color;
+      border-radius: 5px;
+    }
+  }
+  .fadeaway_delay {
+    animation: fadeOut 1500ms ease-in-out forwards;
+    animation-delay: 3000ms;
+  }
 }
 .modalRootActive {
   z-index: 100 !important;
   opacity: 1 !important;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    // visibility: hidden;
+  }
 }
