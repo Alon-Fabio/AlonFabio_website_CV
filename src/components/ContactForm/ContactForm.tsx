@@ -166,6 +166,7 @@ const ContactForm = () => {
       </div>
       <div className="formSection" id="formSubmit">
         <button
+          className="AF_button"
           id={id + "sendMessageButton"}
           disabled={disableSubmit}
           type="submit"
@@ -176,6 +177,7 @@ const ContactForm = () => {
       <ModalBase
         setShowModal={setShowSuccessModal}
         showModal={showSuccessModal}
+        closeModalTimeOut={1500}
       >
         <SuccessModal setShowModal={setShowSuccessModal} name={name} />
       </ModalBase>
