@@ -1,21 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ImageGallery from "react-image-gallery";
 
 import ModalBase from "../../components/Modals/ModalBase/ModalBase";
 
 import "./gallery.scss";
+import { Controller } from "react-hook-form";
 
 type IImageURLBuilder = (
   images: {
     img_format: string;
     version: string;
     name: string;
-    library: string;
+    folder: string;
   },
   URLStart: string,
   height?: number,
   width?: number
 ) => string;
+
+type IImageList =
+  | {
+      images: Array<{
+        img_format: string;
+        version: string;
+        name: string;
+        folder: string;
+      }>;
+      URLStart: string;
+    }
+  | undefined;
 
 // !! Change size with URL !!
 // https://res.cloudinary.com/alonfabio/image/upload/w_350,c_scale/v1669621581/graphics/MexiLOgo-01_uzlmsl.png
@@ -595,205 +608,205 @@ type IImageURLBuilder = (
 //     uploaded_by: [Object],
 //   },
 // ];
-const ImageObjExample = {
-  URLStart: "https://res.cloudinary.com",
-  owner: "alonfabio",
-  type: "image",
-  action: "upload",
-  images: [
-    {
-      img_format: "png",
-      width: 10269,
-      height: 10263,
-      created_at: "2022-11-28T07:46:27+00:00",
-      version: "/v1669621587",
-      name: "Ellas_father-01-min_kqedjc",
-      library: "graphics",
-    },
-    {
-      img_format: "png",
-      width: 4167,
-      height: 4167,
-      created_at: "2022-11-28T07:46:21+00:00",
-      version: "/v1669621581",
-      name: "MexiLOgo-01_uzlmsl",
-      library: "graphics",
-    },
-    {
-      img_format: "png",
-      width: 1080,
-      height: 1080,
-      created_at: "2022-11-28T07:46:19+00:00",
-      version: "/v1669621579",
-      name: "Zeus-K9-2-min_ex57qp",
-      library: "graphics",
-    },
-    {
-      img_format: "png",
-      width: 5333,
-      height: 3333,
-      created_at: "2022-11-28T07:46:18+00:00",
-      version: "/v1669621578",
-      name: "jamie_vardy-01-min_ucjn5i",
-      library: "graphics",
-    },
-    {
-      img_format: "jpg",
-      width: 3333,
-      height: 3333,
-      created_at: "2022-11-28T07:46:18+00:00",
-      version: "/v1669621578",
-      name: "ro_fa-01-min_wh3k40",
-      library: "graphics",
-    },
-    {
-      img_format: "jpg",
-      width: 2588,
-      height: 2650,
-      created_at: "2022-11-28T07:46:18+00:00",
-      version: "/v1669621578",
-      name: "Clint_Dempsey-01-min_cstzxz",
-      library: "graphics",
-    },
-    {
-      img_format: "jpg",
-      width: 642,
-      height: 983,
-      created_at: "2022-11-28T07:46:18+00:00",
-      version: "/v1669621578",
-      name: "Clint_Dempsey-min_eu1yfl",
-      library: "graphics",
-    },
-    {
-      img_format: "png",
-      width: 5333,
-      height: 3333,
-      created_at: "2022-11-28T07:46:18+00:00",
-      version: "/v1669621578",
-      name: "Harry_Kane-01-min_npug4u",
-      library: "graphics",
-    },
-    {
-      img_format: "png",
-      width: 3667,
-      height: 3951,
-      created_at: "2022-11-28T07:46:17+00:00",
-      version: "/v1669621577",
-      name: "MexiLOgoLine-min_xkq8kc",
-      library: "graphics",
-    },
-    {
-      img_format: "jpg",
-      width: 5333,
-      height: 3333,
-      created_at: "2022-11-28T07:46:16+00:00",
-      version: "/v1669621576",
-      name: "Diego_Costa-01-min_ovkdwb",
-      library: "graphics",
-    },
-    {
-      img_format: "jpg",
-      width: 5333,
-      height: 3333,
-      created_at: "2022-11-28T07:46:16+00:00",
-      version: "/v1669621576",
-      name: "Paul_Pogba-01-min_hv4jwr",
-      library: "graphics",
-    },
-    {
-      img_format: "jpg",
-      width: 4042,
-      height: 4042,
-      created_at: "2022-11-28T07:46:16+00:00",
-      version: "/v1669621576",
-      name: "%D7%9E%D7%99%D7%9B-min_z1ihen",
-      library: "graphics",
-    },
-    {
-      img_format: "jpg",
-      width: 5333,
-      height: 3333,
-      created_at: "2022-11-28T07:46:15+00:00",
-      version: "/v1669621575",
-      name: "Eden_Hazard5-01-min_zenuji",
-      library: "graphics",
-    },
-    {
-      img_format: "jpg",
-      width: 5333,
-      height: 3333,
-      created_at: "2022-11-28T07:46:15+00:00",
-      version: "/v1669621575",
-      name: "Lionel_Messi-01-min_eph2ua",
-      library: "graphics",
-    },
-    {
-      img_format: "jpg",
-      width: 5333,
-      height: 3333,
-      created_at: "2022-11-28T07:46:14+00:00",
-      version: "/v1669621574",
-      name: "Luis_Suarez-01-min_xhyoxn",
-      library: "graphics",
-    },
-    {
-      img_format: "jpg",
-      width: 5333,
-      height: 3333,
-      created_at: "2022-11-28T07:46:14+00:00",
-      version: "/v1669621574",
-      name: "Eden_Hazard5_True_N_Team-01-min_k0z5ku",
-      library: "graphics",
-    },
-    {
-      img_format: "jpg",
-      width: 4521,
-      height: 4521,
-      created_at: "2022-11-28T07:46:14+00:00",
-      version: "/v1669621574",
-      name: "Matthew_IL-01-min_nz6vvp",
-      library: "graphics",
-    },
-    {
-      img_format: "jpg",
-      width: 5479,
-      height: 4941,
-      created_at: "2022-11-28T07:46:13+00:00",
-      version: "/v1669621573",
-      name: "KiloVader-02-01-min_bxxgtv",
-      library: "graphics",
-    },
-    {
-      img_format: "jpg",
-      width: 1800,
-      height: 770,
-      created_at: "2022-11-28T07:46:12+00:00",
-      version: "/v1669621572",
-      name: "Design-Signature-min_kuy0jj",
-      library: "graphics",
-    },
-    {
-      img_format: "jpg",
-      width: 1875,
-      height: 1250,
-      created_at: "2022-11-28T07:46:12+00:00",
-      version: "/v1669621572",
-      name: "5%D7%A7%D7%95%D7%9C%D7%95%D7%9C%D7%95-01-min_gn18je",
-      library: "graphics",
-    },
-    {
-      img_format: "jpg",
-      width: 5333,
-      height: 3333,
-      created_at: "2022-11-28T07:46:11+00:00",
-      version: "/v1669621571",
-      name: "ronaldo_with_mid-01-01-min_strjbn",
-      library: "graphics",
-    },
-  ],
-};
+// const ImageObjExample = {
+//   URLStart: "https://res.cloudinary.com",
+//   owner: "alonfabio",
+//   type: "image",
+//   action: "upload",
+//   images: [
+//     {
+//       img_format: "png",
+//       width: 10269,
+//       height: 10263,
+//       created_at: "2022-11-28T07:46:27+00:00",
+//       version: "/v1669621587",
+//       name: "Ellas_father-01-min_kqedjc",
+//       folder: "graphics",
+//     },
+//     {
+//       img_format: "png",
+//       width: 4167,
+//       height: 4167,
+//       created_at: "2022-11-28T07:46:21+00:00",
+//       version: "/v1669621581",
+//       name: "MexiLOgo-01_uzlmsl",
+//       folder: "graphics",
+//     },
+//     {
+//       img_format: "png",
+//       width: 1080,
+//       height: 1080,
+//       created_at: "2022-11-28T07:46:19+00:00",
+//       version: "/v1669621579",
+//       name: "Zeus-K9-2-min_ex57qp",
+//       folder: "graphics",
+//     },
+//     {
+//       img_format: "png",
+//       width: 5333,
+//       height: 3333,
+//       created_at: "2022-11-28T07:46:18+00:00",
+//       version: "/v1669621578",
+//       name: "jamie_vardy-01-min_ucjn5i",
+//       folder: "graphics",
+//     },
+//     {
+//       img_format: "jpg",
+//       width: 3333,
+//       height: 3333,
+//       created_at: "2022-11-28T07:46:18+00:00",
+//       version: "/v1669621578",
+//       name: "ro_fa-01-min_wh3k40",
+//       folder: "graphics",
+//     },
+//     {
+//       img_format: "jpg",
+//       width: 2588,
+//       height: 2650,
+//       created_at: "2022-11-28T07:46:18+00:00",
+//       version: "/v1669621578",
+//       name: "Clint_Dempsey-01-min_cstzxz",
+//       folder: "graphics",
+//     },
+//     {
+//       img_format: "jpg",
+//       width: 642,
+//       height: 983,
+//       created_at: "2022-11-28T07:46:18+00:00",
+//       version: "/v1669621578",
+//       name: "Clint_Dempsey-min_eu1yfl",
+//       folder: "graphics",
+//     },
+//     {
+//       img_format: "png",
+//       width: 5333,
+//       height: 3333,
+//       created_at: "2022-11-28T07:46:18+00:00",
+//       version: "/v1669621578",
+//       name: "Harry_Kane-01-min_npug4u",
+//       folder: "graphics",
+//     },
+//     {
+//       img_format: "png",
+//       width: 3667,
+//       height: 3951,
+//       created_at: "2022-11-28T07:46:17+00:00",
+//       version: "/v1669621577",
+//       name: "MexiLOgoLine-min_xkq8kc",
+//       folder: "graphics",
+//     },
+//     {
+//       img_format: "jpg",
+//       width: 5333,
+//       height: 3333,
+//       created_at: "2022-11-28T07:46:16+00:00",
+//       version: "/v1669621576",
+//       name: "Diego_Costa-01-min_ovkdwb",
+//       folder: "graphics",
+//     },
+//     {
+//       img_format: "jpg",
+//       width: 5333,
+//       height: 3333,
+//       created_at: "2022-11-28T07:46:16+00:00",
+//       version: "/v1669621576",
+//       name: "Paul_Pogba-01-min_hv4jwr",
+//       folder: "graphics",
+//     },
+//     {
+//       img_format: "jpg",
+//       width: 4042,
+//       height: 4042,
+//       created_at: "2022-11-28T07:46:16+00:00",
+//       version: "/v1669621576",
+//       name: "%D7%9E%D7%99%D7%9B-min_z1ihen",
+//       folder: "graphics",
+//     },
+//     {
+//       img_format: "jpg",
+//       width: 5333,
+//       height: 3333,
+//       created_at: "2022-11-28T07:46:15+00:00",
+//       version: "/v1669621575",
+//       name: "Eden_Hazard5-01-min_zenuji",
+//       folder: "graphics",
+//     },
+//     {
+//       img_format: "jpg",
+//       width: 5333,
+//       height: 3333,
+//       created_at: "2022-11-28T07:46:15+00:00",
+//       version: "/v1669621575",
+//       name: "Lionel_Messi-01-min_eph2ua",
+//       folder: "graphics",
+//     },
+//     {
+//       img_format: "jpg",
+//       width: 5333,
+//       height: 3333,
+//       created_at: "2022-11-28T07:46:14+00:00",
+//       version: "/v1669621574",
+//       name: "Luis_Suarez-01-min_xhyoxn",
+//       folder: "graphics",
+//     },
+//     {
+//       img_format: "jpg",
+//       width: 5333,
+//       height: 3333,
+//       created_at: "2022-11-28T07:46:14+00:00",
+//       version: "/v1669621574",
+//       name: "Eden_Hazard5_True_N_Team-01-min_k0z5ku",
+//       folder: "graphics",
+//     },
+//     {
+//       img_format: "jpg",
+//       width: 4521,
+//       height: 4521,
+//       created_at: "2022-11-28T07:46:14+00:00",
+//       version: "/v1669621574",
+//       name: "Matthew_IL-01-min_nz6vvp",
+//       folder: "graphics",
+//     },
+//     {
+//       img_format: "jpg",
+//       width: 5479,
+//       height: 4941,
+//       created_at: "2022-11-28T07:46:13+00:00",
+//       version: "/v1669621573",
+//       name: "KiloVader-02-01-min_bxxgtv",
+//       folder: "graphics",
+//     },
+//     {
+//       img_format: "jpg",
+//       width: 1800,
+//       height: 770,
+//       created_at: "2022-11-28T07:46:12+00:00",
+//       version: "/v1669621572",
+//       name: "Design-Signature-min_kuy0jj",
+//       folder: "graphics",
+//     },
+//     {
+//       img_format: "jpg",
+//       width: 1875,
+//       height: 1250,
+//       created_at: "2022-11-28T07:46:12+00:00",
+//       version: "/v1669621572",
+//       name: "5%D7%A7%D7%95%D7%9C%D7%95%D7%9C%D7%95-01-min_gn18je",
+//       folder: "graphics",
+//     },
+//     {
+//       img_format: "jpg",
+//       width: 5333,
+//       height: 3333,
+//       created_at: "2022-11-28T07:46:11+00:00",
+//       version: "/v1669621571",
+//       name: "ronaldo_with_mid-01-01-min_strjbn",
+//       folder: "graphics",
+//     },
+//   ],
+// };
 
-// const Photography: React.FC<{ library: string }> = ({ library }) => {
+// const Photography: React.FC<{ folder: string }> = ({ library }) => {
 //   const [imageList, setImagesList] = useState<TImageList>();
 //   const getImagesUrl = async (action: string) => {
 //     let status = { proses: "loading", err: "" };
@@ -847,19 +860,57 @@ const ImageObjExample = {
 //     </div>
 //   );
 // };
+
+// const Photography: React.FC<{ library: string }> = React.memo(({ library }) => {
 const Photography: React.FC<{ library: string }> = ({ library }) => {
+  const [imageList, setImagesList] = useState<IImageList>();
   const [model, setModel] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
-  const showImg = (imageIndex: number): void => {
-    setImageIndex(imageIndex);
-    setModel(true);
+
+  const getImagesUrl = async (
+    action: string,
+    AbortController: AbortController | undefined = undefined
+  ) => {
+    let status = { process: "loading", err: "" };
+    let response = await fetch(`http://localhost/gallery/${action}`, {
+      signal: AbortController?.signal,
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ClDFolder: library }),
+    }).catch((err) => {
+      status = { process: "Failed", err };
+      if (AbortController?.signal.aborted === true) {
+        console.log("Fetching request aborted by user.");
+      } else {
+        console.error("The request failed");
+      }
+    });
+    if (status.process !== "failed") {
+      let data = await response?.json();
+      // console.log("response", data);
+      setImagesList(() => {
+        return {
+          images: data.images,
+          URLStart: [data.URLStart, data.owner, data.type, data.action].join(
+            "/"
+          ),
+        };
+      });
+      status = { process: "success", err: "" };
+    }
   };
-  const URLStart = [
-    ImageObjExample.URLStart,
-    ImageObjExample.owner,
-    ImageObjExample.type,
-    ImageObjExample.action,
-  ].join("/");
+
+  useEffect(() => {
+    const FetchImagesController = new AbortController();
+    const FetchImagesSignal = FetchImagesController.signal;
+    // @ts-ignore An update to ^4.9 should fix the problem (current v4.7).
+    getImagesUrl("", { FetchImagesController });
+    return () => {
+      FetchImagesController.abort();
+    };
+  }, []);
 
   const imageURLBuilder: IImageURLBuilder = (
     images,
@@ -869,31 +920,25 @@ const Photography: React.FC<{ library: string }> = ({ library }) => {
   ) => {
     let imageURL = "";
     const ImageURLEnd =
-      [images.version, images.library, images.name].join("/") +
+      [images.version, images.folder, images.name].join("/") +
       "." +
       images.img_format;
     if (height !== 0) imageURL = "h_" + height.toString() + imageURL;
     if (width !== 0) imageURL = "w_" + width.toString() + imageURL;
     if (height !== 0 || width !== 0) imageURL = "/" + imageURL + ",c_scale";
-    return URLStart + imageURL + ImageURLEnd;
+    return URLStart + imageURL + "/" + ImageURLEnd;
   };
 
-  const galleryOriginal = ImageObjExample.images.map((image) => {
-    const ImageOBJForBuilder = {
-      img_format: image.img_format,
-      name: image.name,
-      version: image.version,
-      library: image.library,
-    };
-    return {
-      original: imageURLBuilder(ImageOBJForBuilder, URLStart),
-      thumbnail: imageURLBuilder(ImageOBJForBuilder, URLStart, 0, 100),
-      thumbnailWidth: 50,
-    };
-  });
+  const showImg = (imageIndex: number): void => {
+    setImageIndex(imageIndex);
+    setModel(true);
+  };
 
   return (
     <div className="pageHero flexCenter">
+      <button onClick={() => getImagesUrl("update")}>update</button>
+      <button onClick={() => getImagesUrl("")}>get</button>
+
       <div className="container">
         <div className="gallery_container">
           <div>
@@ -904,7 +949,31 @@ const Photography: React.FC<{ library: string }> = ({ library }) => {
             >
               <div id="ImageGalleryContainer">
                 <ImageGallery
-                  items={galleryOriginal}
+                  items={
+                    imageList?.images.map((image) => {
+                      const ImageOBJForBuilder = {
+                        img_format: image.img_format,
+                        name: image.name,
+                        version: image.version,
+                        folder: image.folder,
+                      };
+                      return {
+                        original: imageURLBuilder(
+                          ImageOBJForBuilder,
+                          imageList.URLStart,
+                          0,
+                          window.screenX
+                        ),
+                        thumbnail: imageURLBuilder(
+                          ImageOBJForBuilder,
+                          imageList.URLStart,
+                          0,
+                          100
+                        ),
+                        thumbnailWidth: 50,
+                      };
+                    }) || []
+                  }
                   startIndex={imageIndex}
                   thumbnailPosition={"right"}
                   renderCustomControls={() => {
@@ -921,12 +990,13 @@ const Photography: React.FC<{ library: string }> = ({ library }) => {
               </div>
             </ModalBase>
           </div>
-          {ImageObjExample.images.map((image, index) => {
+
+          {imageList?.images.map((image, index) => {
             const ImageOBJForBuilder = {
               img_format: image.img_format,
               name: image.name,
               version: image.version,
-              library: image.library,
+              folder: image.folder,
             };
 
             return (
@@ -936,7 +1006,12 @@ const Photography: React.FC<{ library: string }> = ({ library }) => {
                 onClick={() => showImg(index)}
               >
                 <img
-                  src={imageURLBuilder(ImageOBJForBuilder, URLStart, 0, 350)}
+                  src={imageURLBuilder(
+                    ImageOBJForBuilder,
+                    imageList.URLStart,
+                    0,
+                    350
+                  )}
                   alt={image.name}
                 />
               </div>
@@ -944,8 +1019,10 @@ const Photography: React.FC<{ library: string }> = ({ library }) => {
           })}
         </div>
       </div>
-      <i className="fab fa-circle-xmark fa-xs"></i>
     </div>
   );
 };
+// React memo↓
+// )
+
 export default Photography;
