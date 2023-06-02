@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useTransition } from "react";
 import ImageGallery from "react-image-gallery";
 
 import ModalBase from "../../components/Modals/ModalBase/ModalBase";
 
 import "./gallery.scss";
-import { Controller } from "react-hook-form";
 
 type IImageURLBuilder = (
   images: {
@@ -866,51 +865,66 @@ const Photography: React.FC<{ library: string }> = ({ library }) => {
   const [imageList, setImagesList] = useState<IImageList>();
   const [model, setModel] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
-
-  const getImagesUrl = async (
-    action: string,
-    AbortController: AbortController | undefined = undefined
-  ) => {
-    let status = { process: "loading", err: "" };
-    let response = await fetch(`http://localhost/gallery/${action}`, {
-      signal: AbortController?.signal,
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ ClDFolder: library }),
-    }).catch((err) => {
-      status = { process: "Failed", err };
-      if (AbortController?.signal.aborted === true) {
-        console.log("Fetching request aborted by user.");
-      } else {
-        console.error("The request failed");
-      }
-    });
-    if (status.process !== "failed") {
-      let data = await response?.json();
-      // console.log("response", data);
-      setImagesList(() => {
-        return {
-          images: data.images,
-          URLStart: [data.URLStart, data.owner, data.type, data.action].join(
-            "/"
-          ),
-        };
-      });
-      status = { process: "success", err: "" };
-    }
-  };
+  const [isPending, startTransition] = useTransition();
 
   useEffect(() => {
+    async function getImagesUrl(
+      folder: string,
+      AbortController?: AbortController
+    ) {
+      startTransition(() => {
+        fetch(`http://localhost/gallery/${folder}`, {
+          // fetch(`http://localhost/gallery/graphics`, {
+          signal:
+            AbortController?.signal !== undefined
+              ? AbortController.signal
+              : null,
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          // body: JSON.stringify({ CLDFolder: library }),
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((response) => {
+            if ("error" in response || response.images?.length <= 0)
+              console.log(response); // Add error case function to display something to the user.
+            if ("URLStart" in response) {
+              setImagesList(() => {
+                return {
+                  images: response.images,
+                  URLStart: [
+                    response.URLStart,
+                    response.owner,
+                    response.type,
+                    response.action,
+                  ].join("/"),
+                };
+              });
+            }
+
+            //  return console.error("Looks like we are having a lite problem.. please try again later");
+          })
+          .catch((err) => {
+            console.error(err, "<================");
+            // console.error(
+            //   "Looks like we are having a lite problem.. please try again later"
+            // );
+          })
+          .finally(() => {});
+      });
+    }
+
     const FetchImagesController = new AbortController();
-    const FetchImagesSignal = FetchImagesController.signal;
-    // @ts-ignore An update to ^4.9 should fix the problem (current v4.7).
-    getImagesUrl("", { FetchImagesController });
+
+    getImagesUrl(library, FetchImagesController);
+
     return () => {
-      FetchImagesController.abort();
+      FetchImagesController.abort("aborted by user (useEffect)");
     };
-  }, []);
+  }, [library]);
 
   const imageURLBuilder: IImageURLBuilder = (
     images,
@@ -934,11 +948,22 @@ const Photography: React.FC<{ library: string }> = ({ library }) => {
     setModel(true);
   };
 
+  if (imageList === undefined) {
+    return (
+      <div className="pageHero">
+        {isPending ? (
+          <div>
+            <h1 className="flexCenter">Loading...</h1>
+          </div>
+        ) : (
+          <h1 className="flexCenter">I fucked things up...</h1>
+        )}
+      </div>
+    );
+  }
+
   return (
     <div className="pageHero flexCenter">
-      <button onClick={() => getImagesUrl("update")}>update</button>
-      <button onClick={() => getImagesUrl("")}>get</button>
-
       <div className="container">
         <div className="gallery_container">
           <div>
@@ -960,9 +985,7 @@ const Photography: React.FC<{ library: string }> = ({ library }) => {
                       return {
                         original: imageURLBuilder(
                           ImageOBJForBuilder,
-                          imageList.URLStart,
-                          0,
-                          window.screenX
+                          imageList.URLStart
                         ),
                         thumbnail: imageURLBuilder(
                           ImageOBJForBuilder,
@@ -974,6 +997,7 @@ const Photography: React.FC<{ library: string }> = ({ library }) => {
                       };
                     }) || []
                   }
+                  lazyLoad
                   startIndex={imageIndex}
                   thumbnailPosition={"right"}
                   renderCustomControls={() => {
@@ -1005,7 +1029,10 @@ const Photography: React.FC<{ library: string }> = ({ library }) => {
                 key={index}
                 onClick={() => showImg(index)}
               >
+                {/* Add width to let the browser know the size of the element to load it before the image is ready. */}
                 <img
+                  loading="lazy"
+                  style={{ width: "350px", minHeight: "200px" }} // This is a start, it may need the hight. Keep in mind that not all images are the same.
                   src={imageURLBuilder(
                     ImageOBJForBuilder,
                     imageList.URLStart,

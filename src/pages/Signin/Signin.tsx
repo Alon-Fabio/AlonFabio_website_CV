@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import PropTypes from "prop-types";
 
 interface ISgnRedState {
@@ -10,7 +10,8 @@ interface ISigRedAction {
   payload: string;
 }
 
-const Signin: React.FC<{ stage: string }> = ({ stage }) => {
+const Signin: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
+  const [auth, setAuth] = useState("");
   const signInReducer = (
     signInState: ISgnRedState,
     { type, payload }: ISigRedAction
@@ -44,7 +45,9 @@ const Signin: React.FC<{ stage: string }> = ({ stage }) => {
       headers: { "Content-Type": "application/json", authentication: "false" },
       body: JSON.stringify(signInState),
     })
-      .then((response) => response.json())
+      .then((response) =>
+        response.status === 200 ? response.json() : response
+      )
       .then((data) => {
         console.log("Mid :", data);
         if (data.userId && data.success === "true") {
@@ -55,30 +58,49 @@ const Signin: React.FC<{ stage: string }> = ({ stage }) => {
       .catch((err) => console.log("Failed....", err));
   };
 
-  const getImagesUrl = async (action: string) => {
-    let status = { proses: "loading", err: "" };
-    let response = await fetch(`http://localhost/gallery${action}`, {
-      method: "POST",
+  const getUsers = () => {
+    fetch(`http://${stage}/signin/getUsers`, {
+      method: "post",
       headers: {
         "Content-Type": "application/json",
-        // Authentication:
-        //   window.sessionStorage.getItem("SmartBrainToken") || "no token",
+        authentication: window.sessionStorage.getItem("SmartBrainToken") || "",
       },
-
-      body: JSON.stringify({ ClDFolder: "graphics" }),
-    }).catch((err) => {
-      status = { proses: "failed", err };
-      console.log("catch, failed", err);
-    });
-    if (status.proses !== "failed") {
-      // @ts-ignore
-      let data = await response.json();
-      console.log("response", data);
-    }
-    if (status.proses === "failed") {
-      return status.err;
-    }
+      body: JSON.stringify(signInState),
+    })
+      .then(
+        (response) => response.json()
+        // response.status === 200 ? response.json() : response
+      )
+      .then((data) => {
+        console.log(data);
+      })
+      .catch(console.log);
   };
+
+  // const getImagesUrl = async (action: string) => {
+  //   let status = { proses: "loading", err: "" };
+  //   let response = await fetch(`http://localhost/gallery${action}`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       // Authentication:
+  //       //   window.sessionStorage.getItem("SmartBrainToken") || "no token",
+  //     },
+
+  //     body: JSON.stringify({ ClDFolder: "graphics" }),
+  //   }).catch((err) => {
+  //     status = { proses: "failed", err };
+  //     console.log("catch, failed", err);
+  //   });
+  //   if (status.proses !== "failed") {
+  //     // @ts-ignore
+  //     let data = await response.json();
+  //     console.log("response", data);
+  //   }
+  //   if (status.proses === "failed") {
+  //     return status.err;
+  //   }
+  // };
 
   return (
     <article
@@ -135,7 +157,8 @@ const Signin: React.FC<{ stage: string }> = ({ stage }) => {
             />
           </div>
         </form>
-        <button onClick={() => getImagesUrl("/update")}>updateUrls</button>
+        <button onClick={() => getUsers()}>getUsers</button>
+        {/* <button onClick={() => getImagesUrl("/update")}>updateUrls</button> */}
       </main>
     </article>
   );
