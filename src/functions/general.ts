@@ -7,8 +7,10 @@ export const isSSR: boolean = !(
 export const getRefElement = <T>(
   element?: RefObject<Element> | T
 ): Element | T | undefined | null => {
-  if (element && "current" in element) {
-    return element.current;
+  if (typeof element === "object" || typeof element === "function") {
+    if (element && "current" in element) {
+      return element.current;
+    }
   }
 
   return element;
