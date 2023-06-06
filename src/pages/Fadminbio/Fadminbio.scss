@@ -1,0 +1,80 @@
+@import "../../styles/scss/variables";
+
+#Fadminbio {
+  height: 100dvh;
+  background-color: $gray-35;
+  .Fadminbio_Container {
+    #Fadminbio_Button_Container {
+      padding: 1em 0.25em;
+
+      background-color: $secund-base-color;
+      ul {
+        list-style: none;
+        display: grid;
+        gap: 0.25rem;
+        padding: 0 1rem;
+
+        button {
+          width: 100%;
+          text-align: center;
+          font-size: 1.25rem;
+          padding: 0 0.25rem;
+          cursor: pointer;
+        }
+      }
+    }
+    #Fadminbio_Result {
+      background-color: $gray-65;
+      #schemas {
+        width: 100vw;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+
+        tr:nth-child(even) {
+          background-color: rgba($gray-75, 0.2);
+        }
+        tr:nth-child(odd) {
+          background-color: $gray-75;
+        }
+        td {
+          border: 2px solid $base-color;
+          text-overflow: ellipsis;
+        }
+        thead {
+          tr:first-child {
+            background-color: $base-color-gray-15;
+          }
+        }
+        tbody,
+        thead {
+          overflow-y: auto;
+          overflow-x: hidden;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #Fadminbio {
+    .Fadminbio_Container {
+      padding: 0.5rem;
+      #Fadminbio_Result {
+        #schemas {
+          width: 100%;
+        }
+      }
+      #Fadminbio_Button_Container {
+        position: fixed;
+        left: 0;
+        top: 20vh;
+
+        button {
+          text-align: left;
+        }
+      }
+    }
+  }
+}
