@@ -12,6 +12,19 @@
     position: relative;
     z-index: -1;
   }
+  // Enables Parallax Scrolling. This will make the App be the scrolling element instead of the body.
+  // Will cause problems with 'window.scroll` and element with fixed, sticky, absolute position.
+  #scrollingPXcon {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    perspective-origin: 49.5% 36%;
+    perspective: 1000px;
+    .perspective3d {
+      transform-style: preserve-3d; /* Enables the 3D perspective no the children of this container. */
+    }
+  }
   .subSectionHeading {
     text-align: center;
   }

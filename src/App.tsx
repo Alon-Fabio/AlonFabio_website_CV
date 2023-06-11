@@ -48,9 +48,9 @@ function App() {
   }, [pathname, hash, key]);
 
   return (
-    <div className="App" id="scrollingPXcon" ref={scrollPXref}>
+    <div className="App" ref={scrollPXref}>
       <header>
-        <NavBar scrollRef={scrollPXref} routeList={routeList} />
+        <NavBar routeList={routeList} />
       </header>
 
       <div className="mainContainer perspective3d">

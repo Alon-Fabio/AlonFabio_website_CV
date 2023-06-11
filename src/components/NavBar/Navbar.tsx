@@ -1,18 +1,17 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 // Style
 import "./NavBar.scss";
 import NavLogo from "../../styles/img/logos/NavLogo/NavLogo40";
 // Components
 import Burger from "../Burger/Burger";
 // hooks
-import { useEventListener } from "../../hooks/useEventListener";
+
 import { NavLink as Link } from "react-router-dom";
 
 type NavBarT = {
-  scrollRef: React.RefObject<HTMLDivElement>;
   routeList: Array<String>;
 };
-const Navbar: React.FC<NavBarT> = ({ scrollRef, routeList }) => {
+const Navbar: React.FC<NavBarT> = ({ routeList }) => {
   const NavBar = useRef<HTMLAnchorElement | null>(null);
   const NavLi = useRef<HTMLUListElement | null>(null);
   const [navStyle, setNavStyle] = useState({
@@ -20,9 +19,16 @@ const Navbar: React.FC<NavBarT> = ({ scrollRef, routeList }) => {
     navLinks: "",
   });
 
+  useEffect(() => {
+    window.addEventListener("scroll", scrollDetect);
+    return () => {
+      window.removeEventListener("scroll", scrollDetect);
+    };
+  }, []);
+
   // Fun for the eventListener
   const scrollDetect = () => {
-    const scrollYTop = scrollRef.current?.scrollTop;
+    const scrollYTop = window.scrollY;
     // Changes the NavBars background and the fill color of the SVG logo.
     if (
       typeof scrollYTop !== "number" ||
@@ -41,11 +47,6 @@ const Navbar: React.FC<NavBarT> = ({ scrollRef, routeList }) => {
       NavLi.current.classList.add("navNotTop");
     }
   };
-  useEventListener({
-    type: "scroll",
-    listener: scrollDetect,
-    element: scrollRef,
-  });
 
   const onBurgerClick = (): void => {
     setNavStyle((prvState) => {
