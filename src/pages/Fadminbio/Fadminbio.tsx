@@ -20,42 +20,14 @@ interface IFadminbioAction {
 type TTableData = {
   [key: string]: string | number | null;
 }[];
+
 // { users: [...users], login: [...login] } server return >>
 const Fadminbio: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
-  const [auth, setAuth] = useState(true);
+  const [auth, setAuth] = useState(false);
+  const [showNav, setShowNav] = useState(true);
   const [fetchStatus, setFetchStatus] = useState(false);
-  const [users, setUsers] = useState<TTableData>([
-    {
-      id: 1,
-      name: "fuck this prj",
-      email: "alon.the.fabio@gmail.com",
-      pet: null,
-      age: null,
-      entries: "0",
-      joined: "2023-05-23T15:33:00.537Z",
-    },
-    {
-      id: 2,
-      name: "Alon",
-      email: "alon.the.fabio@Gmail.com",
-      pet: null,
-      age: null,
-      entries: "0",
-      joined: "2023-06-01T07:37:46.365Z",
-    },
-  ]);
-  const [login, setLogin] = useState<TTableData>([
-    {
-      id: 1,
-      hash: "$2a$10$bF6o2QvvPJE0CcMQjerQtew63nX2yWFvCSvK4I0evlmCf1CqO6iES",
-      email: "alon.the.fabio@gmail.com",
-    },
-    {
-      id: 2,
-      hash: "$2a$10$GbhQ1UvCgOfl3j3UzrAC0OmGtpAhiUUgIF7UV.JrSuFQrhta/lTIm",
-      email: "alon.the.fabio@Gmail.com",
-    },
-  ]);
+  const [users, setUsers] = useState<TTableData>([]);
+  const [login, setLogin] = useState<TTableData>([]);
   const [isPending, startTransition] = useTransition();
 
   const signInReducer: ISignInReducer = (signInState, { type, payload }) => {
@@ -84,7 +56,7 @@ const Fadminbio: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
     setFetchStatus(true);
 
     event.preventDefault();
-    console.log("Started :", stage, signInState);
+    // console.log("Started :", stage, signInState);
     fetch(`http://${stage}/signin`, {
       method: "post",
       headers: { "Content-Type": "application/json", authentication: "false" },
@@ -94,12 +66,12 @@ const Fadminbio: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
         response.status === 200 ? response.json() : response
       )
       .then((data) => {
-        console.log("Mid :", data);
+        // console.log("Mid :", data);
         setFetchStatus(false);
 
         if (data.userId && data.success === "true") {
           saveAuthTokenInSessions(data.token);
-          console.log("Logged in: ", data.token);
+          // console.log("Logged in: ", data.token);
           setAuth(true);
         }
       })
@@ -173,13 +145,24 @@ const Fadminbio: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
 
   return (
     <section id="Fadminbio" className="pageHero flexCenter">
-      <article className="flexCenter container">
+      <article className="container ">
         <main className="">
           {auth ? (
             <div className="Fadminbio_Container ">
               <h2>Welcome Fabio, what do you wish to do?</h2>
 
-              <nav id="Fadminbio_Button_Container">
+              <nav
+                id="Fadminbio_Button_Container"
+                style={!showNav ? { left: "-180px" } : {}}
+              >
+                <div id="buttons_show_nav">
+                  {!showNav ? (
+                    <button onClick={() => setShowNav(true)}>→</button>
+                  ) : (
+                    <button onClick={() => setShowNav(false)}>←</button>
+                  )}
+                </div>
+                <h3>Management</h3>
                 <ul>
                   <li>
                     <button
@@ -188,6 +171,9 @@ const Fadminbio: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
                       Users
                     </button>
                   </li>
+                </ul>
+                <h3>Gallery</h3>
+                <ul>
                   <li>
                     <button
                       onClick={() =>
@@ -199,9 +185,7 @@ const Fadminbio: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
                       Update Graphics
                     </button>
                   </li>
-                  <li>
-                    <button onClick={() => console.log(users)}>users</button>
-                  </li>
+
                   <li>
                     <button
                       onClick={() =>
@@ -219,15 +203,15 @@ const Fadminbio: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
               <p>
                 {isPending === false && fetchStatus === true && "Loading..."}
               </p>
-              <div id="Fadminbio_Result" className="subSection flexCenter">
+              <div id="Fadminbio_Result" className="subSection  container">
                 {users.length !== 0 && (
-                  <div id="schemas">
+                  <div id="Fadminbio_schemas">
                     <div id="userSchema">
-                      {/* <h3>Users:</h3> */}
+                      <h3>Users:</h3>
                       {generateTable(users)}
                     </div>
                     <div id="loginSchema">
-                      {/* <h3>Logins:</h3> */}
+                      <h3>Logins:</h3>
                       {generateTable(login)}
                     </div>
                   </div>
