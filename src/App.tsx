@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef, lazy, Suspense } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 
 import "./styles/scss/App.scss";
@@ -7,20 +7,28 @@ import "./styles/scss/App.scss";
 import NavBar from "./components/NavBar/Navbar";
 import Footer from "./components/footer/Footer";
 // Pages
-import Services from "./pages/Services/Services";
 import Contact from "./pages/contact/Contact";
 import Main from "./pages/main/Main";
 import Photography from "./pages/gallery/Gallery";
-import SignIn from "./pages/Signin/Signin";
+
+// Create a nice loading component.
+const Loading = () => {
+  return <p>Loading...</p>;
+};
 
 function App() {
-  const scrollPXref = useRef<HTMLDivElement>(null);
-  // On load go to page:
-  const routeObj = ["Main", "Services", "Graphics", "Contact"];
+  // Lazy (big) components to load on demand.
+  const Fadminbio = lazy(() => import("./pages/Fadminbio/Fadminbio"));
+  const Services = lazy(() => import("./pages/Services/Services"));
 
-  const { pathname, hash, key } = useLocation();
+  // A base for the parallax scrolling affect.
+  const scrollPXref = useRef<HTMLDivElement>(null);
+
+  // List of routes for the navigation-bar:
+  const routeList = ["Main", "Services", "Graphics", "Contact"];
 
   // React-router: For hash scrolling to anchor.
+  const { pathname, hash, key } = useLocation();
   useEffect(() => {
     // If hash in URL, scroll to top.
     if (hash === "") {
@@ -42,21 +50,29 @@ function App() {
   return (
     <div className="App" id="scrollingPXcon" ref={scrollPXref}>
       <header>
-        <NavBar scrollRef={scrollPXref} routeList={routeObj} />
+        <NavBar scrollRef={scrollPXref} routeList={routeList} />
       </header>
 
       <div className="mainContainer perspective3d">
-        <Routes>
-          <Route path="*" element={<Main />} />
-          <Route path="Services" element={<Services />} />
-          <Route
-            path="Photography"
-            element={<Photography library="photos" />}
-          />
-          <Route path="Graphics" element={<Photography library="graphics" />} />
-          <Route path="Contact" element={<Contact />} />
-          <Route path="SignIn" element={<SignIn stage={"localhost"} />} />
-        </Routes>
+        <Suspense fallback={<Loading />}>
+          <Routes>
+            <Route path="*" element={<Main />} />
+            <Route path="Services" element={<Services />} />
+            <Route
+              path="Photography"
+              element={<Photography library="photos" />}
+            />
+            <Route
+              path="Graphics"
+              element={<Photography library="graphics" />}
+            />
+            <Route path="Contact" element={<Contact />} />
+            <Route
+              path="Fadminbio"
+              element={<Fadminbio stage={"localhost"} />}
+            />
+          </Routes>
+        </Suspense>
       </div>
       <Footer />
     </div>
