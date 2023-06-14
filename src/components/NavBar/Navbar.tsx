@@ -1,18 +1,17 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 // Style
 import "./NavBar.scss";
 import NavLogo from "../../styles/img/logos/NavLogo/NavLogo40";
 // Components
 import Burger from "../Burger/Burger";
 // hooks
-import { useEventListener } from "../../hooks/useEventListener";
+
 import { NavLink as Link } from "react-router-dom";
 
 type NavBarT = {
-  scrollRef: React.RefObject<HTMLDivElement>;
   routeList: Array<String>;
 };
-const Navbar: React.FC<NavBarT> = ({ scrollRef, routeList }) => {
+const Navbar: React.FC<NavBarT> = ({ routeList }) => {
   const NavBar = useRef<HTMLAnchorElement | null>(null);
   const NavLi = useRef<HTMLUListElement | null>(null);
   const [navStyle, setNavStyle] = useState({
@@ -20,9 +19,16 @@ const Navbar: React.FC<NavBarT> = ({ scrollRef, routeList }) => {
     navLinks: "",
   });
 
+  useEffect(() => {
+    window.addEventListener("scroll", scrollDetect);
+    return () => {
+      window.removeEventListener("scroll", scrollDetect);
+    };
+  }, []);
+
   // Fun for the eventListener
   const scrollDetect = () => {
-    const scrollYTop = scrollRef.current?.scrollTop;
+    const scrollYTop = window.scrollY;
     // Changes the NavBars background and the fill color of the SVG logo.
     if (
       typeof scrollYTop !== "number" ||
@@ -31,21 +37,16 @@ const Navbar: React.FC<NavBarT> = ({ scrollRef, routeList }) => {
     )
       return;
     if (scrollYTop <= 20) {
-      NavBar.current.classList.add("navbarTop");
-      NavBar.current.classList.remove("navNotTop");
-      NavLi.current.classList.remove("navNotTop");
+      NavBar.current.classList.add("navbar_Top");
+      NavBar.current.classList.remove("nav_Not_Top");
+      NavLi.current.classList.remove("nav_li_not_top");
     }
     if (scrollYTop >= 20 && NavBar.current.className !== "navbarNotTop") {
-      NavBar.current.classList.remove("navbarTop");
-      NavBar.current.classList.add("navNotTop");
-      NavLi.current.classList.add("navNotTop");
+      NavBar.current.classList.remove("navbar_Top");
+      NavBar.current.classList.add("nav_Not_Top");
+      NavLi.current.classList.add("nav_li_not_top");
     }
   };
-  useEventListener({
-    type: "scroll",
-    listener: scrollDetect,
-    element: scrollRef,
-  });
 
   const onBurgerClick = (): void => {
     setNavStyle((prvState) => {
@@ -60,7 +61,7 @@ const Navbar: React.FC<NavBarT> = ({ scrollRef, routeList }) => {
     });
   };
   return (
-    <nav ref={NavBar} id="main_nav" className={"navbarTop"}>
+    <nav ref={NavBar} id="main_nav" className={"navbar_Top"}>
       <div className="container navMain">
         <div className={"LogoContainer"}>
           {/*Left side home-logo, SVG format */}
@@ -69,7 +70,7 @@ const Navbar: React.FC<NavBarT> = ({ scrollRef, routeList }) => {
           </Link>
         </div>
         <div className="navLinksMain">
-          <ul ref={NavLi} className={`navLinks ${navStyle.navLinks}`}>
+          <ul ref={NavLi} className={`nav_links ${navStyle.navLinks}`}>
             {routeList.map((routeName) => (
               <li
                 key={`NavLink-${routeName}`}

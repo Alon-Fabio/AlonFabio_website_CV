@@ -27,47 +27,47 @@ import AlonLogoSvg from "./style/images/BackgroundLogo.svg";
 
 const Services = () => {
   return (
-    <section className="services perspective3d">
-      <div className="pageHero servicesHero ParallaxContainer perspective3d">
-        <img
-          src={BlueSky}
-          alt="Beautiful blue sky"
-          id="ParallaxBG"
-          className="ParallaxElement"
-        />
-        <img
-          src={Bohke}
-          alt="Little bohke"
-          id="ParallaxBohke"
-          className="ParallaxElement"
-        />
-        <img
-          src={Clover}
-          alt="A big lovely three leaf clover"
-          id="parallaxClover"
-          className="ParallaxElement"
-        />
+    <section className="services ">
+      <div id="scrollingPXcon" className="pageHero servicesHero  ">
+        <div id="services_hero_image_container">
+          <img
+            src={BlueSky}
+            alt="Beautiful blue sky"
+            id="Background_Clover"
+            className="services_hero_elements"
+          />
+          <img
+            src={Bohke}
+            alt="Little bohke"
+            id="Clover_Bohke"
+            className="services_hero_elements"
+          />
+          <img
+            src={Clover}
+            alt="A big lovely three leaf clover"
+            id="Clover_image"
+            className="services_hero_elements"
+          />
+        </div>
         <div id="serviceHeaderContainer">
           <h1 className={"slideLeftAni"}>Alon Fabio</h1>
-          <h2 className={"slideLeftAni"}>Programing</h2>
+          <h2 className={"slideLeftAni"}>Programming</h2>
           <h2 className={"slideLeftAni"}>Web Design</h2>
           <h2 className={"slideLeftAni"}>Graphic Design</h2>
           <h2 className={"slideLeftAni"}>Photography</h2>
         </div>
-        <ScrollDown />
       </div>
+      <ScrollDown />
+
       {/* Skill section */}
-      <div
-        className="subSection flexCenter skills perspective3d"
-        id="servicesCodeSkills"
-      >
-        <div className="container perspective3d">
+      <div className="subSection flexCenter skills " id="servicesCodeSkills">
+        <div className="container ">
           <div className="subSectionHeading">
             <h1>Alon's Code services</h1>
             <p>As a programmer, I can offer a lot of services</p>
           </div>
-          <div className="servicesProg perspective3d ">
-            <ul id="servicesCards" className="perspective3d cardsContainer">
+          <div className="servicesProg  ">
+            <ul id="servicesCards" className=" cardsContainer">
               <li>
                 <fieldset className="card">
                   <legend>
@@ -212,17 +212,14 @@ const Services = () => {
       ></div>
       <div></div>
       {/* Style sub section */}
-      <div
-        className="subSection flexCenter skills perspective3d"
-        id={"servicesStyleSkills"}
-      >
-        <div className="container perspective3d">
+      <div className="subSection flexCenter skills " id={"servicesStyleSkills"}>
+        <div className="container ">
           <div className="subSectionHeading">
             <h1>Alon's Style & Design</h1>
             <p>As a Graphic designer, I can offer a lot of services</p>
           </div>
-          <div className="servicesProg perspective3d">
-            <ul id="servicesCards" className="perspective3d cardsContainer">
+          <div className="servicesProg ">
+            <ul id="servicesCards" className=" cardsContainer">
               <li>
                 <fieldset className="card">
                   <legend>

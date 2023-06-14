@@ -8,48 +8,50 @@
   }
 
   // Hero section
-  .ParallaxContainer {
-    position: relative;
-    z-index: -1;
-  }
+
   .subSectionHeading {
     text-align: center;
   }
   .servicesHero {
     position: relative;
-
+    overflow: hidden;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     backface-visibility: visible;
+    #services_hero_image_container {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      .services_hero_elements {
+        position: absolute;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        justify-content: center;
+        background-clip: content-box; // Prevents clipping of other elements showing up on this effect.
+        height: 100%;
+        z-index: -1;
+      }
 
-    .ParallaxElement {
-      position: absolute;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      justify-content: center;
-      background-clip: content-box; // Prevents clipping of other elements showing up on this effect.
-      height: 100%;
-      z-index: -1;
-    }
+      #Background_Clover {
+        width: 100%;
+        inset: 0;
+        background-color: $base-color;
+      }
 
-    #ParallaxBG {
-      width: 100%;
-      transform: translateZ(-1000px) scale(2.3);
-      background-color: $base-color;
-    }
+      #Clover_Bohke {
+        left: -150px;
+        bottom: 135px;
+        opacity: 0.4;
+        backface-visibility: visible;
+      }
 
-    #ParallaxBohke {
-      left: 10%;
-      opacity: 0.4;
-      backface-visibility: visible;
-      transform: translateZ(200px);
-    }
-
-    #parallaxClover {
-      right: 10%;
-      transform: translateZ(-200px) scale(1.2);
+      #Clover_image {
+        right: -380px;
+        bottom: 150px;
+      }
     }
 
     #serviceHeaderContainer {
@@ -230,8 +232,11 @@
           font-size: 4rem;
         }
       }
-      #parallaxClover {
-        right: -30%;
+      #services_hero_image_container {
+        #Clover_image {
+          right: -330px;
+          bottom: 0;
+        }
       }
     }
     // subImage
@@ -313,9 +318,6 @@
         padding-top: 4rem;
         font-size: 5rem;
       }
-      #parallaxClover {
-        right: 10%;
-      }
     }
 
     //Contact Form
@@ -350,8 +352,13 @@
           font-size: 5rem;
         }
       }
-      #parallaxClover {
-        right: 10%;
+      #services_hero_image_container {
+        #Clover_image {
+          right: 0;
+        }
+        #Clover_Bohke {
+          left: 0;
+        }
       }
     }
     .container {

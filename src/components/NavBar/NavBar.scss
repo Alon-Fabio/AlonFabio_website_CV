@@ -2,14 +2,14 @@
 
 header {
   position: sticky;
-  inset: 0 15px auto 0;
+  // inset: 0 15px auto 0;
+  top: 0;
   z-index: 99;
 }
 
 #main_nav {
   position: absolute;
-  inset: 0 15px auto 0;
-  display: block;
+  // inset: 0 15px auto 0;
   width: 100%;
   padding: 1rem 0;
   transition: padding 0.5s ease, background-color 0.5s ease;
@@ -28,23 +28,30 @@ header {
     .LogoContainer {
       z-index: 10;
     }
-    .navLinks {
-      z-index: 9;
-      color: $gray-15;
-      text-transform: uppercase;
-      font-weight: 400;
-      font-size: 1.725rem;
-      letter-spacing: 0.05rem;
+    .navLinksMain {
+      .nav_links {
+        display: flex;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        z-index: 9;
+        color: $gray-15;
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 1.725rem;
+        letter-spacing: 0.05rem;
+        li {
+          position: relative;
+          list-style-type: none;
+        }
 
-      li {
-        position: relative;
-        list-style-type: none;
+        :hover,
+        .active {
+          cursor: pointer;
+          font-weight: 600;
+        }
       }
-
-      :hover,
-      .active {
-        cursor: pointer;
-        font-weight: 600;
+      .nav_li_not_top {
+        color: $secund-base-color;
       }
     }
     .navLinksShow {
@@ -71,20 +78,21 @@ header {
       top: 0;
       background-color: inherit;
     }
-    .navLinks {
+    .nav_links {
       // For bigger menus subtract from the top
       top: -200px;
-      width: 100%;
+      width: 100vw;
+      overflow: hidden;
       z-index: -10;
       padding: 1rem 1.5rem;
       background-color: $base-color;
-      position: absolute;
+      position: fixed;
       left: 0;
       display: flex;
       flex-direction: column-reverse;
       transition: top 0.5s ease-out;
     }
-    .navLinks::before {
+    .nav_links::before {
       content: "";
       z-index: 10;
       position: absolute;
@@ -103,7 +111,7 @@ header {
     .navMain {
       padding-right: 20px;
     }
-    .navLinks {
+    .nav_links {
       height: 100%;
       align-items: center;
       color: $secund-base-color;
@@ -120,9 +128,10 @@ header {
     }
     .NavLogo {
       padding-left: 1.75rem;
+      fill: inherit;
     }
   }
-  .navbarTop {
+  .navbar_Top {
     background-color: transparent;
 
     .LogoContainer:hover {
@@ -130,7 +139,7 @@ header {
       transition: all 100ms linear;
     }
   }
-  .navNotTop {
+  .nav_Not_Top {
     background-color: $base-color;
     fill: $secund-base-color;
     color: $secund-base-color !important;
