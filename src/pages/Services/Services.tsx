@@ -51,8 +51,8 @@ const Services = () => {
         </div>
         <div id="serviceHeaderContainer">
           <h1 className={"slideLeftAni"}>Alon Fabio</h1>
-          <h2 className={"slideLeftAni"}>Programming</h2>
           <h2 className={"slideLeftAni"}>Web Design</h2>
+          <h2 className={"slideLeftAni"}>Programming</h2>
           <h2 className={"slideLeftAni"}>Graphic Design</h2>
           <h2 className={"slideLeftAni"}>Photography</h2>
         </div>
@@ -158,8 +158,9 @@ const Services = () => {
               <li>
                 <fieldset className="card">
                   <legend>
-                    <span className="fas fa-theater-masks"></span>
+                    <span className="fa-solid fa-tachograph-digital"></span>
                   </legend>
+
                   <div className="cardHeader flexCenter">
                     <h3>{"UX & UI"}</h3>
                   </div>

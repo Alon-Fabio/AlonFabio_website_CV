@@ -953,10 +953,20 @@ const Photography: React.FC<{ library: string }> = ({ library }) => {
       <div className="pageHero">
         {isPending ? (
           <div>
+            {/* Add loading component */}
             <h1 className="flexCenter">Loading...</h1>
           </div>
         ) : (
-          <h1 className="flexCenter">I fucked things up...</h1>
+          <div>
+            <h1 className="flexCenter">No images</h1>
+            <p>Sorry, something most have gone wrong..</p>
+            <p>
+              Please try us again later{" "}
+              <span className="fa-regular fa-face-monocle">
+                <i className="fa-regular fa-face-monocle"></i>
+              </span>
+            </p>
+          </div>
         )}
       </div>
     );
