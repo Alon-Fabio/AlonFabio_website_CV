@@ -1,4 +1,4 @@
-import { useEffect, useRef, lazy, Suspense } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 
 import "./styles/scss/App.scss";
@@ -22,10 +22,10 @@ function App() {
   const Services = lazy(() => import("./pages/Services/Services"));
 
   // A base for the parallax scrolling affect.
-  const scrollPXref = useRef<HTMLDivElement>(null);
+  // const scrollPXref = useRef<HTMLDivElement>(null);
 
   // List of routes for the navigation-bar:
-  const routeList = ["Main", "Services", "Graphics", "Contact"];
+  const routeList = ["Main", "Services", "Graphics", "Photography", "Contact"];
 
   // React-router: For hash scrolling to anchor.
   const { pathname, hash, key } = useLocation();
@@ -48,12 +48,12 @@ function App() {
   }, [pathname, hash, key]);
 
   return (
-    <div className="App" ref={scrollPXref}>
+    <div className="App">
       <header>
         <NavBar routeList={routeList} />
       </header>
 
-      <div className="mainContainer perspective3d">
+      <div className="mainContainer ">
         <Suspense fallback={<Loading />}>
           <Routes>
             <Route path="*" element={<Main />} />

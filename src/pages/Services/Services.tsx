@@ -28,34 +28,37 @@ import AlonLogoSvg from "./style/images/BackgroundLogo.svg";
 const Services = () => {
   return (
     <section className="services ">
-      <div className="pageHero servicesHero ParallaxContainer perspective3d">
-        <img
-          src={BlueSky}
-          alt="Beautiful blue sky"
-          id="ParallaxBG"
-          className="ParallaxElement"
-        />
-        <img
-          src={Bohke}
-          alt="Little bohke"
-          id="ParallaxBohke"
-          className="ParallaxElement"
-        />
-        <img
-          src={Clover}
-          alt="A big lovely three leaf clover"
-          id="parallaxClover"
-          className="ParallaxElement"
-        />
+      <div id="scrollingPXcon" className="pageHero servicesHero  ">
+        <div id="services_hero_image_container">
+          <img
+            src={BlueSky}
+            alt="Beautiful blue sky"
+            id="Background_Clover"
+            className="services_hero_elements"
+          />
+          <img
+            src={Bohke}
+            alt="Little bohke"
+            id="Clover_Bohke"
+            className="services_hero_elements"
+          />
+          <img
+            src={Clover}
+            alt="A big lovely three leaf clover"
+            id="Clover_image"
+            className="services_hero_elements"
+          />
+        </div>
         <div id="serviceHeaderContainer">
           <h1 className={"slideLeftAni"}>Alon Fabio</h1>
-          <h2 className={"slideLeftAni"}>Programing</h2>
+          <h2 className={"slideLeftAni"}>Programming</h2>
           <h2 className={"slideLeftAni"}>Web Design</h2>
           <h2 className={"slideLeftAni"}>Graphic Design</h2>
           <h2 className={"slideLeftAni"}>Photography</h2>
         </div>
-        <ScrollDown />
       </div>
+      <ScrollDown />
+
       {/* Skill section */}
       <div className="subSection flexCenter skills " id="servicesCodeSkills">
         <div className="container ">

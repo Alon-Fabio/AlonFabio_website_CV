@@ -37,14 +37,14 @@ const Navbar: React.FC<NavBarT> = ({ routeList }) => {
     )
       return;
     if (scrollYTop <= 20) {
-      NavBar.current.classList.add("navbarTop");
-      NavBar.current.classList.remove("navNotTop");
-      NavLi.current.classList.remove("navNotTop");
+      NavBar.current.classList.add("navbar_Top");
+      NavBar.current.classList.remove("nav_Not_Top");
+      NavLi.current.classList.remove("nav_li_not_top");
     }
     if (scrollYTop >= 20 && NavBar.current.className !== "navbarNotTop") {
-      NavBar.current.classList.remove("navbarTop");
-      NavBar.current.classList.add("navNotTop");
-      NavLi.current.classList.add("navNotTop");
+      NavBar.current.classList.remove("navbar_Top");
+      NavBar.current.classList.add("nav_Not_Top");
+      NavLi.current.classList.add("nav_li_not_top");
     }
   };
 
@@ -61,7 +61,7 @@ const Navbar: React.FC<NavBarT> = ({ routeList }) => {
     });
   };
   return (
-    <nav ref={NavBar} id="main_nav" className={"navbarTop"}>
+    <nav ref={NavBar} id="main_nav" className={"navbar_Top"}>
       <div className="container navMain">
         <div className={"LogoContainer"}>
           {/*Left side home-logo, SVG format */}
@@ -70,7 +70,7 @@ const Navbar: React.FC<NavBarT> = ({ routeList }) => {
           </Link>
         </div>
         <div className="navLinksMain">
-          <ul ref={NavLi} className={`navLinks ${navStyle.navLinks}`}>
+          <ul ref={NavLi} className={`nav_links ${navStyle.navLinks}`}>
             {routeList.map((routeName) => (
               <li
                 key={`NavLink-${routeName}`}
