@@ -2,12 +2,18 @@ import React from "react";
 // components
 import ContactForm from "../../components/ContactForm/ContactForm";
 import ScrollDown from "../../components/AddOnsCom/ScrollDown/ScrollDown";
+import PageHero from "../../containers/PageHero/PageHero";
 // Style:
 import "./style/CSS/Services.scss";
 // Hero images:
 import Clover from "./style/images/Clover.webp";
 import Bohke from "./style/images/Bohke.webp";
 import BlueSky from "./style/images/BlueSky-min.webp";
+import CloverFull from "../../styles/img/images/Clover.jpg";
+import CloverW1080 from "../../styles/img/images/CloverW1080.jpg";
+import pipes from "../../styles/img/images/pipes.jpg";
+import cables from "../../styles/img/images/cables.jpg";
+
 // logos:
 import mongoLogo from "./style/images/servicesLogos/MongoDB_Logo_Black_RGB.webp";
 import awsLogo from "./style/images/servicesLogos/aws.webp";
@@ -28,36 +34,54 @@ import AlonLogoSvg from "./style/images/BackgroundLogo.svg";
 const Services = () => {
   return (
     <section className="services ">
-      <div id="scrollingPXcon" className="pageHero servicesHero  ">
-        <div id="services_hero_image_container">
-          <img
-            src={BlueSky}
-            alt="Beautiful blue sky"
-            id="Background_Clover"
-            className="services_hero_elements"
-          />
-          <img
-            src={Bohke}
-            alt="Little bohke"
-            id="Clover_Bohke"
-            className="services_hero_elements"
-          />
-          <img
-            src={Clover}
-            alt="A big lovely three leaf clover"
-            id="Clover_image"
-            className="services_hero_elements"
-          />
+      <PageHero
+        images={[
+          {
+            image: cables,
+            screenSize: "(max-width: 720px)",
+          },
+          {
+            image: CloverW1080,
+            screenSize: "(max-width: 1300px)",
+          },
+          {
+            image: pipes,
+            screenSize: "(max-width: 2000px)",
+          },
+        ]}
+      >
+        <div id="Services_Hero" className=" servicesHero  ">
+          {/* <div id="services_hero_image_container">
+           
+            <img
+              src={Bohke}
+              alt="Little bohke"
+              id="Clover_Bohke"
+              className="services_hero_elements"
+            />
+            <img
+              src={Clover}
+              alt="A big lovely three leaf clover"
+              id="Clover_image"
+              className="services_hero_elements"
+            />
+            <img
+              src={BlueSky}
+              alt="Beautiful blue sky"
+              id="Background_Clover"
+              className="services_hero_elements"
+            />
+          </div> */}
+          <div id="serviceHeaderContainer">
+            <h1 className={"slideLeftAni"}>Alon Fabio</h1>
+            <h2 className={"slideLeftAni"}>Web Design</h2>
+            <h2 className={"slideLeftAni"}>Programming</h2>
+            <h2 className={"slideLeftAni"}>Graphic Design</h2>
+            <h2 className={"slideLeftAni"}>Photography</h2>
+          </div>
         </div>
-        <div id="serviceHeaderContainer">
-          <h1 className={"slideLeftAni"}>Alon Fabio</h1>
-          <h2 className={"slideLeftAni"}>Web Design</h2>
-          <h2 className={"slideLeftAni"}>Programming</h2>
-          <h2 className={"slideLeftAni"}>Graphic Design</h2>
-          <h2 className={"slideLeftAni"}>Photography</h2>
-        </div>
-      </div>
-      <ScrollDown />
+      </PageHero>
+      {/* <ScrollDown /> */}
 
       {/* Skill section */}
       <div className="subSection flexCenter skills " id="servicesCodeSkills">

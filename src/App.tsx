@@ -16,10 +16,10 @@ const Loading = () => {
   return <p>Loading...</p>;
 };
 
+const Fadminbio = lazy(() => import("./pages/Fadminbio/Fadminbio"));
+const Services = lazy(() => import("./pages/Services/Services"));
 function App() {
   // Lazy (big) components to load on demand.
-  const Fadminbio = lazy(() => import("./pages/Fadminbio/Fadminbio"));
-  const Services = lazy(() => import("./pages/Services/Services"));
 
   // A base for the parallax scrolling affect.
   // const scrollPXref = useRef<HTMLDivElement>(null);

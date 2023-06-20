@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useTransition } from "react";
+import React, { useEffect, useState } from "react";
 import ImageGallery from "react-image-gallery";
 
 import ModalBase from "../../components/Modals/ModalBase/ModalBase";
@@ -865,56 +865,56 @@ const Photography: React.FC<{ library: string }> = ({ library }) => {
   const [imageList, setImagesList] = useState<IImageList>();
   const [model, setModel] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
-  const [isPending, startTransition] = useTransition();
+  const [isPending, setPending] = useState(false);
 
   useEffect(() => {
+    console.count("useEffect");
     async function getImagesUrl(
       folder: string,
       AbortController?: AbortController
     ) {
-      startTransition(() => {
-        fetch(`http://localhost/gallery/${folder}`, {
-          // fetch(`http://localhost/gallery/graphics`, {
-          signal:
-            AbortController?.signal !== undefined
-              ? AbortController.signal
-              : null,
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          // body: JSON.stringify({ CLDFolder: library }),
+      setPending(true);
+      fetch(`http://localhost/gallery/${folder}`, {
+        signal:
+          AbortController?.signal !== undefined ? AbortController.signal : null,
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          return response.json();
         })
-          .then((response) => {
-            return response.json();
-          })
-          .then((response) => {
-            if ("error" in response || response.images?.length <= 0)
-              console.log(response); // Add error case function to display something to the user.
-            if ("URLStart" in response) {
-              setImagesList(() => {
-                return {
-                  images: response.images,
-                  URLStart: [
-                    response.URLStart,
-                    response.owner,
-                    response.type,
-                    response.action,
-                  ].join("/"),
-                };
-              });
-            }
+        .then((response) => {
+          if ("error" in response || response.images?.length <= 0) return;
+          if ("URLStart" in response) {
+            setImagesList(() => {
+              return {
+                images: response.images,
+                URLStart: [
+                  response.URLStart,
+                  response.owner,
+                  response.type,
+                  response.action,
+                ].join("/"),
+              };
+            });
+          }
+          setPending(false);
 
-            //  return console.error("Looks like we are having a lite problem.. please try again later");
-          })
-          .catch((err) => {
-            console.error(err, "<================");
-            // console.error(
-            //   "Looks like we are having a lite problem.. please try again later"
-            // );
-          })
-          .finally(() => {});
-      });
+          //  return console.error("Looks like we are having a lite problem.. please try again later");
+        })
+        .catch((err) => {
+          console.error(err, "<================");
+          setPending(false);
+
+          // console.error(
+          //   "Looks like we are having a lite problem.. please try again later"
+          // );
+        })
+        .finally(() => {
+          setPending(false);
+        });
     }
 
     const FetchImagesController = new AbortController();
@@ -924,7 +924,7 @@ const Photography: React.FC<{ library: string }> = ({ library }) => {
     return () => {
       FetchImagesController.abort("aborted by user (useEffect)");
     };
-  }, [library]);
+  }, [library, setPending]);
 
   const imageURLBuilder: IImageURLBuilder = (
     images,
@@ -957,15 +957,15 @@ const Photography: React.FC<{ library: string }> = ({ library }) => {
             <h1 className="flexCenter">Loading...</h1>
           </div>
         ) : (
-          <div>
-            <h1 className="flexCenter">No images</h1>
-            <p>Sorry, something most have gone wrong..</p>
-            <p>
-              Please try us again later{" "}
-              <span className="fa-regular fa-face-monocle">
-                <i className="fa-regular fa-face-monocle"></i>
-              </span>
-            </p>
+          <div className="flexCenter" style={{ flexFlow: "column" }}>
+            <h1>No images</h1>
+            <div>
+              <p>Sorry, something most have gone wrong..</p>
+              <p>
+                Please try us again later{" "}
+                <span className="fa-regular fa-face-grin-beam-sweat"></span>
+              </p>
+            </div>
           </div>
         )}
       </div>

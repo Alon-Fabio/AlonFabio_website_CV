@@ -27,18 +27,22 @@ body {
 
   .pageHero {
     // A setup to start every page with a background and top.
-    padding-top: 77px;
-    min-height: calc(60vh - 77px);
+    // padding-top: 77px;
+    min-height: 60vh;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
   }
 
+  .Padding_for_nav {
+    padding-top: 100px !important;
+  }
+
   .subSection:nth-child(even) {
-    background-color: $base-color-gray-15;
+    background-color: $base-color-rgb-20;
   }
   .subSection:nth-child(odd) {
-    background-color: lighten($base-color-gray-15, 15);
+    background-color: lighten($base-color-rgb-20, 15);
   }
 }
 
@@ -77,7 +81,7 @@ code {
       .mainContainer {
         .container {
           max-width: 1100px;
-          margin: 1.875rem;
+          margin: 1.875rem 0;
           padding: 0.625rem;
           border-radius: 1rem;
           background-color: $opct-05;

@@ -13,58 +13,63 @@
     text-align: center;
   }
   .servicesHero {
-    position: relative;
-    overflow: hidden;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    backface-visibility: visible;
-    #services_hero_image_container {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      .services_hero_elements {
-        position: absolute;
-        overflow: hidden;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        justify-content: center;
-        background-clip: content-box; // Prevents clipping of other elements showing up on this effect.
-        height: 100%;
-        z-index: -1;
-      }
-
-      #Background_Clover {
-        width: 100%;
-        inset: 0;
-        background-color: $base-color;
-      }
-
-      #Clover_Bohke {
-        left: -150px;
-        bottom: 135px;
-        opacity: 0.4;
-        backface-visibility: visible;
-      }
-
-      #Clover_image {
-        right: -500px;
-        bottom: 350px;
+    .PageHero {
+      img {
+        bottom: 0;
       }
     }
+    // position: relative;
+    // overflow: hidden;
+    // flex-direction: column;
+    // justify-content: space-evenly;
+    // align-items: center;
+    // backface-visibility: visible;
+    // #services_hero_image_container {
+    //   position: fixed;
+    //   inset: 0;
+    //   z-index: -2;
+    //   .services_hero_elements {
+    //     position: sticky;
+    //     overflow: hidden;
+    //     background-repeat: no-repeat;
+    //     background-size: cover;
+    //     background-position: center;
+    //     justify-content: center;
+    //     background-clip: content-box; // Prevents clipping of other elements showing up on this effect.
+    //     width: 100%;
+    //     z-index: -1;
+    //   }
+
+    //   #Background_Clover {
+    //     height: 100%;
+    //     width: 100%;
+    //     inset: 0;
+    //     background-color: $base-color;
+    //   }
+
+    //   #Clover_Bohke {
+    //     // position: fixed;
+    //     opacity: 0.4;
+    //     backface-visibility: visible;
+    //   }
+
+    //   #Clover_image {
+    //     top: 100px;
+    //     // height: 50vh;
+    //     // width: auto;
+    //     right: 0;
+    //   }
+    // }
 
     #serviceHeaderContainer {
       text-transform: uppercase;
       padding: 1.5rem 2rem;
       padding-top: 4rem;
-      background-color: transparent;
-
       h1 {
         font-family: Oxygen, sans-serif;
         position: relative;
         font-size: 3.5rem;
-        font-weight: bold;
+        font-weight: bolder;
         color: $secund-base-color;
       }
 
@@ -188,6 +193,11 @@
 // Bigger mobile
 @media screen and (min-width: 425px) {
   .services {
+    .PageHero {
+      img {
+        top: 0;
+      }
+    }
     .servicesHero {
       #serviceHeaderContainer {
         padding-top: 4rem;
@@ -221,10 +231,23 @@
 @media screen and (min-width: 768px) {
   .services {
     .servicesHero {
-      min-height: 80vh !important;
-      background-attachment: fixed;
+      // min-height: 80vh !important;
+      // background-attachment: fixed;
       #serviceHeaderContainer {
-        padding-top: 4rem;
+        padding: 5.5rem 3rem;
+        position: relative;
+        &::before {
+          content: " ";
+          display: block;
+          position: absolute;
+          border-bottom-right-radius: 50% 90%;
+          left: 0;
+          top: 0;
+          width: 40em;
+          height: 40em;
+          background-color: lighten(rgba($base-color-rgb, 0.3), 50%);
+          background-blend-mode: color;
+        }
         h1 {
           font-size: 6.5rem;
         }
@@ -341,14 +364,18 @@
 @media screen and (min-width: 1024px) {
   .services {
     font-size: 1.5rem;
-    .pageHero {
-      background-position-y: bottom !important;
+
+    #Services_Hero {
+      // background-position-y: bottom !important;
+
       #serviceHeaderContainer {
-        padding: 10vh 10vw;
+        padding: 5em 5vw;
+
         h1 {
           font-size: 8.5rem;
         }
         h2 {
+          font-weight: bolder;
           font-size: 5rem;
         }
       }
