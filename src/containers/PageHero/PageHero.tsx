@@ -5,6 +5,7 @@ type HeroProps = {
   images?: Array<{ image: string; screenSize: string }>;
 };
 const PageHero: React.FC<HeroProps> = ({ children, images = [] }) => {
+  if (images.length === 0) return <></>;
   return (
     <section
       className="PageHero "
@@ -22,7 +23,6 @@ const PageHero: React.FC<HeroProps> = ({ children, images = [] }) => {
           />
         ))}
 
-        {/* <source srcSet={`${images.full} 3x`} /> */}
         <img
           style={{
             position: "absolute",
@@ -35,7 +35,6 @@ const PageHero: React.FC<HeroProps> = ({ children, images = [] }) => {
           srcSet={`${images[images.length - 1].image} ${images.length + 1}x`}
           alt="Full Logo"
         />
-        {/* <img style={{ width: "100%" }} srcSet={`${images.full} 3x`} /> */}
       </picture>
 
       {children}

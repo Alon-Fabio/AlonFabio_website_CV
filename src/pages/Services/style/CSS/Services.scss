@@ -63,8 +63,22 @@
 
     #serviceHeaderContainer {
       text-transform: uppercase;
-      padding: 1.5rem 2rem;
-      padding-top: 4rem;
+      padding: 8rem 2rem 2rem;
+      position: relative;
+      width: fit-content;
+      &::before {
+        content: " ";
+        display: block;
+        position: absolute;
+        border-bottom-right-radius: 55% 120%;
+        border-top-right-radius: 150% 20%;
+        left: 0;
+        top: 100px;
+        width: 110%;
+        height: 100%;
+
+        background-color: $base-color-rgb-20;
+      }
       h1 {
         font-family: Oxygen, sans-serif;
         position: relative;
@@ -200,7 +214,6 @@
     }
     .servicesHero {
       #serviceHeaderContainer {
-        padding-top: 4rem;
         h1 {
           font-size: 4rem;
         }
@@ -234,25 +247,16 @@
       // min-height: 80vh !important;
       // background-attachment: fixed;
       #serviceHeaderContainer {
-        padding: 5.5rem 3rem;
-        position: relative;
+        padding: 5.5rem 3rem 3rem;
         &::before {
-          content: " ";
-          display: block;
-          position: absolute;
-          border-bottom-right-radius: 50% 90%;
-          left: 0;
-          top: 0;
-          width: 40em;
-          height: 40em;
-          background-color: lighten(rgba($base-color-rgb, 0.3), 50%);
-          background-blend-mode: color;
+          background-color: unset;
+          width: calc(100% + 100px);
         }
         h1 {
-          font-size: 6.5rem;
+          font-size: 5rem;
         }
         h2 {
-          font-size: 4rem;
+          font-size: 3.5rem;
         }
       }
       #services_hero_image_container {
@@ -369,14 +373,17 @@
       // background-position-y: bottom !important;
 
       #serviceHeaderContainer {
-        padding: 5em 5vw;
-
+        padding: 9rem 5rem 5rem;
+        // color: darken($base-color, 10%);
+        &::before {
+          background-color: $base-color-rgb-20;
+          width: 100%;
+        }
         h1 {
-          font-size: 8.5rem;
+          font-size: 6rem;
         }
         h2 {
-          font-weight: bolder;
-          font-size: 5rem;
+          font-size: 4rem;
         }
       }
       #services_hero_image_container {

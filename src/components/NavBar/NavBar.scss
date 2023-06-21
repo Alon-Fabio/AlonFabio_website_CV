@@ -1,5 +1,7 @@
 @import "../../styles/scss/variables.scss";
 
+// From full screen to mobile... ↓ Nooby mistake..
+
 header {
   position: fixed;
   inset: 0 0 auto 0;
@@ -44,10 +46,9 @@ header {
         justify-content: flex-end;
         flex-wrap: wrap;
         z-index: 9;
-        color: $gray-15;
         text-transform: uppercase;
         font-weight: 400;
-        font-size: 1.725rem;
+        font-size: 1.5rem;
         letter-spacing: 0.05rem;
         li {
           position: relative;
@@ -97,6 +98,7 @@ header {
       z-index: -10;
       padding: 1rem 1.5rem;
       background-color: $base-color;
+      color: $secund-base-color;
       position: fixed;
       left: 0;
       display: flex;
@@ -144,20 +146,21 @@ header {
     }
     .navMain {
       padding-right: 20px;
-    }
-    .nav_links {
-      height: 100%;
-      align-items: center;
-      color: $secund-base-color;
-      display: flex;
-      text-transform: uppercase;
-      font-weight: 400;
-      font-size: 1.5rem;
-      letter-spacing: 0.05rem;
 
-      li {
-        list-style-type: none;
-        padding-left: 1rem;
+      .nav_links {
+        height: 100%;
+        align-items: center;
+        color: unset;
+        display: flex;
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 1.25rem;
+        letter-spacing: 0.05rem;
+
+        li {
+          list-style-type: none;
+          padding-left: 1rem;
+        }
       }
     }
     .NavLogo {
@@ -175,32 +178,35 @@ header {
   }
 }
 @media screen and (min-width: 2000px) {
-  // header {
-  //   inset: 0 0 0 auto;
-  //   #main_nav {
-  //     display: flex;
+  header {
+    //   inset: 0 0 0 auto;
+    #main_nav {
+      //     display: flex;
 
-  //     flex-direction: column;
-  //     border-radius: 100% 0 0 100% / 5em 0 0 5em;
-  //     padding: 2em;
-  //     &::before {
-  //       border-radius: 100% 0 0 100% / 5em 0 0 5em;
-  //     }
-  //     .navMain {
-  //       display: flex;
-  //       flex-direction: column;
-  //       .LogoContainer {
-  //         display: flex;
-  //         justify-content: flex-end;
-  //       }
-  //       ul {
-  //         display: flex;
-  //         align-items: flex-end;
-  //         flex-direction: column;
-  //       }
-  //     }
-  //   }
-  // }
+      //     flex-direction: column;
+      //     border-radius: 100% 0 0 100% / 5em 0 0 5em;
+      //     padding: 2em;
+      //     &::before {
+      //       border-radius: 100% 0 0 100% / 5em 0 0 5em;
+      //     }
+      .navMain {
+        //       display: flex;
+        //       flex-direction: column;
+        //       .LogoContainer {
+        //         display: flex;
+        //         justify-content: flex-end;
+        //       }
+        ul {
+          //         display: flex;
+          //         align-items: flex-end;
+          //         flex-direction: column;
+          li {
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  }
 }
 .nav_Not_Top {
   background-color: $base-color;

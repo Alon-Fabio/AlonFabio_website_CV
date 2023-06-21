@@ -1,18 +1,14 @@
 import React from "react";
 // components
 import ContactForm from "../../components/ContactForm/ContactForm";
-import ScrollDown from "../../components/AddOnsCom/ScrollDown/ScrollDown";
 import PageHero from "../../containers/PageHero/PageHero";
 // Style:
 import "./style/CSS/Services.scss";
 // Hero images:
-import Clover from "./style/images/Clover.webp";
-import Bohke from "./style/images/Bohke.webp";
-import BlueSky from "./style/images/BlueSky-min.webp";
-import CloverFull from "../../styles/img/images/Clover.jpg";
-import CloverW1080 from "../../styles/img/images/CloverW1080.jpg";
-import pipes from "../../styles/img/images/pipes.jpg";
-import cables from "../../styles/img/images/cables.jpg";
+
+import CloverW1080 from "../../styles/img/backgrounds/CloverW1080.jpg";
+import Cables from "../../styles/img/backgrounds/cables900w-min.jpg";
+import Pipes from "../../styles/img/backgrounds/pipes-min.jpg";
 
 // logos:
 import mongoLogo from "./style/images/servicesLogos/MongoDB_Logo_Black_RGB.webp";
@@ -28,7 +24,7 @@ import cssLogo from "./style/images/servicesLogos/css.webp";
 import HTML5Logo from "./style/images/servicesLogos/HTML5.webp";
 // import illustratorLogo from "./style/images/servicesLogos/Adobe_illustrator.png";
 // Service middle section:
-import MessiPic from "../../styles/img/Lionel-Messi.webp";
+import MessiPic from "../../styles/img/backgrounds/Lionel-Messi.webp";
 import AlonLogoSvg from "./style/images/BackgroundLogo.svg";
 
 const Services = () => {
@@ -37,15 +33,15 @@ const Services = () => {
       <PageHero
         images={[
           {
-            image: cables,
-            screenSize: "(max-width: 720px)",
+            image: Cables,
+            screenSize: "(max-width: 768px)",
           },
           {
             image: CloverW1080,
-            screenSize: "(max-width: 1300px)",
+            screenSize: "(max-width: 1024px)",
           },
           {
-            image: pipes,
+            image: Pipes,
             screenSize: "(max-width: 2000px)",
           },
         ]}
@@ -77,7 +73,7 @@ const Services = () => {
             <h2 className={"slideLeftAni"}>Web Design</h2>
             <h2 className={"slideLeftAni"}>Programming</h2>
             <h2 className={"slideLeftAni"}>Graphic Design</h2>
-            <h2 className={"slideLeftAni"}>Photography</h2>
+            {/* <h2 className={"slideLeftAni"}>Photography</h2> */}
           </div>
         </div>
       </PageHero>
