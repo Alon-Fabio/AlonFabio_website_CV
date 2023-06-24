@@ -63,7 +63,7 @@
 
     #serviceHeaderContainer {
       text-transform: uppercase;
-      padding: 8rem 2rem 2rem;
+      padding: 2rem;
       position: relative;
       width: fit-content;
       &::before {
@@ -73,8 +73,8 @@
         border-bottom-right-radius: 55% 120%;
         border-top-right-radius: 150% 20%;
         left: 0;
-        top: 100px;
-        width: 110%;
+        top: 1rem;
+        width: 100%;
         height: 100%;
 
         background-color: $base-color-rgb-20;
@@ -247,7 +247,7 @@
       // min-height: 80vh !important;
       // background-attachment: fixed;
       #serviceHeaderContainer {
-        padding: 5.5rem 3rem 3rem;
+        padding: 3rem;
         &::before {
           background-color: unset;
           width: calc(100% + 100px);
@@ -373,7 +373,7 @@
       // background-position-y: bottom !important;
 
       #serviceHeaderContainer {
-        padding: 9rem 5rem 5rem;
+        padding: 5rem;
         // color: darken($base-color, 10%);
         &::before {
           background-color: $base-color-rgb-20;

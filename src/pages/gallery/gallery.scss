@@ -99,3 +99,49 @@
 //   padding: 20px 0 20px;
 //   margin: 0 auto;
 // }
+
+@media screen and (min-width: 1024px) {
+  .Gallery {
+    .PageHero {
+      min-height: 50vh;
+      // h1 {
+      //   font-family: "Montserrat", "Arial Narrow", Arial, sans-serif;
+      //   position: relative;
+      //   font-weight: 1000;
+      //   font-size: 8rem;
+      //   // color: transparent;
+      //   background-clip: text;
+      //   -webkit-text-fill-color: transparent;
+      //   background-image: inherit;
+      // }
+      // #Photography_H1_BG {
+      //   background-image: url("../../styles/img/potational/photograpy/DSC_0720.JPG");
+      //   border: red 1px solid;
+      //   position: absolute;
+      //   // z-index: -1;
+      //   inset: 0;
+      // }
+
+      h1 {
+        background: url("../../styles/img/potational/photograpy/DSC_0720.JPG");
+        // background-blend-mode: lighten;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        // background-position-y: 10%; ???
+
+        // height: 100%;
+        width: 100vw;
+        font-family: "Oxygen", "Arial Narrow", Arial, sans-serif;
+        background-attachment: fixed;
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: $secund-base-color;
+
+        font-size: 15rem;
+        font-weight: 900;
+      }
+    }
+  }
+}

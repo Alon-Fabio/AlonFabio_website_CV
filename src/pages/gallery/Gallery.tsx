@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from "react";
-import ImageGallery from "react-image-gallery";
 
-import ModalBase from "../../components/Modals/ModalBase/ModalBase";
-
+// Containers
+import PageHero from "../../containers/PageHero/PageHero";
+// Components
+import GalleryGrid from "../../components/GalleryGrid/GalleryGrid";
+// Style
 import "./gallery.scss";
-
-type IImageURLBuilder = (
-  images: {
-    img_format: string;
-    version: string;
-    name: string;
-    folder: string;
-  },
-  URLStart: string,
-  height?: number,
-  width?: number
-) => string;
+// Images
+import Clover from "../../styles/img/backgrounds/CloverW1080.jpg";
+// import SunSet from "../../styles/img/potational/photograpy/DSC_8756.jpg";
+import Sky1 from "../../styles/img/potational/photograpy/Sky1.jpg";
+// @ts-ignore
+import BandW from "../../styles/img/potational/photograpy/DSC_0720.JPG";
 
 type IImageList =
   | {
@@ -863,8 +859,7 @@ type IImageList =
 // const Photography: React.FC<{ library: string }> = React.memo(({ library }) => {
 const Photography: React.FC<{ library: string }> = ({ library }) => {
   const [imageList, setImagesList] = useState<IImageList>();
-  const [model, setModel] = useState(false);
-  const [imageIndex, setImageIndex] = useState(0);
+
   const [isPending, setPending] = useState(false);
 
   useEffect(() => {
@@ -926,32 +921,25 @@ const Photography: React.FC<{ library: string }> = ({ library }) => {
     };
   }, [library, setPending]);
 
-  const imageURLBuilder: IImageURLBuilder = (
-    images,
-    URLStart,
-    height = 0,
-    width = 0
-  ) => {
-    let imageURL = "";
-    const ImageURLEnd =
-      [images.version, images.folder, images.name].join("/") +
-      "." +
-      images.img_format;
-    if (height !== 0) imageURL = "h_" + height.toString() + imageURL;
-    if (width !== 0) imageURL = "w_" + width.toString() + imageURL;
-    if (height !== 0 || width !== 0) imageURL = "/" + imageURL + ",c_scale";
-    return URLStart + imageURL + "/" + ImageURLEnd;
-  };
-
-  const showImg = (imageIndex: number): void => {
-    setImageIndex(imageIndex);
-    setModel(true);
-  };
-
-  if (imageList === undefined) {
-    return (
-      <div className="pageHero">
-        {isPending ? (
+  return (
+    <div className="Gallery">
+      <PageHero images={[{ image: BandW, screenSize: "" }]}>
+        {/* <PageHero> */}
+        {library === "photos" ? (
+          <div>
+            <h1>Photography</h1>
+            {/* <img id="Photography_H1_BG" src={SunSet} alt="Clover" /> */}
+          </div>
+        ) : (
+          <div>
+            <h1>Graphics</h1>
+          </div>
+        )}
+      </PageHero>
+      <div className="container">
+        {imageList?.images !== undefined ? (
+          <GalleryGrid imageList={imageList} />
+        ) : isPending ? (
           <div>
             {/* Add loading component */}
             <h1 className="flexCenter">Loading...</h1>
@@ -968,93 +956,6 @@ const Photography: React.FC<{ library: string }> = ({ library }) => {
             </div>
           </div>
         )}
-      </div>
-    );
-  }
-
-  return (
-    <div className="pageHero flexCenter">
-      <div className="container">
-        <div className="gallery_container">
-          <div>
-            <ModalBase
-              setShowModal={setModel}
-              showModal={model}
-              clickOutSide={false}
-            >
-              <div id="ImageGalleryContainer">
-                <ImageGallery
-                  items={
-                    imageList?.images.map((image) => {
-                      const ImageOBJForBuilder = {
-                        img_format: image.img_format,
-                        name: image.name,
-                        version: image.version,
-                        folder: image.folder,
-                      };
-                      return {
-                        original: imageURLBuilder(
-                          ImageOBJForBuilder,
-                          imageList.URLStart
-                        ),
-                        thumbnail: imageURLBuilder(
-                          ImageOBJForBuilder,
-                          imageList.URLStart,
-                          0,
-                          100
-                        ),
-                        thumbnailWidth: 50,
-                      };
-                    }) || []
-                  }
-                  lazyLoad
-                  startIndex={imageIndex}
-                  thumbnailPosition={"right"}
-                  renderCustomControls={() => {
-                    return (
-                      <button
-                        className="image-gallery-custom-action exit_gallery"
-                        onClick={() => setModel(false)}
-                      >
-                        <span className="fa-solid fa-arrow-right-from-bracket fa-rotate-180"></span>
-                      </button>
-                    );
-                  }}
-                />
-              </div>
-            </ModalBase>
-          </div>
-
-          {imageList?.images.map((image, index) => {
-            const ImageOBJForBuilder = {
-              img_format: image.img_format,
-              name: image.name,
-              version: image.version,
-              folder: image.folder,
-            };
-
-            return (
-              <div
-                className="gallery_image"
-                key={index}
-                onClick={() => showImg(index)}
-              >
-                {/* Add width to let the browser know the size of the element to load it before the image is ready. */}
-                <img
-                  loading="lazy"
-                  style={{ width: "350px", minHeight: "200px" }} // This is a start, it may need the hight. Keep in mind that not all images are the same.
-                  src={imageURLBuilder(
-                    ImageOBJForBuilder,
-                    imageList.URLStart,
-                    0,
-                    350
-                  )}
-                  alt={image.name}
-                />
-              </div>
-            );
-          })}
-        </div>
       </div>
     </div>
   );
