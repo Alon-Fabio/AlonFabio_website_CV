@@ -49,7 +49,7 @@ const Services = () => {
         />
         <div id="serviceHeaderContainer">
           <p className={"serviceHeaderDownAni"}>Alon Fabio</p>
-          <p className={"serviceHeaderDownAni"}>Programing</p>
+          <p className={"serviceHeaderDownAni"}>Programming</p>
           <p className={"serviceHeaderDownAni"}>Web Design</p>
           <p className={"serviceHeaderDownAni"}>Graphic Design</p>
         </div>
