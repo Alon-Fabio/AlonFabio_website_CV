@@ -9,7 +9,8 @@ import Footer from "./components/footer/Footer";
 // Pages
 import Contact from "./pages/contact/Contact";
 import Main from "./pages/main/Main";
-import Photography from "./pages/gallery/Gallery";
+import Photography from "./pages/Photography/Photography";
+import Graphics from "./pages/Graphics/Graphics";
 
 // Create a nice loading component.
 const Loading = () => {
@@ -58,14 +59,8 @@ function App() {
           <Routes>
             <Route path="*" element={<Main />} />
             <Route path="Services" element={<Services />} />
-            <Route
-              path="Photography"
-              element={<Photography library="photos" />}
-            />
-            <Route
-              path="Graphics"
-              element={<Photography library="graphics" />}
-            />
+            <Route path="Photography" element={<Photography />} />
+            <Route path="Graphics" element={<Graphics />} />
             <Route path="Contact" element={<Contact />} />
             <Route
               path="Fadminbio"

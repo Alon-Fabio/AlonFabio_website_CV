@@ -70,6 +70,21 @@ code {
   color: $secund-base-color;
 }
 
+.Text_background_image_clip {
+  // add image with background
+  // background: url("https://res.cloudinary.com/alonfabio/image/upload/v1684409882/photos/Napoleon_hill_1_qvuonp.jpg");
+  letter-spacing: -7px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Oxygen", "Arial Narrow", Arial, sans-serif;
+  background-clip: text;
+
+  font-weight: 1000;
+}
 // Tablet
 // @media (min-width: 768px) and (max-width: 1024px) {
 // }

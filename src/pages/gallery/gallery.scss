@@ -1,93 +1,146 @@
 @import "~react-image-gallery/styles/scss/image-gallery.scss";
 @import "../../styles/scss/variables";
+// .Gallery {
+//   .PageHero {
+//     min-height: 50vh;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     padding: unset;
+//     #PhotographyHero {
+//       h1 {
+//         position: relative;
 
-#ImageGalleryContainer {
-  position: relative;
-  background-color: rgba(#fff, 0.8);
-  padding: 0 1em;
+//         font-size: clamp(11vw, 12rem, 18vw);
+//         color: white;
+//         letter-spacing: -5px;
+//         font-family: "Oxygen", "Arial Narrow", Arial, sans-serif;
+//         font-weight: 1000;
+//         perspective: 50px;
+//         perspective-origin: 50% 100%;
+//         animation-delay: 0.5s;
+//         &::before {
+//           content: "Photography";
+//           color: #000000;
+//           inset: 0;
+//           z-index: -1;
+//           position: absolute;
+//           text-align: center;
+//           justify-content: center;
+//           display: flex;
+//           align-items: center;
+//           opacity: 0.9;
 
-  .image-gallery-slide-wrapper {
-    height: 100dvh;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .exit_gallery {
-    all: unset;
-    position: absolute;
-    top: 1em;
-    left: 0;
-    border: none;
-    z-index: 4;
-    &:hover {
-      text-shadow: #000000 1px 3px 5px;
-    }
-    transition: text-shadow 0.25s;
-  }
-  .image-gallery-icon {
-    color: $base-color-rgb;
-  }
-  .image-gallery-thumbnails-container {
-    .image-gallery-thumbnail {
-      &:hover {
-        border-color: $secund-base-color;
-      }
-    }
-    .active {
-      border-color: $base-color;
-    }
-  }
-}
-.gallery_container {
-  column-count: 3;
-  column-width: 33%;
-  padding: 0 12px;
-  .gallery_image {
-    display: flex;
+//           text-shadow: #000000 1px 1px 10px;
+//           transform: scaleY(0.3) translateY(750px) scale(300%) translateZ(-80px)
+//             translateZ(-50px);
+//         }
+//       }
+//     }
+//   }
+//   #ImageGalleryContainer {
+//     position: relative;
+//     background-color: rgba(#fff, 0.8);
+//     padding: 0 1em;
 
-    justify-content: center;
+//     .image-gallery-slide-wrapper {
+//       height: 100dvh;
+//       display: inline-flex;
+//       justify-content: center;
+//       align-items: center;
+//     }
+//     .exit_gallery {
+//       all: unset;
+//       position: absolute;
+//       top: 1em;
+//       left: 0;
+//       border: none;
+//       z-index: 4;
+//       &:hover {
+//         text-shadow: #000000 1px 3px 5px;
+//       }
+//       transition: text-shadow 0.25s;
+//     }
+//     .image-gallery-icon {
+//       color: $base-color-rgb;
+//     }
+//     .image-gallery-thumbnails-container {
+//       .image-gallery-thumbnail {
+//         &:hover {
+//           border-color: $secund-base-color;
+//         }
+//       }
+//       .active {
+//         border-color: $base-color;
+//       }
+//     }
+//   }
+//   .gallery_container {
+//     // display: grid;
+//     column-count: 3;
+//     // column-width: 33%;
+//     padding: 0 12px;
+//     .gallery_image {
+//       display: flex;
 
-    margin: 0 0 12px 0;
-    transition: all 300ms ease;
-    cursor: pointer;
-    &:hover {
-      position: relative;
-      filter: opacity(0.8);
-    }
-  }
-}
-@media screen and (max-width: 1100px) {
-  .gallery_container {
-    column-count: 2;
-    column-width: 40vw;
-  }
-}
-@media screen and (max-width: 790px) {
-  .gallery_container {
-    column-count: 1;
-    column-width: 90vw;
-  }
-}
+//       justify-content: center;
 
-// model
+//       margin: 0 0 12px 0;
+//       transition: all 300ms ease;
+//       cursor: pointer;
+//       &:hover {
+//         position: relative;
+//         filter: opacity(0.8);
+//       }
+//     }
+//   }
+// }
+// @media screen and (max-width: 1100px) {
+//   .Gallery {
+//     .PageHero {
+//       h1 {
+//         font-size: 13vw;
+//       }
+//     }
+//     .gallery_container {
+//       column-count: 2;
+//       column-width: 40vw;
+//     }
+//   }
+// }
 
-.gallery_model {
-  position: fixed;
-  width: 100dvw;
-  inset: 0 0 0;
-  background-color: rgba(#000000, 0.5);
-  transition: opacity 0.4s ease, visibility 0.4s ease,
-    transform 0.5s ease-in-out;
-  visibility: hidden;
-  opacity: 0;
-  transform: scale(0);
-  z-index: 200;
-}
-.gallery_container .open {
-  visibility: visible;
-  opacity: 1;
-  transform: scale(1);
-}
+// // model
+
+// @media screen and (max-width: 790px) {
+//   .Gallery {
+//     .PageHero {
+//       h1 {
+//         font-size: 15vw;
+//       }
+//     }
+//     .gallery_container {
+//       column-count: 1;
+//       column-width: 90vw;
+//     }
+//   }
+// }
+// .gallery_model {
+//   position: fixed;
+//   width: 100dvw;
+//   inset: 0 0 0;
+//   background-color: rgba(#000000, 0.5);
+//   transition: opacity 0.4s ease, visibility 0.4s ease,
+//     transform 0.5s ease-in-out;
+//   visibility: hidden;
+//   opacity: 0;
+//   transform: scale(0);
+//   z-index: 200;
+// }
+// .gallery_container .open {
+//   visibility: visible;
+//   opacity: 1;
+//   transform: scale(1);
+// }
 // .gallery_model img {
 //   display: block;
 //   width: auto;
@@ -99,49 +152,3 @@
 //   padding: 20px 0 20px;
 //   margin: 0 auto;
 // }
-
-@media screen and (min-width: 1024px) {
-  .Gallery {
-    .PageHero {
-      min-height: 50vh;
-      // h1 {
-      //   font-family: "Montserrat", "Arial Narrow", Arial, sans-serif;
-      //   position: relative;
-      //   font-weight: 1000;
-      //   font-size: 8rem;
-      //   // color: transparent;
-      //   background-clip: text;
-      //   -webkit-text-fill-color: transparent;
-      //   background-image: inherit;
-      // }
-      // #Photography_H1_BG {
-      //   background-image: url("../../styles/img/potational/photograpy/DSC_0720.JPG");
-      //   border: red 1px solid;
-      //   position: absolute;
-      //   // z-index: -1;
-      //   inset: 0;
-      // }
-
-      h1 {
-        background: url("../../styles/img/potational/photograpy/DSC_0720.JPG");
-        // background-blend-mode: lighten;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        // background-position-y: 10%; ???
-
-        // height: 100%;
-        width: 100vw;
-        font-family: "Oxygen", "Arial Narrow", Arial, sans-serif;
-        background-attachment: fixed;
-        -webkit-text-fill-color: transparent;
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: $secund-base-color;
-
-        font-size: 15rem;
-        font-weight: 900;
-      }
-    }
-  }
-}

@@ -1,0 +1,52 @@
+@import "../../styles/scss/variables";
+
+.GalleryGrid {
+  padding: 1rem;
+  background-color: $gray-35;
+
+  .gallery_container {
+    // display: grid;
+    // column-width: 33%;
+    column-count: 3;
+    width: fit-content;
+    // padding: 0 12px;
+    .gallery_image {
+      display: flex;
+
+      justify-content: center;
+
+      margin: 0 0 12px 0;
+      transition: all 300ms ease;
+      cursor: pointer;
+      &:hover {
+        position: relative;
+        filter: opacity(0.8);
+      }
+    }
+  }
+}
+@media screen and (max-width: 1150px) {
+  .GalleryGrid {
+    .gallery_container {
+      column-count: 2;
+      column-width: 350px;
+    }
+  }
+}
+
+// model
+
+@media screen and (max-width: 790px) {
+  .GalleryGrid {
+    .gallery_container {
+      width: 100%;
+      column-count: 1;
+      column-width: 90vw;
+      .gallery_image {
+        img {
+          width: MIN(100%, 350px);
+        }
+      }
+    }
+  }
+}

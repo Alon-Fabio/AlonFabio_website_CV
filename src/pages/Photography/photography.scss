@@ -1,0 +1,57 @@
+#Photography {
+  .PageHero {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: unset;
+    #PhotographyHero {
+      h1 {
+        position: relative;
+        font-size: clamp(11vw, 12rem, 18vw);
+        color: white;
+        letter-spacing: -5px;
+        font-family: "Oxygen", "Arial Narrow", Arial, sans-serif;
+        font-weight: 1000;
+        perspective: 50px;
+        perspective-origin: 50% 100%;
+        animation-delay: 0.5s;
+        &::before {
+          content: "Photography";
+          color: #000000;
+          inset: 0;
+          z-index: -1;
+          position: absolute;
+          text-align: center;
+          justify-content: center;
+          display: flex;
+          align-items: center;
+          opacity: 0.9;
+
+          text-shadow: #000000 1px 1px 10px;
+          transform: scaleY(0.3) translateY(750px) scale(300%) translateZ(-80px)
+            translateZ(-50px);
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1100px) {
+  .Gallery {
+    .PageHero {
+      h1 {
+        font-size: 13vw;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 790px) {
+  .Gallery {
+    .PageHero {
+      h1 {
+        font-size: 15vw;
+      }
+    }
+  }
+}

@@ -1,5 +1,7 @@
 import React from "react";
 import ImageGallery from "react-image-gallery";
+// Style
+import "./fullScreenGallery.scss";
 
 // Functions
 import { CloudinaryURLBuilder } from "../../functions/general";
@@ -38,7 +40,14 @@ const FullScreenGallery: React.FC<IFullScreenGallery> = ({
         showModal={showModal}
         clickOutSide={false}
       >
-        <div id="ImageGalleryContainer">
+        <div
+          id="ImageGalleryContainer"
+          className={
+            showModal
+              ? "gallery_model gallery_container open"
+              : "gallery_model gallery_container"
+          }
+        >
           <ImageGallery
             items={
               imageList?.images.map((image) => {
@@ -65,7 +74,7 @@ const FullScreenGallery: React.FC<IFullScreenGallery> = ({
             }
             lazyLoad
             startIndex={imageIndex}
-            thumbnailPosition={"right"}
+            thumbnailPosition={"bottom"}
             renderCustomControls={() => {
               return (
                 <button

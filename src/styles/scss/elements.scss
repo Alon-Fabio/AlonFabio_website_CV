@@ -148,12 +148,24 @@ span {
   animation: slidRight 1s cubic-bezier(0.175, 0.885, 0.32, 1.275),
     fade 0.8s ease-in forwards;
 }
+.slideDownAni {
+  opacity: 0;
+  animation: slidDown 2s ease-out, fade 0.5s ease-in forwards;
+}
 @keyframes slidRight {
   0% {
-    left: -300px;
+    left: -500px;
   }
   100% {
     left: 0px;
+  }
+}
+@keyframes slidDown {
+  0% {
+    top: -300px;
+  }
+  100% {
+    top: 0px;
   }
 }
 @keyframes fade {
