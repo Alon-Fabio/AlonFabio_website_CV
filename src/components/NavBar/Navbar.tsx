@@ -83,7 +83,7 @@ const Navbar: React.FC<NavBarT> = ({ routeList }) => {
             ))}
           </ul>
         </div>
-        <Burger navStyle={navStyle} burgerClick={onBurgerClick} />
+        <Burger navStyle={navStyle} burgerClick={() => onBurgerClick()} />
       </div>
     </nav>
   );

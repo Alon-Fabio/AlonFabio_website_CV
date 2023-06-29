@@ -5,6 +5,7 @@ import "./galleryGrid.scss";
 import FullScreenGallery from "../FullScreenGallery/FullScreenGallery";
 // Functions
 import { CloudinaryURLBuilder } from "../../functions/general";
+import { GraphicsObjExample } from "../../pages/gallery/galleryNotets";
 
 type IImageList =
   | {
@@ -131,16 +132,16 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
           <h1 className="flexCenter">Loading...</h1>
         </div>
       ) : (
-        <div className="flexCenter" style={{ flexFlow: "column" }}>
-          <h1>
-            No images{" "}
-            <span className="fa-regular fa-face-grin-beam-sweat"></span>
-          </h1>
+        <fieldset className="gallery_grid_no_images container">
+          <legend>
+            <span className="fa-solid fa-face-grin-beam-sweat"></span>
+          </legend>
+          <h1>No images </h1>
           <div>
             <p>Sorry, something most have gone wrong..</p>
             <p>Please try us again later</p>
           </div>
-        </div>
+        </fieldset>
       )}
     </section>
   );

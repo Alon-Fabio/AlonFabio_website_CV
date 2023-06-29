@@ -23,14 +23,6 @@ const PageHero: React.FC<HeroProps> = ({ children, images = [] }) => {
           ))}
 
           <img
-            style={{
-              position: "absolute",
-              bottom: "0",
-              left: 0,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-            }}
             srcSet={`${images[images?.length - 1]?.image} ${
               images?.length + 1
             }x`}

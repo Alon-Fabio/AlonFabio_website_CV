@@ -1,6 +1,6 @@
 #Photography {
   .PageHero {
-    min-height: 50vh;
+    min-height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,6 +8,7 @@
     #PhotographyHero {
       h1 {
         position: relative;
+        padding-right: 15px;
         font-size: clamp(11vw, 12rem, 18vw);
         color: white;
         letter-spacing: -5px;
