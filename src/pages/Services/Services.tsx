@@ -1,13 +1,15 @@
 import React from "react";
 // components
 import ContactForm from "../../components/ContactForm/ContactForm";
-import ScrollDown from "../../components/AddOnsCom/ScrollDown/ScrollDown";
+import PageHero from "../../containers/PageHero/PageHero";
 // Style:
 import "./style/CSS/Services.scss";
 // Hero images:
-import Clover from "./style/images/Clover.webp";
-import Bohke from "./style/images/Bohke.webp";
-import BlueSky from "./style/images/BlueSky-min.webp";
+
+import CloverW1080 from "../../styles/img/backgrounds/CloverW1080.jpg";
+import Cables from "../../styles/img/backgrounds/cables900w-min.jpg";
+import Pipes from "../../styles/img/backgrounds/pipes-min.jpg";
+
 // logos:
 import mongoLogo from "./style/images/servicesLogos/MongoDB_Logo_Black_RGB.webp";
 import awsLogo from "./style/images/servicesLogos/aws.webp";
@@ -22,42 +24,60 @@ import cssLogo from "./style/images/servicesLogos/css.webp";
 import HTML5Logo from "./style/images/servicesLogos/HTML5.webp";
 // import illustratorLogo from "./style/images/servicesLogos/Adobe_illustrator.png";
 // Service middle section:
-import MessiPic from "../../styles/img/Lionel-Messi.webp";
+import MessiPic from "../../styles/img/backgrounds/Lionel-Messi.webp";
 import AlonLogoSvg from "./style/images/BackgroundLogo.svg";
 
 const Services = () => {
   return (
     <section className="services ">
-      <div id="scrollingPXcon" className="pageHero servicesHero  ">
-        <div id="services_hero_image_container">
-          <img
-            src={BlueSky}
-            alt="Beautiful blue sky"
-            id="Background_Clover"
-            className="services_hero_elements"
-          />
-          <img
-            src={Bohke}
-            alt="Little bohke"
-            id="Clover_Bohke"
-            className="services_hero_elements"
-          />
-          <img
-            src={Clover}
-            alt="A big lovely three leaf clover"
-            id="Clover_image"
-            className="services_hero_elements"
-          />
+      <PageHero
+        images={[
+          {
+            image: Cables,
+            screenSize: "(max-width: 768px)",
+          },
+          {
+            image: CloverW1080,
+            screenSize: "(max-width: 1024px)",
+          },
+          {
+            image: Pipes,
+            screenSize: "(max-width: 2000px)",
+          },
+        ]}
+      >
+        <div id="Services_Hero" className=" servicesHero  ">
+          {/* <div id="services_hero_image_container">
+           
+            <img
+              src={Bohke}
+              alt="Little bohke"
+              id="Clover_Bohke"
+              className="services_hero_elements"
+            />
+            <img
+              src={Clover}
+              alt="A big lovely three leaf clover"
+              id="Clover_image"
+              className="services_hero_elements"
+            />
+            <img
+              src={BlueSky}
+              alt="Beautiful blue sky"
+              id="Background_Clover"
+              className="services_hero_elements"
+            />
+          </div> */}
+          <div id="serviceHeaderContainer">
+            <h1 className={"slideLeftAni"}>Alon Fabio</h1>
+            <h2 className={"slideLeftAni"}>Web Design</h2>
+            <h2 className={"slideLeftAni"}>Programming</h2>
+            <h2 className={"slideLeftAni"}>Graphic Design</h2>
+            {/* <h2 className={"slideLeftAni"}>Photography</h2> */}
+          </div>
         </div>
-        <div id="serviceHeaderContainer">
-          <h1 className={"slideLeftAni"}>Alon Fabio</h1>
-          <h2 className={"slideLeftAni"}>Programming</h2>
-          <h2 className={"slideLeftAni"}>Web Design</h2>
-          <h2 className={"slideLeftAni"}>Graphic Design</h2>
-          <h2 className={"slideLeftAni"}>Photography</h2>
-        </div>
-      </div>
-      <ScrollDown />
+      </PageHero>
+      {/* <ScrollDown /> */}
 
       {/* Skill section */}
       <div className="subSection flexCenter skills " id="servicesCodeSkills">
@@ -158,8 +178,9 @@ const Services = () => {
               <li>
                 <fieldset className="card">
                   <legend>
-                    <span className="fas fa-theater-masks"></span>
+                    <span className="fa-solid fa-tachograph-digital"></span>
                   </legend>
+
                   <div className="cardHeader flexCenter">
                     <h3>{"UX & UI"}</h3>
                   </div>

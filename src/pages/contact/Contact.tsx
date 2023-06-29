@@ -6,7 +6,7 @@ import ContactForm from "../../components/ContactForm/ContactForm";
 function Contact() {
   return (
     <div id="Contact">
-      <div className="subSection pageHero flexCenter" id="formSection">
+      <div className="Padding_for_nav subSection flexCenter" id="formSection">
         <div className="container" id="formContainer">
           <ContactForm />
         </div>

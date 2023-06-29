@@ -17,12 +17,15 @@ const Modal: React.FC<{
   clickOutSide = true,
 }) => {
   const modalRoot: HTMLElement | null = document.getElementById("modal-root");
+  const body: HTMLElement | null = document.getElementById("body");
   const [el] = useState(document.createElement(`div`));
   const outClick = useRef(el);
   const Paragraph = document.createElement("p");
   Paragraph.innerHTML = "Press <span>esc</span> to exit.";
   Paragraph.className = "esc_message fadeaway_delay";
   const [escP] = useState(Paragraph);
+
+  el.className = "modal_container";
 
   const handleEsc = useCallback(
     (event: KeyboardEvent) => {
@@ -49,7 +52,7 @@ const Modal: React.FC<{
     if (modalRoot && showModal) {
       modalRoot.classList.add("modalRootActive");
       document.addEventListener("keydown", (event) => handleEsc(event), false);
-
+      body?.classList.add("modal-open");
       modalRoot.appendChild(el);
       modalRoot.appendChild(escP);
 
@@ -71,6 +74,8 @@ const Modal: React.FC<{
         modalRoot.classList.remove("modalRootActive");
         // Time for animation.
         // setTimeout(() => {
+        body?.classList.remove("modal-open");
+
         modalRoot.removeChild(el);
         modalRoot.removeChild(escP);
         // }, 1500);
@@ -93,6 +98,7 @@ const Modal: React.FC<{
     clickOutSide,
     closeModalTimeOut,
     handleEsc,
+    body,
   ]);
 
   return ReactDOM.createPortal(children, el);

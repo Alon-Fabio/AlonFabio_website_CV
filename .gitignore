@@ -9,6 +9,7 @@
 /coverage
 /removed
 FIRST.md
+/src/pages/gallery/galleryNotets.ts
 
 # production
 /build
