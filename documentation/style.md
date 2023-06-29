@@ -1,6 +1,6 @@
 # AlonFabio website CSS dox
 
-> Hi! Hope you're not here because you're screwed and frustrated, if so (heres a good old Steve Urkel) I'm sooooooorry :nerd_face: .
+> Hi! Hope you're not here because you're screwed and frustrated, if so (here's a good old Steve Urkel) I'm sooooooorry :nerd_face: .
 
 ## Position
 
