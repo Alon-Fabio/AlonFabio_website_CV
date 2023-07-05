@@ -6,13 +6,14 @@ import NavLogo from "../../styles/img/logos/NavLogo/NavLogo40";
 import Burger from "../Burger/Burger";
 // hooks
 
-import { NavLink as Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-type NavBarT = {
+interface NavBarT {
   routeList: Array<String>;
-};
+}
+
 const Navbar: React.FC<NavBarT> = ({ routeList }) => {
-  const NavBar = useRef<HTMLAnchorElement | null>(null);
+  const NavBar = useRef<HTMLDivElement | null>(null);
   const NavLi = useRef<HTMLUListElement | null>(null);
   const [navStyle, setNavStyle] = useState({
     burger: "",
@@ -61,13 +62,13 @@ const Navbar: React.FC<NavBarT> = ({ routeList }) => {
     });
   };
   return (
-    <nav ref={NavBar} id="main_nav" className={"navbar_Top"}>
-      <div className="container navMain">
+    <nav id="main_nav" className={"navbar_Top"}>
+      <div ref={NavBar} className=" navMain">
         <div className={"LogoContainer"}>
           {/*Left side home-logo, SVG format */}
-          <Link to={"Services"}>
+          <NavLink to={"/"}>
             <NavLogo />
-          </Link>
+          </NavLink>
         </div>
         <div className="navLinksMain">
           <ul ref={NavLi} className={`nav_links ${navStyle.navLinks}`}>
@@ -78,7 +79,11 @@ const Navbar: React.FC<NavBarT> = ({ routeList }) => {
                   onBurgerClick();
                 }}
               >
-                <Link to={`/${routeName.toString()}`}>{routeName}</Link>
+                <NavLink to={`${routeName.toString()}`}>
+                  {routeName.toString()[0] === "/"
+                    ? `${routeName.toString().slice(1)}`
+                    : `${routeName.toString()}`}
+                </NavLink>
               </li>
             ))}
           </ul>

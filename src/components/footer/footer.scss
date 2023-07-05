@@ -2,16 +2,41 @@
 
 #Footer {
   min-height: 190px;
-  padding: 5px;
+  padding: 2rem;
   background-color: $base-color-gray-15;
   color: $gray-15;
+  #footer_links {
+    display: flex;
+    justify-content: space-between;
+    padding-inline-start: 0.5rem;
+    .footer_nav_links {
+      display: flex;
 
+      .footer_nav_link_ul {
+        padding: 0.5rem 1rem;
+        padding-left: 0;
+        h3 {
+          font-family: Oxygen, sans-serif;
+          font-weight: 600;
+          border-bottom: 1px solid $base-color;
+        }
+        ul {
+          list-style-type: none;
+          li {
+            font-size: 1rem;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
   // Contact Form
   #footerForm {
     padding-top: 1rem;
     display: block;
     text-align: center;
     #contactForm {
+      padding: unset;
       #formMessage {
         display: block;
         textarea {
@@ -41,11 +66,10 @@
     transition: all 700ms ease-in;
   }
 
-  #FooterLinks {
-    padding: 5px 10px;
+  #footer_links {
     button {
       background-color: inherit;
-      padding: 5px 10px;
+      // padding: unset;
       display: block;
       color: inherit;
       font-size: 1rem;
@@ -55,7 +79,7 @@
   }
   #FooterBottom {
     justify-content: space-between;
-    padding: 10px;
+    padding: 0.5rem;
     #footerIconDiv {
       display: flex;
       .FooterLinkIcon {
@@ -90,17 +114,20 @@
     hr {
       margin: 1rem 5rem;
     }
-    #FooterLinks {
-      justify-content: flex-start;
+    #footer_links {
+      justify-content: space-between;
       button {
         font-size: 1.25rem;
       }
     }
     // Connect Form
+
     #footerForm {
       width: 100%;
       padding-bottom: 2rem;
-
+      #contactForm {
+        padding: 2rem;
+      }
       Form {
         position: relative;
         border-radius: 1rem;
@@ -131,11 +158,13 @@
 
             #formMessage {
               display: flex;
+              // flex-direction: row;
               padding-left: 00.5rem;
+
               textarea {
                 min-height: 10em;
                 padding: 00.25rem;
-                margin-left: 0.5rem;
+                // margin-left: 0.5rem;
                 font-size: 1.25rem;
               }
             }

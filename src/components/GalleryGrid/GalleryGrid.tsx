@@ -5,7 +5,6 @@ import "./galleryGrid.scss";
 import FullScreenGallery from "../FullScreenGallery/FullScreenGallery";
 // Functions
 import { CloudinaryURLBuilder } from "../../functions/general";
-import { GraphicsObjExample } from "../../pages/gallery/galleryNotets";
 
 type IImageList =
   | {

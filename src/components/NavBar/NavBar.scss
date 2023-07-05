@@ -2,37 +2,17 @@
 
 // From full screen to mobile... ↓ Nooby mistake..
 
-header {
+#main_nav {
   position: fixed;
   inset: 0 0 auto 0;
-  // inset: 0;
   z-index: 99;
 
-  .nav_Not_Top {
-    background-color: $base-color !important;
-    fill: $secund-base-color;
-    color: $secund-base-color !important;
-  }
-}
-#main_nav.nav_Not_Top {
-  border-radius: unset !important;
-  width: 100%;
-}
-
-#main_nav {
-  // position: absolute;
-  // inset: 0 15px auto 0;
-
-  padding: 1rem 0;
-  transition: padding 0.5s ease, background-color 0.5s ease;
-
-  background-clip: padding-box; /* This will prevent a leak to the Hero because of the Absolute position and the Parallax Scrolling*/
   .navMain {
     display: flex;
     justify-content: space-between;
-    max-width: 1110px;
-    margin: 0 auto;
-    padding: 0 1rem;
+    padding: 1rem 3rem;
+    transition: padding 0.5s ease, background-color 0.5s ease;
+
     .NavLogo {
       height: 100%;
       cursor: pointer;
@@ -65,13 +45,6 @@ header {
         color: $secund-base-color;
       }
     }
-    .navLinksShow {
-      top: 64px;
-    }
-    .burger {
-      cursor: pointer;
-      z-index: 10;
-    }
   }
 }
 
@@ -80,7 +53,6 @@ header {
 @media screen and (max-width: 768px) {
   #main_nav {
     background-color: $base-color;
-
     &::before {
       content: " ";
       // position: absolute;
@@ -90,28 +62,38 @@ header {
       top: 0;
       background-color: inherit;
     }
-    .nav_links {
-      // For bigger menus subtract from the top
-      top: -200px;
-      width: 100vw;
-      overflow: hidden;
-      z-index: -10;
-      padding: 1rem 1.5rem;
-      background-color: $base-color;
-      color: $secund-base-color;
-      position: fixed;
-      left: 0;
-      display: flex;
-      flex-direction: column-reverse;
-      transition: top 0.5s ease-out;
-    }
-    .nav_links::before {
-      content: "";
-      z-index: 10;
-      position: fixed;
-      inset: 0;
-      height: 76px;
-      background-color: inherit;
+    .navMain {
+      border: none;
+      .nav_links {
+        // For bigger menus subtract from the top
+        top: -200px;
+        width: 100vw;
+        overflow: hidden;
+        z-index: -10;
+        padding: 1rem 1.5rem;
+        background-color: $base-color;
+        color: $secund-base-color;
+        position: fixed;
+        left: 0;
+        display: flex;
+        flex-direction: column-reverse;
+        transition: top 0.5s ease-out;
+      }
+      .nav_links::before {
+        content: "";
+        z-index: 10;
+        position: fixed;
+        inset: 0;
+        height: 76px;
+        background-color: inherit;
+      }
+      .navLinksShow {
+        top: 64px;
+      }
+      .burger {
+        cursor: pointer;
+        z-index: 10;
+      }
     }
   }
 }
@@ -119,36 +101,35 @@ header {
 // For tablet and larger screen size
 @media screen and (min-width: 768px) {
   #main_nav {
-    position: relative;
-    background-color: $base-color-rgb-20;
-
-    max-width: 1100px;
-    padding: 1em 1.25em;
-    border-right: 5px solid transparent;
-    border-left: 5px solid transparent;
-    border-radius: 0 0 5em 5em/ 0 0 100% 100%;
     margin: 0 auto;
-    &::before {
-      content: "";
-      position: absolute;
-      border-radius: 0 0 5em 5em/ 0 0 100% 100%;
-      display: block;
-      background: linear-gradient(
-        to top,
-        $base-color-rgb-20 0%,
-        $secund-base-color 100%
-      );
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: -5px;
-      z-index: -1;
-      padding: 0 5px;
-      // padding: 5px;
-    }
-    .navMain {
-      padding-right: 20px;
 
+    .navMain {
+      position: relative;
+      background-color: $base-color-rgb-20;
+      max-width: calc(1100px - 6rem);
+      margin: 0 auto;
+      background-clip: padding-box;
+      border-radius: 0 0 5em 5em/ 0 0 100% 100%;
+      border-right: 5px solid transparent;
+      border-left: 5px solid transparent;
+      &::before {
+        content: "";
+        position: absolute;
+        border-radius: 0 0 5em 5em/ 0 0 100% 100%;
+        display: block;
+        background: linear-gradient(
+          to top,
+          $base-color-rgb-20 0%,
+          $secund-base-color 100%
+        );
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: -5px;
+        z-index: -1;
+        padding: 0 5px;
+        // padding: 5px;
+      }
       .nav_links {
         height: 100%;
         align-items: center;
@@ -210,13 +191,29 @@ header {
     }
   }
 }
-.nav_Not_Top {
-  background-color: $base-color;
-  fill: $secund-base-color;
-  color: $secund-base-color;
+// Transitions: move form top of page.
+#main_nav {
+  .nav_Not_Top {
+    background-color: $base-color;
+    fill: $secund-base-color;
+    color: $secund-base-color;
+    border-radius: unset;
+    border: none;
+    max-width: unset;
+    padding: 1rem calc((100% - 1100px) / 2);
+  }
 }
-#main_nav.nav_Not_Top {
-  border-radius: unset;
-  // width: 100%;
-  max-width: unset;
+@media screen and (max-width: 768px) {
+  #main_nav {
+    .nav_Not_Top {
+      padding: 1rem 2rem;
+    }
+  }
 }
+
+// FIX
+// severity: low
+// Start in mobile width.
+// Scroll down to get the not_top classes
+// Enlarge the width
+// The logo stays black, needs to be in the same color al links.

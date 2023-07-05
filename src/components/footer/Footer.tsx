@@ -1,10 +1,15 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./footer.scss";
 
 import ContactForm from "../ContactForm/ContactForm";
-
-const Footer = () => {
+interface NavBarT {
+  routerLinkArr: Array<{
+    siteName: string;
+    routeList: Array<String>;
+  }>;
+}
+const Footer: React.FC<NavBarT> = ({ routerLinkArr }) => {
   const [transitioning, setTransitioning] = useState(true);
 
   const onContactClick = () => {
@@ -18,13 +23,37 @@ const Footer = () => {
   return (
     <div id="Footer">
       <div className="container">
-        <div id="FooterLinks" className="flexCenter">
+        <div id="footer_links" className="flexCenter">
+          <div className="footer_nav_links ">
+            {routerLinkArr.map((site, index) => {
+              return (
+                <div className="footer_nav_link_ul">
+                  <h3>{site.siteName}</h3>
+
+                  <ul>
+                    {site.routeList.map((routeName) => (
+                      <li key={`NavLink-${routeName}`}>
+                        <NavLink
+                          to={`${routeName.toString()}`}
+                          // className="AF_button"
+                        >
+                          {routeName.toString()[0] === "/"
+                            ? `${routeName.toString().slice(1)}`
+                            : `${routeName.toString()}`}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
           <button className="AF_button" onClick={onContactClick}>
             Contact
           </button>
-          <button className="AF_button">
+          {/* <button className="AF_button">
             <Link to="/Services">Services</Link>
-          </button>
+          </button> */}
         </div>
         <div
           id={"footerForm"}
