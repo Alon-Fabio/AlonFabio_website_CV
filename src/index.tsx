@@ -3,6 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import ModalBase from "./components/Modals/ModalBase/ModalBase";
 import reportWebVitals from "./reportWebVitals";
+import React from "react";
 
 const root = document.getElementById("root");
 const modalRoot = document.getElementById("modal-root");
@@ -11,11 +12,15 @@ const bindRoot = createRoot(root);
 const bindModalRoot = createRoot(modalRoot);
 bindRoot.render(
   <BrowserRouter>
-    <App />
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
   </BrowserRouter>
 );
 bindModalRoot.render(
-  <ModalBase setShowModal={() => {}} showModal={false} children={<></>} />
+  <React.StrictMode>
+    <ModalBase setShowModal={() => {}} showModal={false} children={<></>} />
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

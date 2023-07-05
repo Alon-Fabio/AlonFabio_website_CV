@@ -1,75 +1,55 @@
-import { useEffect, lazy, Suspense } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
 
 import "./styles/scss/App.scss";
 
 // Components
-import NavBar from "./components/NavBar/Navbar";
-import Footer from "./components/footer/Footer";
+// import NavBar from "./components/NavBar/Navbar";
+// import Footer from "./components/footer/Footer";
 // Pages
+// import Main from "./pages/main/Main";
 import Contact from "./pages/contact/Contact";
-import Main from "./pages/main/Main";
 import Photography from "./pages/Photography/Photography";
 import Graphics from "./pages/Graphics/Graphics";
+import Start from "./pages/Start/Start";
+import RouterLayout from "./containers/RouterLayout/RouterLayout";
 
 // Create a nice loading component.
 const Loading = () => {
-  return <p>Loading...</p>;
+  return (
+    <div style={{ minHeight: "70dvh" }}>
+      <p>Loading...</p>;
+    </div>
+  );
 };
 
 const Fadminbio = lazy(() => import("./pages/Fadminbio/Fadminbio"));
 const Services = lazy(() => import("./pages/Services/Services"));
 function App() {
-  // Lazy (big) components to load on demand.
-
-  // A base for the parallax scrolling affect.
-  // const scrollPXref = useRef<HTMLDivElement>(null);
-
-  // List of routes for the navigation-bar:
-  const routeList = ["Main", "Services", "Graphics", "Photography", "Contact"];
-
-  // React-router: For hash scrolling to anchor.
-  const { pathname, hash, key } = useLocation();
-  useEffect(() => {
-    // If hash in URL, scroll to top.
-    if (hash === "") {
-      window.scrollTo(0, 0);
-      return;
-    }
-    // else scroll to id
-    (function scrollHashIntoView() {
-      const id = hash.replace("#", "");
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView();
-        return;
-      }
-      window.scrollTo(0, 0);
-    })();
-  }, [pathname, hash, key]);
-
   return (
     <div className="App">
-      <header>
-        <NavBar routeList={routeList} />
-      </header>
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route path="*" index element={<Start />} />
 
-      <div className="mainContainer ">
-        <Suspense fallback={<Loading />}>
-          <Routes>
-            <Route path="*" element={<Main />} />
+          <Route path="/Pro" element={<RouterLayout />}>
+            {/* Add an About Pro page */}
+            <Route index path="*" element={<Services />} />
             <Route path="Services" element={<Services />} />
+            <Route path="Contact" element={<Contact />} />
+          </Route>
+
+          <Route path="/Per" element={<RouterLayout />}>
+            {/* Add an About Pro page */}
+            <Route index path="*" element={<Photography />} />
+            <Route path="Contact" element={<Contact />} />
             <Route path="Photography" element={<Photography />} />
             <Route path="Graphics" element={<Graphics />} />
-            <Route path="Contact" element={<Contact />} />
-            <Route
-              path="Fadminbio"
-              element={<Fadminbio stage={"localhost"} />}
-            />
-          </Routes>
-        </Suspense>
-      </div>
-      <Footer />
+          </Route>
+
+          <Route path="Fadminbio" element={<Fadminbio stage={"localhost"} />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 }
