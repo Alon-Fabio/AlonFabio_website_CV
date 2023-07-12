@@ -25,7 +25,7 @@ body {
   padding: 0.5rem 1rem;
   border-radius: 1.5rem;
   background-color: $secund-base-color;
-  color: lighten($secund-base-color-opposite, 35);
+  color: $gray-15;
 
   font-family: sans-serif, Arial, Helvetica, sans-serif;
 }
@@ -49,24 +49,20 @@ span {
 .cardsContainer {
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   gap: 0.5em;
+  color: $base-color-s80;
   list-style: none;
 }
 .card {
   overflow: hidden;
-  text-align: center;
   border-radius: 0.5rem;
   border: none;
   box-shadow: 1px 1px 2px rgba($gray-35, 0.8), 0 10px 20px rgba($gray-35, 0.5);
-  background: linear-gradient(
-    50deg,
-    lighten($secund-base-color, 16%) 30%,
-    #38c4f2 100%
-  );
+  background: linear-gradient(50deg, lighten($gray-75, 16%) 30%, $gray-65 100%);
 
   .cardHeader {
-    height: 5rem;
+    padding: 1rem;
     width: 100%;
   }
   .cardContent {
@@ -140,7 +136,7 @@ span {
 }
 
 .error {
-  color: $secund-base-FS;
+  color: $error;
 }
 
 .slideLeftAni {
@@ -197,6 +193,13 @@ span {
         $secund-base-color
       );
       border-radius: 10px;
+    }
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .dark body {
+    .AF_button {
+      color: $gray-15;
     }
   }
 }

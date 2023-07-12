@@ -72,19 +72,19 @@ const ContactForm = () => {
   return (
     <form
       onSubmit={handleSubmit((data, e) => onSubmit(data, e))}
-      className="contactForm"
+      id="contactForm"
       name="contactForm"
       data-netlify="true"
       method="post"
     >
       <input name="form-name" value="contactForm" type="hidden" />
-      <div className="formHading">
+      <div id="formHading">
         <h1>Contact Alon</h1>
         <p>Let's make something great together</p>
       </div>
       <div className="formInputs">
-        <div className="formSection IdInputs">
-          {/* <div className="alignInputs"></div> */}
+        <div className="formSection" id="IdInputs">
+          <div id="alignInputs"></div>
           <div className="formInline">
             <label htmlFor={id + "name"}>
               <h3>{"Name: "}</h3>
@@ -94,7 +94,7 @@ const ContactForm = () => {
                 required: "Please write your name",
                 maxLength: 12,
               })}
-              className={id + "name"}
+              id={id + "name"}
               name="name"
               type="text"
               // placeholder="What's my name again?"
@@ -115,7 +115,7 @@ const ContactForm = () => {
                 },
               })} //[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$
               name="email"
-              className={id + "email"}
+              id={id + "email"}
               type="email"
               // value=""
             ></input>
@@ -134,7 +134,7 @@ const ContactForm = () => {
                 valueAsNumber: true,
               })}
               name="phone"
-              className={id + "phone"}
+              id={id + "phone"}
               type="tel"
               // value={}
             ></input>
@@ -142,8 +142,8 @@ const ContactForm = () => {
 
           <p className="error">{errors.phone && errors.phone?.message}</p>
         </div>
-        <div className="formSection form_message_con">
-          <div className="formInline formMessage">
+        <div className="formSection">
+          <div className="formInline" id="formMessage">
             <label htmlFor={id + "message"}>
               <h3>{"Message: "}</h3>
             </label>
@@ -154,7 +154,7 @@ const ContactForm = () => {
                 maxLength: 300,
               })}
               name="message"
-              className={id + "message"}
+              id={id + "message"}
               maxLength={300}
               // value=""
             ></textarea>
@@ -164,13 +164,14 @@ const ContactForm = () => {
         </div>
         <div className="clearfix"></div>
       </div>
-      <div className="formSection formSubmit">
+      <div className="formSection" id="formSubmit">
         <button
-          className="AF_button sendMessageButton"
+          className="AF_button"
+          id={id + "sendMessageButton"}
           disabled={disableSubmit}
           type="submit"
         >
-          Send
+          Send Message
         </button>
       </div>
       <ModalBase

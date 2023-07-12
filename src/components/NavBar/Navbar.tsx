@@ -15,12 +15,23 @@ interface NavBarT {
 const Navbar: React.FC<NavBarT> = ({ routeList }) => {
   const NavBar = useRef<HTMLDivElement | null>(null);
   const NavLi = useRef<HTMLUListElement | null>(null);
+  const RootRef = useRef<HTMLElement | null>(null);
+  const [dark, setDark] = useState(false);
   const [navStyle, setNavStyle] = useState({
     burger: "",
     navLinks: "",
   });
 
   useEffect(() => {
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    const userTheme = window.localStorage.getItem("AlonFabioTheme");
+    RootRef.current = document.documentElement;
+    if (prefersDark || userTheme === "dark") {
+      RootRef.current?.classList.add("dark");
+      setDark(true);
+    }
     window.addEventListener("scroll", scrollDetect);
     return () => {
       window.removeEventListener("scroll", scrollDetect);
@@ -61,6 +72,18 @@ const Navbar: React.FC<NavBarT> = ({ routeList }) => {
       }
     });
   };
+  const HandleThemeChange = () => {
+    if (RootRef.current?.className.search("dark") !== -1) {
+      RootRef.current?.classList.remove("dark");
+      // window.localStorage.removeItem("AlonFabioTheme");
+      window.localStorage.setItem("AlonFabioTheme", "none");
+      setDark(false);
+    } else {
+      RootRef.current?.classList.add("dark");
+      window.localStorage.setItem("AlonFabioTheme", "dark");
+      setDark(true);
+    }
+  };
   return (
     <nav id="main_nav" className={"navbar_Top"}>
       <div ref={NavBar} className=" navMain">
@@ -72,6 +95,24 @@ const Navbar: React.FC<NavBarT> = ({ routeList }) => {
         </div>
         <div className="navLinksMain">
           <ul ref={NavLi} className={`nav_links ${navStyle.navLinks}`}>
+            <li>
+              <button
+                onClick={() => HandleThemeChange()}
+                className="dark_mode_btn"
+              >
+                {dark ? (
+                  <span
+                    id="sun_dark_mode"
+                    className="fa-regular fa-sun dark_mode_icons"
+                  ></span>
+                ) : (
+                  <span
+                    id="moon_dark_mode"
+                    className="fa-regular fa-moon dark_mode_icons"
+                  ></span>
+                )}
+              </button>
+            </li>
             {routeList.map((routeName) => (
               <li
                 key={`NavLink-${routeName}`}

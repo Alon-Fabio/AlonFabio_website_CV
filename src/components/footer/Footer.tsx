@@ -6,7 +6,7 @@ import ContactForm from "../ContactForm/ContactForm";
 interface NavBarT {
   routerLinkArr: Array<{
     siteName: string;
-    routeList: Array<String>;
+    routeList: Array<string>;
   }>;
 }
 const Footer: React.FC<NavBarT> = ({ routerLinkArr }) => {
@@ -24,15 +24,18 @@ const Footer: React.FC<NavBarT> = ({ routerLinkArr }) => {
     <div id="Footer">
       <div className="container">
         <div id="footer_links" className="flexCenter">
-          <div className="footer_nav_links ">
-            {routerLinkArr.map((site, index) => {
+          <ul className="footer_nav_links ">
+            {routerLinkArr.map((site) => {
               return (
-                <div className="footer_nav_link_ul">
+                <li
+                  key={`list-con-${site.siteName}`}
+                  className="footer_nav_link_ul"
+                >
                   <h3>{site.siteName}</h3>
 
                   <ul>
                     {site.routeList.map((routeName) => (
-                      <li key={`NavLink-${routeName}`}>
+                      <li key={`li-${site.siteName}-${routeName}`}>
                         <NavLink
                           to={`${routeName.toString()}`}
                           // className="AF_button"
@@ -44,10 +47,10 @@ const Footer: React.FC<NavBarT> = ({ routerLinkArr }) => {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </li>
               );
             })}
-          </div>
+          </ul>
           <button className="AF_button" onClick={onContactClick}>
             Contact
           </button>

@@ -1,6 +1,6 @@
 @import "../../../../styles/scss/variables";
 
-.services {
+#Services {
   font-size: 1.5rem;
 
   h1 {
@@ -129,84 +129,101 @@
   // }
 
   // Skills section
-  .skills {
-    span {
-      text-shadow: 1px 1px rgba(35, 35, 35, 0.5);
+  #servicesCodeSkills {
+    .container {
+      width: 100%;
     }
-    .servicesProg {
-      max-width: 1100px;
-      #servicesCards {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        gap: 0;
+  }
+  .skills {
+    legend {
+      span {
+        text-shadow: 1px 1px rgba(35, 35, 35, 0.5);
+        fill: $base-color;
+        color: $base-color;
+      }
+    }
+    // .servicesProg {
+    //   max-width: 1100px;
+    #servicesCards {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      gap: 0;
 
-        li {
-          padding: 1rem;
-          fieldset {
-            position: relative;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            border: none;
-            // transform: translateZ(80px) scale(0.9);
+      li {
+        padding: 1rem;
+        fieldset {
+          position: relative;
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          border: none;
+          // transform: translateZ(80px) scale(0.9);
 
-            legend {
-              text-align: right;
-              padding-right: 1rem;
-              span {
-                font-size: 2em;
-              }
+          legend {
+            text-align: right;
+            padding-right: 1rem;
+            span {
+              font-size: 2em;
             }
-            h3 {
+          }
+
+          h3 {
+            font-weight: bold;
+          }
+          .cardHeader {
+            background-color: transparent;
+            h2 {
               font-weight: bold;
             }
-            .cardHeader {
-              background-color: transparent;
-              & * {
-                margin: 0 1.125rem;
-              }
-            }
-            p {
-              padding: 0 1rem;
-            }
+          }
+          p {
+            padding: 0.5rem 0;
+          }
+          .cardLogos {
+            text-align: right;
             img {
               padding: 0.625rem;
               max-height: 2rem;
               filter: grayscale(1) drop-shadow(0 2px 0.125rem $gray-15);
             }
-            .cardContent {
-              min-height: 17rem;
-            }
+          }
+          .cardContent {
+            min-height: 17rem;
+            padding: 1rem;
           }
         }
       }
     }
   }
-  // Contact Form
 
-  #formSection {
-    display: block;
-    text-align: center;
-    #contactForm {
-      #formMessage {
-        display: block;
-        textarea {
-          box-sizing: border-box;
-          width: 100%;
-          min-height: 10em;
+  // Contact Form
+  #formContainer {
+    .contactForm {
+      padding: 1rem;
+      display: block;
+      // text-align: center;
+      #contactForm {
+        #formMessage {
+          display: block;
+          textarea {
+            box-sizing: border-box;
+            width: 100%;
+            min-height: 10em;
+          }
         }
       }
-    }
-    button {
-      background-color: $base-color;
+      button {
+        background-color: $secund-base-color;
+        color: $base-color;
+      }
     }
   }
 }
 
 // Bigger mobile
 @media screen and (min-width: 425px) {
-  .services {
+  #Services {
     .PageHero {
       img {
         top: 0;
@@ -223,18 +240,16 @@
       }
     }
     .skills {
-      span {
-        text-shadow: 1px 1px rgba(35, 35, 35, 0.5);
-      }
       .servicesProg {
         #servicesCards {
-          margin: 1.5rem;
-          li {
-            transform-style: preserve-3d;
-            fieldset {
-              transform: translateZ(80px);
-            }
-          }
+          // display: grid;
+          // margin: 1.5rem;
+          // li {
+          //   transform-style: preserve-3d;
+          //   fieldset {
+          //     transform: translateZ(80px);
+          //   }
+          // }
         }
       }
     }
@@ -242,7 +257,7 @@
 }
 // Bigger then mobile
 @media screen and (min-width: 768px) {
-  .services {
+  #Services {
     .servicesHero {
       // min-height: 80vh !important;
       // background-attachment: fixed;
@@ -266,72 +281,37 @@
         }
       }
     }
+    .servicesCards {
+      .card {
+        // display: grid;
+      }
+    }
     // subImage
     #servicesMidPic {
-      background-color: $secund-base-color;
+      background-color: $base-color;
       background-repeat: no-repeat, repeat;
       background-attachment: fixed;
       background-size: 65%, 100%;
       background-position: bottom right, bottom left;
       height: 15vw;
     }
+    #servicesStyleSkills {
+      .cardsContainer li:last-child {
+        // grid-row: span 2;
+        grid-column: span 2;
+      }
+    }
     // Connect Form
     #formSection {
-      display: flex;
+      display: block;
+      margin: auto;
       width: 100%;
       background-image: url(../../../../styles/img/logos/NavLogo/AlonNavLogoBlue.svg);
       background-repeat: no-repeat;
       background-position: center;
       background-size: 200%;
-      justify-content: center;
-      #formContainer {
+      .formContainer {
         width: 100%;
-
-        Form {
-          position: relative;
-          border-radius: 1rem;
-          background-color: $gray-75;
-
-          .formInputs {
-            display: flex;
-            #IdInputs {
-              flex-grow: initial;
-            }
-            h3 {
-              font-size: 1.5rem;
-            }
-            .formSection {
-              align-self: flex-start;
-              flex-grow: 1;
-              #alignInputs {
-                height: 39px;
-              }
-              .formInline {
-                // padding: 1rem 0;
-                input {
-                  padding: 0.25rem;
-                  font-size: 1.25rem;
-                }
-              }
-
-              #formMessage {
-                display: flex;
-                padding-left: 00.5rem;
-                textarea {
-                  min-height: 10em;
-                  padding: 00.25rem;
-                  margin-left: 0.5rem;
-                  font-size: 1.25rem;
-                }
-              }
-            }
-          }
-          #formSubmit {
-            position: absolute;
-            padding-left: 75%;
-            bottom: -30px;
-          }
-        }
       }
     }
   }
@@ -339,26 +319,11 @@
 
 // Tablet
 @media (max-height: 769px) and (min-width: 1023px) {
-  .services {
+  #Services {
     .servicesHero {
       #serviceHeaderContainer {
         padding-top: 4rem;
         font-size: 5rem;
-      }
-    }
-
-    //Contact Form
-    #formSection {
-      #formContainer {
-        #contactForm {
-          .formInputs {
-            .formSection {
-              #formMessage {
-                display: block;
-              }
-            }
-          }
-        }
       }
     }
   }
@@ -366,7 +331,7 @@
 
 // Big screen
 @media screen and (min-width: 1024px) {
-  .services {
+  #Services {
     font-size: 1.5rem;
 
     #Services_Hero {
@@ -395,9 +360,9 @@
         }
       }
     }
-    .container {
-      width: 100%;
-    }
+    // .container {
+    //   width: 100%;
+    // }
     // Skills section
     .skills {
       .servicesProg {
@@ -425,10 +390,53 @@
       }
     }
     //Contact Form
-    #alignInputs {
-      height: 0 !important;
+    #formSection {
+      padding: 3rem 0;
     }
   }
 }
+@media screen and (max-width: 480px) {
+  .skills {
+    #servicesCards {
+      display: block;
+    }
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .dark body #Services {
+    background-color: $gray-15;
+    color: $gray-75;
+    .PageHero {
+      #Services_Hero #serviceHeaderContainer {
+        &::before {
+          background-color: $gray-15;
+        }
 
-// Animations
+        h2 {
+          color: $gray-75;
+        }
+      }
+    }
+    .skills {
+      legend {
+        span {
+          color: $base-color-l30;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 768px) and(max-width:1024px) and (prefers-color-scheme: dark) {
+  .dark body #Services {
+    .PageHero {
+      #Services_Hero #serviceHeaderContainer {
+        h2 {
+          color: $gray-15;
+        }
+        &::before {
+          background-color: unset;
+        }
+      }
+    }
+  }
+}

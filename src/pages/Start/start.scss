@@ -53,7 +53,6 @@
     padding-left: 1.75rem; // Alignment of the OL to center.
     li {
       padding: 1rem;
-
       .start_li_link {
         font-size: 1rem;
         color: $secund-base-color;
@@ -159,6 +158,8 @@
 
 @media screen and (min-width: 1024px) {
   #Start {
+    top: 0;
+    overflow-y: hidden;
     #start_hero_container,
     ol {
       max-width: 1100px;

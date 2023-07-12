@@ -31,8 +31,7 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
     ) {
       setPending(true);
       fetch(`http://localhost/gallery/${folder}`, {
-        signal:
-          AbortController?.signal !== undefined ? AbortController.signal : null,
+        signal: AbortController?.signal,
         method: "GET",
         headers: {
           "Content-Type": "application/json",

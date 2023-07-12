@@ -2,23 +2,25 @@
 
 #Contact {
   min-height: calc(100vh - 264px);
+
   // background-color: $base-color-gray-15;
   #formSection {
     min-height: calc(100vh - 264px);
     #formContainer {
+      padding: 1rem;
       flex-grow: 3;
       text-align: center;
-      #formMessage {
-        display: block;
-        textarea {
-          box-sizing: border-box;
-          width: 100%;
-          min-height: 10em;
+      .contactForm {
+        padding: 1rem;
+        #formMessage {
+          display: block;
+          textarea {
+            box-sizing: border-box;
+            width: 100%;
+            min-height: 10em;
+          }
         }
       }
-    }
-    button {
-      background-color: $base-color;
     }
   }
 }
@@ -102,7 +104,7 @@
 // Tablet
 @media (min-width: 769px) {
   #Contact {
-    .services {
+    #Services {
       //Contact Form
       #formSection {
         align-self: flex-start;
@@ -147,5 +149,11 @@
         }
       }
     }
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .dark body #Contact #formSection #formContainer Form {
+    background-color: $gray-15;
+    color: $gray-75;
   }
 }
