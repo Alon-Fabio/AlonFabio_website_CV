@@ -30,6 +30,32 @@
         font-weight: 400;
         font-size: 1.5rem;
         letter-spacing: 0.05rem;
+        .dark_mode_btn {
+          border: 1px solid;
+          border-radius: 20px;
+
+          background-color: $gray-35;
+          width: 4rem;
+          transition: all 1s ease-in-out;
+          .dark_mode_icons {
+            display: block;
+            font-size: 1rem;
+            border-radius: 50%;
+            border: 1px solid $gray-35;
+            width: 1rem;
+            height: 1rem;
+            padding: 0.25rem;
+            box-shadow: 2px 0px 2px $gray-24;
+          }
+          .fa-sun {
+            color: $base-color-s80;
+            background-color: $gray-75;
+          }
+          .fa-moon {
+            color: $gray-75;
+            background-color: $gray-15;
+          }
+        }
         li {
           position: relative;
           list-style-type: none;
@@ -79,6 +105,7 @@
         flex-direction: column-reverse;
         transition: top 0.5s ease-out;
       }
+
       .nav_links::before {
         content: "";
         z-index: 10;
@@ -120,7 +147,7 @@
         background: linear-gradient(
           to top,
           $base-color-rgb-20 0%,
-          $secund-base-color 100%
+          $base-color-s80 100%
         );
         width: 100%;
         height: 100%;
@@ -211,6 +238,30 @@
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  .dark body #main_nav {
+    .navMain {
+      background-color: $gray-15;
+      color: $gray-75;
+      fill: $gray-75;
+      .nav_links .dark_mode_btn {
+        background-color: $gray-85;
+
+        padding-left: 2.5rem;
+        .dark_mode_icons {
+          box-shadow: -2px 0px 2px;
+        }
+      }
+    }
+    .nav_Not_Top {
+      background-color: $base-color-s80;
+      fill: $secund-base-color;
+      li {
+        color: $secund-base-color;
+      }
+    }
+  }
+}
 // FIX
 // severity: low
 // Start in mobile width.

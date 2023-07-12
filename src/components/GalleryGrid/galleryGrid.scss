@@ -25,11 +25,9 @@
     gap: 1rem;
     padding: 1rem !important;
 
-    // display: grid;
-    // column-width: 33%;
     column-count: 3;
     width: fit-content;
-    // padding: 0 12px;
+
     .gallery_image {
       display: flex;
 
@@ -57,14 +55,10 @@
 @media screen and (max-width: 790px) {
   .GalleryGrid {
     .gallery_grid_no_images {
-      // display: flex;
-      // flex-direction: column;
-      // justify-content: center;
-      // align-content: center;
       margin: 0.5rem auto;
     }
     .gallery_container {
-      width: 100%;
+      max-width: 100%;
       column-count: 1;
       column-width: 90vw;
       .gallery_image {

@@ -9,11 +9,13 @@
 html {
   // enable dark mode ↓
   // color-scheme: light dark;
+  overflow-x: hidden;
 }
-html {
+html,
+body,
+#root {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
 }
 
 body {
@@ -41,12 +43,14 @@ body {
   .Padding_for_nav {
     padding-top: 100px !important;
   }
-
+  .subSection {
+    padding: 5rem 0;
+  }
   .subSection:nth-child(even) {
     background-color: $base-color-rgb-20;
   }
   .subSection:nth-child(odd) {
-    background-color: lighten($base-color-rgb-20, 15);
+    background-color: $gray-75;
   }
 }
 
@@ -74,6 +78,7 @@ code {
   color: $secund-base-color;
 }
 
+// not ih use:
 .Text_background_image_clip {
   // add image with background
   // background: url("https://res.cloudinary.com/alonfabio/image/upload/v1684409882/photos/Napoleon_hill_1_qvuonp.jpg");
@@ -101,7 +106,7 @@ code {
         .container {
           display: block;
           max-width: 1100px;
-          margin: 1.875rem auto;
+          margin: 0 auto;
           padding: 0.625rem;
           border-radius: 1rem;
           background-color: $opct-05;
@@ -112,12 +117,28 @@ code {
 }
 
 // Big screen
-@media screen and (min-width: 1024px) {
-  body {
-    .App {
-      .subSection {
-        // padding: 10rem 0;
-      }
+
+// @media screen and (min-width: 1024px) {
+//   body {
+//     .App {
+//       .subSection {
+//         padding: 10rem 0;
+//       }
+//     }
+//   }
+// }
+@media (prefers-color-scheme: dark) {
+  .dark body {
+    color: $gray-75;
+    .subSection:nth-child(even) {
+      background-color: $gray-15;
+    }
+    .subSection:nth-child(odd) {
+      background-color: $gray-24;
+    }
+
+    .App .mainContainer .container {
+      background-color: rgba($base-color-s80, 0.5);
     }
   }
 }

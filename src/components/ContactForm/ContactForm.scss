@@ -1,45 +1,129 @@
 @import "../../styles/scss/variables";
 
-#contactForm {
-  padding: 2rem;
-  #formHading {
-    padding-bottom: 0.5rem;
+.contactForm {
+  // padding: 1rem;
+  border-radius: 1rem;
+
+  background-color: $gray-75;
+  color: $base-color-s80;
+  .IdInputs {
+    padding: 0.5rem 0;
   }
   .formSection {
-    button:disabled {
-      background-color: $gray-35;
-      transition: background-color 200ms ease-in-out;
-    }
+    padding: 0.5rem 0;
+    position: relative;
+
     .formInline {
       display: flex;
       // width: 400px;
       justify-content: space-between;
-      padding: 0.125rem;
-      input {
+      padding: 0.125rem 0;
+      input,
+      textarea {
         width: 75%;
       }
     }
 
-    #formMessage {
-      width: initial;
+    .formMessage {
+      display: block;
+      width: 100%;
+      // max-width: 80vw;
+
       textarea {
-        resize: none;
+        // box-sizing: border-box;
+        // max-width: 80vw;
+        width: 100%;
+        min-height: 10em;
+        resize: vertical;
       }
     }
+
     .error {
-      margin: 0 auto;
       text-align: left;
-      // height: 1rem;
       font-size: 1rem;
-      // padding-bottom: 0.25rem;
-      max-width: 400px;
-      &:empty::before {
-        content: "";
-        display: inline-block;
+      padding: 0.25rem 0;
+      font-weight: 600;
+      &:empty {
+        display: none;
+      }
+    }
+  }
+  .formSubmit {
+    text-align: right;
+    button {
+      color: inherit;
+      font-weight: 600;
+      text-align: right;
+
+      &:disabled {
+        background-color: $gray-35;
+        transition: background-color 200ms ease-in-out;
       }
     }
   }
   .clearfix {
     position: absolute;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .contactForm {
+    position: relative;
+    margin-bottom: 1.5rem;
+    .formHading > h1 {
+      border-bottom: 1px solid $gray-65;
+    }
+    .formInputs {
+      padding: 1rem;
+      display: flex;
+
+      #IdInputs {
+        flex-grow: initial;
+      }
+      h3 {
+        font-size: 1.5rem;
+      }
+      .formSection {
+        align-self: flex-start;
+        // flex-grow: 1;
+
+        .formInline {
+          // padding: 1rem 0;
+          input {
+            padding: 0.25rem;
+            font-size: 1.25rem;
+          }
+        }
+      }
+      .form_message_con {
+        flex-grow: 1;
+        padding: 0 0.5rem;
+        label {
+          padding: 0 0.5rem;
+        }
+        .formMessage {
+          display: flex;
+          flex-grow: 1;
+          padding-inline: 00.5rem;
+          textarea {
+            min-height: 10em;
+            padding: 00.5rem;
+            // margin-left: 0.5rem;
+            font-size: 1.25rem;
+          }
+        }
+      }
+    }
+    .formSubmit {
+      position: absolute;
+      padding-left: 90%;
+      bottom: -30px;
+    }
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .dark body .contactForm {
+    background-color: $gray-24;
+    color: $gray-75;
   }
 }
