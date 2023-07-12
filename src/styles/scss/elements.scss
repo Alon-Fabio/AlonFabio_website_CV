@@ -1,9 +1,9 @@
-@import "./variables";
+@import "variables";
 
 // Basic Elements:
-#scrollingPXcon {
+body {
   &::-webkit-scrollbar {
-    -webkit-appearance: none;
+    // -webkit-appearance: none; warning, deprecated.
     width: 2px;
     background-image: linear-gradient(45deg, $base-color-gray-15, $base-color);
   }
@@ -14,12 +14,10 @@
       $secund-base-color
     );
     border-radius: 10px;
-    -webkit-box-shadow: rgb(0, 0, 0.5) 0 0 20px 1px;
-    box-shadow: rgba(0, 0, 0, 0.5) 0 0 20px 3px;
   }
 }
 
-button {
+.AF_button {
   font-size: 1rem;
   cursor: pointer;
   border: none;
@@ -27,7 +25,7 @@ button {
   padding: 0.5rem 1rem;
   border-radius: 1.5rem;
   background-color: $secund-base-color;
-  color: lighten($secund-base-color-opposite, 35);
+  color: $gray-15;
 
   font-family: sans-serif, Arial, Helvetica, sans-serif;
 }
@@ -38,26 +36,147 @@ textarea {
   border-radius: 5px;
   background-color: $opct-05;
 }
+
+span {
+  color: $secund-base-color;
+}
+
 ::placeholder {
   color: lighten($base-color, 20);
 }
 
+// Cards
+.cardsContainer {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  gap: 0.5em;
+  color: $base-color-s80;
+  list-style: none;
+}
+.card {
+  overflow: hidden;
+  border-radius: 0.5rem;
+  border: none;
+  box-shadow: 1px 1px 2px rgba($gray-35, 0.8), 0 10px 20px rgba($gray-35, 0.5);
+  background: linear-gradient(50deg, lighten($gray-75, 16%) 30%, $gray-65 100%);
+
+  .cardHeader {
+    padding: 1rem;
+    width: 100%;
+  }
+  .cardContent {
+    font-family: Oxygen, "Arima Madurai", sans-serif;
+    position: relative;
+    height: 100%;
+    isolation: isolate;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    background-color: $opct-025;
+    padding: 0.5rem;
+
+    &:before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+
+      inset: 0;
+      background: inherit;
+    }
+    &:before {
+      filter: blur(0.75em);
+    }
+  }
+}
+
+.underlineWAni {
+  margin: 0.5rem 1rem;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(242, 105, 68, 0.1),
+    rgba(242, 105, 68, 1),
+    rgba(242, 105, 68, 0.1)
+  );
+  // animation: 0.8s in-out forwards;
+}
+
+// @keyframes in-out {
+//   0% {
+//     transform: translateX(-100%);
+//   }
+//   45%,
+//   55% {
+//     /*to stay a while full width*/
+//     transform: translateX(-50%);
+//   }
+//   100% {
+//     transform: translateX(0);
+//   }
+// }
 // For larger than tablet screen size
 @media screen and (min-width: 768px) {
-  button {
-    &:hover {
-      box-shadow: 0px 1px 4px black;
+  body {
+    &::-webkit-scrollbar {
+      // -webkit-appearance: none; warning, deprecated.
+      width: unset;
+    }
+
+    .AF_button {
+      &:hover {
+        box-shadow: 0px 1px 4px black;
+      }
+    }
+    .underlineWAni {
+      margin: none;
     }
   }
 }
 
 .error {
-  color: $secund-base-FS;
+  color: $error;
+}
+
+.slideLeftAni {
+  opacity: 0;
+  animation: slidRight 1s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    fade 0.8s ease-in forwards;
+}
+.slideDownAni {
+  opacity: 0;
+  animation: slidDown 2s ease-out, fade 0.5s ease-in forwards;
+}
+@keyframes slidRight {
+  0% {
+    left: -500px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+@keyframes slidDown {
+  0% {
+    top: -300px;
+  }
+  100% {
+    top: 0px;
+  }
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 // ScrollBar:
 @media screen and (min-width: 1280px) {
-  #scrollingPXcon {
+  body {
     &::-webkit-scrollbar {
       width: 15px;
       background-image: linear-gradient(
@@ -65,6 +184,7 @@ textarea {
         $base-color-gray-15,
         $base-color
       );
+      overflow: hidden;
     }
     &::-webkit-scrollbar-thumb {
       background-image: linear-gradient(
@@ -73,8 +193,13 @@ textarea {
         $secund-base-color
       );
       border-radius: 10px;
-      -webkit-box-shadow: rgb(0, 0, 0.5) 0 0 20px 1px;
-      box-shadow: rgba(0, 0, 0, 0.5) 0 0 20px 3px;
+    }
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .dark body {
+    .AF_button {
+      color: $gray-15;
     }
   }
 }

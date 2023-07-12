@@ -56,6 +56,7 @@ const ContactForm = () => {
       .then((netData) => {
         reset();
         console.log("Hi there, your message has been sent.");
+        // console.log(netData); > Response {type: 'basic', url: 'http://localhost:3000/', redirected: false, status: 404, ok: : Check to see that the response is 200.
         submitTimeOut(false);
         setName(data.name);
         setShowSuccessModal(true);
@@ -71,19 +72,19 @@ const ContactForm = () => {
   return (
     <form
       onSubmit={handleSubmit((data, e) => onSubmit(data, e))}
-      id="contactForm"
+      className="contactForm"
       name="contactForm"
       data-netlify="true"
       method="post"
     >
       <input name="form-name" value="contactForm" type="hidden" />
-      <div id="formHading">
+      <div className="formHading">
         <h1>Contact Alon</h1>
         <p>Let's make something great together</p>
       </div>
       <div className="formInputs">
-        <div className="formSection" id="IdInputs">
-          <div id="alignInputs"></div>
+        <div className="formSection IdInputs">
+          {/* <div className="alignInputs"></div> */}
           <div className="formInline">
             <label htmlFor={id + "name"}>
               <h3>{"Name: "}</h3>
@@ -93,7 +94,7 @@ const ContactForm = () => {
                 required: "Please write your name",
                 maxLength: 12,
               })}
-              id={id + "name"}
+              className={id + "name"}
               name="name"
               type="text"
               // placeholder="What's my name again?"
@@ -114,7 +115,7 @@ const ContactForm = () => {
                 },
               })} //[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$
               name="email"
-              id={id + "email"}
+              className={id + "email"}
               type="email"
               // value=""
             ></input>
@@ -133,7 +134,7 @@ const ContactForm = () => {
                 valueAsNumber: true,
               })}
               name="phone"
-              id={id + "phone"}
+              className={id + "phone"}
               type="tel"
               // value={}
             ></input>
@@ -141,8 +142,8 @@ const ContactForm = () => {
 
           <p className="error">{errors.phone && errors.phone?.message}</p>
         </div>
-        <div className="formSection">
-          <div className="formInline" id="formMessage">
+        <div className="formSection form_message_con">
+          <div className="formInline formMessage">
             <label htmlFor={id + "message"}>
               <h3>{"Message: "}</h3>
             </label>
@@ -153,7 +154,7 @@ const ContactForm = () => {
                 maxLength: 300,
               })}
               name="message"
-              id={id + "message"}
+              className={id + "message"}
               maxLength={300}
               // value=""
             ></textarea>
@@ -163,18 +164,19 @@ const ContactForm = () => {
         </div>
         <div className="clearfix"></div>
       </div>
-      <div className="formSection" id="formSubmit">
+      <div className="formSection formSubmit">
         <button
-          id={id + "sendMessageButton"}
+          className="AF_button sendMessageButton"
           disabled={disableSubmit}
           type="submit"
         >
-          Send Message
+          Send
         </button>
       </div>
       <ModalBase
         setShowModal={setShowSuccessModal}
         showModal={showSuccessModal}
+        closeModalTimeOut={1500}
       >
         <SuccessModal setShowModal={setShowSuccessModal} name={name} />
       </ModalBase>

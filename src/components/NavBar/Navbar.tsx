@@ -1,26 +1,46 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 // Style
 import "./NavBar.scss";
 import NavLogo from "../../styles/img/logos/NavLogo/NavLogo40";
 // Components
 import Burger from "../Burger/Burger";
 // hooks
-import { useEventListener } from "../../hooks/useEventListener";
 
-const Navbar: React.FC<{
-  onRouteChange: Function;
-  scrollRef: React.RefObject<HTMLDivElement>;
-}> = ({ onRouteChange, scrollRef }) => {
-  const NavBar = useRef<HTMLAnchorElement | null>(null);
+import { NavLink } from "react-router-dom";
+
+interface NavBarT {
+  routeList: Array<String>;
+}
+
+const Navbar: React.FC<NavBarT> = ({ routeList }) => {
+  const NavBar = useRef<HTMLDivElement | null>(null);
   const NavLi = useRef<HTMLUListElement | null>(null);
+  const RootRef = useRef<HTMLElement | null>(null);
+  const [dark, setDark] = useState(false);
   const [navStyle, setNavStyle] = useState({
     burger: "",
     navLinks: "",
   });
 
+  useEffect(() => {
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    const userTheme = window.localStorage.getItem("AlonFabioTheme");
+    RootRef.current = document.documentElement;
+    if (prefersDark || userTheme === "dark") {
+      RootRef.current?.classList.add("dark");
+      setDark(true);
+    }
+    window.addEventListener("scroll", scrollDetect);
+    return () => {
+      window.removeEventListener("scroll", scrollDetect);
+    };
+  }, []);
+
   // Fun for the eventListener
   const scrollDetect = () => {
-    const scrollYTop = scrollRef.current?.scrollTop;
+    const scrollYTop = window.scrollY;
     // Changes the NavBars background and the fill color of the SVG logo.
     if (
       typeof scrollYTop !== "number" ||
@@ -29,21 +49,16 @@ const Navbar: React.FC<{
     )
       return;
     if (scrollYTop <= 20) {
-      NavBar.current.classList.add("navbarTop");
-      NavBar.current.classList.remove("navNotTop");
-      NavLi.current.classList.remove("navNotTop");
+      NavBar.current.classList.add("navbar_Top");
+      NavBar.current.classList.remove("nav_Not_Top");
+      NavLi.current.classList.remove("nav_li_not_top");
     }
     if (scrollYTop >= 20 && NavBar.current.className !== "navbarNotTop") {
-      NavBar.current.classList.remove("navbarTop");
-      NavBar.current.classList.add("navNotTop");
-      NavLi.current.classList.add("navNotTop");
+      NavBar.current.classList.remove("navbar_Top");
+      NavBar.current.classList.add("nav_Not_Top");
+      NavLi.current.classList.add("nav_li_not_top");
     }
   };
-  useEventListener({
-    type: "scroll",
-    listener: scrollDetect,
-    element: scrollRef,
-  });
 
   const onBurgerClick = (): void => {
     setNavStyle((prvState) => {
@@ -57,56 +72,64 @@ const Navbar: React.FC<{
       }
     });
   };
-
+  const HandleThemeChange = () => {
+    if (RootRef.current?.className.search("dark") !== -1) {
+      RootRef.current?.classList.remove("dark");
+      // window.localStorage.removeItem("AlonFabioTheme");
+      window.localStorage.setItem("AlonFabioTheme", "none");
+      setDark(false);
+    } else {
+      RootRef.current?.classList.add("dark");
+      window.localStorage.setItem("AlonFabioTheme", "dark");
+      setDark(true);
+    }
+  };
   return (
-    <nav ref={NavBar} className={"navbarTop"} aria-label="hide">
-      <div className="container navMain">
-        <div
-          className={"LogoContainer"}
-          onClick={() => {
-            onRouteChange("Services");
-          }}
-        >
+    <nav id="main_nav" className={"navbar_Top"}>
+      <div ref={NavBar} className=" navMain">
+        <div className={"LogoContainer"}>
           {/*Left side home-logo, SVG format */}
-          <NavLogo />
+          <NavLink to={"/"}>
+            <NavLogo />
+          </NavLink>
         </div>
         <div className="navLinksMain">
-          <ul ref={NavLi} className={`navLinks ${navStyle.navLinks}`}>
-            <li
-              onClick={() => {
-                onBurgerClick();
-                onRouteChange("Contact");
-              }}
-            >
-              Contact
+          <ul ref={NavLi} className={`nav_links ${navStyle.navLinks}`}>
+            <li>
+              <button
+                onClick={() => HandleThemeChange()}
+                className="dark_mode_btn"
+              >
+                {dark ? (
+                  <span
+                    id="sun_dark_mode"
+                    className="fa-regular fa-sun dark_mode_icons"
+                  ></span>
+                ) : (
+                  <span
+                    id="moon_dark_mode"
+                    className="fa-regular fa-moon dark_mode_icons"
+                  ></span>
+                )}
+              </button>
             </li>
-            {/* <li
-              onClick={() => {
-                onBurgerClick();
-                onRouteChange("Dox");
-              }}
-            >
-              Dox
-            </li>
-            <li
-              onClick={() => {
-                onBurgerClick();
-                onRouteChange("Projects");
-              }}
-            >
-              Projects
-            </li> */}
-            <li
-              onClick={() => {
-                onBurgerClick();
-                onRouteChange("Services");
-              }}
-            >
-              Services
-            </li>
+            {routeList.map((routeName) => (
+              <li
+                key={`NavLink-${routeName}`}
+                onClick={() => {
+                  onBurgerClick();
+                }}
+              >
+                <NavLink to={`${routeName.toString()}`}>
+                  {routeName.toString()[0] === "/"
+                    ? `${routeName.toString().slice(1)}`
+                    : `${routeName.toString()}`}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </div>
-        <Burger navStyle={navStyle} burgerClick={onBurgerClick} />
+        <Burger navStyle={navStyle} burgerClick={() => onBurgerClick()} />
       </div>
     </nav>
   );

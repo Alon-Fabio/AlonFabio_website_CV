@@ -1,20 +1,62 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import "./footer.scss";
 
 import ContactForm from "../ContactForm/ContactForm";
-
-const Footer: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
+interface NavBarT {
+  routerLinkArr: Array<{
+    siteName: string;
+    routeList: Array<string>;
+  }>;
+}
+const Footer: React.FC<NavBarT> = ({ routerLinkArr }) => {
   const [transitioning, setTransitioning] = useState(true);
 
+  const onContactClick = () => {
+    setTransitioning((prv) => !prv);
+    if (transitioning) {
+      setTimeout(() => {
+        document.getElementById("footerForm")?.scrollIntoView();
+      }, 500);
+    }
+  };
   return (
     <div id="Footer">
       <div className="container">
-        <div id="FooterLinks" className="flexCenter">
-          <button onClick={() => setTransitioning((preVal) => !preVal)}>
+        <div id="footer_links" className="flexCenter">
+          <ul className="footer_nav_links ">
+            {routerLinkArr.map((site) => {
+              return (
+                <li
+                  key={`list-con-${site.siteName}`}
+                  className="footer_nav_link_ul"
+                >
+                  <h3>{site.siteName}</h3>
+
+                  <ul>
+                    {site.routeList.map((routeName) => (
+                      <li key={`li-${site.siteName}-${routeName}`}>
+                        <NavLink
+                          to={`${routeName.toString()}`}
+                          // className="AF_button"
+                        >
+                          {routeName.toString()[0] === "/"
+                            ? `${routeName.toString().slice(1)}`
+                            : `${routeName.toString()}`}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              );
+            })}
+          </ul>
+          <button className="AF_button" onClick={onContactClick}>
             Contact
           </button>
-
-          <button onClick={() => onRouteChange("Services")}>Services</button>
+          {/* <button className="AF_button">
+            <Link to="/Services">Services</Link>
+          </button> */}
         </div>
         <div
           id={"footerForm"}
@@ -22,10 +64,10 @@ const Footer: React.FC<{ onRouteChange: Function }> = ({ onRouteChange }) => {
         >
           <ContactForm />
         </div>
-        <hr />
+        <hr className="underlineWAni" />
         <div id="FooterBottom" className="flexCenter">
           <div id="footerIconDiv">
-            {/* Checkout the 'target="_blank"' problem that pops up if you don't add the 'rel="noreferrer nofollow"'*/}
+            {/* Checkout the 'target="_blank"' problem that pops up if you don't add the 'rel="noreferrer nofollow" */}
 
             <div className="FooterLinkIcon">
               <a

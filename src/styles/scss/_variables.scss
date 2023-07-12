@@ -1,23 +1,57 @@
 // Colors
-$base-color: hsla(208, 50%, 31%, 1) !default; // #275176 rgb(39, 81, 118)
-$base-color-rgb: rgb(39, 81, 118) !default; // #275176 rgb(39, 81, 118)
-$base-color-gray-15: hsla(208, 40%, 60%, 1); // #43505b rgba(67, 80, 91, 1)
-$gray-15: hsla(208, 0%, 15%, 1); // #404040 rgba(64, 64, 64, 1)
-$gray-24: hsla(208, 0%, 25%, 1); // #404040 rgba(64, 64, 64, 1)
-$gray-35: hsla(208, 0%, 31%, 1); // #4f4f4f rgba(79, 79, 79, 1)
-$gray-65: hsla(208, 0%, 65%, 1); // #a6a6a6 rgba(166, 166, 166, 1)
-$gray-75: hsla(208, 0%, 75%, 1); // #BFBFBF rgba(191, 191, 191, 1)
-$opct-01: hsla(0, 0%, 100%, 0.1); // #ffffff,0.1 rgba(255, 255, 255, 0.1)
-$opct-025: hsla(0, 0%, 100%, 0.25); // #ffffff,0.25 rgba(255, 255, 255, 0.25)
-$opct-05: hsla(0, 0%, 100%, 0.5); // #ffffff,0.5 rgba(255, 255, 255, 0.5)
-$secund-base-color: hsl(12, 86%, 60%) !default; // #F26944 rgb(242, 105, 68)
+// $base-color: hsla(208, 50%, 31%, 1) !default; // #275176 rgb(39, 81, 118)
+// $base-color-rgb: rgb(39, 81, 118) !default; // #275176 rgb(39, 81, 118)
+// $base-color-rgb-20: hsl(208, 51%, 51%); // #43505b rgba(67, 80, 91, 1)
+// $base-color-gray-15: hsla(208, 40%, 60%, 1); // #43505b rgba(67, 80, 91, 1)
+// $gray-15: hsla(208, 0%, 15%, 1); // #404040 rgba(64, 64, 64, 1)
+// $gray-24: hsla(208, 0%, 25%, 1); // #404040 rgba(64, 64, 64, 1)
+// $gray-35: hsla(208, 0%, 31%, 1); // #4f4f4f rgba(79, 79, 79, 1)
+// $gray-65: hsla(208, 0%, 65%, 1); // #a6a6a6 rgba(166, 166, 166, 1)
+// $gray-75: hsl(208, 0%, 75%); // #BFBFBF rgba(191, 191, 191, 1)
+// $gray-85: hsl(208, 0%, 85%); // #BFBFBF rgba(191, 191, 191, 1)
+// $opct-01: hsla(0, 0%, 100%, 0.1); // #ffffff,0.1 rgba(255, 255, 255, 0.1)
+// $opct-025: hsla(0, 0%, 100%, 0.25); // #ffffff,0.25 rgba(255, 255, 255, 0.25)
+// $opct-05: hsla(0, 0%, 100%, 0.5); // #ffffff,0.5 rgba(255, 255, 255, 0.5)
+// $secund-base-color: rgb(241, 100, 65)efault; // #F26944 rgb(242, 105, 68)
 $secund-base-FS: hsl(12, 100%, 45%) !default; // #ee4111 rgb(238, 65, 17)
-$secund-base-color-opposite: hsl(193, 87, 61); // #2596be rgba(68, 205, 242, 1
+// $secund-base-color-opposite: hsl(193, 87, 61); // #2596be rgba(68, 205, 242, 1
 
 // Fonts
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //   font-family: "Arima Madurai", cursive; weight 100/400
-@import url("https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@100;400&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@100;400&display=swap");
 
 //   font-family: Oxygen;
 @import url("https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@100&family=Oxygen:wght@300&display=swap");
+
+// Dominant:
+$gray-15: hsla(287, 5%, 15%, 1);
+$gray-24: hsla(287, 5%, 25%, 1);
+$gray-35: hsla(287, 5%, 31%, 1);
+$gray-65: hsla(287, 5%, 65%, 1);
+$gray-75: hsla(287, 5%, 75%, 1) !default; // Base color
+$gray-85: hsl(287, 5%, 85%);
+
+// Secondary
+$base-color-s80: hsl(287, 80%, 5%) !default; // Base color
+$base-color: hsl(287, 48%, 15%) !default; // Base color
+$base-color-l30: hsl(287, 48%, 30%) !default;
+$base-color-l80: hsl(287, 48%, 80%) !default;
+
+// Accent
+$secund-base-color: hsl(12, 86%, 50%) !default; // Base color
+// Utilities
+$error: hsl(0, 86%, 45%) !default;
+
+$base-color-l50: rgb(162, 66, 189) !default;
+$base-color-rgb-20: hsl(287, 5%, 80%) !default;
+$base-color-rgb: rgb(17, 35, 50) !default;
+$base-color-gray-15: rgb(128, 99, 136);
+$opct-01: hsla(0, 0%, 100%, 0.1);
+$opct-025: hsla(0, 0%, 100%, 0.25);
+$opct-05: hsla(0, 0%, 100%, 0.5);
+// $secund-base-color: rgb(102, 52, 131) !default;
+
+// $secund-base-color: hsl(335.68, 50%, 50%) !default;
+$secund-base-FS: hsl(278, 43%, 36%) !default;
+$secund-base-color-opposite: hsl(206, 50%, 13%);

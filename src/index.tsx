@@ -1,17 +1,26 @@
 import { createRoot } from "react-dom/client";
-import "./styles/scss/index.scss";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import ModalBase from "./components/Modals/ModalBase/ModalBase";
 import reportWebVitals from "./reportWebVitals";
+import React from "react";
 
 const root = document.getElementById("root");
 const modalRoot = document.getElementById("modal-root");
 if (!root || !modalRoot) throw new Error("Failed to find the root element");
 const bindRoot = createRoot(root);
 const bindModalRoot = createRoot(modalRoot);
-bindRoot.render(<App />);
+bindRoot.render(
+  <BrowserRouter>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </BrowserRouter>
+);
 bindModalRoot.render(
-  <ModalBase setShowModal={() => {}} showModal={false} children />
+  <React.StrictMode>
+    <ModalBase setShowModal={() => {}} showModal={false} children={<></>} />
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

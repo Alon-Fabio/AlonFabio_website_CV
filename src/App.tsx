@@ -1,48 +1,55 @@
-import React, { useState, useRef } from "react";
+import { lazy, Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
+
 import "./styles/scss/App.scss";
 
 // Components
-import NavBar from "./components/NavBar/Navbar";
-import Contact from "./components/contact/Contact";
-import Dox from "./components/dox/Dox";
-import Project from "./components/project/Projects";
-import Footer from "./components/footer/Footer";
-import Services from "./components/buildTools/Services";
+// import NavBar from "./components/NavBar/Navbar";
+// import Footer from "./components/footer/Footer";
+// Pages
+// import Main from "./pages/main/Main";
+import Contact from "./pages/contact/Contact";
+import Photography from "./pages/Photography/Photography";
+import Graphics from "./pages/Graphics/Graphics";
+import Start from "./pages/Start/Start";
+import RouterLayout from "./containers/RouterLayout/RouterLayout";
 
-function App(): JSX.Element {
-  const scrollPXref = useRef<HTMLDivElement>(null);
-  // On load go to page:
-  const [route, setRoute] = useState("Services");
-
-  const onRouteChange = async (route: string) => {
-    switch (route) {
-      case "Services":
-        await setRoute("Services");
-        await document?.getElementById("servicesCodeSkills")?.scrollIntoView();
-        break;
-      case "Contact":
-        await setRoute("Contact");
-        await document?.getElementById("formSection")?.scrollIntoView();
-        break;
-
-      default:
-        setRoute("Services");
-    }
-  };
-
+// Create a nice loading component.
+const Loading = () => {
   return (
-    <div className="App" id="scrollingPXcon" ref={scrollPXref}>
-      <header>
-        <NavBar onRouteChange={onRouteChange} scrollRef={scrollPXref} />
-      </header>
+    <div style={{ minHeight: "70dvh" }}>
+      <p>Loading...</p>;
+    </div>
+  );
+};
 
-      <div className="mainContainer perspective3d">
-        {route === "Services" ? <Services /> : null}
-        {route === "Dox" ? <Dox /> : null}
-        {route === "Contact" ? <Contact /> : null}
-        {route === "Projects" ? <Project /> : null}
-      </div>
-      <Footer onRouteChange={onRouteChange} />
+const Fadminbio = lazy(() => import("./pages/Fadminbio/Fadminbio"));
+const Services = lazy(() => import("./pages/Services/Services"));
+function App() {
+  return (
+    <div className="App">
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route path="*" index element={<Start />} />
+
+          <Route path="/Pro" element={<RouterLayout />}>
+            {/* Add an About Pro page */}
+            <Route index path="*" element={<Services />} />
+            <Route path="Services" element={<Services />} />
+            <Route path="Contact" element={<Contact />} />
+          </Route>
+
+          <Route path="/Per" element={<RouterLayout />}>
+            {/* Add an About Pro page */}
+            <Route index path="*" element={<Photography />} />
+            <Route path="Contact" element={<Contact />} />
+            <Route path="Photography" element={<Photography />} />
+            <Route path="Graphics" element={<Graphics />} />
+          </Route>
+
+          <Route path="Fadminbio" element={<Fadminbio stage={"localhost"} />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 }
