@@ -1,0 +1,442 @@
+@import "../../../../styles/scss/variables";
+
+#Services {
+  font-size: 1.5rem;
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  // Hero section
+
+  .subSectionHeading {
+    text-align: center;
+  }
+  .servicesHero {
+    .PageHero {
+      img {
+        bottom: 0;
+      }
+    }
+    // position: relative;
+    // overflow: hidden;
+    // flex-direction: column;
+    // justify-content: space-evenly;
+    // align-items: center;
+    // backface-visibility: visible;
+    // #services_hero_image_container {
+    //   position: fixed;
+    //   inset: 0;
+    //   z-index: -2;
+    //   .services_hero_elements {
+    //     position: sticky;
+    //     overflow: hidden;
+    //     background-repeat: no-repeat;
+    //     background-size: cover;
+    //     background-position: center;
+    //     justify-content: center;
+    //     background-clip: content-box; // Prevents clipping of other elements showing up on this effect.
+    //     width: 100%;
+    //     z-index: -1;
+    //   }
+
+    //   #Background_Clover {
+    //     height: 100%;
+    //     width: 100%;
+    //     inset: 0;
+    //     background-color: $base-color;
+    //   }
+
+    //   #Clover_Bohke {
+    //     // position: fixed;
+    //     opacity: 0.4;
+    //     backface-visibility: visible;
+    //   }
+
+    //   #Clover_image {
+    //     top: 100px;
+    //     // height: 50vh;
+    //     // width: auto;
+    //     right: 0;
+    //   }
+    // }
+
+    #serviceHeaderContainer {
+      text-transform: uppercase;
+      padding: 2rem;
+      position: relative;
+      width: fit-content;
+      &::before {
+        content: " ";
+        display: block;
+        position: absolute;
+        border-bottom-right-radius: 55% 120%;
+        border-top-right-radius: 150% 20%;
+        left: 0;
+        top: 1rem;
+        width: 100%;
+        height: 100%;
+
+        background-color: $base-color-rgb-20;
+      }
+      h1 {
+        font-family: Oxygen, sans-serif;
+        position: relative;
+        font-size: 3.5rem;
+        font-weight: bolder;
+        color: $secund-base-color;
+      }
+
+      h2 {
+        font-family: Oxygen, sans-serif;
+        position: relative;
+        opacity: 0;
+        font-size: 2.5rem;
+
+        &:nth-child(1) {
+          animation-delay: 0.2s;
+        }
+        &:nth-child(2) {
+          animation-delay: 0.5s;
+        }
+        &:nth-child(3) {
+          animation-delay: 1s;
+        }
+        &:nth-child(4) {
+          animation-delay: 1.5s;
+        }
+        &:nth-child(5) {
+          animation-delay: 2s;
+        }
+      }
+    }
+  }
+  // .servicesTextContainer {
+  //   text-align: center;
+  //   h1 {
+  //     padding-top: 1rem;
+  //   }
+  // }
+  // .servicesDescription {
+  //   padding-bottom: 10px;
+  //   p {
+  //     max-width: 75rem;
+  //     padding: 0 10px;
+  //     text-align: center;
+  //     font-weight: 400;
+  //     font-size: 1.5rem;
+  //   }
+  // }
+
+  // Skills section
+  #servicesCodeSkills {
+    .container {
+      width: 100%;
+    }
+  }
+  .skills {
+    legend {
+      span {
+        text-shadow: 1px 1px rgba(35, 35, 35, 0.5);
+        fill: $base-color;
+        color: $base-color;
+      }
+    }
+    // .servicesProg {
+    //   max-width: 1100px;
+    #servicesCards {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      gap: 0;
+
+      li {
+        padding: 1rem;
+        fieldset {
+          position: relative;
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          border: none;
+          // transform: translateZ(80px) scale(0.9);
+
+          legend {
+            text-align: right;
+            padding-right: 1rem;
+            span {
+              font-size: 2em;
+            }
+          }
+
+          h3 {
+            font-weight: bold;
+          }
+          .cardHeader {
+            background-color: transparent;
+            h2 {
+              font-weight: bold;
+            }
+          }
+          p {
+            padding: 0.5rem 0;
+          }
+          .cardLogos {
+            text-align: right;
+            img {
+              padding: 0.625rem;
+              max-height: 2rem;
+              filter: grayscale(1) drop-shadow(0 2px 0.125rem $gray-15);
+            }
+          }
+          .cardContent {
+            min-height: 17rem;
+            padding: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  // Contact Form
+  #formContainer {
+    .contactForm {
+      padding: 1rem;
+      display: block;
+      // text-align: center;
+      #contactForm {
+        #formMessage {
+          display: block;
+          textarea {
+            box-sizing: border-box;
+            width: 100%;
+            min-height: 10em;
+          }
+        }
+      }
+      button {
+        background-color: $secund-base-color;
+        color: $base-color;
+      }
+    }
+  }
+}
+
+// Bigger mobile
+@media screen and (min-width: 425px) {
+  #Services {
+    .PageHero {
+      img {
+        top: 0;
+      }
+    }
+    .servicesHero {
+      #serviceHeaderContainer {
+        h1 {
+          font-size: 4rem;
+        }
+        h2 {
+          font-size: 2.5rem;
+        }
+      }
+    }
+    .skills {
+      .servicesProg {
+        #servicesCards {
+          // display: grid;
+          // margin: 1.5rem;
+          // li {
+          //   transform-style: preserve-3d;
+          //   fieldset {
+          //     transform: translateZ(80px);
+          //   }
+          // }
+        }
+      }
+    }
+  }
+}
+// Bigger then mobile
+@media screen and (min-width: 768px) {
+  #Services {
+    .servicesHero {
+      // min-height: 80vh !important;
+      // background-attachment: fixed;
+      #serviceHeaderContainer {
+        padding: 3rem;
+        &::before {
+          background-color: unset;
+          width: calc(100% + 100px);
+        }
+        h1 {
+          font-size: 5rem;
+        }
+        h2 {
+          font-size: 3.5rem;
+        }
+      }
+      #services_hero_image_container {
+        #Clover_image {
+          right: -330px;
+          bottom: 0;
+        }
+      }
+    }
+    .servicesCards {
+      .card {
+        // display: grid;
+      }
+    }
+    // subImage
+    #servicesMidPic {
+      background-color: $base-color;
+      background-repeat: no-repeat, repeat;
+      background-attachment: fixed;
+      background-size: 65%, 100%;
+      background-position: bottom right, bottom left;
+      height: 15vw;
+    }
+    #servicesStyleSkills {
+      .cardsContainer li:last-child {
+        // grid-row: span 2;
+        grid-column: span 2;
+      }
+    }
+    // Connect Form
+    #formSection {
+      display: block;
+      margin: auto;
+      width: 100%;
+      background-image: url(../../../../styles/img/logos/NavLogo/AlonNavLogoBlue.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 200%;
+      .formContainer {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Tablet
+@media (max-height: 769px) and (min-width: 1023px) {
+  #Services {
+    .servicesHero {
+      #serviceHeaderContainer {
+        padding-top: 4rem;
+        font-size: 5rem;
+      }
+    }
+  }
+}
+
+// Big screen
+@media screen and (min-width: 1024px) {
+  #Services {
+    font-size: 1.5rem;
+
+    #Services_Hero {
+      // background-position-y: bottom !important;
+
+      #serviceHeaderContainer {
+        padding: 5rem;
+        // color: darken($base-color, 10%);
+        &::before {
+          background-color: $base-color-rgb-20;
+          width: 100%;
+        }
+        h1 {
+          font-size: 6rem;
+        }
+        h2 {
+          font-size: 4rem;
+        }
+      }
+      #services_hero_image_container {
+        #Clover_image {
+          right: 0;
+        }
+        #Clover_Bohke {
+          left: 0;
+        }
+      }
+    }
+    // .container {
+    //   width: 100%;
+    // }
+    // Skills section
+    .skills {
+      .servicesProg {
+        #servicesCards {
+          // width: 1100px;
+          ul {
+            gap: 0;
+            li {
+              padding: 1rem;
+
+              fieldset {
+                h3 {
+                  font-size: 2rem;
+                }
+
+                legend {
+                  span {
+                    font-size: 2em;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    //Contact Form
+    #formSection {
+      padding: 3rem 0;
+    }
+  }
+}
+@media screen and (max-width: 480px) {
+  .skills {
+    #servicesCards {
+      display: block;
+    }
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .dark body #Services {
+    background-color: $gray-15;
+    color: $gray-75;
+    .PageHero {
+      #Services_Hero #serviceHeaderContainer {
+        &::before {
+          background-color: $gray-15;
+        }
+
+        h2 {
+          color: $gray-75;
+        }
+      }
+    }
+    .skills {
+      legend {
+        span {
+          color: $base-color-l30;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 768px) and(max-width:1024px) and (prefers-color-scheme: dark) {
+  .dark body #Services {
+    .PageHero {
+      #Services_Hero #serviceHeaderContainer {
+        h2 {
+          color: $gray-15;
+        }
+        &::before {
+          background-color: unset;
+        }
+      }
+    }
+  }
+}
