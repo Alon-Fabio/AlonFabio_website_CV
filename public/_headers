@@ -3,6 +3,6 @@
   X-XSS-Protection: 1; mode=block
   X-Content-Type-Options: nosniff
   cache-control: max-age=0, must-revalidate, public
-  Content-Security-Policy: default-src 'self' 'unsafe-inline' http://44.204.229.83 *.fontawesome.com fontawesome.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' http://44.204.229.83 googleapis.com *.googleapis.com *.fontawesome.com; font-src 'unsafe-inline' http://44.204.229.83 https://fonts.gstatic.com data: *.fontawesome.com; connect-src 'unsafe-inline' http://44.204.229.83 https://www.alonfabio.com/ *.fontawesome.com https://www.google-analytics.com; img-src 'self' https://www.google-analytics.com data:;
+  Content-Security-Policy: default-src 'self' 'unsafe-inline' 44.204.229.83 *.fontawesome.com fontawesome.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' 44.204.229.83 googleapis.com *.googleapis.com *.fontawesome.com; font-src 'unsafe-inline' 44.204.229.83 https://fonts.gstatic.com data: *.fontawesome.com; connect-src 'unsafe-inline' 44.204.229.83 https://www.alonfabio.com/ *.fontawesome.com https://www.google-analytics.com; img-src 'self' https://www.google-analytics.com data:;
   Content-Security-Policy-Report-Only: default-src https: 'unsafe-inline'
   Access-Control-Allow-Origin: 44.204.229.83
