@@ -30,7 +30,7 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
       AbortController?: AbortController
     ) {
       setPending(true);
-      fetch(`https://localhost/gallery/${folder}`, {
+      fetch(`http://44.204.229.83/gallery/${folder}`, {
         signal: AbortController?.signal,
         method: "GET",
         headers: {
