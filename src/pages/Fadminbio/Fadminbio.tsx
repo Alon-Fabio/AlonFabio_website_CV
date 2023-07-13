@@ -57,7 +57,7 @@ const Fadminbio: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
 
     event.preventDefault();
     // console.log("Started :", stage, signInState);
-    fetch(`https://44.204.229.83/signin`, {
+    fetch(`http://44.204.229.83/signin`, {
       method: "post",
       headers: { "Content-Type": "application/json", authentication: "false" },
       body: JSON.stringify(signInState),
@@ -85,7 +85,7 @@ const Fadminbio: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
   const handleFadminbioAction: IFadminbioAction = (action, bodyObject = {}) => {
     setFetchStatus(true);
     startTransition(() => {
-      fetch(`https://44.204.229.83/${action}`, {
+      fetch(`http://44.204.229.83/${action}`, {
         method: "post",
         headers: {
           "Content-Type": "application/json",
