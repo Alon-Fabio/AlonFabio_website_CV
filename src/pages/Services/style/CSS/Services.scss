@@ -401,31 +401,31 @@
     }
   }
 }
-@media (prefers-color-scheme: dark) {
-  .dark body #Services {
-    background-color: $gray-15;
-    color: $gray-75;
-    .PageHero {
-      #Services_Hero #serviceHeaderContainer {
-        &::before {
-          background-color: $gray-15;
-        }
 
-        h2 {
-          color: $gray-75;
-        }
+.dark body #Services {
+  background-color: $gray-15;
+  color: $gray-75;
+  .PageHero {
+    #Services_Hero #serviceHeaderContainer {
+      &::before {
+        background-color: $gray-15;
+      }
+
+      h2 {
+        color: $gray-75;
       }
     }
-    .skills {
-      legend {
-        span {
-          color: $base-color-l30;
-        }
+  }
+  .skills {
+    legend {
+      span {
+        color: $base-color-l30;
       }
     }
   }
 }
-@media screen and (min-width: 768px) and(max-width:1024px) and (prefers-color-scheme: dark) {
+
+@media screen and (min-width: 768px) and(max-width:1024px) {
   .dark body #Services {
     .PageHero {
       #Services_Hero #serviceHeaderContainer {

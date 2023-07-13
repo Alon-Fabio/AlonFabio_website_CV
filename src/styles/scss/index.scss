@@ -127,18 +127,17 @@ code {
 //     }
 //   }
 // }
-@media (prefers-color-scheme: dark) {
-  .dark body {
-    color: $gray-75;
-    .subSection:nth-child(even) {
-      background-color: $gray-15;
-    }
-    .subSection:nth-child(odd) {
-      background-color: $gray-24;
-    }
 
-    .App .mainContainer .container {
-      background-color: rgba($base-color-s80, 0.5);
-    }
+.dark body {
+  color: $gray-75;
+  .subSection:nth-child(even) {
+    background-color: $gray-15;
+  }
+  .subSection:nth-child(odd) {
+    background-color: $gray-24;
+  }
+
+  .App .mainContainer .container {
+    background-color: rgba($base-color-s80, 0.5);
   }
 }

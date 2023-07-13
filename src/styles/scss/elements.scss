@@ -196,10 +196,9 @@ span {
     }
   }
 }
-@media (prefers-color-scheme: dark) {
-  .dark body {
-    .AF_button {
-      color: $gray-15;
-    }
+
+.dark body {
+  .AF_button {
+    color: $gray-15;
   }
 }
