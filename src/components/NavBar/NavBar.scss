@@ -90,6 +90,9 @@
     }
     .navMain {
       border: none;
+      #NavLogo {
+        fill: inherit;
+      }
       .nav_links {
         // For bigger menus subtract from the top
         top: -200px;
