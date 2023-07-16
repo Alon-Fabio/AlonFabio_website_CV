@@ -6,11 +6,11 @@
   margin: 0;
   padding: 0;
 }
-html {
-  // enable dark mode ↓
-  // color-scheme: light dark;
-  overflow-x: hidden;
-}
+// html {
+// enable dark mode ↓
+// color-scheme: light dark;
+// overflow-x: hidden;
+// }
 html,
 body,
 #root {
@@ -28,6 +28,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   font-size: larger;
+  color: $base-color-s80;
   a {
     color: inherit;
     text-decoration: none;

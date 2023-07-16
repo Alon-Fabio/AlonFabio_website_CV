@@ -48,9 +48,11 @@
     padding: 1rem;
   }
   #start_ol {
+    flex-wrap: wrap;
     min-height: 40vh;
     list-style-type: none;
     padding-left: 1.75rem; // Alignment of the OL to center.
+
     li {
       padding: 1rem;
       .start_li_link {
