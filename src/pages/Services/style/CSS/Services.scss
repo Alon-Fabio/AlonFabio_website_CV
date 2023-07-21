@@ -1,11 +1,7 @@
 @import "../../../../styles/scss/variables";
 
 #Services {
-  font-size: 1.5rem;
-
-  h1 {
-    font-size: 2rem;
-  }
+  // font-size: 1.5rem;
 
   // Hero section
 
@@ -91,7 +87,6 @@
         font-family: Oxygen, sans-serif;
         position: relative;
         opacity: 0;
-        font-size: 2.5rem;
 
         &:nth-child(1) {
           animation-delay: 0.2s;
@@ -137,9 +132,17 @@
   .skills {
     legend {
       span {
-        text-shadow: 1px 1px rgba(35, 35, 35, 0.5);
+        text-shadow: 1px 1px $gray-75, 1px 1px 10px $opct-05;
         fill: $base-color;
         color: $base-color;
+      }
+    }
+    .subSectionHeading {
+      text-align: left;
+      padding-inline: 1rem;
+      color: $gray-75;
+      h1 {
+        font-size: 2em;
       }
     }
     // .servicesProg {
@@ -182,6 +185,7 @@
           }
           .cardLogos {
             text-align: right;
+            margin-top: auto;
             img {
               padding: 0.625rem;
               max-height: 2rem;
@@ -191,6 +195,10 @@
           .cardContent {
             min-height: 17rem;
             padding: 1rem;
+            justify-content: flex-start;
+            h3 {
+              padding-block: 0.5rem;
+            }
           }
         }
       }
@@ -239,20 +247,20 @@
         }
       }
     }
-    .skills {
-      .servicesProg {
-        #servicesCards {
-          // display: grid;
-          // margin: 1.5rem;
-          // li {
-          //   transform-style: preserve-3d;
-          //   fieldset {
-          //     transform: translateZ(80px);
-          //   }
-          // }
-        }
-      }
-    }
+    // .skills {
+    //   .servicesProg {
+    //     #servicesCards {
+    // display: grid;
+    // margin: 1.5rem;
+    // li {
+    //   transform-style: preserve-3d;
+    //   fieldset {
+    //     transform: translateZ(80px);
+    //   }
+    // }
+    //     }
+    //   }
+    // }
   }
 }
 // Bigger then mobile
@@ -281,11 +289,11 @@
         }
       }
     }
-    .servicesCards {
-      .card {
-        // display: grid;
-      }
-    }
+    // .servicesCards {
+    // .card {
+    // display: grid;
+    // }
+    // }
     // subImage
     #servicesMidPic {
       background-color: $base-color;
@@ -402,31 +410,31 @@
     }
   }
 }
-@media (prefers-color-scheme: dark) {
-  .dark body #Services {
-    background-color: $gray-15;
-    color: $gray-75;
-    .PageHero {
-      #Services_Hero #serviceHeaderContainer {
-        &::before {
-          background-color: $gray-15;
-        }
 
-        h2 {
-          color: $gray-75;
-        }
+.dark body #Services {
+  background-color: $gray-15;
+  color: $gray-75;
+  .PageHero {
+    #Services_Hero #serviceHeaderContainer {
+      &::before {
+        background-color: $gray-15;
+      }
+
+      h2 {
+        color: $gray-75;
       }
     }
-    .skills {
-      legend {
-        span {
-          color: $base-color-l30;
-        }
+  }
+  .skills {
+    legend {
+      span {
+        color: $base-color-l30;
       }
     }
   }
 }
-@media screen and (min-width: 768px) and(max-width:1024px) and (prefers-color-scheme: dark) {
+
+@media screen and (min-width: 768px) and(max-width:1024px) {
   .dark body #Services {
     .PageHero {
       #Services_Hero #serviceHeaderContainer {

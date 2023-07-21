@@ -6,11 +6,11 @@
   margin: 0;
   padding: 0;
 }
-html {
-  // enable dark mode ↓
-  // color-scheme: light dark;
-  overflow-x: hidden;
-}
+// html {
+// enable dark mode ↓
+// color-scheme: light dark;
+// overflow-x: hidden;
+// }
 html,
 body,
 #root {
@@ -28,6 +28,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   font-size: larger;
+  color: $base-color-s80;
   a {
     color: inherit;
     text-decoration: none;
@@ -127,18 +128,17 @@ code {
 //     }
 //   }
 // }
-@media (prefers-color-scheme: dark) {
-  .dark body {
-    color: $gray-75;
-    .subSection:nth-child(even) {
-      background-color: $gray-15;
-    }
-    .subSection:nth-child(odd) {
-      background-color: $gray-24;
-    }
 
-    .App .mainContainer .container {
-      background-color: rgba($base-color-s80, 0.5);
-    }
+.dark body {
+  color: $gray-75;
+  .subSection:nth-child(even) {
+    background-color: $gray-15;
+  }
+  .subSection:nth-child(odd) {
+    background-color: $gray-24;
+  }
+
+  .App .mainContainer .container {
+    background-color: rgba($base-color-s80, 0.5);
   }
 }

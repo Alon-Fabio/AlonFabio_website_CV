@@ -18,6 +18,7 @@
     }
 
     .exit_gallery {
+      cursor: pointer;
       background-color: transparent;
       font-size: 1.5rem;
       position: fixed;
@@ -31,7 +32,7 @@
       transition: text-shadow 0.25s;
     }
     .image-gallery-icon {
-      color: $base-color-rgb;
+      color: $secund-base-color;
     }
     .image-gallery-thumbnails-container {
       .image-gallery-thumbnail {

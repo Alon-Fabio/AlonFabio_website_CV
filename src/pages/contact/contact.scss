@@ -151,9 +151,8 @@
     }
   }
 }
-@media (prefers-color-scheme: dark) {
-  .dark body #Contact #formSection #formContainer Form {
-    background-color: $gray-15;
-    color: $gray-75;
-  }
+
+.dark body #Contact #formSection #formContainer Form {
+  background-color: $gray-15;
+  color: $gray-75;
 }

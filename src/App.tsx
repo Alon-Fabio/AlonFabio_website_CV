@@ -47,7 +47,10 @@ function App() {
             <Route path="Graphics" element={<Graphics />} />
           </Route>
 
-          <Route path="Fadminbio" element={<Fadminbio stage={"localhost"} />} />
+          <Route
+            path="Fadminbio"
+            element={<Fadminbio stage={"44.204.229.83"} />}
+          />
         </Routes>
       </Suspense>
     </div>

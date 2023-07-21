@@ -28,7 +28,15 @@ const Navbar: React.FC<NavBarT> = ({ routeList }) => {
     ).matches;
     const userTheme = window.localStorage.getItem("AlonFabioTheme");
     RootRef.current = document.documentElement;
-    if (prefersDark || userTheme === "dark") {
+
+    if (userTheme === "dark") {
+      RootRef.current?.classList.add("dark");
+      setDark(true);
+    }
+    if (userTheme === "light") {
+      setDark(false);
+    }
+    if (prefersDark && typeof userTheme !== "string") {
       RootRef.current?.classList.add("dark");
       setDark(true);
     }
@@ -76,7 +84,7 @@ const Navbar: React.FC<NavBarT> = ({ routeList }) => {
     if (RootRef.current?.className.search("dark") !== -1) {
       RootRef.current?.classList.remove("dark");
       // window.localStorage.removeItem("AlonFabioTheme");
-      window.localStorage.setItem("AlonFabioTheme", "none");
+      window.localStorage.setItem("AlonFabioTheme", "light");
       setDark(false);
     } else {
       RootRef.current?.classList.add("dark");
