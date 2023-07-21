@@ -1,0 +1,200 @@
+@import "../../styles/scss/variables";
+
+// Mobile first.
+
+#Start {
+  height: 100%;
+  color: $gray-75;
+  section {
+    min-height: 50vh;
+  }
+  .PageHero {
+    padding: 0.5rem;
+    background-color: $base-color;
+    z-index: -2;
+    display: flex;
+    justify-content: center;
+    color: $gray-85;
+    #start_hero_container {
+      padding: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      h1 {
+        font-size: 2.5rem;
+      }
+      #start_h_img_con {
+        margin-inline: auto;
+
+        #start_profile_picture {
+          all: initial;
+          overflow: hidden;
+          max-height: MIN(30vh, 50vw);
+          border-radius: 30% 70% 70% 30% / 30% 26% 74% 70%;
+          animation: wobble 10s ease-in-out alternate infinite;
+          box-shadow: 1rem 0px 2rem $secund-base-color;
+        }
+      }
+      h3 {
+        padding: 0.5rem 0;
+        font-size: 2rem;
+        text-align: end;
+      }
+    }
+  }
+  #start_proper_sec {
+    background-color: $gray-35;
+    padding: 1rem;
+  }
+  #start_ol {
+    min-height: 40vh;
+    list-style-type: none;
+    padding-left: 1.75rem; // Alignment of the OL to center.
+    li {
+      padding: 1rem;
+      .start_li_link {
+        font-size: 1rem;
+        color: $secund-base-color;
+
+        span {
+          line-height: MIN(13vw, 8rem);
+          font-size: MIN(15vw, 6rem);
+        }
+        p {
+          display: none;
+        }
+      }
+      h3 {
+        color: inherit;
+        padding: 0.25rem;
+        font-size: MIN(5vw, 2.5rem);
+      }
+    }
+    #start_li_dash {
+      display: flex;
+      justify-content: center;
+      height: MIN(50vw, 15rem);
+
+      hr {
+        border: 1px solid $gray-75;
+      }
+    }
+  }
+}
+@keyframes wobble {
+  0% {
+    border-radius: 70% 30% 30% 70% / 70% 76% 24% 30%;
+    box-shadow: 1.5rem 0rem 4rem $base-color-rgb-20,
+      0.5rem 0.5rem 3rem $secund-base-color;
+  }
+  50% {
+    border-radius: 30% 70% 70% 30% / 30% 26% 74% 70%;
+    box-shadow: 0.5rem 0.5rem 3rem $secund-base-color;
+  }
+  100% {
+    border-radius: 70% 30% 30% 70% / 70% 76% 24% 30%;
+    box-shadow: 0rem 1.5rem 5rem $gray-75;
+  }
+}
+@media screen and (min-width: 768px) and (max-height: 940px) {
+  #Start {
+    height: 100dvh;
+    overflow-y: hidden;
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+    .PageHero {
+      padding: 1rem;
+      #start_hero_container {
+        #start_h_img_con {
+          .start_img_clip {
+            #start_profile_picture {
+              max-height: MIN(50vh, 28vw);
+            }
+          }
+        }
+      }
+    }
+    #start_proper_sec {
+      height: unset;
+      padding: unset;
+      #start_ol {
+        height: 100%;
+        padding: 1rem;
+        display: grid;
+        grid-template-rows: 45% 10% 45%;
+        justify-content: flex-start;
+
+        h3,
+        a {
+          padding-inline: 2rem;
+        }
+        li {
+          display: flex;
+          justify-content: flex-start;
+          flex-direction: column;
+          height: 100%;
+
+          &:first-child {
+            h3 {
+              order: 1;
+            }
+          }
+          p {
+            letter-spacing: initial;
+            left: initial;
+          }
+        }
+        #start_li_dash {
+          flex-direction: column;
+          width: MAX(20rem, 30vw);
+          height: 2px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #Start {
+    top: 0;
+    overflow-y: hidden;
+    #start_hero_container,
+    ol {
+      max-width: 1100px;
+      margin-inline: auto;
+    }
+    .PageHero {
+      #start_hero_container {
+        width: 100%;
+        max-width: 1100px;
+        h1 {
+          font-size: 3rem;
+        }
+      }
+    }
+    #start_proper_sec {
+      #start_ol {
+        isolation: isolate;
+        li {
+          h1:hover p {
+            left: 0rem;
+            letter-spacing: 0;
+          }
+          span {
+            background-color: $gray-35;
+          }
+          p {
+            position: relative;
+            display: inline-block;
+            z-index: -1;
+            letter-spacing: -1rem;
+            left: -1rem;
+            transition: all 1s ease-out;
+          }
+        }
+      }
+    }
+  }
+}

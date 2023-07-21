@@ -1,0 +1,35 @@
+#Graphics {
+  min-height: calc(100dvh - 200px);
+
+  .PageHero {
+    min-height: 70vh;
+    img {
+      top: 0;
+      bottom: unset;
+    }
+    h1 {
+      position: relative;
+      font-size: clamp(11vw, 12rem, 18vw);
+      color: white;
+      letter-spacing: -5px;
+      font-family: "Oxygen", "Arial Narrow", Arial, sans-serif;
+      font-weight: 1000;
+      padding: 1rem;
+    }
+  }
+  .GalleryGrid {
+    min-height: calc(30dvh - 310px);
+  }
+}
+@media screen and (max-width: 790px) {
+  #Graphics {
+    .PageHero {
+      min-height: 50vh;
+    }
+    .GalleryGrid {
+      min-height: calc(50dvh - 270px);
+      display: flex;
+      align-items: center;
+    }
+  }
+}

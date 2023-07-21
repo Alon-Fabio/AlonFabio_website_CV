@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useId } from "react";
 import { useForm } from "react-hook-form";
 import "./ContactForm.scss";
 
@@ -13,6 +13,8 @@ type TContactForm = {
 };
 
 const ContactForm = () => {
+  const id = useId();
+
   // For better form notations and event handling. See more details on https://react-hook-form.com/api/useform/ .
   const {
     register,
@@ -54,6 +56,7 @@ const ContactForm = () => {
       .then((netData) => {
         reset();
         console.log("Hi there, your message has been sent.");
+        // console.log(netData); > Response {type: 'basic', url: 'http://localhost:3000/', redirected: false, status: 404, ok: : Check to see that the response is 200.
         submitTimeOut(false);
         setName(data.name);
         setShowSuccessModal(true);
@@ -69,27 +72,29 @@ const ContactForm = () => {
   return (
     <form
       onSubmit={handleSubmit((data, e) => onSubmit(data, e))}
-      id="contactForm"
+      className="contactForm"
       name="contactForm"
       data-netlify="true"
       method="post"
     >
       <input name="form-name" value="contactForm" type="hidden" />
-      <div id="formHading">
+      <div className="formHading">
         <h1>Contact Alon</h1>
         <p>Let's make something great together</p>
       </div>
       <div className="formInputs">
-        <div className="formSection" id="IdInputs">
-          <div id="alignInputs"></div>
+        <div className="formSection IdInputs">
+          {/* <div className="alignInputs"></div> */}
           <div className="formInline">
-            <h3>{"Name: "}</h3>
+            <label htmlFor={id + "name"}>
+              <h3>{"Name: "}</h3>
+            </label>
             <input
               {...register("name", {
                 required: "Please write your name",
                 maxLength: 12,
               })}
-              id="name"
+              className={id + "name"}
               name="name"
               type="text"
               // placeholder="What's my name again?"
@@ -98,7 +103,9 @@ const ContactForm = () => {
           </div>
           <p className="error">{errors.name && errors.name?.message}</p>
           <div className="formInline">
-            <h3>{"Email: "}</h3>
+            <label htmlFor={id + "email"}>
+              <h3>{"Email: "}</h3>
+            </label>
             <input
               {...register("email", {
                 required: "Write your Email, I promise it won't be misused.",
@@ -108,7 +115,7 @@ const ContactForm = () => {
                 },
               })} //[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$
               name="email"
-              id="email"
+              className={id + "email"}
               type="email"
               // value=""
             ></input>
@@ -116,8 +123,9 @@ const ContactForm = () => {
           <p className="error">{errors.email && errors.email?.message}</p>
 
           <div className="formInline">
-            <h3>{"Phone: "}</h3>
-
+            <label htmlFor={id + "phone"}>
+              <h3>{"Phone: "}</h3>
+            </label>
             <input
               {...register("phone", {
                 required:
@@ -126,7 +134,7 @@ const ContactForm = () => {
                 valueAsNumber: true,
               })}
               name="phone"
-              id="phone"
+              className={id + "phone"}
               type="tel"
               // value={}
             ></input>
@@ -134,10 +142,11 @@ const ContactForm = () => {
 
           <p className="error">{errors.phone && errors.phone?.message}</p>
         </div>
-        <div className="formSection">
-          <div className="formInline" id="formMessage">
-            <h3>{"Message: "}</h3>
-
+        <div className="formSection form_message_con">
+          <div className="formInline formMessage">
+            <label htmlFor={id + "message"}>
+              <h3>{"Message: "}</h3>
+            </label>
             <textarea
               {...register("message", {
                 required: "At least write the topic/s you are interested in.",
@@ -145,7 +154,7 @@ const ContactForm = () => {
                 maxLength: 300,
               })}
               name="message"
-              id="message"
+              className={id + "message"}
               maxLength={300}
               // value=""
             ></textarea>
@@ -155,14 +164,19 @@ const ContactForm = () => {
         </div>
         <div className="clearfix"></div>
       </div>
-      <div className="formSection" id="formSubmit">
-        <button id="sendMessageButton" disabled={disableSubmit} type="submit">
-          Send Message
+      <div className="formSection formSubmit">
+        <button
+          className="AF_button sendMessageButton"
+          disabled={disableSubmit}
+          type="submit"
+        >
+          Send
         </button>
       </div>
       <ModalBase
         setShowModal={setShowSuccessModal}
         showModal={showSuccessModal}
+        closeModalTimeOut={1500}
       >
         <SuccessModal setShowModal={setShowSuccessModal} name={name} />
       </ModalBase>
