@@ -90,6 +90,9 @@
     }
     .navMain {
       border: none;
+      #NavLogo {
+        fill: inherit;
+      }
       .nav_links {
         // For bigger menus subtract from the top
         top: -200px;
@@ -238,30 +241,29 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .dark body #main_nav {
-    .navMain {
-      background-color: $gray-15;
-      color: $gray-75;
-      fill: $gray-75;
-      .nav_links .dark_mode_btn {
-        background-color: $gray-85;
+.dark body #main_nav {
+  .navMain {
+    background-color: $gray-15;
+    color: $gray-75;
+    fill: $gray-75;
+    .nav_links .dark_mode_btn {
+      background-color: $gray-85;
 
-        padding-left: 2.5rem;
-        .dark_mode_icons {
-          box-shadow: -2px 0px 2px;
-        }
-      }
-    }
-    .nav_Not_Top {
-      background-color: $base-color-s80;
-      fill: $secund-base-color;
-      li {
-        color: $secund-base-color;
+      padding-left: 2.5rem;
+      .dark_mode_icons {
+        box-shadow: -2px 0px 2px;
       }
     }
   }
+  .nav_Not_Top {
+    background-color: $base-color-s80;
+    fill: $secund-base-color;
+    li {
+      color: $secund-base-color;
+    }
+  }
 }
+
 // FIX
 // severity: low
 // Start in mobile width.

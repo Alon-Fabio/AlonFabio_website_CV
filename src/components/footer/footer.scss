@@ -225,17 +225,16 @@
 //   animation-direction: normal;
 //   will-change: height;
 // }
-@media (prefers-color-scheme: dark) {
-  .dark body #Footer {
-    background-color: $gray-15;
-    color: $gray-75;
 
-    #FooterBottom {
-      #footerIconDiv {
-        .FooterLinkIcon {
-          i {
-            color: $gray-15;
-          }
+.dark body #Footer {
+  background-color: $gray-15;
+  color: $gray-75;
+
+  #FooterBottom {
+    #footerIconDiv {
+      .FooterLinkIcon {
+        i {
+          color: $gray-15;
         }
       }
     }

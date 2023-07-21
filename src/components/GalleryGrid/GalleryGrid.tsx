@@ -30,7 +30,7 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
       AbortController?: AbortController
     ) {
       setPending(true);
-      fetch(`http://localhost/gallery/${folder}`, {
+      fetch(`https://44.204.229.83/gallery/${folder}`, {
         signal: AbortController?.signal,
         method: "GET",
         headers: {
@@ -60,6 +60,38 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
           //  return console.error("Looks like we are having a lite problem.. please try again later");
         })
         .catch((err) => {
+          const backup = async (folder: string) => {
+            const list = await import(`./imageFallback`);
+            if (folder === "photos") {
+              setImagesList(() => {
+                return {
+                  images: list.photos.images,
+                  URLStart: [
+                    list.photos.URLStart,
+                    list.photos.owner,
+                    list.photos.type,
+                    list.photos.action,
+                  ].join("/"),
+                };
+              });
+            }
+            if (folder === "graphics") {
+              setImagesList(() => {
+                return {
+                  images: list.graphics.images,
+                  URLStart: [
+                    list.graphics.URLStart,
+                    list.graphics.owner,
+                    list.graphics.type,
+                    list.graphics.action,
+                  ].join("/"),
+                };
+              });
+            }
+          };
+
+          backup(folder);
+
           console.error(err, "<================");
           setPending(false);
 
