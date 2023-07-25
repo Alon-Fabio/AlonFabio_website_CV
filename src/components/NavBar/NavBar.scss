@@ -31,6 +31,7 @@
         font-weight: 400;
         font-size: 1.5rem;
         letter-spacing: 0.05rem;
+        transition: background-color 1s ease, top 0.75s ease-out;
         .dark_mode_btn {
           border: 1px solid;
           border-radius: 20px;
@@ -107,7 +108,6 @@
         left: 0;
         display: flex;
         flex-direction: column-reverse;
-        transition: top 0.5s ease-out;
       }
 
       .nav_links::before {
@@ -236,25 +236,21 @@
     max-width: unset;
   }
 }
-@media screen and (max-width: 768px) {
-  #main_nav {
-    .nav_Not_Top {
-      padding: 0.5rem;
-    }
-  }
-}
 
 .dark body #main_nav {
+  background-color: rgba($base-color-s80, 0.5);
   .navMain {
-    background-color: $gray-15;
     color: $gray-75;
     fill: $gray-75;
-    .nav_links .dark_mode_btn {
-      background-color: $gray-85;
+    .nav_links {
+      background-color: inherit;
+      .dark_mode_btn {
+        background-color: $gray-85;
 
-      padding-left: 2.5rem;
-      .dark_mode_icons {
-        box-shadow: -2px 0px 2px;
+        padding-left: 2.5rem;
+        .dark_mode_icons {
+          box-shadow: -2px 0px 2px;
+        }
       }
     }
   }
@@ -264,9 +260,26 @@
     li {
       color: $secund-base-color;
     }
+    &::before {
+      background-color: $base-color-s80;
+    }
   }
 }
-
+@media screen and (max-width: 768px) {
+  #main_nav {
+    .nav_Not_Top {
+      padding: 0.5rem;
+    }
+  }
+  .dark body #main_nav {
+    background-color: $base-color-s80;
+    .navMain {
+      .nav_links {
+        background-color: $base-color-s80;
+      }
+    }
+  }
+}
 // FIX
 // severity: low
 // Start in mobile width.
