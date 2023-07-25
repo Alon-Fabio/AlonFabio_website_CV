@@ -5,9 +5,9 @@
 
   // Hero section
 
-  .subSectionHeading {
-    text-align: center;
-  }
+  // .subSectionHeading {
+  //   text-align: center;
+  // }
   .servicesHero {
     .PageHero {
       img {
@@ -130,17 +130,25 @@
     }
   }
   .skills {
+    h1 {
+      text-transform: uppercase;
+      color: $secund-base-color;
+      .h1_smaller {
+        font-size: 1.5rem;
+        color: inherit;
+      }
+    }
     legend {
       span {
         text-shadow: 1px 1px $gray-75, 1px 1px 10px $opct-05;
-        fill: $base-color;
-        color: $base-color;
+
+        color: $base-color-gray-15;
       }
     }
     .subSectionHeading {
       text-align: left;
       padding-inline: 1rem;
-      color: $gray-75;
+      // color: $gray-75;
       h1 {
         font-size: 2em;
       }
@@ -151,10 +159,9 @@
       margin: 0;
       padding: 0;
       list-style: none;
-      gap: 0;
 
       li {
-        padding: 1rem;
+        // padding: 1rem;
         fieldset {
           position: relative;
           width: 100%;
@@ -187,9 +194,9 @@
             text-align: right;
             margin-top: auto;
             img {
-              padding: 0.625rem;
+              padding: 0 0.625rem;
               max-height: 2rem;
-              filter: grayscale(1) drop-shadow(0 2px 0.125rem $gray-15);
+              filter: grayscale(100%) contrast(80%);
             }
           }
           .cardContent {
@@ -303,12 +310,12 @@
       background-position: bottom right, bottom left;
       height: 15vw;
     }
-    #servicesStyleSkills {
-      .cardsContainer li:last-child {
-        // grid-row: span 2;
-        grid-column: span 2;
-      }
-    }
+    // #servicesStyleSkills {
+    //   .cardsContainer li:last-child {
+
+    //     grid-column: span 2;
+    //   }
+    // }
     // Connect Form
     #formSection {
       display: block;
@@ -428,7 +435,7 @@
   .skills {
     legend {
       span {
-        color: $base-color-l30;
+        color: $base-color-gray-15;
       }
     }
   }

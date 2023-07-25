@@ -6,11 +6,12 @@
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 99;
-
+  color: $gray-75;
+  fill: $gray-75;
   .navMain {
     display: flex;
     justify-content: space-between;
-    padding: 1rem 3rem;
+    padding: 0.5rem;
     transition: padding 0.5s ease, background-color 0.5s ease;
 
     .NavLogo {
@@ -114,11 +115,11 @@
         z-index: 10;
         position: fixed;
         inset: 0;
-        height: 76px;
+        height: 50px;
         background-color: inherit;
       }
       .navLinksShow {
-        top: 64px;
+        top: 50px;
       }
       .burger {
         cursor: pointer;
@@ -135,17 +136,19 @@
 
     .navMain {
       position: relative;
-      background-color: $base-color-rgb-20;
-      max-width: calc(1100px - 6rem);
+      max-width: calc(#{$container-maxW} - 6rem);
       margin: 0 auto;
+      padding-inline: 2rem;
+      background-color: rgba($base-color, 0.5);
       background-clip: padding-box;
-      border-radius: 0 0 5em 5em/ 0 0 100% 100%;
+      border-radius: 0 0 4rem 4rem/ 0 0 100% 100%;
       border-right: 5px solid transparent;
       border-left: 5px solid transparent;
       &::before {
         content: "";
+        opacity: 0.5;
         position: absolute;
-        border-radius: 0 0 5em 5em/ 0 0 100% 100%;
+        border-radius: 0 0 4rem 4rem/ 0 0 100% 100%;
         display: block;
         background: linear-gradient(
           to top,
@@ -227,16 +230,16 @@
     background-color: $base-color;
     fill: $secund-base-color;
     color: $secund-base-color;
+    padding: 1rem calc((100% - #{$container-maxW}) / 2);
     border-radius: unset;
     border: none;
     max-width: unset;
-    padding: 1rem calc((100% - 1100px) / 2);
   }
 }
 @media screen and (max-width: 768px) {
   #main_nav {
     .nav_Not_Top {
-      padding: 1rem 2rem;
+      padding: 0.5rem;
     }
   }
 }

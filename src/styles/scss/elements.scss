@@ -34,7 +34,7 @@ input,
 textarea {
   border: 1px solid $gray-65;
   border-radius: 5px;
-  background-color: $opct-05;
+  background-color: $gray-85;
 }
 
 span {
@@ -48,13 +48,16 @@ span {
 // Cards
 .cardsContainer {
   display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-  gap: 0.5em;
+  // justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-auto-rows: max-content;
+  grid-gap: 2rem;
+
   color: $base-color-s80;
   list-style: none;
 }
 .card {
+  height: 100%;
   overflow: hidden;
   border-radius: 0.5rem;
   border: none;
@@ -72,9 +75,8 @@ span {
     width: 100%;
   }
   .cardContent {
-    font-family: Oxygen, "Arima Madurai", sans-serif;
     position: relative;
-    height: 100%;
+    height: min-content;
     isolation: isolate;
     display: flex;
     flex-flow: column;
@@ -84,6 +86,7 @@ span {
 
     &:before {
       content: "";
+
       position: absolute;
       z-index: -1;
 
@@ -140,7 +143,11 @@ span {
     }
   }
 }
-
+@media screen and (max-width: 768px) {
+  .card {
+    border-radius: 0;
+  }
+}
 .error {
   color: $error;
 }
@@ -206,5 +213,9 @@ span {
 .dark body {
   .AF_button {
     color: $gray-15;
+  }
+  input,
+  textarea {
+    background-color: $gray-65;
   }
 }

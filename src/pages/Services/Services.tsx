@@ -83,7 +83,9 @@ const Services = () => {
       <div className="subSection flexCenter skills " id="servicesCodeSkills">
         <div className="container ">
           <div className="subSectionHeading">
-            <h1>Alon's Code services</h1>
+            <h1>
+              Web <span className="h1_smaller">&</span> Mobile
+            </h1>
             <p>As a programmer, I can offer a lot of services</p>
           </div>
           <div className="servicesProg  ">
@@ -236,7 +238,9 @@ const Services = () => {
       <div className="subSection  skills " id={"servicesStyleSkills"}>
         <div className="container ">
           <div className="subSectionHeading">
-            <h1>Alon's Style & Design</h1>
+            <h1>
+              Style <span className="h1_smaller">&</span> Design
+            </h1>
             <p>As a Graphic designer, I can offer a lot of services</p>
           </div>
           <div className="servicesProg ">

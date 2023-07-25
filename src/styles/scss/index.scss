@@ -101,19 +101,12 @@ code {
 
 // Tablet and larger
 @media screen and (min-width: 768px) {
-  body {
-    .App {
-      .mainContainer {
-        .container {
-          display: block;
-          max-width: 1100px;
-          margin: 0 auto;
-          padding: 0.625rem;
-          border-radius: 1rem;
-          background-color: $opct-05;
-        }
-      }
-    }
+  .container {
+    display: block;
+    max-width: $container-maxW;
+    margin: 0 auto;
+    padding: 0.625rem;
+    transition: width 1s ease-in-out;
   }
 }
 
@@ -138,7 +131,7 @@ code {
     background-color: $gray-24;
   }
 
-  .App .mainContainer .container {
-    background-color: rgba($base-color-s80, 0.5);
-  }
+  // .App .mainContainer .container {
+  //   background-color: rgba($base-color-s80, 0.5);
+  // }
 }

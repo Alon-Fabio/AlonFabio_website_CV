@@ -13,7 +13,7 @@
 // $opct-025: hsla(0, 0%, 100%, 0.25); // #ffffff,0.25 rgba(255, 255, 255, 0.25)
 // $opct-05: hsla(0, 0%, 100%, 0.5); // #ffffff,0.5 rgba(255, 255, 255, 0.5)
 // $secund-base-color: rgb(241, 100, 65)efault; // #F26944 rgb(242, 105, 68)
-$secund-base-FS: hsl(12, 100%, 45%) !default; // #ee4111 rgb(238, 65, 17)
+// $secund-base-FS: hsl(12, 100%, 45%) !default; // #ee4111 rgb(238, 65, 17)
 // $secund-base-color-opposite: hsl(193, 87, 61); // #2596be rgba(68, 205, 242, 1
 
 // Fonts
@@ -27,7 +27,7 @@ $secund-base-FS: hsl(12, 100%, 45%) !default; // #ee4111 rgb(238, 65, 17)
 // Dominant:
 $gray-15: hsla(287, 5%, 15%, 1);
 $gray-24: hsla(287, 5%, 25%, 1);
-$gray-35: hsla(287, 5%, 31%, 1);
+$gray-35: hsla(287, 5%, 35%, 1);
 $gray-65: hsla(287, 5%, 65%, 1);
 $gray-75: hsla(287, 5%, 75%, 1) !default; // Base color
 $gray-85: hsl(287, 5%, 85%);
@@ -55,3 +55,7 @@ $opct-05: hsla(0, 0%, 0%, 0.5);
 // $secund-base-color: hsl(335.68, 50%, 50%) !default;
 $secund-base-FS: hsl(278, 43%, 36%) !default;
 $secund-base-color-opposite: hsl(206, 50%, 13%);
+
+// Variables
+
+$container-maxW: 1400px !default;
