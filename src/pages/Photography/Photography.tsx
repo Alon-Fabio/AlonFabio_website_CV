@@ -22,7 +22,7 @@ const Photography = () => {
         ]}
       >
         <div id="PhotographyHero">
-          <h1 className="slideDownAni">Photography</h1>
+          <h1 className="fade_ani">Photography</h1>
         </div>
       </PageHero>
       <GalleryGrid library="photos" />

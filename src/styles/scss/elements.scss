@@ -161,6 +161,10 @@ span {
   opacity: 0;
   animation: slidDown 2s ease-out, fade 0.5s ease-in forwards;
 }
+.fade_ani {
+  opacity: 0;
+  animation: fade 0.75s ease-in forwards;
+}
 @keyframes slidRight {
   0% {
     left: -500px;
