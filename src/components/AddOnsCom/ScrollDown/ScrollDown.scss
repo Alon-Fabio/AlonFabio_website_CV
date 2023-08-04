@@ -7,7 +7,7 @@
     display: initial;
     position: fixed;
     inset: 0;
-    max-width: 1100px;
+    max-width: $container-maxW;
     margin: 0 auto;
     opacity: 0;
     transition: opacity 1s ease-in;

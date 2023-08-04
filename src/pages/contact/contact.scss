@@ -11,6 +11,8 @@
       flex-grow: 3;
       text-align: center;
       .contactForm {
+        // background-color: $gray-85;
+        border: 1px solid $base-color;
         padding: 1rem;
         #formMessage {
           display: block;

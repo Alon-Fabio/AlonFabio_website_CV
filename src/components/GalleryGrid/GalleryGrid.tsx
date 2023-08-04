@@ -5,6 +5,7 @@ import "./galleryGrid.scss";
 import FullScreenGallery from "../FullScreenGallery/FullScreenGallery";
 // Functions
 import { CloudinaryURLBuilder } from "../../functions/general";
+import FullscreenContainerBtn from "../FullscreenContainerBtn/FullscreenContainerBtn";
 
 type IImageList =
   | {
@@ -23,6 +24,7 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
   const [imageList, setImagesList] = useState<IImageList>();
   const [isPending, setPending] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
+  const [Fullscreen, setFullscreen] = useState(false);
 
   useEffect(() => {
     async function getImagesUrl(
@@ -30,7 +32,7 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
       AbortController?: AbortController
     ) {
       setPending(true);
-      fetch(`https://44.204.229.83/gallery/${folder}`, {
+      fetch(`http://44.204.229.83/gallery/${folder}`, {
         signal: AbortController?.signal,
         method: "GET",
         headers: {
@@ -120,7 +122,18 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
   return (
     <section className="GalleryGrid">
       {imageList?.images !== undefined ? (
-        <div className="gallery_container container">
+        <div
+          className={
+            Fullscreen
+              ? `gallery_container container fullscreen_container`
+              : "gallery_container container"
+          }
+        >
+          <FullscreenContainerBtn
+            setFullscreen={setFullscreen}
+            Fullscreen={Fullscreen}
+            LR={"left"}
+          />
           <FullScreenGallery
             imageList={imageList}
             imageIndex={imageIndex}
@@ -147,8 +160,8 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
                   src={CloudinaryURLBuilder(
                     ImageOBJForBuilder,
                     imageList.URLStart,
-                    0,
-                    350
+                    300,
+                    0
                   )}
                   alt={image.name}
                 />

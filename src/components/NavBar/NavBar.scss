@@ -6,11 +6,12 @@
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 99;
-
+  color: $gray-75;
+  fill: $gray-75;
   .navMain {
     display: flex;
     justify-content: space-between;
-    padding: 1rem 3rem;
+    padding: 0.5rem;
     transition: padding 0.5s ease, background-color 0.5s ease;
 
     .NavLogo {
@@ -30,6 +31,7 @@
         font-weight: 400;
         font-size: 1.5rem;
         letter-spacing: 0.05rem;
+        transition: background-color 1s ease, top 0.75s ease-out;
         .dark_mode_btn {
           border: 1px solid;
           border-radius: 20px;
@@ -106,7 +108,6 @@
         left: 0;
         display: flex;
         flex-direction: column-reverse;
-        transition: top 0.5s ease-out;
       }
 
       .nav_links::before {
@@ -114,11 +115,11 @@
         z-index: 10;
         position: fixed;
         inset: 0;
-        height: 76px;
+        height: 50px;
         background-color: inherit;
       }
       .navLinksShow {
-        top: 64px;
+        top: 50px;
       }
       .burger {
         cursor: pointer;
@@ -135,17 +136,19 @@
 
     .navMain {
       position: relative;
-      background-color: $base-color-rgb-20;
-      max-width: calc(1100px - 6rem);
+      max-width: calc(#{$container-maxW} - 6rem);
       margin: 0 auto;
+      padding-inline: 2rem;
+      background-color: rgba($base-color, 0.5);
       background-clip: padding-box;
-      border-radius: 0 0 5em 5em/ 0 0 100% 100%;
+      border-radius: 0 0 4rem 4rem/ 0 0 100% 100%;
       border-right: 5px solid transparent;
       border-left: 5px solid transparent;
       &::before {
         content: "";
+        opacity: 0.5;
         position: absolute;
-        border-radius: 0 0 5em 5em/ 0 0 100% 100%;
+        border-radius: 0 0 4rem 4rem/ 0 0 100% 100%;
         display: block;
         background: linear-gradient(
           to top,
@@ -227,31 +230,27 @@
     background-color: $base-color;
     fill: $secund-base-color;
     color: $secund-base-color;
+    padding: 1rem calc((100% - #{$container-maxW}) / 2);
     border-radius: unset;
     border: none;
     max-width: unset;
-    padding: 1rem calc((100% - 1100px) / 2);
-  }
-}
-@media screen and (max-width: 768px) {
-  #main_nav {
-    .nav_Not_Top {
-      padding: 1rem 2rem;
-    }
   }
 }
 
 .dark body #main_nav {
   .navMain {
-    background-color: $gray-15;
+    background-color: rgba($base-color-s80, 0.5);
     color: $gray-75;
     fill: $gray-75;
-    .nav_links .dark_mode_btn {
-      background-color: $gray-85;
+    .nav_links {
+      background-color: inherit;
+      .dark_mode_btn {
+        background-color: $gray-85;
 
-      padding-left: 2.5rem;
-      .dark_mode_icons {
-        box-shadow: -2px 0px 2px;
+        padding-left: 2.5rem;
+        .dark_mode_icons {
+          box-shadow: -2px 0px 2px;
+        }
       }
     }
   }
@@ -261,9 +260,26 @@
     li {
       color: $secund-base-color;
     }
+    &::before {
+      background-color: $base-color-s80;
+    }
   }
 }
-
+@media screen and (max-width: 768px) {
+  #main_nav {
+    .nav_Not_Top {
+      padding: 0.5rem;
+    }
+  }
+  .dark body #main_nav {
+    background-color: $base-color-s80;
+    .navMain {
+      .nav_links {
+        background-color: $base-color-s80;
+      }
+    }
+  }
+}
 // FIX
 // severity: low
 // Start in mobile width.

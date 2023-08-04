@@ -1,0 +1,68 @@
+@import "../../styles/scss/variables";
+
+.gallery_fullscreen_btn {
+  position: sticky;
+  overflow: visible;
+  height: 0;
+  width: 0;
+  //   70px = NavBar hight
+  top: calc(70px + 1rem);
+  align-self: flex-start;
+  font-size: 1.5rem;
+
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  flex-basis: 100%;
+  transition: all 1s ease-in-out;
+
+  //   transition: all 1s ease-in-out;
+}
+.chevron_text {
+  transition: all 0.5s ease-in-out;
+  overflow: hidden;
+  width: 0;
+  white-space: nowrap;
+  //   height: 1rem;
+}
+.gallery_fullscreen_chevrons {
+  background-color: $gray-75;
+  display: flex;
+  height: min-content;
+  width: 1.85rem;
+  padding: 0.5rem;
+  margin-block-start: 0.5rem;
+  opacity: 0.5;
+  color: $base-color-s80;
+  border-radius: 100px;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    margin-left: -3.5rem;
+    width: 7rem;
+    .chevron_text {
+      width: 7.25rem;
+    }
+  }
+  //   Has has 87% browser support
+  &:hover:has(.chevron_text__min) {
+    margin-left: 0;
+    width: 7rem;
+    .chevron_text {
+      width: 7.25rem;
+    }
+  }
+}
+
+// .gallery_fullscreen_btn_left {
+//   transform: rotate(180deg);
+// }
+.fullscreen_container {
+  max-width: unset !important;
+  width: 100% !important;
+}
+
+@media screen and (max-width: 1600px) {
+  .gallery_fullscreen_btn {
+    display: none;
+  }
+}
