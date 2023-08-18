@@ -4,13 +4,13 @@
 
 - style
 
-  1. new color scheme 60-30-10 rule
-  2. remove one font style (the curvy one)
+  1. ~~new color scheme 60-30-10 rule~~
+  2. ~~remove one font style (the curvy one)~~
 
 - ~~Make a working greeting Hero component.~~
 
 - ~~Split site to Pro/Per~~
-- PerPro
+- ~~PerPro~~
 
   1. ~~For Pro App will load Services, Sample Project/s Connect and Switch to Per.~~
   2. ~~For Per App will load Photography, Graphics, Connect and Switch to Per.~~
@@ -60,10 +60,12 @@
 - Fadminbio:
 
   1. Create a better schema and turn it into a component.
+  2. Show gallery data.
+  3. Edit gallery data. (you can add descriptions to images).
 
 ##### Performance:
 
-- Responsive img tags: Add srcset with a list of smaller images (source (Make Your Site Lightning Fast With Responsive Images)[https://www.youtube.com/watch?v=fp9eVtkQ4EA&ab_channel=WebDevSimplified])
+- ~~Responsive img tags: Add srcset with a list of smaller images (source (Make Your Site Lightning Fast With Responsive Images)[https://www.youtube.com/watch?v=fp9eVtkQ4EA&ab_channel=WebDevSimplified])~~
 
 #### Style
 
@@ -129,3 +131,7 @@ upgraded:
 1. Finished PageHero comp.
 2. Improved the NavBar
 3. Services: Adapted the new PageHero comp. ux update.
+
+#### 18/08/23
+
+1. Fetch url change to 'multitasker.alonfabio.com' instead of server IP.

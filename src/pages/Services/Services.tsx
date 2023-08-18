@@ -47,33 +47,11 @@ const Services = () => {
         ]}
       >
         <div id="Services_Hero" className=" servicesHero  ">
-          {/* <div id="services_hero_image_container">
-           
-            <img
-              src={Bohke}
-              alt="Little bohke"
-              id="Clover_Bohke"
-              className="services_hero_elements"
-            />
-            <img
-              src={Clover}
-              alt="A big lovely three leaf clover"
-              id="Clover_image"
-              className="services_hero_elements"
-            />
-            <img
-              src={BlueSky}
-              alt="Beautiful blue sky"
-              id="Background_Clover"
-              className="services_hero_elements"
-            />
-          </div> */}
           <div id="serviceHeaderContainer">
             <h1 className={"slideLeftAni"}>Alon Fabio</h1>
             <h2 className={"slideLeftAni"}>Web Design</h2>
             <h2 className={"slideLeftAni"}>Programming</h2>
             <h2 className={"slideLeftAni"}>Graphic Design</h2>
-            {/* <h2 className={"slideLeftAni"}>Photography</h2> */}
           </div>
         </div>
       </PageHero>
