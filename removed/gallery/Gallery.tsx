@@ -32,7 +32,7 @@ const Photography: React.FC<{ library: string }> = ({ library }) => {
       AbortController?: AbortController
     ) {
       setPending(true);
-      fetch(`http://localhost/gallery/${folder}`, {
+      fetch(`https://multitasker.alonfabio.com/gallery/${folder}`, {
         signal:
           AbortController?.signal !== undefined ? AbortController.signal : null,
         method: "GET",
