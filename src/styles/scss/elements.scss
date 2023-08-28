@@ -165,6 +165,26 @@ span {
   opacity: 0;
   animation: fade 0.75s ease-in forwards;
 }
+
+.skew_in_ani {
+  opacity: 0;
+
+  animation: pan 1s ease-in-out, fade 1s ease-out forwards;
+}
+@keyframes pan {
+  0% {
+    transform: scaleX(0.4) rotateY(90deg) translateY(100%);
+  }
+  // 50% {
+  //   transform: scaleX(0.3) rotateY(80deg) translateY(80%);
+  // }
+  // 75% {
+  //   transform: scaleX(0.2) rotateY(30deg) translateY(30%);
+  // }
+  100% {
+    transform: scaleX(1) rotateY(0deg) translateY(0);
+  }
+}
 @keyframes slidRight {
   0% {
     left: -500px;

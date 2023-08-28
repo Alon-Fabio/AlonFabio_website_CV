@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
+// Hooks
+import { useObserver } from "../../hooks/useObserver";
 // components
 import ContactForm from "../../components/ContactForm/ContactForm";
 import PageHero from "../../containers/PageHero/PageHero";
@@ -28,6 +30,38 @@ import MessiPic from "../../styles/img/backgrounds/Lionel-Messi.webp";
 import AlonLogoSvg from "./style/images/BackgroundLogo.svg";
 
 const Services = () => {
+  const card1 = useRef<HTMLFieldSetElement>(null);
+  const card2 = useRef<HTMLFieldSetElement>(null);
+  const card3 = useRef<HTMLFieldSetElement>(null);
+  const card4 = useRef<HTMLFieldSetElement>(null);
+  const card5 = useRef<HTMLFieldSetElement>(null);
+  const card6 = useRef<HTMLFieldSetElement>(null);
+  const card7 = useRef<HTMLFieldSetElement>(null);
+  const card8 = useRef<HTMLFieldSetElement>(null);
+  const card9 = useRef<HTMLFieldSetElement>(null);
+  const cardsRef = [
+    card1,
+    card2,
+    card3,
+    card4,
+    card5,
+    card6,
+    card7,
+    card8,
+    card9,
+  ];
+  const options = {
+    root: null,
+    rootMargin: "50px",
+    threshold: 1,
+  };
+  useObserver(options, cardsRef, "skew_in_ani");
+  // const [targets, setTargets] = useState(document.querySelectorAll(".card"));
+
+  // useEffect(() => {
+  //   targets = document.querySelectorAll(elements);
+  // });
+
   return (
     <section id="Services">
       <PageHero
@@ -69,7 +103,7 @@ const Services = () => {
           <div className="servicesProg  ">
             <ul id="servicesCards" className=" cardsContainer">
               <li>
-                <fieldset className="card">
+                <fieldset ref={card1} className="card">
                   <legend>
                     <span className="fas fa-coins"></span>
                   </legend>
@@ -90,7 +124,7 @@ const Services = () => {
                 </fieldset>
               </li>
               <li>
-                <fieldset className="card">
+                <fieldset ref={card2} className="card">
                   <legend>
                     <span className="fas fa-server"></span>
                   </legend>
@@ -112,7 +146,7 @@ const Services = () => {
                 </fieldset>
               </li>
               <li>
-                <fieldset className="card">
+                <fieldset ref={card3} className="card">
                   <legend>
                     <span className="fas fa-money-check"></span>
                   </legend>
@@ -134,7 +168,7 @@ const Services = () => {
                 </fieldset>
               </li>
               <li>
-                <fieldset className="card">
+                <fieldset ref={card4} className="card">
                   <legend>
                     <span className="fas fa-arrows-alt"></span>
                   </legend>
@@ -156,7 +190,7 @@ const Services = () => {
                 </fieldset>
               </li>
               <li>
-                <fieldset className="card">
+                <fieldset ref={card5} className="card">
                   <legend>
                     <span className="fa-solid fa-tachograph-digital"></span>
                   </legend>
@@ -180,7 +214,7 @@ const Services = () => {
                 </fieldset>
               </li>
               <li>
-                <fieldset className="card">
+                <fieldset ref={card6} className="card">
                   <legend>
                     <span className="fas fa-cloud"></span>
                   </legend>
@@ -224,7 +258,7 @@ const Services = () => {
           <div className="servicesProg ">
             <ul id="servicesCards" className=" cardsContainer">
               <li>
-                <fieldset className="card">
+                <fieldset ref={card7} className="card">
                   <legend>
                     <span className="fas fa-palette"></span>
                   </legend>
@@ -244,7 +278,7 @@ const Services = () => {
                 </fieldset>
               </li>
               <li>
-                <fieldset className="card">
+                <fieldset ref={card8} className="card">
                   <legend>
                     <span className="fas fa-swatchbook"></span>
                   </legend>
@@ -262,7 +296,7 @@ const Services = () => {
                 </fieldset>
               </li>
               <li>
-                <fieldset className="card">
+                <fieldset ref={card9} className="card">
                   <legend>
                     <span className="fas fa-user-edit"></span>
                   </legend>

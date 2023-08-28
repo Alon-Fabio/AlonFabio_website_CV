@@ -162,6 +162,7 @@
 
       li {
         // padding: 1rem;
+
         fieldset {
           position: relative;
           width: 100%;
@@ -169,6 +170,7 @@
           padding: 0;
           border: none;
           // transform: translateZ(80px) scale(0.9);
+          opacity: 0; // Setup useObserver aka intersection observer.
 
           legend {
             text-align: right;
