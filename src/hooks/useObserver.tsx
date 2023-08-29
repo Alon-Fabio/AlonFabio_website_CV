@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useState } from "react";
+import { MutableRefObject, useEffect } from "react";
 
 interface IUseObserver {
   (
@@ -7,35 +7,55 @@ interface IUseObserver {
       rootMargin: string;
       threshold: number;
     },
-    elements: RefObject<HTMLFieldSetElement>[],
-    className: string
+    elements:
+      | MutableRefObject<HTMLElement | null>
+      | Array<MutableRefObject<HTMLElement | null>>,
+    className: string | IntersectionObserverCallback,
+    Unobserve?: boolean
   ): void;
 }
 
-export const useObserver: IUseObserver = (options, elements, className) => {
-  const [isIntersecting, setIsIntersecting] = useState(false);
-
+export const useObserver: IUseObserver = (
+  options,
+  elements,
+  intersectionObserverCallback,
+  Unobserve = false
+) => {
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        setIsIntersecting(entry.isIntersecting);
-
-        if (entry.isIntersecting) {
-          entry.target.classList.add(className);
-        }
+    const refElement = elements;
+    let observer: IntersectionObserver;
+    if (typeof intersectionObserverCallback === "function") {
+      observer = new IntersectionObserver(
+        intersectionObserverCallback,
+        options
+      );
+    } else {
+      observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(intersectionObserverCallback);
+            Unobserve && observer.unobserve(entry.target);
+            console.log("trigger");
+          }
+        });
+      }, options);
+    }
+    if (!Array.isArray(refElement)) {
+      refElement.current && observer.observe(refElement.current);
+    } else {
+      refElement.forEach((card) => {
+        card.current && observer.observe(card.current);
       });
-    }, options);
-
-    elements
-      .filter((card) => !card.current?.classList.contains(className))
-      .forEach((card) => {
-        if (card.current) observer.observe(card.current);
-      });
+    }
 
     return () => {
-      elements.forEach((card) => {
-        if (card.current) observer.unobserve(card.current);
-      });
+      if (!Array.isArray(refElement))
+        refElement.current && observer.unobserve(refElement.current);
+
+      if (Array.isArray(refElement))
+        refElement.forEach((card) => {
+          card.current && observer.unobserve(card.current);
+        });
     };
-  }, [isIntersecting, className, options, elements]);
+  }, [options, elements, intersectionObserverCallback, Unobserve]);
 };

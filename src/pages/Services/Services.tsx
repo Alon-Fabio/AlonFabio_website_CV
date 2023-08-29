@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 // Hooks
 import { useObserver } from "../../hooks/useObserver";
 // components
@@ -30,15 +30,16 @@ import MessiPic from "../../styles/img/backgrounds/Lionel-Messi.webp";
 import AlonLogoSvg from "./style/images/BackgroundLogo.svg";
 
 const Services = () => {
-  const card1 = useRef<HTMLFieldSetElement>(null);
-  const card2 = useRef<HTMLFieldSetElement>(null);
-  const card3 = useRef<HTMLFieldSetElement>(null);
-  const card4 = useRef<HTMLFieldSetElement>(null);
-  const card5 = useRef<HTMLFieldSetElement>(null);
-  const card6 = useRef<HTMLFieldSetElement>(null);
-  const card7 = useRef<HTMLFieldSetElement>(null);
-  const card8 = useRef<HTMLFieldSetElement>(null);
-  const card9 = useRef<HTMLFieldSetElement>(null);
+  const card1 = useRef<HTMLFieldSetElement | null>(null);
+  const card2 = useRef<HTMLFieldSetElement | null>(null);
+  const card3 = useRef<HTMLFieldSetElement | null>(null);
+  const card4 = useRef<HTMLFieldSetElement | null>(null);
+  const card5 = useRef<HTMLFieldSetElement | null>(null);
+  const card6 = useRef<HTMLFieldSetElement | null>(null);
+  const card7 = useRef<HTMLFieldSetElement | null>(null);
+  const card8 = useRef<HTMLFieldSetElement | null>(null);
+  const card9 = useRef<HTMLFieldSetElement | null>(null);
+
   const cardsRef = [
     card1,
     card2,
@@ -50,17 +51,31 @@ const Services = () => {
     card8,
     card9,
   ];
+
+  useEffect(() => {
+    cardsRef.forEach((card) => card.current?.classList.add("AF_op0"));
+  });
+
   const options = {
     root: null,
     rootMargin: "50px",
     threshold: 1,
   };
-  useObserver(options, cardsRef, "skew_in_ani");
-  // const [targets, setTargets] = useState(document.querySelectorAll(".card"));
 
-  // useEffect(() => {
-  //   targets = document.querySelectorAll(elements);
-  // });
+  const intersectionObserverCallback: IntersectionObserverCallback = (
+    entries,
+    observer
+  ) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("skew_in_ani");
+        observer.unobserve(entry.target);
+        console.log("trigger");
+      }
+    });
+  };
+
+  useObserver(options, cardsRef, intersectionObserverCallback);
 
   return (
     <section id="Services">
