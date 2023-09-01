@@ -1,3 +1,17 @@
+// Intersection Observer Hook:
+// ---------------------------
+// This hook uses the intersectionObserver API for two main functions:
+// 1. It can add a class to an element or elements on scroll into view.
+// 2. Add your own functionality by adding your callback function.
+
+// Intersection Observer API documentation -> "https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API"
+
+// Arguments:
+// options: an Object, the Intersection Observer settings (see link for more info).
+// elements: an Element or Array of Elements, to be observed.
+// intersectionObserverCallback: a String (CSS ClassName) or Callback function, for default (add this class when intersecting) add a String, or for more custom use add a Callback-function.
+// unobserve: a Boolean, only in effect with the ClassName option, remove an element after it has been observed.
+
 import { MutableRefObject, useEffect } from "react";
 
 interface IUseObserver {
@@ -10,20 +24,20 @@ interface IUseObserver {
     elements:
       | MutableRefObject<HTMLElement | null>
       | Array<MutableRefObject<HTMLElement | null>>,
-    className: string | IntersectionObserverCallback,
-    Unobserve?: boolean
+    intersectionObserverCallback: string | IntersectionObserverCallback,
+    unobserve?: boolean
   ): void;
 }
-
 export const useObserver: IUseObserver = (
   options,
   elements,
   intersectionObserverCallback,
-  Unobserve = false
+  unobserve = false
 ) => {
   useEffect(() => {
     const refElement = elements;
     let observer: IntersectionObserver;
+
     if (typeof intersectionObserverCallback === "function") {
       observer = new IntersectionObserver(
         intersectionObserverCallback,
@@ -34,28 +48,26 @@ export const useObserver: IUseObserver = (
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add(intersectionObserverCallback);
-            Unobserve && observer.unobserve(entry.target);
-            console.log("trigger");
+            unobserve && observer.unobserve(entry.target);
           }
         });
       }, options);
     }
-    if (!Array.isArray(refElement)) {
-      refElement.current && observer.observe(refElement.current);
-    } else {
+
+    if (Array.isArray(refElement)) {
       refElement.forEach((card) => {
         card.current && observer.observe(card.current);
       });
-    }
-
-    return () => {
-      if (!Array.isArray(refElement))
-        refElement.current && observer.unobserve(refElement.current);
-
-      if (Array.isArray(refElement))
+      return () => {
         refElement.forEach((card) => {
           card.current && observer.unobserve(card.current);
         });
-    };
-  }, [options, elements, intersectionObserverCallback, Unobserve]);
+      };
+    } else {
+      refElement.current && observer.observe(refElement.current);
+      return () => {
+        refElement.current && observer.unobserve(refElement.current);
+      };
+    }
+  }, [options, elements, intersectionObserverCallback, unobserve]);
 };
