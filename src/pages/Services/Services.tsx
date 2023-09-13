@@ -30,6 +30,7 @@ import MessiPic from "../../styles/img/backgrounds/Lionel-Messi.webp";
 import AlonLogoSvg from "./style/images/BackgroundLogo.svg";
 
 const Services = () => {
+  // Card animations. using useObserver.
   const card1 = useRef<HTMLFieldSetElement | null>(null);
   const card2 = useRef<HTMLFieldSetElement | null>(null);
   const card3 = useRef<HTMLFieldSetElement | null>(null);
@@ -68,14 +69,17 @@ const Services = () => {
   ) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add("skew_in_ani");
+        entry.target.classList.remove("AF_op0");
+        entry.target.classList.add("flip_scale_forward_ani");
         observer.unobserve(entry.target);
-        console.log("trigger");
+        // console.log("trigger");
       }
     });
   };
 
   useObserver(options, cardsRef, intersectionObserverCallback);
+
+  // <==============================================================================================>
 
   return (
     <section id="Services">

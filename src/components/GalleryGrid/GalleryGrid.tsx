@@ -19,6 +19,29 @@ type IImageList =
     }
   | undefined;
 
+type images = Array<{
+  id: number;
+  folder: string;
+  img_format: string;
+  name: string;
+  width: number;
+  height: number;
+  version: string;
+  created_at: string;
+}>;
+
+type imagesBackup = {
+  URLStart: string;
+  owner: string;
+  type: string;
+  action: string;
+  images: images;
+};
+
+interface IBackupFiles {
+  [key: string]: imagesBackup;
+}
+
 const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
   const [showModal, setShowModal] = useState(false);
   const [imageList, setImagesList] = useState<IImageList>();
@@ -63,38 +86,50 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
         })
         .catch((err) => {
           const backup = async (folder: string) => {
-            const list = await import(`./imageFallback`);
-            if (folder === "photos") {
-              setImagesList(() => {
-                return {
-                  images: list.photos.images,
-                  URLStart: [
-                    list.photos.URLStart,
-                    list.photos.owner,
-                    list.photos.type,
-                    list.photos.action,
-                  ].join("/"),
-                };
-              });
-            }
-            if (folder === "graphics") {
-              setImagesList(() => {
-                return {
-                  images: list.graphics.images,
-                  URLStart: [
-                    list.graphics.URLStart,
-                    list.graphics.owner,
-                    list.graphics.type,
-                    list.graphics.action,
-                  ].join("/"),
-                };
-              });
-            }
+            const allFolders: IBackupFiles = await import(`./imageFallback`);
+            const backupFolder = allFolders[folder];
+            setImagesList(() => {
+              return {
+                images: backupFolder.images,
+                URLStart: [
+                  backupFolder.URLStart,
+                  backupFolder.owner,
+                  backupFolder.type,
+                  backupFolder.action,
+                ].join("/"),
+              };
+            });
+            // if (folder === "photos") {
+            //   setImagesList(() => {
+            //     return {
+            //       images: list.photos.images,
+            //       URLStart: [
+            //         list.photos.URLStart,
+            //         list.photos.owner,
+            //         list.photos.type,
+            //         list.photos.action,
+            //       ].join("/"),
+            //     };
+            //   });
+            // }
+            // if (folder === "graphics") {
+            //   setImagesList(() => {
+            //     return {
+            //       images: list.graphics.images,
+            //       URLStart: [
+            //         list.graphics.URLStart,
+            //         list.graphics.owner,
+            //         list.graphics.type,
+            //         list.graphics.action,
+            //       ].join("/"),
+            //     };
+            //   });
+            // }
           };
 
           backup(folder);
 
-          console.error(err, "<================");
+          console.error(err, " :Local.");
           setPending(false);
 
           // console.error(

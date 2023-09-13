@@ -34,6 +34,9 @@ body {
     text-decoration: none;
   }
 
+  section {
+    background-color: $gray-85;
+  }
   .pageHero {
     min-height: 60vh;
     background-position: center;
@@ -51,7 +54,7 @@ body {
     background-color: $base-color-rgb-20;
   }
   .subSection:nth-child(odd) {
-    background-color: $gray-75;
+    background-color: $gray-85;
   }
 }
 
@@ -130,7 +133,9 @@ code {
   .subSection:nth-child(odd) {
     background-color: $gray-24;
   }
-
+  section {
+    background-color: $gray-24;
+  }
   // .App .mainContainer .container {
   //   background-color: rgba($base-color-s80, 0.5);
   // }

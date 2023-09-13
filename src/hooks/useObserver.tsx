@@ -23,7 +23,8 @@ interface IUseObserver {
     },
     elements:
       | MutableRefObject<HTMLElement | null>
-      | Array<MutableRefObject<HTMLElement | null>>,
+      | Array<MutableRefObject<HTMLElement | null>>
+      | null,
     intersectionObserverCallback: string | IntersectionObserverCallback,
     unobserve?: boolean
   ): void;
@@ -37,23 +38,35 @@ export const useObserver: IUseObserver = (
   useEffect(() => {
     const refElement = elements;
     let observer: IntersectionObserver;
-
-    if (typeof intersectionObserverCallback === "function") {
-      observer = new IntersectionObserver(
-        intersectionObserverCallback,
-        options
-      );
-    } else {
-      observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add(intersectionObserverCallback);
-            unobserve && observer.unobserve(entry.target);
-          }
-        });
-      }, options);
-    }
-
+    if (refElement === null) return; //  <--------------------------------------------------------------------------------<Needs to be checked;
+    // if (typeof intersectionObserverCallback === "function") {
+    //   observer = new IntersectionObserver(
+    //     intersectionObserverCallback,
+    //     options
+    //   );
+    // } else {
+    //   observer = new IntersectionObserver((entries) => {
+    //     entries.forEach((entry) => {
+    //       if (entry.isIntersecting) {
+    //         entry.target.classList.add(intersectionObserverCallback);
+    //         unobserve && observer.unobserve(entry.target);
+    //       }
+    //     });
+    //   }, options);
+    // }
+    observer = new IntersectionObserver(
+      typeof intersectionObserverCallback === "function"
+        ? intersectionObserverCallback
+        : (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add(intersectionObserverCallback);
+                unobserve && observer.unobserve(entry.target);
+              }
+            });
+          },
+      options
+    );
     if (Array.isArray(refElement)) {
       refElement.forEach((card) => {
         card.current && observer.observe(card.current);
