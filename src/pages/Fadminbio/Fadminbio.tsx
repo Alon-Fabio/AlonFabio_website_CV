@@ -58,6 +58,7 @@ const Fadminbio: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
     event.preventDefault();
     // console.log("Started :", stage, signInState);
     fetch(`https://multitasker.alonfabio.com/signin`, {
+      // fetch(`http://localhost/signin`, {
       method: "post",
       headers: { "Content-Type": "application/json", authentication: "false" },
       body: JSON.stringify(signInState),
@@ -86,6 +87,7 @@ const Fadminbio: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
     setFetchStatus(true);
     startTransition(() => {
       fetch(`https://multitasker.alonfabio.com/${action}`, {
+        // fetch(`http://localhost/${action}`, {
         method: "post",
         headers: {
           "Content-Type": "application/json",

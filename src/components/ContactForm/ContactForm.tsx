@@ -8,9 +8,13 @@ import SuccessModal from "../Modals/SuccessModal/SuccessModal";
 type TContactForm = {
   name: string;
   email: string;
-  phone: number;
+  phone: string;
   message: string;
 };
+
+interface IEncode extends TContactForm {
+  formName: "contactForm";
+}
 
 const ContactForm = () => {
   const id = useId();
@@ -32,16 +36,23 @@ const ContactForm = () => {
   };
 
   // Form submission:
-  const encode = (data: any) => {
-    return Object.keys(data)
+  const encode = (data: IEncode): string => {
+    let formDataKeys = Object.keys(data) as Array<keyof IEncode>;
+    console.log(
+      formDataKeys
+        .map(
+          (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+        )
+        .join("&")
+    );
+    return formDataKeys
       .map(
         (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
       )
       .join("&");
   };
 
-  const onSubmit = (data: TContactForm, e: any) => {
-    e.preventDefault();
+  const onSubmit = (data: TContactForm) => {
     submitTimeOut(true);
     fetch("/", {
       method: "POST",
@@ -49,7 +60,7 @@ const ContactForm = () => {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       body: encode({
-        "form-name": "contactForm",
+        formName: "contactForm",
         ...data,
       }),
     })
@@ -71,13 +82,13 @@ const ContactForm = () => {
 
   return (
     <form
-      onSubmit={handleSubmit((data, e) => onSubmit(data, e))}
+      onSubmit={handleSubmit(onSubmit)}
       className="contactForm"
       name="contactForm"
       data-netlify="true"
       method="post"
     >
-      <input name="form-name" value="contactForm" type="hidden" />
+      <input name="formName" value="contactForm" type="hidden" />
       <div className="formHading">
         <h1>Contact Alon</h1>
         <p>Let's make something great together</p>
