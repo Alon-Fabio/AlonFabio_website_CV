@@ -37,6 +37,7 @@ export const useObserver: IUseObserver = (
 ) => {
   useEffect(() => {
     const refElement = elements;
+    console.log(refElement);
     let observer: IntersectionObserver;
     if (refElement === null) return; //  <--------------------------------------------------------------------------------<Needs to be checked;
     // if (typeof intersectionObserverCallback === "function") {
