@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState, createRef } from "react";
 // Style
 import "./galleryGrid.scss";
 // Components
@@ -6,6 +6,7 @@ import FullScreenGallery from "../FullScreenGallery/FullScreenGallery";
 // Functions
 import { CloudinaryURLBuilder } from "../../functions/general";
 import FullscreenContainerBtn from "../FullscreenContainerBtn/FullscreenContainerBtn";
+import { useObserver } from "../../hooks/useObserver";
 
 type IImageList =
   | {
@@ -49,6 +50,7 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
   const [imageIndex, setImageIndex] = useState(0);
   const [Fullscreen, setFullscreen] = useState(false);
 
+  let imagesRef = useRef([]);
   useEffect(() => {
     async function getImagesUrl(
       folder: string,
@@ -80,6 +82,10 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
               };
             });
           }
+          imagesRef.current = response.map(
+            (_: Object, i: number) => imagesRef.current[i] ?? createRef()
+          );
+
           setPending(false);
 
           //  return console.error("Looks like we are having a lite problem.. please try again later");
@@ -99,32 +105,9 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
                 ].join("/"),
               };
             });
-            // if (folder === "photos") {
-            //   setImagesList(() => {
-            //     return {
-            //       images: list.photos.images,
-            //       URLStart: [
-            //         list.photos.URLStart,
-            //         list.photos.owner,
-            //         list.photos.type,
-            //         list.photos.action,
-            //       ].join("/"),
-            //     };
-            //   });
-            // }
-            // if (folder === "graphics") {
-            //   setImagesList(() => {
-            //     return {
-            //       images: list.graphics.images,
-            //       URLStart: [
-            //         list.graphics.URLStart,
-            //         list.graphics.owner,
-            //         list.graphics.type,
-            //         list.graphics.action,
-            //       ].join("/"),
-            //     };
-            //   });
-            // }
+            imagesRef.current = backupFolder.images.map(
+              (_, i: number) => imagesRef.current[i] ?? createRef()
+            );
           };
 
           backup(folder);
@@ -149,6 +132,33 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
       FetchImagesController.abort("aborted by user (useEffect)");
     };
   }, [library, setPending]);
+
+  const options = {
+    root: null,
+    rootMargin: "100px",
+    threshold: 1,
+  };
+
+  const intersectionObserverCallback: IntersectionObserverCallback = (
+    entries,
+    observer
+  ) => {
+    entries.forEach((entry) => {
+      // Onload all images are in view (isIntersecting === true). Checking height signify the element has loaded.
+      // If client screen is below 250px some elements will be too small, I've decided to load normally on small screens.
+      if (
+        (entry.isIntersecting && entry.target.clientHeight > 200) ||
+        window.innerWidth < 300
+      ) {
+        entry.target.classList.remove("AF_op0");
+        entry.target.classList.add("flip_scale_forward_ani");
+        observer.unobserve(entry.target);
+        console.log("trigger > 150");
+      }
+    });
+  };
+
+  useObserver(options, imagesRef.current, intersectionObserverCallback);
 
   const showImg = (imageIndex: number): void => {
     setImageIndex(imageIndex);
@@ -191,6 +201,8 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
                 onClick={() => showImg(index)}
               >
                 <img
+                  ref={imagesRef.current[index]}
+                  className="AF_op0"
                   loading="lazy"
                   src={CloudinaryURLBuilder(
                     ImageOBJForBuilder,
