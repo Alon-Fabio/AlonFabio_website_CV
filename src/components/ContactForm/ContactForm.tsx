@@ -13,7 +13,7 @@ type TContactForm = {
 };
 
 interface IEncode extends TContactForm {
-  formName: "contactForm";
+  "form-name": "contactForm";
 }
 
 const ContactForm = () => {
@@ -38,13 +38,7 @@ const ContactForm = () => {
   // Form submission:
   const encode = (data: IEncode): string => {
     let formDataKeys = Object.keys(data) as Array<keyof IEncode>;
-    console.log(
-      formDataKeys
-        .map(
-          (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
-        )
-        .join("&")
-    );
+
     return formDataKeys
       .map(
         (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
@@ -60,7 +54,7 @@ const ContactForm = () => {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       body: encode({
-        formName: "contactForm",
+        "form-name": "contactForm",
         ...data,
       }),
     })
@@ -88,7 +82,7 @@ const ContactForm = () => {
       data-netlify="true"
       method="post"
     >
-      <input name="formName" value="contactForm" type="hidden" />
+      <input name="form-name" value="contactForm" type="hidden" />
       <div className="formHading">
         <h1>Contact Alon</h1>
         <p>Let's make something great together</p>

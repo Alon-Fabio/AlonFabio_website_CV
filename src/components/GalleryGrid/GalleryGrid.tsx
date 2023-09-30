@@ -112,7 +112,7 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
 
           backup(folder);
 
-          console.error(err, " :Local.");
+          console.log("Something went wrong, loading local assets.");
           setPending(false);
 
           // console.error(
@@ -153,7 +153,7 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
         entry.target.classList.remove("AF_op0");
         entry.target.classList.add("flip_scale_forward_ani");
         observer.unobserve(entry.target);
-        console.log("trigger > 150");
+        // console.log("trigger > 150");
       }
     });
   };
@@ -217,9 +217,12 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
           })}
         </div>
       ) : isPending ? (
-        <div>
+        <div className="flexCenter">
           {/* Add loading component */}
-          <h1 className="flexCenter">Loading...</h1>
+          <h1>L</h1>
+
+          <div className="loading_dual_ring"></div>
+          <h1>ading</h1>
         </div>
       ) : (
         <fieldset className="gallery_grid_no_images container">

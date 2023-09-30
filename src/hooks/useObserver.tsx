@@ -37,24 +37,10 @@ export const useObserver: IUseObserver = (
 ) => {
   useEffect(() => {
     const refElement = elements;
-    console.log(refElement);
+
     let observer: IntersectionObserver;
-    if (refElement === null) return; //  <--------------------------------------------------------------------------------<Needs to be checked;
-    // if (typeof intersectionObserverCallback === "function") {
-    //   observer = new IntersectionObserver(
-    //     intersectionObserverCallback,
-    //     options
-    //   );
-    // } else {
-    //   observer = new IntersectionObserver((entries) => {
-    //     entries.forEach((entry) => {
-    //       if (entry.isIntersecting) {
-    //         entry.target.classList.add(intersectionObserverCallback);
-    //         unobserve && observer.unobserve(entry.target);
-    //       }
-    //     });
-    //   }, options);
-    // }
+    if (refElement === null) return;
+
     observer = new IntersectionObserver(
       typeof intersectionObserverCallback === "function"
         ? intersectionObserverCallback
