@@ -37,11 +37,11 @@ const Modal: React.FC<{
   );
   useEffect(() => {
     const handleOutsideClick = (
-      e: React.MouseEvent<HTMLDivElement, MouseEvent> | MouseEvent
+      event: React.MouseEvent<HTMLDivElement, MouseEvent> | MouseEvent
     ) => {
       const { current } = outClick;
-      if (current.childNodes[0] !== e.target) {
-        // console.log(current.childNodes[0], e.target);
+
+      if (current === event.target || event.target === current.childNodes[0]) {
         modalRoot?.classList.remove("modalRootActive");
         // Time for animation.
         setTimeout(() => {
@@ -65,7 +65,7 @@ const Modal: React.FC<{
     if (clickOutSide) {
       outClick.current?.addEventListener(
         "click",
-        (e) => handleOutsideClick(e),
+        (event) => handleOutsideClick(event),
         false
       );
     }
@@ -86,7 +86,11 @@ const Modal: React.FC<{
         );
       }
       if (clickOutSide) {
-        el.removeEventListener("click", (e) => handleOutsideClick(e), false);
+        el.removeEventListener(
+          "click",
+          (event) => handleOutsideClick(event),
+          false
+        );
       }
     };
   }, [

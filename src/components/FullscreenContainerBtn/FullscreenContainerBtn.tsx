@@ -1,6 +1,10 @@
 import React from "react";
 import "./FullscreenContainerBtn.scss";
 
+// Description:
+// A button to set the container max-width to max and back.
+// --------------------------------------------------------<
+
 // Needs to manual set the media query to container width +200px
 
 interface ISetFullscreen {

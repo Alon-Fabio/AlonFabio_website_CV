@@ -1,62 +1,12 @@
 @import "../../../../styles/scss/variables";
 
 #Services {
-  // font-size: 1.5rem;
-
-  // Hero section
-
-  // .subSectionHeading {
-  //   text-align: center;
-  // }
   .servicesHero {
     .PageHero {
       img {
         bottom: 0;
       }
     }
-    // position: relative;
-    // overflow: hidden;
-    // flex-direction: column;
-    // justify-content: space-evenly;
-    // align-items: center;
-    // backface-visibility: visible;
-    // #services_hero_image_container {
-    //   position: fixed;
-    //   inset: 0;
-    //   z-index: -2;
-    //   .services_hero_elements {
-    //     position: sticky;
-    //     overflow: hidden;
-    //     background-repeat: no-repeat;
-    //     background-size: cover;
-    //     background-position: center;
-    //     justify-content: center;
-    //     background-clip: content-box; // Prevents clipping of other elements showing up on this effect.
-    //     width: 100%;
-    //     z-index: -1;
-    //   }
-
-    //   #Background_Clover {
-    //     height: 100%;
-    //     width: 100%;
-    //     inset: 0;
-    //     background-color: $base-color;
-    //   }
-
-    //   #Clover_Bohke {
-    //     // position: fixed;
-    //     opacity: 0.4;
-    //     backface-visibility: visible;
-    //   }
-
-    //   #Clover_image {
-    //     top: 100px;
-    //     // height: 50vh;
-    //     // width: auto;
-    //     right: 0;
-    //   }
-    // }
-
     #serviceHeaderContainer {
       text-transform: uppercase;
       padding: 2rem;
@@ -106,22 +56,6 @@
       }
     }
   }
-  // .servicesTextContainer {
-  //   text-align: center;
-  //   h1 {
-  //     padding-top: 1rem;
-  //   }
-  // }
-  // .servicesDescription {
-  //   padding-bottom: 10px;
-  //   p {
-  //     max-width: 75rem;
-  //     padding: 0 10px;
-  //     text-align: center;
-  //     font-weight: 400;
-  //     font-size: 1.5rem;
-  //   }
-  // }
 
   // Skills section
   #servicesCodeSkills {
@@ -161,7 +95,7 @@
       list-style: none;
 
       li {
-        // padding: 1rem;
+        padding: 1rem;
 
         fieldset {
           position: relative;
@@ -236,7 +170,7 @@
   }
 }
 
-// Bigger mobile
+// Bigger than mobile
 @media screen and (min-width: 425px) {
   #Services {
     .PageHero {
@@ -270,7 +204,7 @@
     // }
   }
 }
-// Bigger then mobile
+// Bigger than mobile
 @media screen and (min-width: 768px) {
   #Services {
     .servicesHero {
@@ -375,38 +309,34 @@
         }
       }
     }
+
     // .container {
     //   width: 100%;
     // }
     // Skills section
-    .skills {
-      .servicesProg {
-        #servicesCards {
-          // width: 1100px;
-          ul {
-            gap: 0;
-            li {
-              padding: 1rem;
+    .servicesProg {
+      margin: 2rem;
+      #servicesCards {
+        // gap: 0;
+        li {
+          padding: unset;
+          fieldset {
+            h3 {
+              font-size: 2rem;
+            }
 
-              fieldset {
-                h3 {
-                  font-size: 2rem;
-                }
-
-                legend {
-                  span {
-                    font-size: 2em;
-                  }
-                }
+            legend {
+              span {
+                font-size: 2em;
               }
             }
           }
         }
       }
-    }
-    //Contact Form
-    #formSection {
-      padding: 3rem 0;
+      //Contact Form
+      #formSection {
+        padding: 3rem 0;
+      }
     }
   }
 }

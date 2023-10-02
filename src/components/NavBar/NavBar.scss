@@ -8,10 +8,12 @@
   z-index: 99;
   color: $gray-75;
   fill: $gray-75;
+
   .navMain {
     display: flex;
     justify-content: space-between;
     padding: 0.5rem;
+
     transition: padding 0.5s ease, background-color 0.5s ease;
 
     .NavLogo {
@@ -22,6 +24,7 @@
       z-index: 10;
     }
     .navLinksMain {
+      padding-inline: 1rem;
       .nav_links {
         display: flex;
         justify-content: flex-end;
@@ -163,6 +166,7 @@
         padding: 0 5px;
         // padding: 5px;
       }
+
       .nav_links {
         height: 100%;
         align-items: center;
@@ -194,35 +198,47 @@
   }
 }
 @media screen and (min-width: 2000px) {
-  header {
-    //   inset: 0 0 0 auto;
-    #main_nav {
-      //     display: flex;
+  // header {
 
-      //     flex-direction: column;
-      //     border-radius: 100% 0 0 100% / 5em 0 0 5em;
-      //     padding: 2em;
-      //     &::before {
-      //       border-radius: 100% 0 0 100% / 5em 0 0 5em;
-      //     }
-      .navMain {
-        //       display: flex;
-        //       flex-direction: column;
-        //       .LogoContainer {
-        //         display: flex;
-        //         justify-content: flex-end;
-        //       }
-        ul {
-          //         display: flex;
-          //         align-items: flex-end;
-          //         flex-direction: column;
-          li {
-            font-size: 1.5rem;
-          }
-        }
-      }
-    }
+  //   position: fixed;
+  //   inset: 0 0 0 auto;
+  //   z-index: 99;
+  //   #main_nav {
+
+  //     position: fixed;
+  //     inset: 0 0 0 auto;
+  //     height: 100vh;
+  //     display: flex;
+  //     flex-direction: column;
+  //     background-color: $base-color-s80;
+  //     // border-radius: 100% 0 0 100% / 5em 0 0 5em;
+  //     // padding: 2em;
+  //     // &::before {
+  //     //   border-radius: 100% 0 0 100% / 5em 0 0 5em;
+  //     // }
+
+  //     .navMain {
+  //       display: flex;
+  //       flex-direction: column;
+  //       background-color: inherit;
+  //       &::before {
+  //         all: initial;
+  //       }
+  //       .LogoContainer {
+
+  //       }
+  //       ul {
+  //         display: flex;
+  //         align-items: flex-end;
+  //         flex-direction: column-reverse;
+
+  li {
+    font-size: 1.5rem;
   }
+  //         }
+  //       }
+  //     }
+  //   }
 }
 // Transitions: move form top of page.
 #main_nav {
@@ -242,6 +258,7 @@
     background-color: rgba($base-color-s80, 0.5);
     color: $gray-75;
     fill: $gray-75;
+
     .nav_links {
       background-color: inherit;
       .dark_mode_btn {

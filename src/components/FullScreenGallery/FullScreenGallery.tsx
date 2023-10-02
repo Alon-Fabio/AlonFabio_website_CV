@@ -2,11 +2,14 @@ import React from "react";
 import ImageGallery from "react-image-gallery";
 // Style
 import "./fullScreenGallery.scss";
-
 // Functions
 import { CloudinaryURLBuilder } from "../../functions/general";
 // Modal
 import ModalBase from "../Modals/ModalBase/ModalBase";
+
+// Description:
+// Dependencies: react-image-gallery, ModalBase.
+// Description: A model gallery with one fullscreen image and a gallery carousel.
 
 type IImageList =
   | {
@@ -38,7 +41,7 @@ const FullScreenGallery: React.FC<IFullScreenGallery> = ({
       <ModalBase
         setShowModal={setModal}
         showModal={showModal}
-        clickOutSide={false}
+        clickOutSide={true}
       >
         <div
           id="ImageGalleryContainer"

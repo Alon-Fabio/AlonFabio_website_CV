@@ -24,7 +24,6 @@ import sassLogo from "./style/images/servicesLogos/sass.webp";
 import bootstrapLogo from "./style/images/servicesLogos/bootstrap.webp";
 import cssLogo from "./style/images/servicesLogos/css.webp";
 import HTML5Logo from "./style/images/servicesLogos/HTML5.webp";
-// import illustratorLogo from "./style/images/servicesLogos/Adobe_illustrator.png";
 // Service middle section:
 import MessiPic from "../../styles/img/backgrounds/Lionel-Messi.webp";
 import AlonLogoSvg from "./style/images/BackgroundLogo.svg";
@@ -63,21 +62,7 @@ const Services = () => {
     threshold: 1,
   };
 
-  const intersectionObserverCallback: IntersectionObserverCallback = (
-    entries,
-    observer
-  ) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.remove("AF_op0");
-        entry.target.classList.add("flip_scale_forward_ani");
-        observer.unobserve(entry.target);
-        // console.log("trigger");
-      }
-    });
-  };
-
-  useObserver(options, cardsRef, intersectionObserverCallback);
+  useObserver(options, cardsRef, "flip_scale_forward_ani", true);
 
   // <==============================================================================================>
 
