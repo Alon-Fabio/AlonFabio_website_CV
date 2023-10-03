@@ -2,6 +2,11 @@
 
 ### (23.03.23) important: MAKE IT WORK AND LAUNCH IT!
 
+- Important
+
+  1. Make a loading component from the loading in GalleyGrid.
+  2. Implement the comp' where's needed.
+
 - style
 
   1. ~~new color scheme 60-30-10 rule~~
@@ -135,3 +140,10 @@ upgraded:
 #### 18/08/23
 
 1. Fetch url change to 'multitasker.alonfabio.com' instead of server IP.
+
+#### 02/10/23
+
+1. UseObserver: onClickOutside add base div.
+2. Services: CSS update.
+3. Services: UseObserver changed callBackFunction to string (of a class).
+4. FullScreenImageGallery: Exit on click outside is on.
