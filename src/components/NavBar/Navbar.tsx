@@ -9,7 +9,7 @@ import Burger from "../Burger/Burger";
 import { NavLink } from "react-router-dom";
 
 interface NavBarT {
-  routeList: Array<String>;
+  routeList: Array<String | { group: Array<string> }>;
 }
 
 const Navbar: React.FC<NavBarT> = ({ routeList }) => {
@@ -121,20 +121,46 @@ const Navbar: React.FC<NavBarT> = ({ routeList }) => {
                 )}
               </button>
             </li>
-            {routeList.map((routeName) => (
-              <li
-                key={`NavLink-${routeName}`}
-                onClick={() => {
-                  onBurgerClick();
-                }}
-              >
-                <NavLink to={`${routeName.toString()}`}>
-                  {routeName.toString()[0] === "/"
-                    ? `${routeName.toString().slice(1)}`
-                    : `${routeName.toString()}`}
-                </NavLink>
-              </li>
-            ))}
+            {routeList.map((routeName) => {
+              return (
+                <li
+                  key={`NavLink-${routeName}`}
+                  onClick={() => {
+                    onBurgerClick();
+                  }}
+                >
+                  <NavLink to={`${routeName.toString()}`}>
+                    {routeName.toString()[0] === "/"
+                      ? `${routeName.toString().slice(1)}`
+                      : `${routeName.toString()}`}
+                  </NavLink>
+                </li>
+              );
+              // if (typeof routeName === "string") {
+              //   return (
+              //     <li
+              //       key={`NavLink-${routeName}`}
+              //       onClick={() => {
+              //         onBurgerClick();
+              //       }}
+              //     >
+              //       <NavLink to={`${routeName.toString()}`}>
+              //         {routeName.toString()[0] === "/"
+              //           ? `${routeName.toString().slice(1)}`
+              //           : `${routeName.toString()}`}
+              //       </NavLink>
+              //     </li>
+              //   );
+              // }
+              // if (typeof routeName === "object") {
+              //   return (
+              //     <li key={Object.keys(routeName)[0] + ""}>
+              //       {Object.keys(routeName)[0] + ""}
+              //     </li>
+              //   );
+              // }
+              // return null;
+            })}
           </ul>
         </div>
         <Burger navStyle={navStyle} burgerClick={() => onBurgerClick()} />

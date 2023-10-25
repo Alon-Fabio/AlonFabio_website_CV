@@ -24,6 +24,7 @@ import sassLogo from "./style/images/servicesLogos/sass.webp";
 import bootstrapLogo from "./style/images/servicesLogos/bootstrap.webp";
 import cssLogo from "./style/images/servicesLogos/css.webp";
 import HTML5Logo from "./style/images/servicesLogos/HTML5.webp";
+// import illustratorLogo from "./style/images/servicesLogos/Adobe_illustrator.png";
 // Service middle section:
 import MessiPic from "../../styles/img/backgrounds/Lionel-Messi.webp";
 import AlonLogoSvg from "./style/images/BackgroundLogo.svg";
@@ -51,10 +52,6 @@ const Services = () => {
     card8,
     card9,
   ];
-
-  useEffect(() => {
-    cardsRef.forEach((card) => card.current?.classList.add("AF_op0"));
-  });
 
   const options = {
     root: null,
@@ -107,7 +104,7 @@ const Services = () => {
           <div className="servicesProg  ">
             <ul id="servicesCards" className=" cardsContainer">
               <li>
-                <fieldset ref={card1} className="card">
+                <fieldset ref={card1} className="card AF_op0">
                   <legend>
                     <span className="fas fa-coins"></span>
                   </legend>
@@ -128,7 +125,7 @@ const Services = () => {
                 </fieldset>
               </li>
               <li>
-                <fieldset ref={card2} className="card">
+                <fieldset ref={card2} className="card AF_op0">
                   <legend>
                     <span className="fas fa-server"></span>
                   </legend>
@@ -150,7 +147,7 @@ const Services = () => {
                 </fieldset>
               </li>
               <li>
-                <fieldset ref={card3} className="card">
+                <fieldset ref={card3} className="card AF_op0">
                   <legend>
                     <span className="fas fa-money-check"></span>
                   </legend>
@@ -172,7 +169,7 @@ const Services = () => {
                 </fieldset>
               </li>
               <li>
-                <fieldset ref={card4} className="card">
+                <fieldset ref={card4} className="card AF_op0">
                   <legend>
                     <span className="fas fa-arrows-alt"></span>
                   </legend>
@@ -194,7 +191,7 @@ const Services = () => {
                 </fieldset>
               </li>
               <li>
-                <fieldset ref={card5} className="card">
+                <fieldset ref={card5} className="card AF_op0">
                   <legend>
                     <span className="fa-solid fa-tachograph-digital"></span>
                   </legend>
@@ -218,7 +215,7 @@ const Services = () => {
                 </fieldset>
               </li>
               <li>
-                <fieldset ref={card6} className="card">
+                <fieldset ref={card6} className="card AF_op0">
                   <legend>
                     <span className="fas fa-cloud"></span>
                   </legend>
@@ -262,7 +259,7 @@ const Services = () => {
           <div className="servicesProg ">
             <ul id="servicesCards" className=" cardsContainer">
               <li>
-                <fieldset ref={card7} className="card">
+                <fieldset ref={card7} className="card AF_op0">
                   <legend>
                     <span className="fas fa-palette"></span>
                   </legend>
@@ -282,7 +279,7 @@ const Services = () => {
                 </fieldset>
               </li>
               <li>
-                <fieldset ref={card8} className="card">
+                <fieldset ref={card8} className="card AF_op0">
                   <legend>
                     <span className="fas fa-swatchbook"></span>
                   </legend>
@@ -300,7 +297,7 @@ const Services = () => {
                 </fieldset>
               </li>
               <li>
-                <fieldset ref={card9} className="card">
+                <fieldset ref={card9} className="card AF_op0">
                   <legend>
                     <span className="fas fa-user-edit"></span>
                   </legend>

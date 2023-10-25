@@ -29,8 +29,8 @@
 
         #start_profile_picture {
           all: initial;
-          overflow: hidden;
           max-height: MIN(30vh, 50vw);
+          background-color: $secund-base-color;
           border-radius: 30% 70% 70% 30% / 30% 26% 74% 70%;
           animation: wobble 10s ease-in-out alternate infinite;
           box-shadow: 1rem 0px 2rem $secund-base-color;
@@ -48,13 +48,24 @@
     padding: 1rem;
   }
   #start_ol {
-    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     min-height: 40vh;
     list-style-type: none;
-    padding-left: 1.75rem; // Alignment of the OL to center.
+    padding-left: 1.75rem; // Alignment of the OL to center in PC size.
 
     li {
       padding: 1rem;
+      &:first-child {
+        h3 {
+          order: 1;
+        }
+      }
+      p {
+        letter-spacing: initial;
+        left: initial;
+      }
       .start_li_link {
         font-size: 1rem;
         color: $secund-base-color;
@@ -64,8 +75,26 @@
           font-size: MIN(15vw, 6rem);
         }
         p {
-          display: none;
+          opacity: 0;
         }
+      }
+      min-width: 15rem;
+      h1 {
+        background-color: $gray-35;
+        z-index: 99;
+      }
+      h1:hover p {
+        left: 0rem;
+        letter-spacing: 0;
+        opacity: 1;
+      }
+      p {
+        position: relative;
+        display: inline-block;
+        z-index: 2;
+        letter-spacing: -1rem;
+        left: -1rem;
+        transition: all 1s ease-out;
       }
       h3 {
         color: inherit;
@@ -75,8 +104,8 @@
     }
     #start_li_dash {
       display: flex;
-      justify-content: center;
-      height: MIN(50vw, 15rem);
+      flex-direction: column;
+      width: MIN(30vw, 20rem);
 
       hr {
         border: 1px solid $gray-75;
@@ -123,10 +152,9 @@
       padding: unset;
       #start_ol {
         height: 100%;
-        padding: 1rem;
-        display: grid;
-        grid-template-rows: 45% 10% 45%;
-        justify-content: flex-start;
+
+        justify-content: center;
+        align-items: flex-start;
 
         h3,
         a {
@@ -136,29 +164,13 @@
           display: flex;
           justify-content: flex-start;
           flex-direction: column;
-          height: 100%;
-
-          &:first-child {
-            h3 {
-              order: 1;
-            }
-          }
-          p {
-            letter-spacing: initial;
-            left: initial;
-          }
-        }
-        #start_li_dash {
-          flex-direction: column;
-          width: MAX(20rem, 30vw);
-          height: 2px;
         }
       }
     }
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1024px) and (min-height: 940px) {
   #Start {
     top: 0;
     overflow-y: hidden;
@@ -178,23 +190,19 @@
     }
     #start_proper_sec {
       #start_ol {
+        flex-direction: row;
+        align-items: center;
         isolation: isolate;
-        li {
-          h1:hover p {
-            left: 0rem;
-            letter-spacing: 0;
-          }
-          span {
-            background-color: $gray-35;
-          }
-          p {
-            position: relative;
-            display: inline-block;
-            z-index: -1;
-            letter-spacing: -1rem;
-            left: -1rem;
-            transition: all 1s ease-out;
-          }
+
+        #start_menu_pro {
+          margin-right: 6rem;
+        }
+
+        #start_li_dash {
+          justify-content: center;
+          flex-direction: row;
+          margin-left: -12rem;
+          height: MAX(20rem, 30vh);
         }
       }
     }

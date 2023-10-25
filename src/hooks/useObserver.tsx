@@ -50,6 +50,8 @@ export const useObserver: IUseObserver = (
                 console.log("Trigger");
                 entry.target.classList.add(intersectionObserverCallback);
                 unobserve && observer.unobserve(entry.target);
+              } else if (unobserve === false) {
+                entry.target.classList.remove(intersectionObserverCallback);
               }
             });
           },

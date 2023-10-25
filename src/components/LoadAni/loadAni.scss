@@ -1,0 +1,40 @@
+@import "../../styles/scss/variables";
+
+.LoadAni {
+  height: 100%;
+  margin: 0 auto;
+  .loading_dual_ring {
+    display: inline-block;
+    width: 1.5rem;
+    padding-left: 0.25rem;
+    margin-block-start: 0.2rem;
+  }
+
+  .loading_dual_ring:after {
+    content: " ";
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 3px dotted $secund-base-color;
+    animation: loading_dual_ring 2s cubic-bezier(0.8, 1.5, 0.8, 1) infinite;
+  }
+
+  @keyframes loading_dual_ring {
+    0% {
+      transform: rotate(0deg);
+      border-color: $secund-base-color $base-color $secund-base-color
+        $base-color;
+    }
+    50% {
+      transform: rotate(180deg);
+      border-color: $base-color $secund-base-color $base-color
+        $secund-base-color;
+    }
+    100% {
+      transform: rotate(360deg);
+      border-color: $secund-base-color $base-color $secund-base-color
+        $base-color;
+    }
+  }
+}
