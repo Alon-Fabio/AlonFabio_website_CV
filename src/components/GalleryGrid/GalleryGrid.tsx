@@ -52,8 +52,6 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
   const [Fullscreen, setFullscreen] = useState(false);
 
   let imagesRef = useRef([]);
-  let rootRef = useRef<HTMLElement | null>();
-  // rootRef.current = document.getElementById('root') ? document.getElementById('root') :null;
 
   useEffect(() => {
     async function getImagesUrl(
