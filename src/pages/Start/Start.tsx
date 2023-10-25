@@ -5,7 +5,8 @@ import PageHero from "../../containers/PageHero/PageHero";
 // Style
 import "./start.scss";
 // Photos
-import ProfilePic from "../../styles/img/assets/Alon1631w.jpg";
+import ProfilePic1000 from "../../styles/img/assets/Alon-Orange-mini-1000W&H.jpg";
+import ProfilePic2300 from "../../styles/img/assets/Alon-Orange-mini-2300W&H.jpg";
 
 const Start = () => (
   <div id="Start">
@@ -16,11 +17,29 @@ const Start = () => (
         </h1>
         <div id="start_h_img_con" className="">
           <div className="start_img_clip">
-            <img
+            {/* <img
               src={ProfilePic}
               alt="profile_picture"
               id="start_profile_picture"
-            />
+            /> */}
+            <picture>
+              <source
+                key={`Alon1000`}
+                srcSet={ProfilePic1000}
+                media={"(max-width: 1000px)"}
+              />
+              <source
+                key={`Alon2300w`}
+                srcSet={ProfilePic2300}
+                media={"(max-width: 2000px)"}
+              />
+
+              <img
+                id="start_profile_picture"
+                srcSet={ProfilePic1000}
+                alt="Full Profile Pic"
+              />
+            </picture>
           </div>
         </div>
         <h3>
@@ -30,16 +49,16 @@ const Start = () => (
     </PageHero>
     <section id="start_proper_sec">
       <ol id="start_ol" className="flexCenter">
-        <li key="Professional">
-          <h3>
-            <Link to={"/Pro/Services"}>Services</Link>
-          </h3>
+        <li key="Professional" id="start_menu_pro">
           <Link className="start_li_link" to={"/Pro"}>
             <h1>
               <span>Pro</span>
               <p>fessional</p>
             </h1>
           </Link>
+          <h3>
+            <Link to={"/Pro/Services"}>Services</Link>
+          </h3>
         </li>
         <li id="start_li_dash">
           <hr />

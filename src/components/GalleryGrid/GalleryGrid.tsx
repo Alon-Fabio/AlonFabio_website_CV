@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState, createRef } from "react";
 import "./galleryGrid.scss";
 // Components
 import FullScreenGallery from "../FullScreenGallery/FullScreenGallery";
+import LoadAni from "../LoadAni/LoadAni";
 // Functions
 import { CloudinaryURLBuilder } from "../../functions/general";
 import FullscreenContainerBtn from "../FullscreenContainerBtn/FullscreenContainerBtn";
@@ -51,6 +52,9 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
   const [Fullscreen, setFullscreen] = useState(false);
 
   let imagesRef = useRef([]);
+  let rootRef = useRef<HTMLElement | null>();
+  // rootRef.current = document.getElementById('root') ? document.getElementById('root') :null;
+
   useEffect(() => {
     async function getImagesUrl(
       folder: string,
@@ -131,11 +135,11 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
     return () => {
       FetchImagesController.abort("aborted by user (useEffect)");
     };
-  }, [library, setPending]);
+  }, []);
 
   const options = {
     root: null,
-    rootMargin: "100px",
+    rootMargin: "0px",
     threshold: 1,
   };
 
@@ -148,7 +152,7 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
       // If client screen is below 250px some elements will be too small, I've decided to load normally on small screens.
       if (
         (entry.isIntersecting && entry.target.clientHeight > 200) ||
-        window.innerWidth < 300
+        window.innerWidth < 400
       ) {
         entry.target.classList.remove("AF_op0");
         entry.target.classList.add("flip_scale_forward_ani");
@@ -157,8 +161,9 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
       }
     });
   };
-
+  // useEffect(() => {
   useObserver(options, imagesRef.current, intersectionObserverCallback);
+  // }, []);
 
   const showImg = (imageIndex: number): void => {
     setImageIndex(imageIndex);
@@ -217,13 +222,7 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
           })}
         </div>
       ) : isPending ? (
-        <div className="flexCenter">
-          {/* Add loading component */}
-          <h1>L</h1>
-
-          <div className="loading_dual_ring"></div>
-          <h1>ading</h1>
-        </div>
+        <LoadAni />
       ) : (
         <fieldset className="gallery_grid_no_images container">
           <legend>
