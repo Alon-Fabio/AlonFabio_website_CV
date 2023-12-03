@@ -1,7 +1,7 @@
 import React, { useReducer, useState, useTransition } from "react";
 import PropTypes from "prop-types";
 
-import "./Fadminbio.scss";
+import "./fadminbio.scss";
 
 interface ISgnRedState {
   email: string;
@@ -17,17 +17,39 @@ interface ISigRedAction {
 interface IFadminbioAction {
   (action: string, bodyObject?: { folder: string } | {}): void;
 }
-type TTableData = {
-  [key: string]: string | number | null;
-}[];
+interface TUserTable {
+  id: string;
+  name: string;
+  email: string;
+  pet: string;
+  age: string;
+  entries: string;
+  joined: string;
+}
+
+interface TLoginsTable {
+  id: string;
+  hash: string;
+  email: string;
+}
+
+// type TUsersData = { users: TUserTable[] | []; logins: TLoginsTable[] | [] };
+// type THealth = { testRes: string[] };
+
+// type TAPIResponse = TUsersData | THealth;
 
 // { users: [...users], login: [...login] } server return >>
 const Fadminbio: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
   const [auth, setAuth] = useState(false);
   const [showNav, setShowNav] = useState(true);
   const [fetchStatus, setFetchStatus] = useState(false);
-  const [users, setUsers] = useState<TTableData>([]);
-  const [login, setLogin] = useState<TTableData>([]);
+  const [healthCheck, setHealthCheck] = useState<string[]>([]);
+  const [users, setUsers] = useState<TUserTable[] | { message: string }[] | []>(
+    []
+  );
+  const [login, setLogin] = useState<
+    TLoginsTable[] | { message: string }[] | []
+  >([]);
   const [isPending, startTransition] = useTransition();
 
   const signInReducer: ISignInReducer = (signInState, { type, payload }) => {
@@ -60,17 +82,17 @@ const Fadminbio: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
     fetch(`https://multitasker.alonfabio.com/signin`, {
       // fetch(`http://localhost/signin`, {
       method: "post",
-      headers: { "Content-Type": "application/json", authentication: "false" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(signInState),
     })
       .then((response) =>
         response.status === 200 ? response.json() : response
       )
       .then((data) => {
-        // console.log("Mid :", data);
+        console.log("Mid :", data, "data.status: ", data.status);
         setFetchStatus(false);
 
-        if (data.userId && data.success === "true") {
+        if (data.userId && data.success === true) {
           saveAuthTokenInSessions(data.token);
           // console.log("Logged in: ", data.token);
           setAuth(true);
@@ -83,6 +105,7 @@ const Fadminbio: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
       });
   };
 
+  // Handles admin actions:
   const handleFadminbioAction: IFadminbioAction = (action, bodyObject = {}) => {
     setFetchStatus(true);
     startTransition(() => {
@@ -94,24 +117,35 @@ const Fadminbio: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
           authentication:
             window.sessionStorage.getItem("SmartBrainToken") || "",
         },
+
         body: JSON.stringify({ ...signInState, ...bodyObject }),
       })
-        .then((response) =>
-          response.status === 200 ? response.json() : response
-        )
+        .then((response) => response.json())
         .then((data) => {
           setFetchStatus(false);
           console.log(data, action);
-          if (action === "signin/getUsers" && data.users.length > 0) {
-            setUsers(data.users);
-          }
-          if (action === "signin/getUsers" && data.login.length > 0) {
-            setLogin(data.login);
-          }
-          if (action === "signin/getUsers" && data.length === 0) {
+          if (typeof data !== "object" || !Boolean(data)) {
             setUsers([{ message: "no users" }]);
             setLogin([{ message: "no users" }]);
+            return;
           }
+          if (action === "admin/getUsers") {
+            Boolean(data.hasOwnProperty("users")) && setUsers(data.users);
+
+            Boolean(data.hasOwnProperty("logins")) && setLogin(data.logins);
+          }
+          if (action === "health-check") {
+            setHealthCheck(data.testRes);
+          }
+          // switch (action) {
+          //   case "admin/getUsers":
+          //     Boolean(data.hasOwnProperty("users")) && setUsers(data.users)
+          //     Boolean(data.hasOwnProperty("logins")) && setLogin(data.logins)
+          //     break;
+
+          //   default:
+          //     break;
+          // }
         })
         .catch((err) => {
           setFetchStatus(false);
@@ -120,7 +154,7 @@ const Fadminbio: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
     });
   };
 
-  const generateTable = (tableData: TTableData) => {
+  const generateTable = (tableData: { [key: string]: any }[]) => {
     const headers = Object.keys(tableData[0]);
 
     return (
@@ -152,6 +186,13 @@ const Fadminbio: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
           {auth ? (
             <div className="Fadminbio_Container ">
               <h2>Welcome Fabio, what do you wish to do?</h2>
+              <h2>
+                {Array.isArray(healthCheck) ? (
+                  healthCheck.map((test) => ` ${test},`)
+                ) : (
+                  <></>
+                )}
+              </h2>
 
               <nav
                 id="Fadminbio_Button_Container"
@@ -168,7 +209,7 @@ const Fadminbio: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
                 <ul>
                   <li>
                     <button
-                      onClick={() => handleFadminbioAction("signin/getUsers")}
+                      onClick={() => handleFadminbioAction("admin/getUsers")}
                     >
                       Users
                     </button>
@@ -197,6 +238,20 @@ const Fadminbio: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
                       }
                     >
                       Update Photos
+                    </button>
+                  </li>
+                </ul>
+                <h3>Health</h3>
+                <ul>
+                  <li>
+                    <button
+                      onClick={() =>
+                        handleFadminbioAction("health-check", {
+                          tests: ["redis", "pingAF"],
+                        })
+                      }
+                    >
+                      Health check
                     </button>
                   </li>
                 </ul>
