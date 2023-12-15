@@ -4,8 +4,10 @@
 
 - Important
 
-  1. Make a loading component from the loading in GalleyGrid.
-  2. Implement the comp' where's needed.
+  1. ~~Make a loading component from the loading in GalleyGrid.~~
+  2. ??Implement the comp' where's needed.??
+  3. Update the fetch function to a safer better way.
+  4. Fadminbio: getUsers needs to be a GET request.
 
 - style
 
@@ -28,7 +30,7 @@
   3. ~~Write a useEffect to fetch and display the data.~~
   4. ~~Make it look good with a Library (for now). <!-- Sometime fast is beater -->~~
   5. ~~Break it to smaller components.~~
-  6. Handle loading.
+  6. ~~Handle loading.~~
   7. ~~Server: reorganize and improve for logic and readability.~~
   8. ~~if no problem! Register with Multitasker > copy pass and hash > change the seed of admin to new pass.~~
   9. ~~Remove useTransition form Gallery fetch. Use a useState for isPending.~~
