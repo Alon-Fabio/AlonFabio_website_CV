@@ -14,9 +14,12 @@ interface ISigRedAction {
   type: "CHANGE_PASS" | "CHANGE_EMAIL";
   payload: string;
 }
-interface IFadminbioAction {
-  (action: string, bodyObject?: { folder: string } | {}): void;
-}
+
+type IFadminbioAction = (
+  action: string,
+  bodyObject?: { CLDFolder: "photos" | "graphics" } | { tests: string[] } | {}
+) => void;
+
 interface TUserTable {
   id: string;
   name: string;
@@ -106,12 +109,16 @@ const Fadminbio: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
   };
 
   // Handles admin actions:
-  const handleFadminbioAction: IFadminbioAction = (action, bodyObject = {}) => {
+  const handleFadminbioAction: IFadminbioAction = (
+    method,
+    action,
+    bodyObject = {}
+  ) => {
     setFetchStatus(true);
     startTransition(() => {
       fetch(`https://multitasker.alonfabio.com/${action}`, {
         // fetch(`http://localhost/${action}`, {
-        method: "post",
+        method,
         headers: {
           "Content-Type": "application/json",
           authentication:
