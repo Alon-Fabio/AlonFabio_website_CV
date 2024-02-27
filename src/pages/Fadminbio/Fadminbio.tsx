@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 import "./fadminbio.scss";
 
+// ========================================================== Typescript ========================================================== \\
+
 interface ISgnRedState {
   email: string;
   password: string;
@@ -36,13 +38,9 @@ interface TLoginsTable {
   email: string;
 }
 
-// type TUsersData = { users: TUserTable[] | []; logins: TLoginsTable[] | [] };
-// type THealth = { testRes: string[] };
+// ========================================================== component ========================================================== \\
 
-// type TAPIResponse = TUsersData | THealth;
-
-// { users: [...users], login: [...login] } server return >>
-const Fadminbio: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
+const Fadminbio: React.FC = () => {
   const [auth, setAuth] = useState(false);
   const [showNav, setShowNav] = useState(true);
   const [fetchStatus, setFetchStatus] = useState(false);
@@ -82,7 +80,7 @@ const Fadminbio: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
 
     event.preventDefault();
     // console.log("Started :", stage, signInState);
-    fetch(`https://multitasker.alonfabio.com/signin`, {
+    fetch(`https://multitasker.alonfabio.com/api/signin`, {
       // fetch(`http://localhost/signin`, {
       method: "post",
       headers: { "Content-Type": "application/json" },
@@ -116,7 +114,7 @@ const Fadminbio: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
   ) => {
     setFetchStatus(true);
     startTransition(() => {
-      fetch(`https://multitasker.alonfabio.com/${action}`, {
+      fetch(`https://multitasker.alonfabio.com/api/${action}`, {
         // fetch(`http://localhost/${action}`, {
         method,
         headers: {
@@ -144,15 +142,6 @@ const Fadminbio: React.FC<{ stage: string }> = ({ stage = "localhost" }) => {
           if (action === "health-check") {
             setHealthCheck(data.testRes);
           }
-          // switch (action) {
-          //   case "admin/getUsers":
-          //     Boolean(data.hasOwnProperty("users")) && setUsers(data.users)
-          //     Boolean(data.hasOwnProperty("logins")) && setLogin(data.logins)
-          //     break;
-
-          //   default:
-          //     break;
-          // }
         })
         .catch((err) => {
           setFetchStatus(false);

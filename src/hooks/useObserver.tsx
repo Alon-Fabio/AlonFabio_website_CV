@@ -47,7 +47,7 @@ export const useObserver: IUseObserver = (
         : (entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
-                console.log("Trigger");
+                // console.log("Trigger");
                 entry.target.classList.add(intersectionObserverCallback);
                 unobserve && observer.unobserve(entry.target);
               } else if (unobserve === false) {

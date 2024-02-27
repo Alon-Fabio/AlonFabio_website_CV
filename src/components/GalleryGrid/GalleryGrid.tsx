@@ -59,7 +59,7 @@ const GalleryGrid: React.FC<{ library: string }> = ({ library }) => {
       AbortController?: AbortController
     ) {
       setPending(true);
-      fetch(`https://multitasker.alonfabio.com/gallery/${folder}`, {
+      fetch(`https://multitasker.alonfabio.com/api/gallery/${folder}`, {
         signal: AbortController?.signal,
         method: "GET",
         headers: {
