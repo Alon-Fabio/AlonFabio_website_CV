@@ -11,8 +11,8 @@ import Graphics from "./pages/Graphics/Graphics";
 import Start from "./pages/Start/Start";
 import RouterLayout from "./containers/RouterLayout/RouterLayout";
 import LoadAni from "./components/LoadAni/LoadAni";
-import BasicErrorPage from "./components/Errors/BasicErrorPage";
-import ErrorBoundary from "./components/Errors/ErrorBoundary";
+// import BasicErrorPage from "./components/Errors/BasicErrorPage";
+// import ErrorBoundary from "./components/Errors/ErrorBoundary";
 
 const Fadminbio = lazy(() => import("./pages/Fadminbio/Fadminbio"));
 const Services = lazy(() => import("./pages/Services/Services"));
