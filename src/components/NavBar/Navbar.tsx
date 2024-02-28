@@ -124,6 +124,7 @@ const Navbar: React.FC<NavBarT> = ({ routeList }) => {
             {routeList.map((routeName) => {
               return (
                 <li
+                  className="router_links"
                   key={`NavLink-${routeName}`}
                   onClick={() => {
                     onBurgerClick();

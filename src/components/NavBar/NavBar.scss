@@ -25,6 +25,7 @@
     }
     .navLinksMain {
       padding-inline: 1rem;
+
       .nav_links {
         display: flex;
         justify-content: flex-end;
@@ -35,6 +36,7 @@
         font-size: 1.5rem;
         letter-spacing: 0.05rem;
         transition: background-color 1s ease, top 0.75s ease-out;
+
         .dark_mode_btn {
           border: 1px solid;
           border-radius: 20px;
@@ -60,16 +62,20 @@
             color: $gray-75;
             background-color: $gray-15;
           }
+          span:hover {
+            text-shadow: 0px 0px 0px;
+            animation: 2s infinite alternate ease-in-out roleIcon;
+          }
         }
         li {
           position: relative;
           list-style-type: none;
         }
-
-        :hover,
+        .router_links:hover,
         .active {
           cursor: pointer;
-          font-weight: 600;
+
+          text-shadow: 2px 2px 2px $secund-base-color;
         }
       }
       .nav_li_not_top {
@@ -184,7 +190,7 @@
       }
     }
     .NavLogo {
-      padding-left: 1rem;
+      padding-inline: 1rem;
       fill: inherit;
     }
   }
@@ -192,8 +198,8 @@
     background-color: transparent;
 
     .LogoContainer:hover {
-      filter: drop-shadow(1px 2px 1px lighten($base-color-gray-15, 10%));
-      transition: all 100ms linear;
+      filter: drop-shadow(1px 2px 1px lighten($secund-base-color, 10%));
+      transition: filter 300ms linear;
     }
   }
 }
@@ -297,6 +303,17 @@
     }
   }
 }
+
+@keyframes roleIcon {
+  from {
+    rotate: 0;
+  }
+
+  to {
+    rotate: 45deg;
+  }
+}
+
 // FIX
 // severity: low
 // Start in mobile width.
