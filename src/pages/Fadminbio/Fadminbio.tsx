@@ -19,6 +19,7 @@ interface ISigRedAction {
 
 type IFadminbioAction = (
   action: string,
+  signinState: ISgnRedState,
   bodyObject?: { CLDFolder: "photos" | "graphics" } | { tests: string[] } | {}
 ) => void;
 
@@ -32,7 +33,7 @@ interface TUserTable {
   joined: string;
 }
 
-interface TLoginsTable {
+interface ILoginsTable {
   id: string;
   hash: string;
   email: string;
@@ -49,7 +50,7 @@ const Fadminbio: React.FC = () => {
     []
   );
   const [login, setLogin] = useState<
-    TLoginsTable[] | { message: string }[] | []
+    ILoginsTable[] | { message: string }[] | []
   >([]);
   const [isPending, startTransition] = useTransition();
 
@@ -79,9 +80,9 @@ const Fadminbio: React.FC = () => {
     setFetchStatus(true);
 
     event.preventDefault();
-    // console.log("Started :", stage, signInState);
+
     fetch(`https://multitasker.alonfabio.com/api/signin`, {
-      // fetch(`http://localhost/signin`, {
+      // fetch(`http://localhost/api/signin`, {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(signInState),
@@ -90,12 +91,11 @@ const Fadminbio: React.FC = () => {
         response.status === 200 ? response.json() : response
       )
       .then((data) => {
-        console.log("Mid :", data, "data.status: ", data.status);
         setFetchStatus(false);
 
         if (data.userId && data.success === true) {
           saveAuthTokenInSessions(data.token);
-          // console.log("Logged in: ", data.token);
+
           setAuth(true);
         }
       })
@@ -107,16 +107,17 @@ const Fadminbio: React.FC = () => {
   };
 
   // Handles admin actions:
+  // FIX  this function dose'nt work properly. options: 1. rewrite the call. 2. rewrite the function with default arguments.
   const handleFadminbioAction: IFadminbioAction = (
-    method,
     action,
+    signInState,
     bodyObject = {}
   ) => {
     setFetchStatus(true);
     startTransition(() => {
       fetch(`https://multitasker.alonfabio.com/api/${action}`, {
-        // fetch(`http://localhost/${action}`, {
-        method,
+        // fetch(`http://localhost/api/${action}`, {
+        method: "post",
         headers: {
           "Content-Type": "application/json",
           authentication:
@@ -128,7 +129,6 @@ const Fadminbio: React.FC = () => {
         .then((response) => response.json())
         .then((data) => {
           setFetchStatus(false);
-          console.log(data, action);
           if (typeof data !== "object" || !Boolean(data)) {
             setUsers([{ message: "no users" }]);
             setLogin([{ message: "no users" }]);
@@ -205,7 +205,9 @@ const Fadminbio: React.FC = () => {
                 <ul>
                   <li>
                     <button
-                      onClick={() => handleFadminbioAction("admin/getUsers")}
+                      onClick={() =>
+                        handleFadminbioAction("admin/getUsers", signInState)
+                      }
                     >
                       Users
                     </button>
@@ -216,7 +218,7 @@ const Fadminbio: React.FC = () => {
                   <li>
                     <button
                       onClick={() =>
-                        handleFadminbioAction("gallery/update", {
+                        handleFadminbioAction("gallery/update", signInState, {
                           CLDFolder: "graphics",
                         })
                       }
@@ -228,7 +230,7 @@ const Fadminbio: React.FC = () => {
                   <li>
                     <button
                       onClick={() =>
-                        handleFadminbioAction("gallery/update", {
+                        handleFadminbioAction("gallery/update", signInState, {
                           CLDFolder: "photos",
                         })
                       }
@@ -242,7 +244,7 @@ const Fadminbio: React.FC = () => {
                   <li>
                     <button
                       onClick={() =>
-                        handleFadminbioAction("health-check", {
+                        handleFadminbioAction("health-check", signInState, {
                           tests: ["redis", "pingAF"],
                         })
                       }
